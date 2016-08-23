@@ -4,7 +4,7 @@ import {View, StyleSheet} from 'react-native';
 import Battle from './Battle';
 import Menu from './Menu';
 
-const route = 'Menu';
+const route = 'Battle';
 
 export default class Main extends Component {
     renderContent() {

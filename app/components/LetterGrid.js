@@ -3,12 +3,12 @@ import {View, StyleSheet} from 'react-native';
 
 import Button from './Button';
 
-const menuItems = ['Battle'];
+const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'];
 
-export default class Menu extends Component {
-    renderButtons() {
-        return menuItems.map((item, index) => {
-            return <Button text={item}
+export default class LetterGrid extends Component {
+    renderGrid() {
+        return letters.map((letter, index) => {
+            return <Button text={letter}
                 key={index}
                 styles={buttonStyles} />;
         });
@@ -17,7 +17,7 @@ export default class Menu extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {this.renderButtons()}
+                {this.renderGrid()}
             </View>
         );
     }
@@ -26,20 +26,19 @@ export default class Menu extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        flexDirection: 'row',
+        flexWrap: 'wrap'
     }
 });
 
 const buttonStyles = {
     container: {
         backgroundColor: '#f39c12',
-        borderRadius: 5,
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 30,
-        paddingRight: 30,
-        margin: 10
+        flex: 1,
+        height: 75,
+        width: 75,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     text: {
         fontSize: 30,
