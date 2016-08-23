@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
 
+import {setRoute} from '../action_creators';
 import Button from './Button';
 
 const menuItems = ['Battle'];
 
-export default class Menu extends Component {
+export class Menu extends Component {
     renderButtons() {
         return menuItems.map((item, index) => {
             return <Button text={item}
                 key={index}
-                styles={buttonStyles} />;
+                styles={buttonStyles}
+                action={this.props.setRoute} />;
         });
     }
 
@@ -22,6 +25,8 @@ export default class Menu extends Component {
         );
     }
 }
+
+export default connect(null, {setRoute})(Menu);
 
 const styles = StyleSheet.create({
     container: {

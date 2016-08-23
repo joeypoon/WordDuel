@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {AppRegistry} from 'react-native';
 
-import Main from './app/components/Main';
+import App from './app/components/App';
 
 class WordDuel extends Component {
   render() {
     return (
-      <Main />
+      <App />
     );
   }
 }

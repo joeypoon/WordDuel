@@ -3,7 +3,7 @@ import {TouchableHighlight, Text, StyleSheet} from 'react-native';
 
 export default class Button extends Component {
     handlePress() {
-        console.log(this.props.text);
+        this.props.action(this.props.text);
     }
 
     render() {
