@@ -1,19 +1,20 @@
-const INITIAL_STATE = {route: 'Menu'};
-
-function cloneState (state) {
-    let nextState = {};
-    for (let [key, value] in state) {
-        nextState[key] = value;
-    }
-    return nextState;
-}
+const INITIAL_STATE = new Map([
+    ['route', 'Menu'],
+    ['word', '']
+]);
 
 export default function reducer (state = INITIAL_STATE, action) {
-    let nextState = cloneState(state);
+    let nextState = new Map(state);
     switch (action.type) {
         case 'SET_ROUTE':
-            nextState.route = action.route;
-            return nextState;
+            return nextState.set('route', action.route);
+        case 'ADD_LETTER':
+            return nextState.set('word', nextState.get('word') + action.letter);
+        case 'CLEAR_WORD':
+            return nextState.set('word', '');
+        case 'SUBMIT_WORD':
+            // TODO submit to backend
+            return state;
     }
     return state;
 }

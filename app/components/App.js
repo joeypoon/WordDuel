@@ -11,8 +11,14 @@ export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Main />
+                <Main style={styles.container} />
             </Provider>
         );
     }
 }
+
+const styles = {
+    container: {
+        fontFamily: 'Roboto'
+    }
+};

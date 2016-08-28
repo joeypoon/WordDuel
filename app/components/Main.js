@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {connect} from 'react-redux';
 
 import Battle from './Battle';
@@ -26,16 +26,14 @@ export class Main extends Component {
 
 function mapStateToProps (state) {
     return {
-        route: state.route
+        route: state.get('route')
     };
 }
 
 export default connect(mapStateToProps)(Main);
 
-const styles = StyleSheet.create({
+const styles = {
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        flex: 1
     }
-});
+};

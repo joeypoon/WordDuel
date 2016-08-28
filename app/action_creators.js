@@ -4,3 +4,22 @@ export function setRoute(route) {
         route
     };
 }
+
+export function addLetter(letter) {
+    return {
+        type: 'ADD_LETTER',
+        letter
+    };
+}
+
+export function clearWord() {
+    return {
+        type: 'CLEAR_WORD'
+    };
+}
+
+export function submitWord() {
+    return {
+        type: 'SUBMIT_WORD'
+    }
+}
