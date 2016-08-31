@@ -26,7 +26,7 @@ export class Main extends Component {
 
 function mapStateToProps (state) {
     return {
-        route: state.get('route')
+        route: state.route
     };
 }
 

@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
+import {connect} from 'react-redux';
 
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
+import {loadLetterGrid} from '../action_creators';
 
-export default class Battle extends Component {
+class Battle extends Component {
+    componentDidMount() {
+        this.props.loadLetterGrid();
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -14,6 +20,8 @@ export default class Battle extends Component {
         );
     }
 }
+
+export default connect(null, {loadLetterGrid})(Battle);
 
 const styles = {
     container: {

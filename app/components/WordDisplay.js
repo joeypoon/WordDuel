@@ -3,15 +3,25 @@ import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 
 import OptionButton from './OptionButton';
-import {clearWord, submitWord} from '../action_creators';
+import {clearWord, submitWord, resetActiveGrid} from '../action_creators';
 
 class WordDisplay extends Component {
+    submitWord() {
+        this.props.submitWord();
+        this.props.resetActiveGrid();
+    }
+
+    clearWord() {
+        this.props.clearWord();
+        this.props.resetActiveGrid();
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <OptionButton text='Clear'
                     style={styles.button}
-                    action={this.props.clearWord} />
+                    action={this.clearWord.bind(this)} />
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>
                         {this.props.word}
@@ -19,7 +29,7 @@ class WordDisplay extends Component {
                 </View>
                 <OptionButton text='Submit'
                     style={styles.button}
-                    action={this.props.submitWord} />
+                    action={this.submitWord.bind(this)} />
             </View>
         );
     }
@@ -27,11 +37,11 @@ class WordDisplay extends Component {
 
 function mapStateToProps(state) {
     return {
-        word: state.get('word')
+        word: state.wordDisplay
     };
 }
 
-export default connect(mapStateToProps, {clearWord, submitWord})(WordDisplay);
+export default connect(mapStateToProps, {clearWord, submitWord, resetActiveGrid})(WordDisplay);
 
 const styles = {
     container: {

@@ -2,24 +2,19 @@ import React, {Component} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import {connect} from 'react-redux';
 
-import {addLetter} from '../action_creators';
+import {addLetter, updateActiveGrid} from '../action_creators';
 
 class Letter extends Component {
-    constructor(props) {
-        super(props);
-        this.active = false;
-    }
 
     handlePress() {
-        if (!this.active) {
-            this.active = true;
-            this.props.addLetter(this.props.letter);
-            this.forceUpdate();
+        if (!this.props.active) {
+            this.props.updateActiveGrid(this.props.letter.position, true);
+            this.props.addLetter(this.props.letter.value);
         }
     }
 
     getContainerStyle() {
-        return this.active ? styles.activeContainer : styles.container;
+        return this.props.active ? styles.activeContainer : styles.container;
     }
 
     render() {
@@ -28,14 +23,14 @@ class Letter extends Component {
                 style={this.getContainerStyle()}
                 onPress={this.handlePress.bind(this)}>
                 <Text style={styles.text}>
-                    {this.props.letter}
+                    {this.props.letter.value}
                 </Text>
             </TouchableOpacity>
         );
     }
 }
 
-export default connect(null, {addLetter})(Letter);
+export default connect(null, {addLetter, updateActiveGrid})(Letter);
 
 const styles = {
     container: {
