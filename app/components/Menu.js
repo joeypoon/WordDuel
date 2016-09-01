@@ -4,14 +4,15 @@ import {connect} from 'react-redux';
 
 import MenuButton from './MenuButton';
 
-const menuItems = ['Battle'];
+const menuItems = ['Single', 'Duel'];
 
 export default class Menu extends Component {
     renderButtons() {
         return menuItems.map((route, index) => {
             return <MenuButton
                 route={route}
-                key={index} />;
+                key={index}
+                styles={styles.buttonStyles} />;
         });
     }
 
@@ -29,5 +30,21 @@ const styles = {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    buttonStyles: {
+        container: {
+            backgroundColor: '#16a085',
+            borderRadius: 5,
+            paddingTop: 10,
+            paddingBottom: 10,
+            paddingLeft: 30,
+            paddingRight: 30,
+            margin: 10
+        },
+        text: {
+            fontSize: 30,
+            color: 'white',
+            letterSpacing: 2
+        }
     }
 };

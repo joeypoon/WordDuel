@@ -21,6 +21,9 @@ export default class OptionButton extends Component {
 
 const styles = {
     container: {
-        padding: 10
+        padding: 20
+    },
+    text: {
+        letterSpacing: 3
     }
 };

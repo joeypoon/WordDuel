@@ -8,7 +8,9 @@ import Menu from './Menu';
 export class Main extends Component {
     renderContent() {
         switch (this.props.route) {
-            case 'Battle':
+            case 'Single':
+                return <Battle />;
+            case 'Duel':
                 return <Battle />;
             default:
                 return <Menu />;
@@ -34,6 +36,7 @@ export default connect(mapStateToProps)(Main);
 
 const styles = {
     container: {
+        paddingTop: 25,
         flex: 1
     }
 };

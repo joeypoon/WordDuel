@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
+import MenuButton from './MenuButton';
 import {loadLetterGrid} from '../action_creators';
 
 class Battle extends Component {
@@ -14,8 +15,13 @@ class Battle extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <WordDisplay />
-                <LetterGrid />
+                <View style={styles.topBar}>
+                    <MenuButton route={'Menu'} styles={styles.buttonStyles} />
+                </View>
+                <View style={styles.gridContainer}>
+                    <WordDisplay />
+                    <LetterGrid />
+                </View>
             </View>
         );
     }
@@ -25,7 +31,24 @@ export default connect(null, {loadLetterGrid})(Battle);
 
 const styles = {
     container: {
+        flex: 1
+    },
+    topBar: {
+        alignItems: 'flex-end'
+    },
+    gridContainer: {
         flex: 1,
         justifyContent: 'flex-end'
+    },
+    buttonStyles: {
+        container: {
+            width: 90,
+        },
+        text: {
+            fontSize: 20,
+            color: 'black',
+            letterSpacing: 2,
+            textAlign: 'center'
+        }
     }
 };
