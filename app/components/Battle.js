@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
 import MenuButton from './MenuButton';
+import RecentWords from './RecentWords';
+
 import {loadLetterGrid} from '../action_creators';
 
 class Battle extends Component {
@@ -17,6 +19,9 @@ class Battle extends Component {
             <View style={styles.container}>
                 <View style={styles.topBar}>
                     <MenuButton route={'Menu'} styles={styles.buttonStyles} />
+                </View>
+                <View style={styles.recentWordsContainer}>
+                    <RecentWords />
                 </View>
                 <View style={styles.gridContainer}>
                     <WordDisplay />
@@ -35,6 +40,10 @@ const styles = {
     },
     topBar: {
         alignItems: 'flex-end'
+    },
+    recentWordsContainer: {
+        alignItems: 'center',
+        marginTop: 10
     },
     gridContainer: {
         flex: 1,
