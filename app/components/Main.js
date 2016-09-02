@@ -9,9 +9,9 @@ export class Main extends Component {
     renderContent() {
         switch (this.props.route) {
             case 'Single':
-                return <Battle />;
+                return <Battle players={1} />;
             case 'Duel':
-                return <Battle />;
+                return <Battle players={2} />;
             default:
                 return <Menu />;
         }

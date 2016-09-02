@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
 import MenuButton from './MenuButton';
-import RecentWords from './RecentWords';
+import RecentWordsContainer from './RecentWordsContainer';
 
 import {loadLetterGrid} from '../action_creators';
 
@@ -18,7 +18,7 @@ class Battle extends Component {
         return (
             <View style={styles.container}>
                 <MenuButton route={'Menu'} styles={styles.buttonStyles} />
-                <RecentWords />
+                <RecentWordsContainer players={this.props.players} />
                 <WordDisplay />
                 <LetterGrid />
             </View>
