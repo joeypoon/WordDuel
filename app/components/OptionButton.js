@@ -21,7 +21,10 @@ export default class OptionButton extends Component {
 
 const styles = {
     container: {
-        padding: 20
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 70,
+        height: 70,
     },
     text: {
         letterSpacing: 3

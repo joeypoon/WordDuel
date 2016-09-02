@@ -53,6 +53,7 @@ const styles = {
         height: 70
     },
     textContainer: {
+        height: 70,
         flex: 3,
         alignItems: 'center',
         justifyContent: 'center'
