@@ -27,4 +27,4 @@ const styles = {
     text: {
         fontSize: 30
     }
-}
+};

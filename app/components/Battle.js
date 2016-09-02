@@ -6,6 +6,7 @@ import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
 import MenuButton from './MenuButton';
 import RecentWordsContainer from './RecentWordsContainer';
+import Timer from './Timer';
 
 import {loadLetterGrid} from '../action_creators';
 
@@ -17,7 +18,11 @@ class Battle extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <MenuButton route={'Menu'} styles={styles.buttonStyles} />
+                <View style={styles.test}>
+                    <View style={{flex: 1}} />
+                    <Timer />
+                    <MenuButton route={'Menu'} styles={styles.buttonStyles} />
+                </View>
                 <RecentWordsContainer players={this.props.players} />
                 <WordDisplay />
                 <LetterGrid />
@@ -35,9 +40,9 @@ const styles = {
     },
     buttonStyles: {
         container: {
+            flex: 1,
             alignItems: 'flex-end',
             justifyContent: 'center',
-            height: 30,
             paddingRight: 15
         },
         text: {
@@ -45,5 +50,9 @@ const styles = {
             letterSpacing: 2,
             textAlign: 'center'
         }
+    },
+    test: {
+        height: 30,
+        flexDirection: 'row'
     }
 };

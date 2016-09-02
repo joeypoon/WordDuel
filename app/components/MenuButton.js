@@ -11,13 +11,11 @@ class Button extends Component {
 
     render() {
         return (
-            <View style={this.props.styles.container}>
-                <TouchableOpacity onPress={this.handlePress.bind(this)}>
-                    <Text style={this.props.styles.text}>
-                        {this.props.route}
-                    </Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity onPress={this.handlePress.bind(this)} style={this.props.styles.container}>
+                <Text style={this.props.styles.text}>
+                    {this.props.route}
+                </Text>
+            </TouchableOpacity>
         );
     }
 }

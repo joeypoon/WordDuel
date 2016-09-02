@@ -8,13 +8,11 @@ export default class OptionButton extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <TouchableOpacity onPress={this.handlePress.bind(this)}>
-                    <Text>
-                        {this.props.text}
-                    </Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity onPress={this.handlePress.bind(this)} style={styles.container}>
+                <Text>
+                    {this.props.text}
+                </Text>
+            </TouchableOpacity>
         );
     }
 }
