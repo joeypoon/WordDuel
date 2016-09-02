@@ -29,11 +29,11 @@ export default connect(mapStateToProps)(RecentWords);
 
 const styles = {
     container: {
-        backgroundColor: '#16a085',
-        padding: 10
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     text: {
-        color: 'white',
         fontSize: 30
     }
 }

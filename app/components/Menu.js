@@ -39,7 +39,9 @@ const styles = {
             paddingBottom: 10,
             paddingLeft: 30,
             paddingRight: 30,
-            margin: 10
+            margin: 10,
+            width: 175,
+            alignItems: 'center'
         },
         text: {
             fontSize: 30,

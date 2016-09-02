@@ -3,11 +3,13 @@ import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 
 import OptionButton from './OptionButton';
-import {clearWord, submitWord, resetActiveGrid} from '../action_creators';
+import {clearWord, submitWord, resetActiveGrid, addToRecentWords} from '../action_creators';
 
 class WordDisplay extends Component {
     submitWord() {
         this.props.submitWord();
+        // TODO addToRecentWords after submitWord post 200
+        this.props.addToRecentWords(this.props.word);
         this.props.resetActiveGrid();
     }
 
@@ -41,7 +43,7 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {clearWord, submitWord, resetActiveGrid})(WordDisplay);
+export default connect(mapStateToProps, {clearWord, submitWord, resetActiveGrid, addToRecentWords})(WordDisplay);
 
 const styles = {
     container: {
@@ -52,12 +54,13 @@ const styles = {
     },
     textContainer: {
         flex: 3,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     text: {
         fontSize: 30,
-        padding: 15,
         letterSpacing: 3,
+        textAlign: 'center'
     },
     button: {
         flex: 1

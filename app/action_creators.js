@@ -43,3 +43,10 @@ export function loadLetterGrid () {
         type: 'LOAD_LETTER_GRID'
     };
 }
+
+export function addToRecentWords (word) {
+    return {
+        type: 'ADD_TO_RECENT_WORDS',
+        word
+    };
+}

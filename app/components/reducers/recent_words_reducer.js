@@ -1,4 +1,4 @@
-const INITIAL_STATE = ['this', 'is', 'a', 'test'];
+const INITIAL_STATE = [];
 
 export default function (state = INITIAL_STATE, action) {
     let nextState = new Array(...state);
@@ -8,8 +8,6 @@ export default function (state = INITIAL_STATE, action) {
             while (nextState.length > 5) {
                 nextState.shift();
             }
-            return nextState;
-        case 'RECENT_USER_WORDS':
             return nextState;
     }
     return state;

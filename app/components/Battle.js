@@ -17,16 +17,10 @@ class Battle extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.topBar}>
-                    <MenuButton route={'Menu'} styles={styles.buttonStyles} />
-                </View>
-                <View style={styles.recentWordsContainer}>
-                    <RecentWords />
-                </View>
-                <View style={styles.gridContainer}>
-                    <WordDisplay />
-                    <LetterGrid />
-                </View>
+                <MenuButton route={'Menu'} styles={styles.buttonStyles} />
+                <RecentWords />
+                <WordDisplay />
+                <LetterGrid />
             </View>
         );
     }
@@ -36,26 +30,18 @@ export default connect(null, {loadLetterGrid})(Battle);
 
 const styles = {
     container: {
-        flex: 1
-    },
-    topBar: {
-        alignItems: 'flex-end'
-    },
-    recentWordsContainer: {
-        alignItems: 'center',
-        marginTop: 10
-    },
-    gridContainer: {
         flex: 1,
         justifyContent: 'flex-end'
     },
     buttonStyles: {
         container: {
-            width: 90,
+            alignItems: 'flex-end',
+            justifyContent: 'center',
+            height: 30,
+            paddingRight: 15
         },
         text: {
             fontSize: 20,
-            color: 'black',
             letterSpacing: 2,
             textAlign: 'center'
         }
