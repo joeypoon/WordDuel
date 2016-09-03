@@ -2,15 +2,36 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-export default class Timer extends Component {
+import { decrementTimer } from '../action_creators';
+
+class Timer extends Component {
+    constructor(props) {
+        super(props);
+        this.interval = setInterval(() => {
+            this.props.decrementTimer.call(this);
+        }, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     render() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>
-                30
+                { this.props.timer }
             </Text>
         </View>;
     }
 }
+
+function mapStateToProps (state) {
+    return {
+        timer: state.timer
+    };
+}
+
+export default connect(mapStateToProps, { decrementTimer })(Timer);
 
 const styles = {
     container: {

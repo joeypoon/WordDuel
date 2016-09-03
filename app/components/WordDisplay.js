@@ -3,14 +3,23 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import Button from './Button';
-import { clearWord, submitWord, resetActiveGrid, addToRecentWords } from '../action_creators';
+import {
+    clearWord,
+    submitWord,
+    resetActiveGrid,
+    addToRecentWords,
+    resetTimer
+} from '../action_creators';
 
 class WordDisplay extends Component {
     submitWord() {
-        this.props.submitWord();
-        // TODO addToRecentWords after submitWord post 200
-        this.props.addToRecentWords(this.props.word);
-        this.props.resetActiveGrid();
+        if (this.props.word.length) {
+            this.props.submitWord();
+            // TODO addToRecentWords after submitWord post 200
+            this.props.addToRecentWords(this.props.word);
+            this.props.resetActiveGrid();
+            this.props.resetTimer();
+        }
     }
 
     clearWord() {
@@ -45,7 +54,8 @@ function mapStateToProps (state) {
     };
 }
 
-export default connect(mapStateToProps, { clearWord, submitWord, resetActiveGrid, addToRecentWords })(WordDisplay);
+const actions = { clearWord, submitWord, resetActiveGrid, addToRecentWords, resetTimer };
+export default connect(mapStateToProps, actions)(WordDisplay);
 
 const styles = {
     container: {
