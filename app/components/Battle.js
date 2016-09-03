@@ -8,11 +8,12 @@ import Button from './Button';
 import RecentWordsContainer from './RecentWordsContainer';
 import Timer from './Timer';
 
-import { loadLetterGrid, setRoute } from '../action_creators';
+import { loadLetterGrid, setRoute, clearRecentWords } from '../action_creators';
 
 class Battle extends Component {
     componentDidMount() {
         this.props.loadLetterGrid();
+        this.props.clearRecentWords();
     }
 
     render() {
@@ -33,7 +34,8 @@ class Battle extends Component {
     }
 }
 
-export default connect(null, { loadLetterGrid, setRoute })(Battle);
+const actions = { loadLetterGrid, setRoute, clearRecentWords };
+export default connect(null, actions)(Battle);
 
 const styles = {
     container: {

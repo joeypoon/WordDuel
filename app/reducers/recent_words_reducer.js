@@ -12,6 +12,8 @@ export default function (state = INITIAL_STATE, action) {
                 nextState.shift();
             }
             return nextState;
+        case 'CLEAR_RECENT_WORDS':
+            return INITIAL_STATE;
     }
     return state;
 }

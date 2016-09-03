@@ -57,6 +57,19 @@ export function addToRecentWords (word) {
     };
 }
 
+export function clearRecentWords () {
+    return {
+        type: 'CLEAR_RECENT_WORDS'
+    };
+}
+
+// opponent words
+export function clearOpponentWords () {
+    return {
+        type: 'CLEAR_OPPONENT_WORDS'
+    };
+}
+
 // timer
 export function decrementTimer () {
     return {

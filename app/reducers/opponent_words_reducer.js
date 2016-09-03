@@ -6,6 +6,8 @@ export default function (state = INITIAL_STATE, action) {
         case 'GET_OPPONENT_WORDS':
             // TODO get from backend
             return nextState;
+        case 'CLEAR_OPPONENT_WORDS':
+            return [];
     }
     return state;
 }
