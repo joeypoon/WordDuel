@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 
 export default class RecentWords extends Component {
     renderWords() {
         return this.props.words.map((word, index) => {
-            return <Text key={index}
-                style={styles.text}>
-                {word}
+            return <Text key={ index }
+                style={ styles.text }>
+                { word }
             </Text>
         });
     }
 
     render() {
-        return <View style={styles.container}>
-            {this.renderWords()}
+        return <View style={ styles.container }>
+            { this.renderWords() }
         </View>;
     }
 }

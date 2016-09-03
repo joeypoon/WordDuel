@@ -10,8 +10,8 @@ const store = makeStore(reducer);
 export default class App extends Component {
     render() {
         return (
-            <Provider store={store}>
-                <Main style={styles.container} />
+            <Provider store={ store }>
+                <Main style={ styles.container } />
             </Provider>
         );
     }

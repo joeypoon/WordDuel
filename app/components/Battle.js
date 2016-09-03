@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
-import MenuButton from './MenuButton';
+import Button from './Button';
 import RecentWordsContainer from './RecentWordsContainer';
 import Timer from './Timer';
 
-import {loadLetterGrid} from '../action_creators';
+import { loadLetterGrid, setRoute } from '../action_creators';
 
 class Battle extends Component {
     componentDidMount() {
@@ -17,13 +17,15 @@ class Battle extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.test}>
-                    <View style={{flex: 1}} />
+            <View style={ styles.container }>
+                <View style={ styles.topBar }>
+                    <View style={ { flex: 1 } } />
                     <Timer />
-                    <MenuButton route={'Menu'} styles={styles.buttonStyles} />
+                    <Button text={ 'Menu' }
+                        action={ this.props.setRoute.bind(null, 'Menu') }
+                        styles={ styles.buttonStyles } />
                 </View>
-                <RecentWordsContainer players={this.props.players} />
+                <RecentWordsContainer players={ this.props.players } />
                 <WordDisplay />
                 <LetterGrid />
             </View>
@@ -31,7 +33,7 @@ class Battle extends Component {
     }
 }
 
-export default connect(null, {loadLetterGrid})(Battle);
+export default connect(null, { loadLetterGrid, setRoute })(Battle);
 
 const styles = {
     container: {
@@ -51,7 +53,7 @@ const styles = {
             textAlign: 'center'
         }
     },
-    test: {
+    topBar: {
         height: 30,
         flexDirection: 'row'
     }

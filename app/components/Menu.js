@@ -1,29 +1,33 @@
-import React, {Component} from 'react';
-import {View} from 'react-native';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
 
-import MenuButton from './MenuButton';
+import Button from './Button';
+import { setRoute } from '../action_creators';
 
 const menuItems = ['Single', 'Duel'];
 
-export default class Menu extends Component {
+class Menu extends Component {
     renderButtons() {
         return menuItems.map((route, index) => {
-            return <MenuButton
-                route={route}
-                key={index}
-                styles={styles.buttonStyles} />;
+            return <Button
+                text={ route }
+                key={ index }
+                action={ this.props.setRoute.bind(null, route) }
+                styles={ styles.buttonStyles } />;
         });
     }
 
     render() {
         return (
-            <View style={styles.container}>
-                {this.renderButtons()}
+            <View style={ styles.container }>
+                { this.renderButtons() }
             </View>
         );
     }
 }
+
+export default connect(null, { setRoute })(Menu);
 
 const styles = {
     container: {

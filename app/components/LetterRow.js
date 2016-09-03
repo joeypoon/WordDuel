@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View} from 'react-native';
+import React, { Component } from 'react';
+import { View } from 'react-native';
 
 import Letter from './Letter';
 
@@ -7,15 +7,15 @@ export default class LetterRow extends Component {
     renderRow() {
         return this.props.row.map((letter, index) => {
             return <Letter
-                letter={letter}
-                active={this.props.activeGrid[letter.position]}
-                key={index} />
+                letter={ letter }
+                active={ this.props.activeGrid[letter.position] }
+                key={ index } />
             });
     }
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={ styles.container }>
                 {this.renderRow()}
             </View>
         );

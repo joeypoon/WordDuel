@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {View} from 'react-native';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
 
 import Battle from './Battle';
 import Menu from './Menu';
@@ -9,9 +9,9 @@ export class Main extends Component {
     renderContent() {
         switch (this.props.route) {
             case 'Single':
-                return <Battle players={1} />;
+                return <Battle players={ 1 } />;
             case 'Duel':
-                return <Battle players={2} />;
+                return <Battle players={ 2 } />;
             default:
                 return <Menu />;
         }
@@ -19,8 +19,8 @@ export class Main extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                {this.renderContent()}
+            <View style={ styles.container }>
+                { this.renderContent() }
             </View>
         );
     }

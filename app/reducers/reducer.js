@@ -6,6 +6,7 @@ import route from './route_reducer';
 import wordDisplay from './word_display_reducer';
 import recentWords from './recent_words_reducer';
 import opponentWords from './opponent_words_reducer';
+import timer from './timer_reducer';
 
 export default combineReducers({
     activeGrid,
@@ -13,5 +14,6 @@ export default combineReducers({
     route,
     wordDisplay,
     recentWords,
-    opponentWords
+    opponentWords,
+    timer
 });

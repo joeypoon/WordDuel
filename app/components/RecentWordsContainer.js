@@ -7,18 +7,18 @@ import RecentWords from './RecentWords';
 class RecentWordsContainer extends Component {
     renderRecentWords() {
         if (this.props.players === 1) {
-            return <RecentWords words={this.props.userWords} />;
+            return <RecentWords words={ this.props.userWords } />;
         } else if (this.props.players === 2) {
-            return <View style={styles.container}>
-                <RecentWords words={this.props.userWords} />
-                <RecentWords words={this.props.opponentWords} />
+            return <View style={ styles.container }>
+                <RecentWords words={ this.props.userWords } />
+                <RecentWords words={ this.props.opponentWords } />
             </View>
         }
     }
 
     render() {
-        return <View style={styles.container}>
-            {this.renderRecentWords()}
+        return <View style={ styles.container }>
+            { this.renderRecentWords() }
         </View>;
     }
 }

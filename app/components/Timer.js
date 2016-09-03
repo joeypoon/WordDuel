@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
 export default class Timer extends Component {
     render() {
-        return <View style={styles.container}>
-            <Text style={styles.text}>
+        return <View style={ styles.container }>
+            <Text style={ styles.text }>
                 30
             </Text>
         </View>;

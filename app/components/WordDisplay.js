@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
-import OptionButton from './OptionButton';
-import {clearWord, submitWord, resetActiveGrid, addToRecentWords} from '../action_creators';
+import Button from './Button';
+import { clearWord, submitWord, resetActiveGrid, addToRecentWords } from '../action_creators';
 
 class WordDisplay extends Component {
     submitWord() {
@@ -20,30 +20,32 @@ class WordDisplay extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <OptionButton text='Clear'
-                    style={styles.button}
-                    action={this.clearWord.bind(this)} />
-                <View style={styles.textContainer}>
-                    <Text style={styles.text}>
-                        {this.props.word}
+            <View style={ styles.container }>
+                <Button text='Clear'
+                    style={ styles.button }
+                    action={ this.clearWord.bind(this) }
+                    styles={ styles.buttonStyles } />
+                <View style={ styles.textContainer }>
+                    <Text style={ styles.text }>
+                        { this.props.word }
                     </Text>
                 </View>
-                <OptionButton text='Submit'
-                    style={styles.button}
-                    action={this.submitWord.bind(this)} />
+                <Button text='Submit'
+                    style={ styles.button }
+                    action={ this.submitWord.bind(this) }
+                    styles={ styles.buttonStyles } />
             </View>
         );
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return {
         word: state.wordDisplay
     };
 }
 
-export default connect(mapStateToProps, {clearWord, submitWord, resetActiveGrid, addToRecentWords})(WordDisplay);
+export default connect(mapStateToProps, { clearWord, submitWord, resetActiveGrid, addToRecentWords })(WordDisplay);
 
 const styles = {
     container: {
@@ -65,5 +67,16 @@ const styles = {
     },
     button: {
         flex: 1
+    },
+    buttonStyles: {
+        container: {
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 70,
+            height: 70,
+        },
+        text: {
+            letterSpacing: 1
+        }
     }
 };
