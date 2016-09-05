@@ -54,14 +54,12 @@ const styles = {
     innerContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10,
         backgroundColor: 'white',
         padding: 25
     },
     buttonStyles: {
         container: {
             backgroundColor: '#16a085',
-            borderRadius: 5,
             paddingTop: 10,
             paddingBottom: 10,
             paddingLeft: 30,

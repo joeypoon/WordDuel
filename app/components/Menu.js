@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import Button from './Button';
@@ -21,7 +21,14 @@ class Menu extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                { this.renderButtons() }
+                <View style={ styles.titleContainer }>
+                    <Text style={ styles.title }>
+                        Word Duel
+                    </Text>
+                </View>
+                <View style={ styles.buttonContainer }>
+                    { this.renderButtons() }
+                </View>
             </View>
         );
     }
@@ -35,10 +42,20 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center'
     },
+    titleContainer: {
+        flex: 2,
+        justifyContent: 'center'
+    },
+    title: {
+        fontSize: 40
+    },
+    buttonContainer: {
+        flex: 3,
+        justifyContent: 'flex-start'
+    },
     buttonStyles: {
         container: {
             backgroundColor: '#16a085',
-            borderRadius: 5,
             paddingTop: 10,
             paddingBottom: 10,
             paddingLeft: 30,
