@@ -57,18 +57,15 @@ const styles = {
     buttonStyles: {
         container: {
             backgroundColor: '#16a085',
-            paddingTop: 10,
-            paddingBottom: 10,
-            paddingLeft: 30,
-            paddingRight: 30,
+            padding: 10,
             margin: 10,
             width: 175,
             alignItems: 'center'
         },
         text: {
-            fontSize: 30,
+            fontSize: 25,
             color: 'white',
-            letterSpacing: 2
+            letterSpacing: 3
         }
     }
 };
