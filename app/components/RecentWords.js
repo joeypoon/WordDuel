@@ -25,6 +25,6 @@ const styles = {
         justifyContent: 'center'
     },
     text: {
-        fontSize: 30
+        fontSize: 25
     }
 };

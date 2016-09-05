@@ -105,3 +105,10 @@ export function setModalVisible (isVisible) {
         isVisible
     };
 }
+
+export function setModalType (modalType) {
+    return {
+        type: 'SET_MODAL_TYPE',
+        modalType
+    };
+}

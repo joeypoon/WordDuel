@@ -47,7 +47,8 @@ const styles = {
         justifyContent: 'center'
     },
     title: {
-        fontSize: 40
+        fontSize: 40,
+        letterSpacing: 2
     },
     buttonContainer: {
         flex: 3,

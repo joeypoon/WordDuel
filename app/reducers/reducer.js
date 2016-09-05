@@ -8,7 +8,7 @@ import recentWords from './recent_words_reducer';
 import opponentWords from './opponent_words_reducer';
 import timer from './timer_reducer';
 import score from './score_reducer';
-import modalVisible from './modal_visible_reducer';
+import modal from './modal_reducer';
 
 export default combineReducers({
     activeGrid,
@@ -19,5 +19,5 @@ export default combineReducers({
     opponentWords,
     timer,
     score,
-    modalVisible
+    modal
 });

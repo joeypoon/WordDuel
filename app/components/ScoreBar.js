@@ -46,6 +46,6 @@ const styles = {
     text: {
         textAlign: 'center',
         flex: 1,
-        fontSize: 30
+        fontSize: 25
     }
 };

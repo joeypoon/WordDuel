@@ -12,7 +12,7 @@ class CustomModal extends Component {
     }
 
     renderContent() {
-        if (this.props.type === 'battle') {
+        if (this.props.modalType === 'battleMenu') {
             return <View style={ styles.innerContainer }>
                 <Button styles={ styles.buttonStyles }
                     action={ this.handleQuit.bind(this) }
@@ -38,7 +38,8 @@ class CustomModal extends Component {
 
 function mapStateToProps (state) {
     return {
-        visible: state.modalVisible
+        visible: state.modal.get('isVisible'),
+        modalType: state.modal.get('modalType')
     };
 }
 

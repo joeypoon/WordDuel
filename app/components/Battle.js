@@ -8,7 +8,6 @@ import Button from './Button';
 import RecentWordsContainer from './RecentWordsContainer';
 import Timer from './Timer';
 import ScoreBar from './ScoreBar';
-import CustomModal from './CustomModal';
 
 import {
     loadLetterGrid,
@@ -18,7 +17,8 @@ import {
     setOpponentScore,
     resetActiveGrid,
     clearWord,
-    setModalVisible
+    setModalVisible,
+    setModalType
 } from '../action_creators';
 
 class Battle extends Component {
@@ -31,15 +31,19 @@ class Battle extends Component {
         this.props.clearWord();
     }
 
+    openMenu() {
+        this.props.setModalVisible(true);
+        this.props.setModalType('battleMenu');
+    }
+
     render() {
         return (
             <View style={ styles.container }>
-                <CustomModal type={ 'battle' } />
                 <View style={ styles.topBar }>
                     <View style={ { flex: 1 } } />
                     <Timer />
                     <Button text={ 'Menu' }
-                        action={ this.props.setModalVisible.bind(this, true) }
+                        action={ this.openMenu.bind(this) }
                         styles={ styles.buttonStyles } />
                 </View>
                 <RecentWordsContainer players={ this.props.players } />
@@ -59,7 +63,8 @@ const actions = {
     setOpponentScore,
     resetActiveGrid,
     clearWord,
-    setModalVisible
+    setModalVisible,
+    setModalType
 };
 export default connect(null, actions)(Battle);
 
