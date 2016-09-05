@@ -17,7 +17,6 @@ class WordDisplay extends Component {
         // TODO validate word on backend
         if (this.props.word.length) {
             this.props.submitWord();
-            // TODO addToRecentWords after submitWord post 200
             this.props.addToRecentWords(this.props.word);
             let score = this.props.playerScore + this.props.word.length;
             this.props.setPlayerScore(score);

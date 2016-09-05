@@ -97,3 +97,11 @@ export function setOpponentScore (score) {
         score
     };
 }
+
+// modal visible
+export function setModalVisible (isVisible) {
+    return {
+        type: 'SET_MODAL_VISIBLE',
+        isVisible
+    };
+}

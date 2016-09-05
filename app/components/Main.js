@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Modal, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import Battle from './Battle';
