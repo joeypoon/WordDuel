@@ -3,24 +3,12 @@ import { Modal, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import Button from './Button';
-import { setModalVisible, setRoute } from '../action_creators';
+import BattleMenu from './modals/BattleMenu';
 
 class CustomModal extends Component {
-    handleQuit() {
-        this.props.setModalVisible(false);
-        this.props.setRoute('Menu');
-    }
-
     renderContent() {
         if (this.props.modalType === 'battleMenu') {
-            return <View style={ styles.innerContainer }>
-                <Button styles={ styles.buttonStyles }
-                    action={ this.handleQuit.bind(this) }
-                    text={ 'Quit' } />
-                <Button styles={ styles.buttonStyles }
-                    action={ this.props.setModalVisible.bind(null, false) }
-                    text={ 'Cancel' } />
-            </View>;
+            return <BattleMenu />
         }
     }
 
@@ -43,7 +31,7 @@ function mapStateToProps (state) {
     };
 }
 
-export default connect(mapStateToProps, { setModalVisible, setRoute })(CustomModal);
+export default connect(mapStateToProps)(CustomModal);
 
 const styles = {
     container: {
@@ -51,28 +39,5 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
-    },
-    innerContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        padding: 25
-    },
-    buttonStyles: {
-        container: {
-            backgroundColor: '#16a085',
-            paddingTop: 10,
-            paddingBottom: 10,
-            paddingLeft: 30,
-            paddingRight: 30,
-            margin: 10,
-            width: 175,
-            alignItems: 'center'
-        },
-        text: {
-            fontSize: 30,
-            color: 'white',
-            letterSpacing: 2
-        }
     }
 };
