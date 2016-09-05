@@ -8,15 +8,19 @@ import {
     submitWord,
     resetActiveGrid,
     addToRecentWords,
-    resetTimer
+    resetTimer,
+    setPlayerScore
 } from '../action_creators';
 
 class WordDisplay extends Component {
     submitWord() {
+        // TODO validate word on backend
         if (this.props.word.length) {
             this.props.submitWord();
             // TODO addToRecentWords after submitWord post 200
             this.props.addToRecentWords(this.props.word);
+            let score = this.props.playerScore + this.props.word.length;
+            this.props.setPlayerScore(score);
             this.props.resetActiveGrid();
             this.props.resetTimer();
         }
@@ -50,11 +54,12 @@ class WordDisplay extends Component {
 
 function mapStateToProps (state) {
     return {
-        word: state.wordDisplay
+        word: state.wordDisplay,
+        playerScore: state.score.get('player')
     };
 }
 
-const actions = { clearWord, submitWord, resetActiveGrid, addToRecentWords, resetTimer };
+const actions = { clearWord, submitWord, resetActiveGrid, addToRecentWords, resetTimer, setPlayerScore };
 export default connect(mapStateToProps, actions)(WordDisplay);
 
 const styles = {

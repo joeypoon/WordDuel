@@ -7,13 +7,26 @@ import WordDisplay from './WordDisplay';
 import Button from './Button';
 import RecentWordsContainer from './RecentWordsContainer';
 import Timer from './Timer';
+import ScoreBar from './ScoreBar';
 
-import { loadLetterGrid, setRoute, clearRecentWords } from '../action_creators';
+import {
+    loadLetterGrid,
+    setRoute,
+    clearRecentWords,
+    setPlayerScore,
+    setOpponentScore,
+    resetActiveGrid,
+    clearWord
+} from '../action_creators';
 
 class Battle extends Component {
     componentDidMount() {
         this.props.loadLetterGrid();
+        this.props.resetActiveGrid();
         this.props.clearRecentWords();
+        this.props.setPlayerScore(0);
+        this.props.setOpponentScore(0);
+        this.props.clearWord();
     }
 
     render() {
@@ -27,6 +40,7 @@ class Battle extends Component {
                         styles={ styles.buttonStyles } />
                 </View>
                 <RecentWordsContainer players={ this.props.players } />
+                <ScoreBar players={ this.props.players } />
                 <WordDisplay />
                 <LetterGrid />
             </View>
@@ -34,7 +48,15 @@ class Battle extends Component {
     }
 }
 
-const actions = { loadLetterGrid, setRoute, clearRecentWords };
+const actions = {
+    loadLetterGrid,
+    setRoute,
+    clearRecentWords,
+    setPlayerScore,
+    setOpponentScore,
+    resetActiveGrid,
+    clearWord
+};
 export default connect(null, actions)(Battle);
 
 const styles = {
@@ -47,12 +69,12 @@ const styles = {
             flex: 1,
             alignItems: 'flex-end',
             justifyContent: 'center',
-            paddingRight: 15
         },
         text: {
             fontSize: 20,
             letterSpacing: 2,
-            textAlign: 'center'
+            textAlign: 'center',
+            marginRight: 10
         }
     },
     topBar: {

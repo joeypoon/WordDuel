@@ -82,3 +82,18 @@ export function resetTimer () {
         type: 'RESET_TIMER'
     };
 }
+
+// score
+export function setPlayerScore (score) {
+    return {
+        type: 'SET_PLAYER_SCORE',
+        score
+    };
+}
+
+export function setOpponentScore (score) {
+    return {
+        type: 'SET_OPPONENT_SCORE',
+        score
+    };
+}
