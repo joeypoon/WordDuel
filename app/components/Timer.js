@@ -35,7 +35,6 @@ export default connect(mapStateToProps, { decrementTimer, resetTimer })(Timer);
 
 const styles = {
     container: {
-        flex: 1,
         width: 50,
         alignItems: 'center',
         justifyContent: 'center'

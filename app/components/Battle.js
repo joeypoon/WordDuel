@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
-import Button from './Button';
 import RecentWordsContainer from './RecentWordsContainer';
+import BattleTopBar from './BattleTopBar'
 import Timer from './Timer';
-import ScoreBar from './ScoreBar';
 
 import {
     loadLetterGrid,
@@ -16,9 +15,7 @@ import {
     setPlayerScore,
     setOpponentScore,
     resetActiveGrid,
-    clearWord,
-    setModalVisible,
-    setModalType
+    clearWord
 } from '../action_creators';
 
 class Battle extends Component {
@@ -31,23 +28,12 @@ class Battle extends Component {
         this.props.clearWord();
     }
 
-    openMenu() {
-        this.props.setModalVisible(true);
-        this.props.setModalType('battleMenu');
-    }
-
     render() {
         return (
             <View style={ styles.container }>
-                <View style={ styles.topBar }>
-                    <View style={ { flex: 1 } } />
-                    <Timer />
-                    <Button text={ 'Menu' }
-                        action={ this.openMenu.bind(this) }
-                        styles={ styles.buttonStyles } />
-                </View>
+                <BattleTopBar />
+                <Timer />
                 <RecentWordsContainer players={ this.props.players } />
-                <ScoreBar players={ this.props.players } />
                 <WordDisplay />
                 <LetterGrid />
             </View>
@@ -62,32 +48,23 @@ const actions = {
     setPlayerScore,
     setOpponentScore,
     resetActiveGrid,
-    clearWord,
-    setModalVisible,
-    setModalType
+    clearWord
 };
-export default connect(null, actions)(Battle);
+
+function mapStateToProps (state) {
+    return {
+        playerName: state.players.get('playerName'),
+        playerLevel: state.players.get('playerLevel'),
+        opponentName: state.players.get('opponentName'),
+        opponentLevel: state.players.get('opponentLevel')
+    };
+}
+
+export default connect(mapStateToProps, actions)(Battle);
 
 const styles = {
     container: {
         flex: 1,
         justifyContent: 'flex-end'
-    },
-    buttonStyles: {
-        container: {
-            flex: 1,
-            alignItems: 'flex-end',
-            justifyContent: 'center',
-        },
-        text: {
-            fontSize: 20,
-            letterSpacing: 2,
-            textAlign: 'center',
-            marginRight: 10
-        }
-    },
-    topBar: {
-        height: 30,
-        flexDirection: 'row'
     }
 };

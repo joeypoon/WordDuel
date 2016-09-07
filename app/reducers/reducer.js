@@ -9,6 +9,7 @@ import opponentWords from './opponent_words_reducer';
 import timer from './timer_reducer';
 import score from './score_reducer';
 import modal from './modal_reducer';
+import players from './players_reducer';
 
 export default combineReducers({
     activeGrid,
@@ -19,5 +20,6 @@ export default combineReducers({
     opponentWords,
     timer,
     score,
-    modal
+    modal,
+    players
 });
