@@ -7,6 +7,7 @@ import WordDisplay from './WordDisplay';
 import RecentWordsContainer from './RecentWordsContainer';
 import BattleTopBar from './BattleTopBar'
 import Timer from './Timer';
+import PlayerDisplay from './PlayerDisplay';
 
 import {
     loadLetterGrid,
@@ -34,6 +35,12 @@ class Battle extends Component {
                 <BattleTopBar />
                 <Timer />
                 <RecentWordsContainer players={ this.props.players } />
+                <View style={ styles.playerDisplay }>
+                    <PlayerDisplay
+                        name={ this.props.playerName }
+                        level={ this.props.playerLevel }
+                        score={ this.props.playerScore } />
+                </View>
                 <WordDisplay />
                 <LetterGrid />
             </View>
@@ -55,8 +62,7 @@ function mapStateToProps (state) {
     return {
         playerName: state.players.get('playerName'),
         playerLevel: state.players.get('playerLevel'),
-        opponentName: state.players.get('opponentName'),
-        opponentLevel: state.players.get('opponentLevel')
+        playerScore: state.score.get('player')
     };
 }
 
@@ -66,5 +72,9 @@ const styles = {
     container: {
         flex: 1,
         justifyContent: 'flex-end'
+    },
+    playerDisplay: {
+        alignItems: 'flex-end',
+        marginRight: 10
     }
 };
