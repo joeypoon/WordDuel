@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Image, Text } from 'react-native';
 
 export default class PlayerDisplay extends Component {
     render() {
         return <View style={ styles.container }>
-            <Text style={ styles.level }>
-                Lv{ this.props.level }
-            </Text>
-            <Text style={ styles.name }>
-                { this.props.name }
-            </Text>
+            <Image source={ require('./puppy.png') }
+                style={ styles.image } />
             <Text style={ styles.score }>
                 { this.props.score }
             </Text>
@@ -19,22 +15,16 @@ export default class PlayerDisplay extends Component {
 
 const styles = {
     container: {
-        marginLeft: 10,
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center'
+        alignItems: 'center'
     },
-    level: {
-        fontSize: 20,
-        letterSpacing: 1,
+    image: {
+        height: 30,
+        width: 30,
+        borderRadius: 15,
         marginRight: 5
     },
-    name: {
-        fontSize: 20,
-        letterSpacing: 1,
-        marginRight: 15
-    },
     score: {
-        fontSize: 20
+        fontSize: 35
     }
 };
