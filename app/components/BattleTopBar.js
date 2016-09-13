@@ -4,17 +4,15 @@ import { connect } from 'react-redux';
 
 import PlayerDisplay from './PlayerDisplay';
 import BattleMenuButton from './BattleMenuButton';
+import Timer from './Timer';
 
 class BattleTopBar extends Component {
 
     render() {
         return <View style={ styles.container }>
-            <PlayerDisplay
-                name={ this.props.opponentName }
-                level={ this.props.opponentLevel }
-                score={ this.props.opponentScore }
-                style={ { flex: 1 } } />
-            <BattleMenuButton />
+            <View style={ styles.flexOne } />
+            <Timer style={ styles.flexOne } />
+            <BattleMenuButton style={ styles.flexOne } />
         </View>;
     }
 }
@@ -33,5 +31,8 @@ const styles = {
     container: {
         height: 30,
         flexDirection: 'row'
+    },
+    flexOne: {
+        flex: 1
     }
 }

@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
 import RecentWordsContainer from './RecentWordsContainer';
 import BattleTopBar from './BattleTopBar'
-import Timer from './Timer';
-import PlayerDisplay from './PlayerDisplay';
+import PlayerDisplayContainer from './PlayerDisplayContainer';
 
 import {
     loadLetterGrid,
-    setRoute,
     clearRecentWords,
     setPlayerScore,
     setOpponentScore,
@@ -33,15 +31,9 @@ class Battle extends Component {
         return (
             <View style={ styles.container }>
                 <BattleTopBar />
-                <Timer />
                 <RecentWordsContainer players={ this.props.players } />
-                <View style={ styles.playerDisplay }>
-                    <PlayerDisplay
-                        name={ this.props.playerName }
-                        level={ this.props.playerLevel }
-                        score={ this.props.playerScore } />
-                </View>
                 <WordDisplay />
+                <PlayerDisplayContainer />
                 <LetterGrid />
             </View>
         );
@@ -50,7 +42,6 @@ class Battle extends Component {
 
 const actions = {
     loadLetterGrid,
-    setRoute,
     clearRecentWords,
     setPlayerScore,
     setOpponentScore,
@@ -58,23 +49,11 @@ const actions = {
     clearWord
 };
 
-function mapStateToProps (state) {
-    return {
-        playerName: state.players.get('playerName'),
-        playerLevel: state.players.get('playerLevel'),
-        playerScore: state.score.get('player')
-    };
-}
-
-export default connect(mapStateToProps, actions)(Battle);
+export default connect(null, actions)(Battle);
 
 const styles = {
     container: {
         flex: 1,
         justifyContent: 'flex-end'
-    },
-    playerDisplay: {
-        alignItems: 'flex-end',
-        marginRight: 10
     }
 };
