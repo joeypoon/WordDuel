@@ -28,7 +28,7 @@ class Battle extends Component {
 
     render() {
         return (
-            <View style={ styles.container }>
+            <View style={styles.container}>
                 <BattleTopBar />
                 <WordDisplay />
                 <PlayerDisplayContainer players={ this.props.players } />

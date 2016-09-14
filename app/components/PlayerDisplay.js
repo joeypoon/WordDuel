@@ -25,6 +25,7 @@ const styles = {
         marginRight: 5
     },
     score: {
-        fontSize: 35
+        fontSize: 35,
+        backgroundColor: 'transparent'
     }
 };
