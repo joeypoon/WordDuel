@@ -20,11 +20,6 @@ class WordDisplay extends Component {
         }
     }
 
-    getHeight() {
-        // 30 (topbar) + 30 (playerdisplay) = 60
-        return Dimensions.get('window').height/2 - 60;
-    }
-
     handleClear() {
         this._swiper.scrollBy(1);
         this.props.clearWord();
@@ -48,8 +43,7 @@ class WordDisplay extends Component {
                     onMomentumScrollEnd={ this.handleMomentumScrollEnd.bind(this) }
                     showsPagination={ false }
                     ref={ (swiper) => { this._swiper = swiper; } }
-                    index={ 1 }
-                    contentContainer={ styles.swiperContainer }>
+                    index={ 1 }>
                     <View style={ [styles.textContainer, styles.clearContainer] }>
                         <Text style={ styles.text }>
                             clear
@@ -94,10 +88,6 @@ const styles = {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center'
-    },
-    swiperContainer: {
-        height: null,
-        width: null
     },
     textContainer: {
         flex: 1,
