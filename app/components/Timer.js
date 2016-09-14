@@ -37,7 +37,8 @@ const styles = {
     container: {
         width: 50,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'transparent'
     },
     text: {
         fontSize: 30,

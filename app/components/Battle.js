@@ -29,8 +29,10 @@ class Battle extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <BattleTopBar />
-                <WordDisplay />
+                <View style={ styles.topContainer }>
+                    <WordDisplay />
+                    <BattleTopBar />
+                </View>
                 <PlayerDisplayContainer players={ this.props.players } />
                 <LetterGrid />
             </View>
@@ -52,5 +54,9 @@ export default connect(null, actions)(Battle);
 const styles = {
     container: {
         flex: 1
+    },
+    topContainer: {
+        flex: 1,
+        flexDirection: 'column-reverse'
     }
 };

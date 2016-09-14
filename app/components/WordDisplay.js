@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 
@@ -7,7 +7,8 @@ import {
     clearWord,
     submitWord,
     resetActiveGrid,
-    setPlayerScore
+    setPlayerScore,
+    resetTimer
 } from '../action_creators';
 
 class WordDisplay extends Component {
@@ -19,6 +20,11 @@ class WordDisplay extends Component {
         }
     }
 
+    getHeight() {
+        // 30 (topbar) + 30 (playerdisplay) = 60
+        return Dimensions.get('window').height/2 - 60;
+    }
+
     handleClear() {
         this._swiper.scrollBy(1);
         this.props.clearWord();
@@ -27,10 +33,11 @@ class WordDisplay extends Component {
 
     handleSubmit() {
         this._swiper.scrollBy(-1);
-        if (this.props.timer > 0) {
+        if (this.props.timer > 0 && this.props.word.length > 0) {
             this.props.setPlayerScore(this.props.playerScore + this.props.word.length);
             this.props.submitWord();
             this.props.resetActiveGrid();
+            this.props.resetTimer();
         }
     }
 
@@ -41,7 +48,8 @@ class WordDisplay extends Component {
                     onMomentumScrollEnd={ this.handleMomentumScrollEnd.bind(this) }
                     showsPagination={ false }
                     ref={ (swiper) => { this._swiper = swiper; } }
-                    index={ 1 }>
+                    index={ 1 }
+                    contentContainer={ styles.swiperContainer }>
                     <View style={ [styles.textContainer, styles.clearContainer] }>
                         <Text style={ styles.text }>
                             clear
@@ -75,7 +83,8 @@ const actions = {
     clearWord,
     submitWord,
     resetActiveGrid,
-    setPlayerScore
+    setPlayerScore,
+    resetTimer
 };
 export default connect(mapStateToProps, actions)(WordDisplay);
 
@@ -85,6 +94,10 @@ const styles = {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    swiperContainer: {
+        height: null,
+        width: null
     },
     textContainer: {
         flex: 1,
