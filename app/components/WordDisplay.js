@@ -3,10 +3,35 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 
+import {
+    clearWord,
+    submitWord,
+    resetActiveGrid,
+    setPlayerScore
+} from '../action_creators';
+
 class WordDisplay extends Component {
     handleMomentumScrollEnd(e, state, context) {
-        console.log(state, context.state);
-        state.index = 1;
+        if (state.index === 0) {
+            this.handleClear();
+        } else if (state.index === 2) {
+            this.handleSubmit();
+        }
+    }
+
+    handleClear() {
+        this._swiper.scrollBy(1);
+        this.props.clearWord();
+        this.props.resetActiveGrid();
+    }
+
+    handleSubmit() {
+        this._swiper.scrollBy(-1);
+        if (this.props.timer > 0) {
+            this.props.setPlayerScore(this.props.playerScore + this.props.word.length);
+            this.props.submitWord();
+            this.props.resetActiveGrid();
+        }
     }
 
     render() {
@@ -14,6 +39,8 @@ class WordDisplay extends Component {
             <View style={ styles.container }>
                 <Swiper showsButtons={ true }
                     onMomentumScrollEnd={ this.handleMomentumScrollEnd.bind(this) }
+                    showsPagination={ false }
+                    ref={ (swiper) => { this._swiper = swiper; } }
                     index={ 1 }>
                     <View style={ [styles.textContainer, styles.clearContainer] }>
                         <Text style={ styles.text }>
@@ -38,11 +65,19 @@ class WordDisplay extends Component {
 
 function mapStateToProps (state) {
     return {
-        word: state.wordDisplay
+        word: state.wordDisplay,
+        playerScore: state.score.get('player'),
+        timer: state.timer
     };
 }
 
-export default connect(mapStateToProps)(WordDisplay);
+const actions = {
+    clearWord,
+    submitWord,
+    resetActiveGrid,
+    setPlayerScore
+};
+export default connect(mapStateToProps, actions)(WordDisplay);
 
 const styles = {
     container: {
