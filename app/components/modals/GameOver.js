@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { setModalVisible, setRoute } from '../../action_creators';
 import Button from '../Button';
 
-export default class GameOver extends Component {
+export class GameOver extends Component {
     newMatch() {
         // TODO
     }
