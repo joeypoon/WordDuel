@@ -1,4 +1,4 @@
-const INITIAL_STATE = 30;
+const INITIAL_STATE = 10;
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {

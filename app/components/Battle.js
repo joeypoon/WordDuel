@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
-import RecentWordsContainer from './RecentWordsContainer';
 import BattleTopBar from './BattleTopBar'
 import PlayerDisplayContainer from './PlayerDisplayContainer';
 
@@ -31,9 +30,8 @@ class Battle extends Component {
         return (
             <View style={ styles.container }>
                 <BattleTopBar />
-                <RecentWordsContainer players={ this.props.players } />
                 <WordDisplay />
-                <PlayerDisplayContainer />
+                <PlayerDisplayContainer players={ this.props.players } />
                 <LetterGrid />
             </View>
         );
@@ -53,7 +51,6 @@ export default connect(null, actions)(Battle);
 
 const styles = {
     container: {
-        flex: 1,
-        justifyContent: 'flex-end'
+        flex: 1
     }
 };

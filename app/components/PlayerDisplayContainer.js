@@ -5,11 +5,18 @@ import { connect } from 'react-redux';
 import PlayerDisplay from './PlayerDisplay';
 
 class PlayerDisplayContainer extends Component {
+    renderOpponent() {
+        if (this.props.players === 2) {
+            return <PlayerDisplay
+                source={ this.props.opponentImage }
+                score={ this.props.opponentScore } />;
+        }
+        return <View />;
+    }
+
     render() {
         return <View style={ styles.container }>
-            <PlayerDisplay
-                source={ this.props.opponentImage }
-                score={ this.props.opponentScore } />
+            { this.renderOpponent() }
             <PlayerDisplay
                 source={ this.props.playerImage }
                 score={ this.props.playerScore } />
@@ -21,8 +28,8 @@ function mapStateToProps (state) {
     return {
         playerImage: state.players.get('playerImage'),
         playerScore: state.score.get('player'),
-        opponentImage: state.players.get('playerImage'),
-        opponentScore: state.score.get('player')
+        opponentImage: state.players.get('opponentImage'),
+        opponentScore: state.score.get('opponent')
     };
 }
 
@@ -33,6 +40,7 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: 50,
-        margin: 7
+        marginLeft: 15,
+        marginRight: 15
     }
 }
