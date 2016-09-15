@@ -6,6 +6,7 @@ import Button from './Button';
 import BattleMenu from './modals/BattleMenu';
 import GameOver from './modals/GameOver';
 import RoundOver from './modals/RoundOver';
+import Searching from './modals/Searching';
 
 class CustomModal extends Component {
     renderContent() {
@@ -16,6 +17,8 @@ class CustomModal extends Component {
                 return <GameOver />;
             case 'roundOver':
                 return <RoundOver />;
+            case 'searching':
+                return <Searching />;
         }
         return <View />;
     }
