@@ -5,18 +5,19 @@ import { connect } from 'react-redux';
 import Button from './Button';
 import BattleMenu from './modals/BattleMenu';
 import GameOver from './modals/GameOver';
+import RoundOver from './modals/RoundOver';
 
 class CustomModal extends Component {
     renderContent() {
         switch (this.props.modalType) {
             case 'battleMenu':
-                return <BattleMenu />
+                return <BattleMenu />;
             case 'gameOver':
-                return <GameOver />
+                return <GameOver />;
+            case 'roundOver':
+                return <RoundOver />;
         }
-        return <View />
-        if (this.props.modalType === 'battleMenu') {
-        }
+        return <View />;
     }
 
     render() {
