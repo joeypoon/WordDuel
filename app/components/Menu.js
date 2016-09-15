@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Button from './Button';
 import { setRoute } from '../action_creators';
 
-const menuItems = ['Single', 'Duel'];
+const menuItems = ['Single', 'Duel', 'Logout'];
 
 class Menu extends Component {
     renderButtons() {
@@ -21,11 +21,6 @@ class Menu extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                <View style={ styles.titleContainer }>
-                    <Text style={ styles.title }>
-                        Word Duel
-                    </Text>
-                </View>
                 <View style={ styles.buttonContainer }>
                     { this.renderButtons() }
                 </View>
@@ -65,7 +60,7 @@ const styles = {
         text: {
             fontSize: 25,
             color: 'white',
-            letterSpacing: 3
+            letterSpacing: 1
         }
     }
 };

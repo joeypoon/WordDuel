@@ -1,4 +1,5 @@
 const INITIAL_STATE = new Map([
+    ['playerId', null],
     ['playerName', 'PlayerName'],
     ['playerLevel', 1],
     ['playerImage', './puppy.png'],

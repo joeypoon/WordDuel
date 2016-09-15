@@ -9,7 +9,6 @@ import PlayerDisplayContainer from './PlayerDisplayContainer';
 
 import {
     loadLetterGrid,
-    clearRecentWords,
     setPlayerScore,
     setOpponentScore,
     resetActiveGrid,
@@ -18,11 +17,14 @@ import {
 
 class Battle extends Component {
     componentDidMount() {
-        this.props.loadLetterGrid();
-        this.props.resetActiveGrid();
-        this.props.clearRecentWords();
         this.props.setPlayerScore(0);
         this.props.setOpponentScore(0);
+        this.startRound();
+    }
+
+    startRound() {
+        this.props.loadLetterGrid();
+        this.props.resetActiveGrid();
         this.props.clearWord();
     }
 
@@ -42,7 +44,6 @@ class Battle extends Component {
 
 const actions = {
     loadLetterGrid,
-    clearRecentWords,
     setPlayerScore,
     setOpponentScore,
     resetActiveGrid,
