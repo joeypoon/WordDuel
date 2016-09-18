@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { connect } from 'react-redux';
 
 import Button from '../Button';
-import { setModalVisible } from '../../action_creators';
 
-class Searching extends Component {
-    handleCancel() {
-        // TODO cancel request
-        this.props.setModalVisible(false);
+export default class BasicModal extends Component {
+
+    renderButton() {
+        if (this.props.hasButton)
+            return <Button styles={ styles.buttonStyles }
+                action={ this.props.buttonAction.bind(this) }
+                text={ this.props.buttonText } />
     }
 
     render() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>
-                Searching...
+                { this.props.text }
             </Text>
-            <Button styles={ styles.buttonStyles }
-                action={ this.handleCancel.bind(this) }
-                text={ 'Cancel' } />
+            { this.renderButton() }
         </View>;
     }
 }
-
-export default connect(null, { setModalVisible })(Searching);
 
 const styles = {
     container: {
