@@ -83,6 +83,13 @@ export function resetTimer () {
     };
 }
 
+export function setTimerPause (isPaused) {
+    return {
+        type: 'SET_TIMER_PAUSE',
+        isPaused
+    };
+}
+
 // score
 export function setPlayerScore (score) {
     return {
@@ -98,7 +105,7 @@ export function setOpponentScore (score) {
     };
 }
 
-// modal visible
+// modal
 export function setModalVisible (isVisible) {
     return {
         type: 'SET_MODAL_VISIBLE',

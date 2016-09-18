@@ -8,6 +8,7 @@ import GameOver from './modals/GameOver';
 import RoundOver from './modals/RoundOver';
 import Searching from './modals/Searching';
 import OpponentFound from './modals/OpponentFound';
+import Waiting from './modals/Waiting';
 
 class CustomModal extends Component {
     renderContent() {
@@ -22,6 +23,8 @@ class CustomModal extends Component {
                 return <Searching />;
             case 'opponentFound':
                 return <OpponentFound />;
+            case 'waiting':
+                return <Waiting />;
         }
         return <View />;
     }

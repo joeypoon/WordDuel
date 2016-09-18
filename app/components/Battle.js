@@ -12,20 +12,31 @@ import {
     setPlayerScore,
     setOpponentScore,
     resetActiveGrid,
-    clearWord
+    clearWord,
+    setModalType,
+    setModalVisible,
+    setTimerPause
 } from '../action_creators';
 
 class Battle extends Component {
     componentDidMount() {
-        this.props.setPlayerScore(0);
-        this.props.setOpponentScore(0);
-        this.startRound();
+        this.prepareRound();
+        if (this.props.players === 2) {
+            this.props.setModalType('searching');
+            this.props.setModalVisible(true);
+            // TODO move to http
+            setTimeout(() => this.props.setModalType('opponentFound'), 1000);
+        } else {
+            this.props.setTimerPause(false);
+        }
     }
 
-    startRound() {
-        this.props.loadLetterGrid();
+    prepareRound() {
+        this.props.setPlayerScore(0);
+        this.props.setOpponentScore(0);
         this.props.resetActiveGrid();
         this.props.clearWord();
+        this.props.loadLetterGrid();
     }
 
     render() {
@@ -47,7 +58,10 @@ const actions = {
     setPlayerScore,
     setOpponentScore,
     resetActiveGrid,
-    clearWord
+    clearWord,
+    setModalType,
+    setModalVisible,
+    setTimerPause
 };
 
 export default connect(null, actions)(Battle);

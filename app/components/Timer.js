@@ -27,7 +27,8 @@ class Timer extends Component {
 
 function mapStateToProps (state) {
     return {
-        timer: state.timer
+        timer: state.timer.get('time'),
+        isPaused: state.timer.get('isPaused')
     };
 }
 

@@ -8,7 +8,8 @@ import {
     submitWord,
     resetActiveGrid,
     setPlayerScore,
-    resetTimer
+    resetTimer,
+    setTimerPause
 } from '../action_creators';
 
 class WordDisplay extends Component {
@@ -33,6 +34,7 @@ class WordDisplay extends Component {
             this.props.submitWord();
             this.props.resetActiveGrid();
             this.props.resetTimer();
+            this.props.setTimerPause(false);
         }
     }
 
@@ -69,7 +71,7 @@ function mapStateToProps (state) {
     return {
         word: state.wordDisplay,
         playerScore: state.score.get('player'),
-        timer: state.timer
+        timer: state.timer.get('time')
     };
 }
 
@@ -78,7 +80,8 @@ const actions = {
     submitWord,
     resetActiveGrid,
     setPlayerScore,
-    resetTimer
+    resetTimer,
+    setTimerPause
 };
 export default connect(mapStateToProps, actions)(WordDisplay);
 

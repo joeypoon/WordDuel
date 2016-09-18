@@ -3,12 +3,20 @@ import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 
 import Button from '../Button';
-import { setModalVisible } from '../../action_creators';
+import {
+    setModalVisible,
+    setModalType,
+    setTimerPause
+} from '../../action_creators';
 
 class OpponentFound extends Component {
     handleReady() {
-        // TODO cancel request
-        this.props.setModalVisible(false);
+        this.props.setModalType('waiting');
+        // TODO move to http
+        setTimeout(() => {
+            this.props.setModalVisible(false);
+            this.props.setTimerPause(false);
+        }, 1000);
     }
 
     render() {
@@ -28,7 +36,8 @@ class OpponentFound extends Component {
     }
 }
 
-export default connect(null, { setModalVisible })(OpponentFound);
+const actions = { setModalVisible, setModalType, setTimerPause };
+export default connect(null, actions)(OpponentFound);
 
 const styles = {
     container: {
