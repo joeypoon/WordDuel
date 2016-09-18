@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 
 import Button from '../Button';
 
 export default class BasicModal extends Component {
+    renderLoading() {
+        if (this.props.hasLoading)
+            return <ActivityIndicator
+                animating={ true }
+                size={ 'large' }
+                color="#16a085" />
+    }
 
     renderButton() {
         if (this.props.hasButton)
@@ -14,6 +21,7 @@ export default class BasicModal extends Component {
 
     render() {
         return <View style={ styles.container }>
+            { this.renderLoading() }
             <Text style={ styles.text }>
                 { this.props.text }
             </Text>

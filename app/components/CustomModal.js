@@ -6,7 +6,6 @@ import Button from './Button';
 import BattleMenu from './modals/BattleMenu';
 import GameOver from './modals/GameOver';
 import RoundOver from './modals/RoundOver';
-import Searching from './modals/Searching';
 import OpponentFound from './modals/OpponentFound';
 import BasicModal from './modals/BasicModal';
 import {
@@ -32,7 +31,7 @@ class CustomModal extends Component {
             case 'searching':
                 return <BasicModal
                     text={ 'Searching for opponent' }
-                    animated={ true }
+                    hasLoading={ true }
                     hasButton={ true }
                     buttonText={ 'Cancel' }
                     buttonAction={ this.cancelSearching.bind(this) } />;
@@ -42,7 +41,7 @@ class CustomModal extends Component {
                 return <BasicModal
                     text={ 'Waiting for opponent' }
                     hasButton={ false }
-                    animated={ true } />;
+                    hasLoading={ true } />;
         }
         return <View />;
     }
