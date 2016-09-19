@@ -13,6 +13,10 @@ import {
 } from '../../action_creators';
 
 class RoundOver extends Component {
+    componentDidMount() {
+        this.props.setTimerPause(true);
+    }
+
     handleDone() {
         this.props.setPlayerScore(this.props.playerScore + this.props.playerWord.length);
         this.props.clearWord();

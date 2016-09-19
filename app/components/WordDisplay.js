@@ -13,21 +13,21 @@ import {
 
 class WordDisplay extends Component {
     handleMomentumScrollEnd(e, state, context) {
-        if (state.index === 0) {
+        if (state.index === 2) {
             this.handleClear();
-        } else if (state.index === 2) {
+        } else if (state.index === 0) {
             this.handleSubmit();
         }
     }
 
     handleClear() {
-        this._swiper.scrollBy(1);
+        this._swiper.scrollBy(-1);
         this.props.clearWord();
         this.props.resetActiveGrid();
     }
 
     handleSubmit() {
-        this._swiper.scrollBy(-1);
+        this._swiper.scrollBy(1);
         if (this.props.timer > 0 && this.props.word.length > 0) {
             this.props.submitWord();
             this.props.setModalType('submittingWord');
@@ -48,9 +48,9 @@ class WordDisplay extends Component {
                     showsPagination={ false }
                     ref={ (swiper) => { this._swiper = swiper; } }
                     index={ 1 }>
-                    <View style={ [styles.textContainer, styles.clearContainer] }>
+                    <View style={ [styles.textContainer, styles.submitContainer] }>
                         <Text style={ styles.text }>
-                            clear
+                            submit
                         </Text>
                     </View>
                     <View style={ styles.textContainer }>
@@ -58,9 +58,9 @@ class WordDisplay extends Component {
                             { this.props.word }
                         </Text>
                     </View>
-                    <View style={ [styles.textContainer, styles.submitContainer] }>
+                    <View style={ [styles.textContainer, styles.clearContainer] }>
                         <Text style={ styles.text }>
-                            submit
+                            clear
                         </Text>
                     </View>
                 </Swiper>
