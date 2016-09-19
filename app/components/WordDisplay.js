@@ -7,9 +7,8 @@ import {
     clearWord,
     submitWord,
     resetActiveGrid,
-    setPlayerScore,
-    resetTimer,
-    setTimerPause
+    setModalType,
+    setModalVisible,
 } from '../action_creators';
 
 class WordDisplay extends Component {
@@ -30,11 +29,14 @@ class WordDisplay extends Component {
     handleSubmit() {
         this._swiper.scrollBy(-1);
         if (this.props.timer > 0 && this.props.word.length > 0) {
-            this.props.setPlayerScore(this.props.playerScore + this.props.word.length);
             this.props.submitWord();
-            this.props.resetActiveGrid();
-            this.props.resetTimer();
-            this.props.setTimerPause(false);
+            this.props.setModalType('submittingWord');
+            this.props.setModalVisible(true);
+            if (this.props.players === 2) {
+                setTimeout(() => this.props.setModalType('roundOverDuel'), 1000);
+            } else {
+                setTimeout(() => this.props.setModalType('roundOverSolo'), 1000);
+            }
         }
     }
 
@@ -70,7 +72,6 @@ class WordDisplay extends Component {
 function mapStateToProps (state) {
     return {
         word: state.wordDisplay,
-        playerScore: state.score.get('player'),
         timer: state.timer.get('time')
     };
 }
@@ -79,9 +80,8 @@ const actions = {
     clearWord,
     submitWord,
     resetActiveGrid,
-    setPlayerScore,
-    resetTimer,
-    setTimerPause
+    setModalType,
+    setModalVisible,
 };
 export default connect(mapStateToProps, actions)(WordDisplay);
 

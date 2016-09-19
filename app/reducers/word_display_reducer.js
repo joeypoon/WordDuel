@@ -8,7 +8,7 @@ export default function (state = INITIAL_STATE, action) {
             return '';
         case 'SUBMIT_WORD':
             // TODO submit to backend then clear after response
-            return '';
+            return state;
     }
     return state;
 }

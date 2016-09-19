@@ -43,7 +43,7 @@ class Battle extends Component {
         return (
             <View style={styles.container}>
                 <View style={ styles.topContainer }>
-                    <WordDisplay />
+                    <WordDisplay players={ this.props.players } />
                     <BattleTopBar />
                 </View>
                 <PlayerDisplayContainer players={ this.props.players } />

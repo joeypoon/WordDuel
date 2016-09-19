@@ -14,9 +14,13 @@ import {
 } from '../action_creators';
 
 class CustomModal extends Component {
-    cancelSearching() {
+    searchingAction() {
         // TODO cancel request
         this.props.setRoute('Menu');
+        this.props.setModalVisible(false);
+    }
+
+    invalidWordAction() {
         this.props.setModalVisible(false);
     }
 
@@ -26,15 +30,17 @@ class CustomModal extends Component {
                 return <BattleMenu />;
             case 'gameOver':
                 return <GameOver />;
-            case 'roundOver':
-                return <RoundOver />;
+            case 'roundOverSolo':
+                return <RoundOver players={ 1 } />;
+            case 'roundOverDuel':
+                return <RoundOver players={ 2 } />;
             case 'searching':
                 return <BasicModal
                     text={ 'Searching for opponent' }
                     hasLoading={ true }
                     hasButton={ true }
                     buttonText={ 'Cancel' }
-                    buttonAction={ this.cancelSearching.bind(this) } />;
+                    buttonAction={ this.searchingAction.bind(this) } />;
             case 'opponentFound':
                 return <OpponentFound />;
             case 'waiting':
@@ -42,6 +48,18 @@ class CustomModal extends Component {
                     text={ 'Waiting for opponent' }
                     hasButton={ false }
                     hasLoading={ true } />;
+            case 'submittingWord':
+                return <BasicModal
+                    text={ 'Submitting word' }
+                    hasButton={ false }
+                    hasLoading={ true } />;
+            case 'invalidWord':
+                return <BasicModal
+                    text={ 'Invalid word' }
+                    hasButton={ true }
+                    hasLoading={ false }
+                    buttonText={ 'Okay' }
+                    buttonAction={ this.invalidWordAction.bind(this) } />;
         }
         return <View />;
     }

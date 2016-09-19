@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Button from './Button';
 import { setRoute } from '../action_creators';
 
-const menuItems = ['Single', 'Duel', 'Logout'];
+const menuItems = ['Solo', 'Duel', 'Logout'];
 
 class Menu extends Component {
     renderButtons() {

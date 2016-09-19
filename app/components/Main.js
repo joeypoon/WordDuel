@@ -19,7 +19,7 @@ export class Main extends Component {
         switch (this.props.route) {
             case 'Logout':
                 return <Login />;
-            case 'Single':
+            case 'Solo':
                 return <Battle players={ 1 } />;
             case 'Duel':
                 return <Battle players={ 2 } />;
