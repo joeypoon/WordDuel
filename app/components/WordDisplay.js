@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 

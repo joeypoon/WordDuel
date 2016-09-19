@@ -2,14 +2,32 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import { decrementTimer, resetTimer } from '../action_creators';
+import {
+    decrementTimer,
+    resetTimer,
+    setModalVisible,
+    setModalType,
+    clearWord
+} from '../action_creators';
 
 class Timer extends Component {
     componentDidMount() {
         this.props.resetTimer();
         this.interval = setInterval(() => {
             this.props.decrementTimer();
+            if (this.props.timer === 0)
+                this.timeOut();
         }, 1000);
+    }
+
+    timeOut() {
+        this.props.clearWord();
+        if (this.props.players === 2) {
+            this.props.setModalType('roundOverDuel');
+        } else {
+            this.props.setModalType('roundOverSolo');
+        }
+        this.props.setModalVisible(true);
     }
 
     componentWillUnmount() {
@@ -32,7 +50,14 @@ function mapStateToProps (state) {
     };
 }
 
-export default connect(mapStateToProps, { decrementTimer, resetTimer })(Timer);
+const actions = {
+    decrementTimer,
+    resetTimer,
+    setModalVisible,
+    setModalType,
+    clearWord
+}
+export default connect(mapStateToProps, actions)(Timer);
 
 const styles = {
     container: {

@@ -11,7 +11,8 @@ class BattleTopBar extends Component {
     render() {
         return <View style={ styles.container }>
             <View style={ styles.flexOne } />
-            <Timer style={ styles.flexOne } />
+            <Timer style={ styles.flexOne }
+                players={ this.props.players } />
             <BattleMenuButton style={ styles.flexOne } />
         </View>;
     }
