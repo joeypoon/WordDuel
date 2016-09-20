@@ -9,11 +9,11 @@ import Login from './Login';
 import { setRoute } from '../action_creators';
 
 export class Main extends Component {
-    componentDidMount() {
-        if (!this.props.playerId) {
-            this.props.setRoute('Logout');
-        }
-    }
+    // componentDidMount() {
+    //     if (!this.props.playerId) {
+    //         this.props.setRoute('Logout');
+    //     }
+    // }
 
     renderContent() {
         switch (this.props.route) {
