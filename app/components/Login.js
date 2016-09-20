@@ -10,27 +10,37 @@ import { connect } from 'react-redux';
 
 import { setRoute } from '../action_creators';
 
+var {FBLogin, FBLoginManager} = require('react-native-facebook-login');
+
 class Login extends Component {
-    render() {
-        return <View style={ styles.container }>
-            <Text>Facebook</Text>
-            <View style={ styles.inputContainer }>
-                <TextInput placeholder='email' style={ styles.input } />
-            </View>
-            <View style={ styles.inputContainer }>
-                <TextInput placeholder='password'
-                    secureTextEntry={ true }
-                    style={ styles.input } />
-            </View>
-            <TouchableOpacity style={ styles.button }
-                onPress={ this.props.setRoute.bind(this, 'Menu') }>
-                <Text style={ styles.text }>
-                    Login
-                </Text>
-            </TouchableOpacity>
-        </View>;
-    }
-}
+  render() {
+    return (
+      <FBLogin />
+    );
+  }
+};
+
+// class Login extends Component {
+//     render() {
+//         return <View style={ styles.container }>
+//             <Text>Facebook</Text>
+//             <View style={ styles.inputContainer }>
+//                 <TextInput placeholder='email' style={ styles.input } />
+//             </View>
+//             <View style={ styles.inputContainer }>
+//                 <TextInput placeholder='password'
+//                     secureTextEntry={ true }
+//                     style={ styles.input } />
+//             </View>
+//             <TouchableOpacity style={ styles.button }
+//                 onPress={ this.props.setRoute.bind(this, 'Menu') }>
+//                 <Text style={ styles.text }>
+//                     Login
+//                 </Text>
+//             </TouchableOpacity>
+//         </View>;
+//     }
+// }
 
 export default connect(null, { setRoute })(Login);
 
