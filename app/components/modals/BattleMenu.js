@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
+import { AppEventsLogger } from 'react-native-fbsdk';
 
 import Button from '../Button';
 import { setModalVisible, setRoute } from '../../action_creators';
 
 class BattleMenu extends Component {
     handleQuit() {
+        AppEventsLogger.logEvent('Quit battle');
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
     }

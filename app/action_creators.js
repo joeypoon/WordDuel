@@ -1,11 +1,51 @@
-import { AppEventsLogger } from 'react-native-fbsdk';
-
 // routes
 export function setRoute (route) {
-    AppEventsLogger.logEvent('setRoute', null, route);
     return {
         type: 'SET_ROUTE',
         route
+    };
+}
+
+// players
+export function setPlayerName (name) {
+    return {
+        type: 'SET_PLAYER_NAME',
+        name
+    };
+}
+
+export function setPlayerLevel (level) {
+    return {
+        type: 'SET_PLAYER_LEVEL',
+        level
+    };
+}
+
+export function setPlayerImage (image) {
+    return {
+        type: 'SET_PLAYER_IMAGE',
+        image
+    };
+}
+
+export function setOpponentName (name) {
+    return {
+        type: 'SET_OPPONENT_NAME',
+        name
+    };
+}
+
+export function setOpponentLevel (level) {
+    return {
+        type: 'SET_OPPONENT_LEVEL',
+        level
+    };
+}
+
+export function setOpponentImage (image) {
+    return {
+        type: 'SET_OPPONENT_IMAGE',
+        image
     };
 }
 
@@ -99,13 +139,5 @@ export function setModalType (modalType) {
     return {
         type: 'SET_MODAL_TYPE',
         modalType
-    };
-}
-
-// FB
-export function setFBToken (token) {
-    return {
-        type: 'SET_FB_TOKEN',
-        token
     };
 }

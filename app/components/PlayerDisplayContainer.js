@@ -8,7 +8,7 @@ class PlayerDisplayContainer extends Component {
     renderOpponent() {
         if (this.props.players === 2) {
             return <PlayerDisplay
-                source={ this.props.opponentImage }
+                image={ this.props.opponentImage }
                 score={ this.props.opponentScore } />;
         }
         return <View />;
@@ -18,7 +18,7 @@ class PlayerDisplayContainer extends Component {
         return <View style={ styles.container }>
             { this.renderOpponent() }
             <PlayerDisplay
-                source={ this.props.playerImage }
+                image={ this.props.playerImage }
                 score={ this.props.playerScore } />
         </View>
     }

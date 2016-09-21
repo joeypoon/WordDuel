@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
 import Main from './Main';
-import reducer from '../reducers/reducer';
-import makeStore from '../store';
-
-const store = makeStore(reducer);
+import { store } from '../store';
 
 export default class App extends Component {
     render() {

@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { LoginButton } from 'react-native-fbsdk';
 
 import Button from './Button';
-import { setRoute, setFBToken } from '../action_creators';
+import {
+    setRoute,
+    setPlayerName,
+    setPlayerImage
+} from '../action_creators';
+import { requestData } from '../utils';
 
 const menuItems = ['Solo', 'Duel'];
 
@@ -23,17 +28,24 @@ class Menu extends Component {
         if (error) {
             alert("Login failed with error: " + result.error);
         } else {
-            AccessToken.getCurrentAccessToken()
-                .then(data => {
-                    this.props.setFBToken(data.accessToken.toString());
-                    console.log(this.props.fbToken);
-                });
+            requestData();
         }
     }
 
-    handleLogout() {
-        this.props.setFBToken(null);
-        console.log(this.props.fbToken);
+    handleLogout(error, result) {
+        if (error) {
+            alert("Login failed with error: " + result.error);
+        } else {
+
+        }
+    }
+
+    renderPlayer() {
+        if (this.props.playerName && this.props.playerImage)
+            return <View style={ styles.playerInfo }>
+                <Image source={{ uri: this.props.playerImage }} style={ styles.image } />
+                <Text style={ styles.text }>Hey { this.props.playerName }</Text>
+            </View>;
     }
 
     renderLoginButton() {
@@ -48,6 +60,7 @@ class Menu extends Component {
     render() {
         return (
             <View style={ styles.container }>
+                { this.renderPlayer() }
                 <View style={ styles.buttonContainer }>
                     { this.renderButtons() }
                     { this.renderLoginButton() }
@@ -57,13 +70,19 @@ class Menu extends Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return {
-        fbToken: state.players.get('fbToken')
+        playerName: state.players.get('playerName'),
+        playerImage: state.players.get('playerImage')
     };
 }
 
-export default connect(mapStateToProps, { setRoute, setFBToken })(Menu);
+const actions = {
+    setRoute,
+    setPlayerName,
+    setPlayerImage
+}
+export default connect(mapStateToProps, actions)(Menu);
 
 const styles = {
     container: {
@@ -71,8 +90,22 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center'
     },
+    playerInfo: {
+        alignItems: 'center'
+    },
+    image: {
+        height: 80,
+        width: 80,
+        borderRadius: 40
+    },
+    text: {
+        textAlign: 'center',
+        margin: 10,
+        fontSize: 20,
+        letterSpacing: 1
+    },
     buttonContainer: {
-        flex: 3,
+        flex: 1,
         justifyContent: 'flex-start'
     },
     buttonStyles: {

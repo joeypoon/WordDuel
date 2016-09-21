@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
+import { AppEventsLogger } from 'react-native-fbsdk';
 
 import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
@@ -22,11 +23,13 @@ class Battle extends Component {
     componentDidMount() {
         this.prepareRound();
         if (this.props.players === 2) {
+            AppEventsLogger.logEvent('Enter Duel');
             this.props.setModalType('searching');
             this.props.setModalVisible(true);
             // TODO move to http
             setTimeout(() => this.props.setModalType('opponentFound'), 1000);
         } else {
+            AppEventsLogger.logEvent('Enter Solo');
             this.props.setTimerPause(false);
         }
     }
