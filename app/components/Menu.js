@@ -6,7 +6,7 @@ import { LoginButton } from 'react-native-fbsdk';
 import Button from './Button';
 import { setRoute } from '../action_creators';
 
-const menuItems = ['Solo', 'Duel', 'Logout'];
+const menuItems = ['Solo', 'Duel'];
 
 class Menu extends Component {
     renderButtons() {
@@ -19,29 +19,42 @@ class Menu extends Component {
         });
     }
 
+    handleLoginFinished(error, result) {
+        if (error) {
+            alert("Login failed with error: " + result.error);
+        } else if (result.isCancelled) {
+            alert("Login was cancelled");
+        } else {
+            alert("Login was successful with permissions: " + result.grantedPermissions);
+        }
+    }
+
+    renderLoginButton() {
+        if (!this.props.playerId)
+            return <View style={{ margin: 10 }}>
+                <LoginButton
+                    publishPermissions={ ["publish_actions"] }
+                    onLoginFinished={ this.handleLoginFinished.bind(this) }
+                    onLogoutFinished={ () => alert("User logged out") } />
+            </View>;
+    }
+
     render() {
         return (
             <View style={ styles.container }>
-                <LoginButton
-                  publishPermissions={["publish_actions"]}
-                  onLoginFinished={
-                    (error, result) => {
-                      if (error) {
-                        alert("Login failed with error: " + result.error);
-                      } else if (result.isCancelled) {
-                        alert("Login was cancelled");
-                      } else {
-                        alert("Login was successful with permissions: " + result.grantedPermissions)
-                      }
-                    }
-                  }
-                  onLogoutFinished={() => alert("User logged out")}/>
                 <View style={ styles.buttonContainer }>
                     { this.renderButtons() }
+                    { this.renderLoginButton() }
                 </View>
             </View>
         );
     }
+}
+
+function mapStateToProps(state) {
+    return {
+        playerId: state.players.get('playerId')
+    };
 }
 
 export default connect(null, { setRoute })(Menu);
@@ -52,14 +65,6 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center'
     },
-    titleContainer: {
-        flex: 2,
-        justifyContent: 'center'
-    },
-    title: {
-        fontSize: 40,
-        letterSpacing: 2
-    },
     buttonContainer: {
         flex: 3,
         justifyContent: 'flex-start'
@@ -67,13 +72,13 @@ const styles = {
     buttonStyles: {
         container: {
             backgroundColor: '#16a085',
-            padding: 10,
+            padding: 7,
             margin: 10,
-            width: 175,
+            width: 180,
             alignItems: 'center'
         },
         text: {
-            fontSize: 25,
+            fontSize: 15,
             color: 'white',
             letterSpacing: 1
         }

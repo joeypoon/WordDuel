@@ -5,20 +5,12 @@ import { connect } from 'react-redux';
 import Battle from './Battle';
 import Menu from './Menu';
 import CustomModal from './CustomModal';
-import Login from './Login';
 import { setRoute } from '../action_creators';
 
 export class Main extends Component {
-    // componentDidMount() {
-    //     if (!this.props.playerId) {
-    //         this.props.setRoute('Logout');
-    //     }
-    // }
 
     renderContent() {
         switch (this.props.route) {
-            case 'Logout':
-                return <Login />;
             case 'Solo':
                 return <Battle players={ 1 } />;
             case 'Duel':
@@ -72,7 +64,7 @@ const styles = {
         alignItems: 'center'
     },
     title: {
-        fontSize: 40,
+        fontSize: 42,
         letterSpacing: 1
     },
     content: {
