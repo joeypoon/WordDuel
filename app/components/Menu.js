@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { LoginButton } from 'react-native-fbsdk';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 import Button from './Button';
-import { setRoute } from '../action_creators';
+import { setRoute, setFBToken } from '../action_creators';
 
 const menuItems = ['Solo', 'Duel'];
 
@@ -19,24 +19,30 @@ class Menu extends Component {
         });
     }
 
-    handleLoginFinished(error, result) {
+    handleLogin(error, result) {
         if (error) {
             alert("Login failed with error: " + result.error);
-        } else if (result.isCancelled) {
-            alert("Login was cancelled");
         } else {
-            alert("Login was successful with permissions: " + result.grantedPermissions);
+            AccessToken.getCurrentAccessToken()
+                .then(data => {
+                    this.props.setFBToken(data.accessToken.toString());
+                    console.log(this.props.fbToken);
+                });
         }
     }
 
+    handleLogout() {
+        this.props.setFBToken(null);
+        console.log(this.props.fbToken);
+    }
+
     renderLoginButton() {
-        if (!this.props.playerId)
-            return <View style={{ margin: 10 }}>
-                <LoginButton
-                    publishPermissions={ ["publish_actions"] }
-                    onLoginFinished={ this.handleLoginFinished.bind(this) }
-                    onLogoutFinished={ () => alert("User logged out") } />
-            </View>;
+        return <View style={{ margin: 10 }}>
+            <LoginButton
+                publishPermissions={ ["publish_actions"] }
+                onLoginFinished={ this.handleLogin.bind(this) }
+                onLogoutFinished={ this.handleLogout.bind(this) } />
+        </View>;
     }
 
     render() {
@@ -53,11 +59,11 @@ class Menu extends Component {
 
 function mapStateToProps(state) {
     return {
-        playerId: state.players.get('playerId')
+        fbToken: state.players.get('fbToken')
     };
 }
 
-export default connect(null, { setRoute })(Menu);
+export default connect(mapStateToProps, { setRoute, setFBToken })(Menu);
 
 const styles = {
     container: {

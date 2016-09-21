@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Modal, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import Battle from './Battle';
@@ -21,14 +21,12 @@ export class Main extends Component {
     }
 
     renderTitle() {
-        if (this.props.route === 'Menu' ||
-            this.props.route === 'Logout') {
+        if (this.props.route === 'Menu')
             return <View style={ styles.titleContainer }>
                 <Text style={ styles.title }>
                     Word Duel
                 </Text>
-            </View>
-        }
+            </View>;
     }
 
     render() {
@@ -46,8 +44,7 @@ export class Main extends Component {
 
 function mapStateToProps (state) {
     return {
-        route: state.route,
-        playerId: state.players.get('playerId')
+        route: state.route
     };
 }
 

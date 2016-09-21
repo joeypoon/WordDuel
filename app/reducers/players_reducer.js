@@ -1,5 +1,5 @@
 const INITIAL_STATE = new Map([
-    ['playerId', null],
+    ['fbToken', null],
     ['playerName', 'PlayerName'],
     ['playerLevel', 1],
     ['playerImage', './puppy.png'],
@@ -19,6 +19,8 @@ export default function (state = INITIAL_STATE, action) {
             return nextState.set('opponentName', action.name);
         case 'SET_OPPONENT_LEVEL':
             return nextState.set('opponentLevel', action.level);
+        case 'SET_FB_TOKEN':
+            return nextState.set('fbToken', action.token);
     }
     return state;
 }

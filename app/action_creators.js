@@ -1,5 +1,8 @@
+import { AppEventsLogger } from 'react-native-fbsdk';
+
 // routes
 export function setRoute (route) {
+    AppEventsLogger.logEvent('setRoute', null, route);
     return {
         type: 'SET_ROUTE',
         route
@@ -46,27 +49,6 @@ export function resetActiveGrid () {
 export function loadLetterGrid () {
     return {
         type: 'LOAD_LETTER_GRID'
-    };
-}
-
-// recent words
-export function addToRecentWords (word) {
-    return {
-        type: 'ADD_TO_RECENT_WORDS',
-        word
-    };
-}
-
-export function clearRecentWords () {
-    return {
-        type: 'CLEAR_RECENT_WORDS'
-    };
-}
-
-// opponent words
-export function clearOpponentWords () {
-    return {
-        type: 'CLEAR_OPPONENT_WORDS'
     };
 }
 
@@ -117,5 +99,13 @@ export function setModalType (modalType) {
     return {
         type: 'SET_MODAL_TYPE',
         modalType
+    };
+}
+
+// FB
+export function setFBToken (token) {
+    return {
+        type: 'SET_FB_TOKEN',
+        token
     };
 }
