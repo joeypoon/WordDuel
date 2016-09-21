@@ -20,14 +20,16 @@ class OpponentFound extends Component {
     }
 
     render() {
+        const source = this.props.opponentImage ?
+            { uri: this.props.opponentImage } : require('../puppy.png');
         return <View style={ styles.container }>
             <Text style={ styles.text }>
-                Joey
+                { this.props.opponentName }
             </Text>
-            <Image source={ require('../puppy.png') }
+            <Image source={ source }
                 style={ styles.image } />
             <Text style={ styles.text }>
-                Level 5
+                { this.props.opponentLevel }
             </Text>
             <Button styles={ styles.buttonStyles }
                 action={ this.handleReady.bind(this) }
@@ -36,8 +38,16 @@ class OpponentFound extends Component {
     }
 }
 
+function mapStateToProps (state) {
+    return {
+        opponentName: state.players.get('opponentName'),
+        opponentLevel: state.players.get('opponentLevel'),
+        opponentImage: state.players.get('opponentImage')
+    };
+}
+
 const actions = { setModalVisible, setModalType, setTimerPause };
-export default connect(null, actions)(OpponentFound);
+export default connect(mapStateToProps, actions)(OpponentFound);
 
 const styles = {
     container: {
