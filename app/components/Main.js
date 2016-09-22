@@ -6,8 +6,19 @@ import Battle from './Battle';
 import Menu from './Menu';
 import CustomModal from './CustomModal';
 import { setRoute } from '../action_creators';
+import {
+    adMobEventListeners,
+    requestAd,
+    showAd
+} from '../utils';
 
 export class Main extends Component {
+
+    componentDidMount() {
+        adMobEventListeners();
+        requestAd();
+        // setTimeout(showAd, 2000);
+    }
 
     renderContent() {
         switch (this.props.route) {

@@ -49,7 +49,7 @@ class Menu extends Component {
     }
 
     renderLoginButton() {
-        return <View style={{ margin: 10 }}>
+        return <View style={ styles.fbLoginContainer }>
             <LoginButton
                 publishPermissions={ ["publish_actions"] }
                 onLoginFinished={ this.handleLogin.bind(this) }
@@ -90,6 +90,12 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center'
     },
+    fbLoginContainer: {
+        margin: 14,
+        transform: [{ scale: 1.2 }],
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     playerInfo: {
         alignItems: 'center'
     },
@@ -113,11 +119,11 @@ const styles = {
             backgroundColor: '#16a085',
             padding: 7,
             margin: 10,
-            width: 180,
+            width: 215,
             alignItems: 'center'
         },
         text: {
-            fontSize: 15,
+            fontSize: 20,
             color: 'white',
             letterSpacing: 1
         }

@@ -1,7 +1,9 @@
 import {
   GraphRequest,
-  GraphRequestManager
+  GraphRequestManager,
+  AppEventsLogger
 } from 'react-native-fbsdk';
+import { AdMobInterstitial } from 'react-native-admob'
 
 import { store } from './store';
 
@@ -26,4 +28,18 @@ export function requestData () {
     const url = '/me?fields=first_name,picture.type(normal)';
     const infoRequest = new GraphRequest(url, null, responseInfoCallback);
     requestManager.addRequest(infoRequest).start();
+}
+
+export function adMobEventListeners () {
+    AdMobInterstitial.setAdUnitID('ca-app-pub-7555574328592077/8559000747');
+    AdMobInterstitial.addEventListener('interstitialDidLoad',
+      () => AdMobInterstitial.showAd((error) => error && console.log(error)));
+}
+
+export function requestAd () {
+    AdMobInterstitial.requestAd((error) => error && console.log(error));
+}
+
+export function logEvent (event) {
+    AppEventsLogger.logEvent(event);
 }
