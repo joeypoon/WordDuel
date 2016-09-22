@@ -9,7 +9,7 @@ import {
     setPlayerName,
     setPlayerImage
 } from '../action_creators';
-import { requestData } from '../utils';
+import { requestData } from '../utils/facebookUtils';
 
 const menuItems = ['Solo', 'Duel'];
 

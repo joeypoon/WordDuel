@@ -10,14 +10,13 @@ import {
     adMobEventListeners,
     requestAd,
     showAd
-} from '../utils';
+} from '../utils/adMobUtils';
 
 export class Main extends Component {
 
     componentDidMount() {
         adMobEventListeners();
         requestAd();
-        // setTimeout(showAd, 2000);
     }
 
     renderContent() {

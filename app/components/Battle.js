@@ -6,7 +6,7 @@ import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
 import BattleTopBar from './BattleTopBar'
 import PlayerDisplayContainer from './PlayerDisplayContainer';
-import { logEvent } from '../utils';
+import { logEvent } from '../utils/facebookUtils';
 
 import {
     loadLetterGrid,

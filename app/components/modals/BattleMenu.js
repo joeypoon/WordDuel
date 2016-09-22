@@ -5,10 +5,11 @@ import { AppEventsLogger } from 'react-native-fbsdk';
 
 import Button from '../Button';
 import { setModalVisible, setRoute } from '../../action_creators';
+import { logEvent } from '../../utils/facebookUtils';
 
 class BattleMenu extends Component {
     handleQuit() {
-        AppEventsLogger.logEvent('Quit battle');
+        logEvent('Quit battle');
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
     }
