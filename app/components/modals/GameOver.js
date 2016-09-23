@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { setModalVisible, setRoute } from '../../action_creators';
 import Button from '../Button';
+import { requestAd } from '../../utils/adMobUtils';
 
 export class GameOver extends Component {
     newMatch() {
@@ -11,6 +12,7 @@ export class GameOver extends Component {
     }
 
     handleQuit() {
+        requestAd();
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
     }

@@ -6,17 +6,12 @@ import Battle from './Battle';
 import Menu from './Menu';
 import CustomModal from './CustomModal';
 import { setRoute } from '../action_creators';
-import {
-    adMobEventListeners,
-    requestAd,
-    showAd
-} from '../utils/adMobUtils';
+import { adMobEventListeners } from '../utils/adMobUtils';
 
 export class Main extends Component {
 
     componentDidMount() {
         adMobEventListeners();
-        requestAd();
     }
 
     renderContent() {
