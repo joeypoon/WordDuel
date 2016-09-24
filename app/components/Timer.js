@@ -9,6 +9,7 @@ import {
     setModalType,
     clearWord
 } from '../action_creators';
+import { mainTextColor } from './constants/colors';
 
 class Timer extends Component {
     componentDidMount() {
@@ -67,7 +68,9 @@ const styles = {
         backgroundColor: 'transparent'
     },
     text: {
+        fontFamily: 'roboto-light',
         fontSize: 30,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: mainTextColor
     }
 };

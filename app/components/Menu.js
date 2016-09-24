@@ -10,6 +10,7 @@ import {
     setPlayerImage
 } from '../action_creators';
 import { requestData, logEvent } from '../utils/facebookUtils';
+import { mainColor, mainTextColor } from './constants/colors';
 
 const menuItems = ['Solo', 'Duel'];
 
@@ -109,7 +110,10 @@ const styles = {
         textAlign: 'center',
         margin: 10,
         fontSize: 20,
-        letterSpacing: 1
+        letterSpacing: 1,
+        fontFamily: 'roboto-light',
+        letterSpacing: -1,
+        color: mainTextColor
     },
     buttonContainer: {
         flex: 1,
@@ -117,7 +121,7 @@ const styles = {
     },
     buttonStyles: {
         container: {
-            backgroundColor: '#16a085',
+            backgroundColor: mainColor,
             padding: 7,
             margin: 10,
             width: 215,
@@ -126,7 +130,8 @@ const styles = {
         text: {
             fontSize: 20,
             color: 'white',
-            letterSpacing: 1
+            letterSpacing: 1,
+            fontFamily: 'roboto-light'
         }
     }
 };

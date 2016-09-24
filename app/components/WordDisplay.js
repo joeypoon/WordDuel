@@ -3,6 +3,8 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 
+import { mainColor, secondaryColor } from './constants/colors';
+
 import {
     clearWord,
     submitWord,
@@ -49,7 +51,7 @@ class WordDisplay extends Component {
                     ref={ (swiper) => { this._swiper = swiper; } }
                     index={ 1 }>
                     <View style={ [styles.textContainer, styles.submitContainer] }>
-                        <Text style={ styles.text }>
+                        <Text style={ [styles.text, styles.whiteFont] }>
                             submit
                         </Text>
                     </View>
@@ -59,7 +61,7 @@ class WordDisplay extends Component {
                         </Text>
                     </View>
                     <View style={ [styles.textContainer, styles.clearContainer] }>
-                        <Text style={ styles.text }>
+                        <Text style={ [styles.text, styles.whiteFont] }>
                             clear
                         </Text>
                     </View>
@@ -98,14 +100,18 @@ const styles = {
         alignItems: 'center'
     },
     clearContainer: {
-        backgroundColor: '#e74c3c'
+        backgroundColor: secondaryColor
     },
     submitContainer: {
-        backgroundColor: '#27ae60'
+        backgroundColor: mainColor
     },
     text: {
         fontSize: 30,
-        letterSpacing: 3,
+        fontFamily: 'roboto-light',
+        letterSpacing: -1,
         textAlign: 'center'
+    },
+    whiteFont: {
+        color: 'white'
     }
 };

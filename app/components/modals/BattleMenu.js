@@ -6,6 +6,7 @@ import { AppEventsLogger } from 'react-native-fbsdk';
 import Button from '../Button';
 import { setModalVisible, setRoute } from '../../action_creators';
 import { logEvent } from '../../utils/facebookUtils';
+import { mainColor, mainTextColor } from '../constants/colors';
 
 class BattleMenu extends Component {
     handleQuit() {
@@ -37,7 +38,7 @@ const styles = {
     },
     buttonStyles: {
         container: {
-            backgroundColor: '#16a085',
+            backgroundColor: mainColor,
             padding: 10,
             margin: 10,
             width: 175,
@@ -45,6 +46,7 @@ const styles = {
         },
         text: {
             fontSize: 20,
+            fontFamily: 'roboto-light',
             color: 'white',
             letterSpacing: 2
         }

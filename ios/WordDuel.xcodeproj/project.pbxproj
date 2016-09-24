@@ -29,6 +29,9 @@
 		EAB7D47A1D90EC270060946F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB7D4771D90EC270060946F /* FBSDKCoreKit.framework */; };
 		EAB7D47B1D90EC270060946F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB7D4781D90EC270060946F /* FBSDKLoginKit.framework */; };
 		EAB7D47C1D90EC270060946F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB7D4791D90EC270060946F /* FBSDKShareKit.framework */; };
+		EAB7E3ED1D972AFF00C1CFC9 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAB7E3EC1D972AFF00C1CFC9 /* Roboto-Medium.ttf */; };
+		EAB7E3FB1D972FD800C1CFC9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAB7E3FA1D972FD800C1CFC9 /* Roboto-Thin.ttf */; };
+		EAB7E3FD1D97307200C1CFC9 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAB7E3FC1D97307200C1CFC9 /* Roboto-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +157,9 @@
 		EAB7D4771D90EC270060946F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EAB7D4781D90EC270060946F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EAB7D4791D90EC270060946F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		EAB7E3EC1D972AFF00C1CFC9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		EAB7E3FA1D972FD800C1CFC9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		EAB7E3FC1D97307200C1CFC9 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		EAF580D81D920D3D00B9D487 /* WordDuel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WordDuel.entitlements; path = WordDuel/WordDuel.entitlements; sourceTree = "<group>"; };
 		FA61C362C3574F858179D759 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -327,6 +333,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				EAB7E3FC1D97307200C1CFC9 /* Roboto-Light.ttf */,
+				EAB7E3FA1D972FD800C1CFC9 /* Roboto-Thin.ttf */,
+				EAB7E3EC1D972AFF00C1CFC9 /* Roboto-Medium.ttf */,
 				EAB7D4761D90EB960060946F /* Frameworks */,
 				13B07FAE1A68108700A75B9A /* WordDuel */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -605,8 +614,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB7E3FB1D972FD800C1CFC9 /* Roboto-Thin.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				EAB7E3FD1D97307200C1CFC9 /* Roboto-Light.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				EAB7E3ED1D972AFF00C1CFC9 /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
