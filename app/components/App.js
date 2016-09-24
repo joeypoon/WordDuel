@@ -3,8 +3,13 @@ import { Provider } from 'react-redux';
 
 import Main from './Main';
 import { store } from '../store';
+import { requestData } from '../utils/facebookUtils';
 
 export default class App extends Component {
+    componentDidMount() {
+        requestData();
+    }
+
     render() {
         return (
             <Provider store={ store }>
