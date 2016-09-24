@@ -29,7 +29,7 @@ class OpponentFound extends Component {
             <Image source={ source }
                 style={ styles.image } />
             <Text style={ styles.text }>
-                { this.props.opponentLevel }
+                Level { this.props.opponentLevel }
             </Text>
             <Button styles={ styles.buttonStyles }
                 action={ this.handleReady.bind(this) }

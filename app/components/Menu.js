@@ -9,7 +9,7 @@ import {
     setPlayerName,
     setPlayerImage
 } from '../action_creators';
-import { requestData } from '../utils/facebookUtils';
+import { requestData, logEvent } from '../utils/facebookUtils';
 
 const menuItems = ['Solo', 'Duel'];
 
@@ -26,7 +26,7 @@ class Menu extends Component {
 
     handleLogin(error, result) {
         if (error) {
-            alert("Login failed with error: " + result.error);
+            logEvent('error', null, result.error)
         } else {
             requestData();
         }
@@ -34,9 +34,10 @@ class Menu extends Component {
 
     handleLogout(error, result) {
         if (error) {
-            alert("Login failed with error: " + result.error);
+            logEvent('error', null, result.error)
         } else {
-
+            this.props.setPlayerName(null);
+            this.props.setPlayerImage(null);
         }
     }
 
