@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setModalVisible, setRoute } from '../../action_creators';
 import Button from '../Button';
 import { requestAd } from '../../utils/adMobUtils';
+import { mainColor } from '../constants/colors';
 
 export class GameOver extends Component {
     newMatch() {
@@ -71,7 +72,7 @@ const styles = {
     },
     buttonStyles: {
         container: {
-            backgroundColor: '#16a085',
+            backgroundColor: mainColor,
             padding: 10,
             margin: 10,
             alignItems: 'center',

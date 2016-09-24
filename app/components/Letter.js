@@ -3,6 +3,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import { addLetter, updateActiveGrid } from '../action_creators';
+import { mainColor, secondaryColor } from './constants/colors';
 
 class Letter extends Component {
 
@@ -34,14 +35,14 @@ export default connect(null, { addLetter, updateActiveGrid })(Letter);
 
 const styles = {
     container: {
-        backgroundColor: '#16a085',
+        backgroundColor: mainColor,
         flex: 1,
         height: 75,
         justifyContent: 'center',
         alignItems: 'center'
     },
     activeContainer: {
-        backgroundColor: '#e74c3c',
+        backgroundColor: secondaryColor,
         flex: 1,
         height: 75,
         justifyContent: 'center',
@@ -49,6 +50,7 @@ const styles = {
     },
     text: {
         fontSize: 30,
-        color: 'white'
+        color: 'white',
+        fontFamily: 'roboto-light'
     }
 };

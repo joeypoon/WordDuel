@@ -11,6 +11,7 @@ import {
     setTimerPause,
     resetActiveGrid
 } from '../../action_creators';
+import { mainColor, mainTextColor } from '../constants/colors';
 
 class RoundOver extends Component {
     componentDidMount() {
@@ -78,11 +79,13 @@ const styles = {
     },
     text: {
         fontSize: 25,
-        margin: 5
+        margin: 5,
+        fontFamily: 'roboto-light',
+        color: mainTextColor
     },
     buttonStyles: {
         container: {
-            backgroundColor: '#16a085',
+            backgroundColor: mainColor,
             padding: 10,
             margin: 10,
             alignItems: 'center',
@@ -90,6 +93,7 @@ const styles = {
         },
         text: {
             fontSize: 20,
+            fontFamily: 'roboto-light',
             color: 'white',
             letterSpacing: 2
         }
