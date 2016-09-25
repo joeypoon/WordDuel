@@ -11,7 +11,7 @@ import {
     setTimerPause,
     resetActiveGrid
 } from '../../action_creators';
-import { mainColor, mainTextColor } from '../constants/colors';
+import { mainColor, mainTextColor } from '../../constants/colors';
 
 class RoundOver extends Component {
     componentDidMount() {

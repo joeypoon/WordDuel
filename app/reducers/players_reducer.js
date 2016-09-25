@@ -1,6 +1,5 @@
 const INITIAL_STATE = new Map([
-    ['playerId', null],
-    ['playerToken', null],
+    ['facebookId', null],
     ['playerName', null],
     ['playerLevel', 1],
     ['playerImage', null],
@@ -12,10 +11,8 @@ const INITIAL_STATE = new Map([
 export default function (state = INITIAL_STATE, action) {
     let nextState = new Map(state);
     switch (action.type) {
-        case 'SET_PLAYER_ID':
-            return nextState.set('playerId', action.id)
-        case 'SET_PLAYER_TOKEN':
-            return nextState.set('playerToken', action.token)
+        case 'SET_FACEBOOK_ID':
+            return nextState.set('facebookId', action.id)
         case 'SET_PLAYER_NAME':
             return nextState.set('playerName', action.name);
         case 'SET_PLAYER_LEVEL':

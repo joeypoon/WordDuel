@@ -23,7 +23,7 @@ import {
 class Battle extends Component {
     componentDidMount() {
         if (this.props.players === 2) {
-            if (!this.props.playerToken) {
+            if (!this.props.facebookId) {
                 this.warnLogin();
             } else {
                 this.startDuelRound();
@@ -89,7 +89,7 @@ const actions = {
 
 function mapStateToProps (state) {
     return {
-        playerToken: state.players.get('playerToken')
+        facebookId: state.players.get('facebookId')
     };
 }
 

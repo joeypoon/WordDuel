@@ -7,18 +7,11 @@ export function setRoute (route) {
 }
 
 // players
-export function setPlayerId (id) {
+export function setFacebookId (id) {
     return {
-        type: 'SET_PLAYER_ID',
+        type: 'SET_FACEBOOK_ID',
         id
     }
-}
-
-export function setPlayerToken (token) {
-    return {
-        type: 'SET_PLAYER_TOKEN',
-        token
-    };
 }
 
 export function setPlayerName (name) {
