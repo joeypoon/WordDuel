@@ -6,10 +6,11 @@ import { LoginButton } from 'react-native-fbsdk';
 import Button from './Button';
 import {
     setRoute,
+    setPlayerToken,
     setPlayerName,
     setPlayerImage
 } from '../action_creators';
-import { requestData, logEvent } from '../utils/facebookUtils';
+import { requestData, logEvent, fetchToken } from '../utils/facebookUtils';
 import { mainColor, mainTextColor } from './constants/colors';
 
 const menuItems = ['Solo', 'Duel'];
@@ -29,6 +30,7 @@ class Menu extends Component {
         if (error) {
             logEvent('error', null, result.error)
         } else {
+            fetchToken();
             requestData();
         }
     }
@@ -37,6 +39,7 @@ class Menu extends Component {
         if (error) {
             logEvent('error', null, result.error)
         } else {
+            this.props.setPlayerToken(null);
             this.props.setPlayerName(null);
             this.props.setPlayerImage(null);
         }
@@ -81,6 +84,7 @@ function mapStateToProps (state) {
 
 const actions = {
     setRoute,
+    setPlayerToken,
     setPlayerName,
     setPlayerImage
 }

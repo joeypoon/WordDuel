@@ -16,22 +16,41 @@ import {
     clearWord,
     setModalType,
     setModalVisible,
-    setTimerPause
+    setTimerPause,
+    setRoute
 } from '../action_creators';
 
 class Battle extends Component {
     componentDidMount() {
-        this.prepareRound();
         if (this.props.players === 2) {
-            logEvent('Enter Duel');
-            this.props.setModalType('searching');
-            this.props.setModalVisible(true);
-            // TODO move to http
-            setTimeout(() => this.props.setModalType('opponentFound'), 1000);
+            if (!this.props.playerToken) {
+                this.warnLogin();
+            } else {
+                this.startDuelRound();
+            }
         } else {
-            logEvent('Enter Solo');
-            this.props.setTimerPause(false);
+            this.startSoloRound();
         }
+    }
+
+    warnLogin() {
+        this.props.setModalType('warnLogin');
+        this.props.setModalVisible(true);
+    }
+
+    startSoloRound() {
+        logEvent('Enter Solo');
+        this.prepareRound();
+        this.props.setTimerPause(false);
+    }
+
+    startDuelRound() {
+        logEvent('Enter Duel');
+        this.prepareRound();
+        this.props.setModalType('searching');
+        this.props.setModalVisible(true);
+        // TODO move to http
+        setTimeout(() => this.props.setModalType('opponentFound'), 1000);
     }
 
     prepareRound() {
@@ -64,10 +83,17 @@ const actions = {
     clearWord,
     setModalType,
     setModalVisible,
-    setTimerPause
+    setTimerPause,
+    setRoute
 };
 
-export default connect(null, actions)(Battle);
+function mapStateToProps (state) {
+    return {
+        playerToken: state.players.get('playerToken')
+    };
+}
+
+export default connect(mapStateToProps, actions)(Battle);
 
 const styles = {
     container: {

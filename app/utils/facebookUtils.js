@@ -20,6 +20,7 @@ function responseInfoCallback (error: ?Object, result: ?Object) {
             type: 'SET_PLAYER_IMAGE',
             image: result.picture.data.url
         });
+        fetchToken();
     }
 }
 
@@ -31,4 +32,17 @@ export function requestData () {
 
 export function logEvent (event) {
     AppEventsLogger.logEvent(event);
+}
+
+export function fetchToken () {
+    AccessToken.getCurrentAccessToken()
+        .then(data => {
+          store.dispatch({
+              type: 'SET_PLAYER_TOKEN',
+              token: data.accessToken.toString()
+          });
+        })
+        .catch(error => {
+            logEvent('error', null, error)
+        });
 }

@@ -7,6 +7,13 @@ export function setRoute (route) {
 }
 
 // players
+export function setPlayerToken (token) {
+    return {
+        type: 'SET_PLAYER_TOKEN',
+        token
+    };
+}
+
 export function setPlayerName (name) {
     return {
         type: 'SET_PLAYER_NAME',
