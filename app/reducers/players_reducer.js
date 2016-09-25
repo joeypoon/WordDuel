@@ -5,7 +5,8 @@ const INITIAL_STATE = new Map([
     ['playerImage', null],
     ['opponentName', 'Joey'],
     ['opponentLevel', 1],
-    ['opponentImage', null]
+    ['opponentImage', null],
+    ['matchId', null]
 ]);
 
 export default function (state = INITIAL_STATE, action) {
@@ -25,6 +26,8 @@ export default function (state = INITIAL_STATE, action) {
             return nextState.set('opponentLevel', action.level);
         case 'SET_OPPONENT_IMAGE':
             return nextState.set('opponentImage', action.image);
+        case 'SET_MATCH_ID':
+            return nextState.set('matchId', action.matchId);
     }
     return state;
 }

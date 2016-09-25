@@ -56,6 +56,13 @@ export function setOpponentImage (image) {
     };
 }
 
+export function setMatchId (matchId) {
+    return {
+        type: 'SET_MATCH_ID',
+        matchId
+    };
+}
+
 // word display
 export function addLetter (letter) {
     return {
