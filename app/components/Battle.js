@@ -6,7 +6,7 @@ import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
 import BattleTopBar from './BattleTopBar'
 import PlayerDisplayContainer from './PlayerDisplayContainer';
-import { logEvent } from '../utils/facebookUtils';
+import { logEvent, findOpponent } from '../utils';
 
 import {
     loadLetterGrid,
@@ -23,7 +23,7 @@ import {
 class Battle extends Component {
     componentDidMount() {
         if (this.props.players === 2) {
-            if (!this.props.playerToken) {
+            if (!this.props.facebookId) {
                 this.warnLogin();
             } else {
                 this.startDuelRound();
@@ -47,9 +47,10 @@ class Battle extends Component {
     startDuelRound() {
         logEvent('Enter Duel');
         this.prepareRound();
+        // when backend ready
+        // findOpponent(this.props.facebookId);
         this.props.setModalType('searching');
         this.props.setModalVisible(true);
-        // TODO move to http
         setTimeout(() => this.props.setModalType('opponentFound'), 1000);
     }
 
@@ -89,7 +90,7 @@ const actions = {
 
 function mapStateToProps (state) {
     return {
-        playerToken: state.players.get('playerToken')
+        facebookId: state.players.get('facebookId')
     };
 }
 

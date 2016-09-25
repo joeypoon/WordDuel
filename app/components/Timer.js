@@ -9,7 +9,7 @@ import {
     setModalType,
     clearWord
 } from '../action_creators';
-import { mainTextColor } from './constants/colors';
+import { mainTextColor } from '../constants/colors';
 
 class Timer extends Component {
     componentDidMount() {

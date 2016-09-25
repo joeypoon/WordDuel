@@ -3,7 +3,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import { addLetter, updateActiveGrid } from '../action_creators';
-import { mainColor, secondaryColor } from './constants/colors';
+import { mainColor, secondaryColor } from '../constants/colors';
 
 class Letter extends Component {
 

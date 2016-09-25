@@ -7,11 +7,11 @@ export function setRoute (route) {
 }
 
 // players
-export function setPlayerToken (token) {
+export function setFacebookId (id) {
     return {
-        type: 'SET_PLAYER_TOKEN',
-        token
-    };
+        type: 'SET_FACEBOOK_ID',
+        id
+    }
 }
 
 export function setPlayerName (name) {
@@ -53,6 +53,13 @@ export function setOpponentImage (image) {
     return {
         type: 'SET_OPPONENT_IMAGE',
         image
+    };
+}
+
+export function setMatchId (matchId) {
+    return {
+        type: 'SET_MATCH_ID',
+        matchId
     };
 }
 
