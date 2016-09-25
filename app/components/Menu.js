@@ -6,10 +6,12 @@ import { LoginButton } from 'react-native-fbsdk';
 import Button from './Button';
 import {
     setRoute,
+    setPlayerToken,
     setPlayerName,
     setPlayerImage
 } from '../action_creators';
-import { requestData, logEvent } from '../utils/facebookUtils';
+import { requestData, logEvent, fetchToken } from '../utils/facebookUtils';
+import { mainColor, mainTextColor } from './constants/colors';
 
 const menuItems = ['Solo', 'Duel'];
 
@@ -28,6 +30,7 @@ class Menu extends Component {
         if (error) {
             logEvent('error', null, result.error)
         } else {
+            fetchToken();
             requestData();
         }
     }
@@ -36,6 +39,7 @@ class Menu extends Component {
         if (error) {
             logEvent('error', null, result.error)
         } else {
+            this.props.setPlayerToken(null);
             this.props.setPlayerName(null);
             this.props.setPlayerImage(null);
         }
@@ -80,6 +84,7 @@ function mapStateToProps (state) {
 
 const actions = {
     setRoute,
+    setPlayerToken,
     setPlayerName,
     setPlayerImage
 }
@@ -109,7 +114,10 @@ const styles = {
         textAlign: 'center',
         margin: 10,
         fontSize: 20,
-        letterSpacing: 1
+        letterSpacing: 1,
+        fontFamily: 'roboto-light',
+        letterSpacing: -1,
+        color: mainTextColor
     },
     buttonContainer: {
         flex: 1,
@@ -117,7 +125,7 @@ const styles = {
     },
     buttonStyles: {
         container: {
-            backgroundColor: '#16a085',
+            backgroundColor: mainColor,
             padding: 7,
             margin: 10,
             width: 215,
@@ -126,7 +134,8 @@ const styles = {
         text: {
             fontSize: 20,
             color: 'white',
-            letterSpacing: 1
+            letterSpacing: 1,
+            fontFamily: 'roboto-light'
         }
     }
 };

@@ -7,6 +7,7 @@ import Menu from './Menu';
 import CustomModal from './CustomModal';
 import { setRoute } from '../action_creators';
 import { adMobEventListeners } from '../utils/adMobUtils';
+import { mainTextColor } from './constants/colors';
 
 export class Main extends Component {
 
@@ -66,8 +67,10 @@ const styles = {
         alignItems: 'center'
     },
     title: {
-        fontSize: 42,
-        letterSpacing: 1
+        fontFamily: 'roboto',
+        fontSize: 48,
+        color: mainTextColor,
+        letterSpacing: -3
     },
     content: {
         flex: 2

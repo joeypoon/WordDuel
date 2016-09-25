@@ -8,6 +8,7 @@ import {
     setModalType,
     setTimerPause
 } from '../../action_creators';
+import { mainColor, mainTextColor } from '../constants/colors';
 
 class OpponentFound extends Component {
     handleReady() {
@@ -57,8 +58,10 @@ const styles = {
         padding: 25
     },
     text: {
+        fontFamily: 'roboto-light',
         fontSize: 25,
-        margin: 5
+        margin: 5,
+        color: mainTextColor
     },
     image: {
         width: 50,
@@ -68,7 +71,7 @@ const styles = {
     },
     buttonStyles: {
         container: {
-            backgroundColor: '#16a085',
+            backgroundColor: mainColor,
             padding: 10,
             margin: 10,
             alignItems: 'center',
@@ -76,6 +79,7 @@ const styles = {
             marginTop: 20
         },
         text: {
+            fontFamily: 'roboto-light',
             fontSize: 20,
             color: 'white',
             letterSpacing: 2

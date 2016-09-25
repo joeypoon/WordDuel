@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 
 import Button from '../Button';
+import { mainColor, mainTextColor } from '../constants/colors';
 
 export default class BasicModal extends Component {
     renderLoading() {
@@ -9,7 +10,7 @@ export default class BasicModal extends Component {
             return <ActivityIndicator
                 animating={ true }
                 size={ 'large' }
-                color="#16a085" />
+                color={ mainColor } />
     }
 
     renderButton() {
@@ -38,18 +39,21 @@ const styles = {
         padding: 25
     },
     text: {
+        fontFamily: 'roboto-light',
         fontSize: 25,
-        margin: 5
+        margin: 5,
+        color: mainTextColor
     },
     buttonStyles: {
         container: {
-            backgroundColor: '#16a085',
+            backgroundColor: mainColor,
             padding: 10,
             margin: 10,
             alignItems: 'center',
             width: 175
         },
         text: {
+            fontFamily: 'roboto-light',
             fontSize: 20,
             color: 'white',
             letterSpacing: 2

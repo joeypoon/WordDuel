@@ -24,6 +24,11 @@ class CustomModal extends Component {
         this.props.setModalVisible(false);
     }
 
+    handleWarnLogin() {
+        this.props.setRoute('Menu');
+        this.props.setModalVisible(false);
+    }
+
     renderContent() {
         switch (this.props.modalType) {
             case 'battleMenu':
@@ -60,6 +65,13 @@ class CustomModal extends Component {
                     hasLoading={ false }
                     buttonText={ 'Okay' }
                     buttonAction={ this.invalidWordAction.bind(this) } />;
+            case 'warnLogin':
+                return <BasicModal
+                    text={ 'Please login' }
+                    hasButton={ true }
+                    hasLoading={ false }
+                    buttonText={ 'Okay' }
+                    buttonAction={ this.handleWarnLogin.bind(this) } />;
         }
         return <View />;
     }

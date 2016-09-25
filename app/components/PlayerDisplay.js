@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Image, Text } from 'react-native';
 
+import { mainTextColor } from './constants/colors';
+
 export default class PlayerDisplay extends Component {
     render() {
         const source = this.props.image ?
@@ -27,7 +29,9 @@ const styles = {
         marginRight: 5
     },
     score: {
-        fontSize: 35,
-        backgroundColor: 'transparent'
+        fontFamily: 'roboto-light',
+        fontSize: 25,
+        backgroundColor: 'transparent',
+        color: mainTextColor
     }
 };
