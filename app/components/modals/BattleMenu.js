@@ -6,7 +6,7 @@ import { AppEventsLogger } from 'react-native-fbsdk';
 import Button from '../Button';
 import { setModalVisible, setRoute } from '../../action_creators';
 import { logEvent } from '../../utils/facebookUtils';
-import { mainColor, mainTextColor } from '../../constants/colors';
+import { mainColor, mainTextColor } from '../../constants';
 
 class BattleMenu extends Component {
     handleQuit() {

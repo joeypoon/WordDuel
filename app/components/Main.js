@@ -7,7 +7,7 @@ import Menu from './Menu';
 import CustomModal from './CustomModal';
 import { setRoute } from '../action_creators';
 import { adMobEventListeners } from '../utils/adMobUtils';
-import { mainTextColor } from '../constants/colors';
+import { mainTextColor } from '../constants';
 
 export class Main extends Component {
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, Text } from 'react-native';
 
-import { mainTextColor } from '../constants/colors';
+import { mainTextColor } from '../constants';
 
 export default class PlayerDisplay extends Component {
     render() {

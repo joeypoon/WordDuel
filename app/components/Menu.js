@@ -11,7 +11,7 @@ import {
     setPlayerImage
 } from '../action_creators';
 import { requestData, logEvent } from '../utils/facebookUtils';
-import { mainColor, mainTextColor } from '../constants/colors';
+import { mainColor, mainTextColor } from '../constants';
 
 const menuItems = ['Solo', 'Duel'];
 

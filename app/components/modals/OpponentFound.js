@@ -8,7 +8,7 @@ import {
     setModalType,
     setTimerPause
 } from '../../action_creators';
-import { mainColor, mainTextColor } from '../../constants/colors';
+import { mainColor, mainTextColor } from '../../constants';
 
 class OpponentFound extends Component {
     handleReady() {

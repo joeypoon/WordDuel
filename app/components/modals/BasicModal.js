@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 
 import Button from '../Button';
-import { mainColor, mainTextColor } from '../../constants/colors';
+import { mainColor, mainTextColor } from '../../constants';
 
 export default class BasicModal extends Component {
     renderLoading() {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { setModalVisible, setRoute } from '../../action_creators';
 import Button from '../Button';
 import { requestAd } from '../../utils/adMobUtils';
-import { mainColor } from '../../constants/colors';
+import { mainColor } from '../../constants';
 
 export class GameOver extends Component {
     newMatch() {

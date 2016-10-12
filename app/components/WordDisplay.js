@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 
-import { mainColor, secondaryColor } from '../constants/colors';
+import { mainColor, secondaryColor } from '../constants';
 
 import {
     clearWord,
