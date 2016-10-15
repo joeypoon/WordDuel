@@ -7,5 +7,18 @@ export const secondaryColor = '#e74c3c';
 export const rootUrl = 'http://localhost:3000';
 export const playersUrl = `${ rootUrl }/players`;
 
+export const modalTypes = {
+    invalidWord: 'invalidWord',
+    roundOverSolo: 'roundOverSolo',
+    roundOverDuel: 'roundOverDuel'
+};
+
 // Events
-export const VALIDATE_WORD = 'VALIDATE_WORD';
+export const events = {
+    root: {
+        connect: 'connect'
+    },
+    words: {
+        validate: 'validateWord'
+    }
+};

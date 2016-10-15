@@ -9,8 +9,10 @@ import RoundOver from './modals/RoundOver';
 import OpponentFound from './modals/OpponentFound';
 import BasicModal from './modals/BasicModal';
 import {
+    resetActiveGrid,
     setRoute,
-    setModalVisible
+    setModalVisible,
+    clearWord
 } from '../action_creators';
 
 class CustomModal extends Component {
@@ -21,6 +23,8 @@ class CustomModal extends Component {
     }
 
     invalidWordAction() {
+        this.props.resetActiveGrid();
+        this.props.clearWord();
         this.props.setModalVisible(false);
     }
 
@@ -96,9 +100,11 @@ function mapStateToProps (state) {
 }
 
 const actions = {
+    resetActiveGrid,
     setModalVisible,
-    setRoute
-}
+    setRoute,
+    clearWord
+};
 export default connect(mapStateToProps, actions)(CustomModal);
 
 const styles = {

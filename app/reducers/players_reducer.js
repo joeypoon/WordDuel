@@ -3,7 +3,7 @@ const INITIAL_STATE = new Map([
     ['playerName', null],
     ['playerLevel', 1],
     ['playerImage', null],
-    ['opponentName', 'Joey'],
+    ['opponentName', null],
     ['opponentLevel', 1],
     ['opponentImage', null],
     ['matchId', null]

@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import { setModalVisible, setRoute } from '../../action_creators';
+import {
+    setModalVisible,
+    setRoute,
+    setOpponentName
+} from '../../action_creators';
 import Button from '../Button';
 import { requestAd } from '../../utils/adMobUtils';
 import { mainColor } from '../../constants';
@@ -16,6 +20,7 @@ export class GameOver extends Component {
         requestAd();
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
+        this.setOpponentName(null);
     }
 
     scoreDisplay() {
@@ -57,7 +62,12 @@ function mapStateToProps (state) {
     };
 }
 
-export default connect(mapStateToProps, { setModalVisible, setRoute })(GameOver);
+const actions = {
+    setOpponentName,
+    setModalVisible,
+    setRoute
+}
+export default connect(mapStateToProps, actions)(GameOver);
 
 const styles = {
     container: {

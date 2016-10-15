@@ -17,7 +17,8 @@ import {
     setModalType,
     setModalVisible,
     setTimerPause,
-    setRoute
+    setRoute,
+    setOpponentName
 } from '../action_creators';
 
 class Battle extends Component {
@@ -51,6 +52,7 @@ class Battle extends Component {
         // findOpponent(this.props.facebookId);
         this.props.setModalType('searching');
         this.props.setModalVisible(true);
+        this.props.setOpponentName("Joey");
         setTimeout(() => this.props.setModalType('opponentFound'), 1000);
     }
 
@@ -85,7 +87,8 @@ const actions = {
     setModalType,
     setModalVisible,
     setTimerPause,
-    setRoute
+    setRoute,
+    setOpponentName
 };
 
 function mapStateToProps (state) {

@@ -1,3 +1,32 @@
+import { events } from './constants';
+
+export const actionCreator = {
+    submitWord (word) {
+        return {
+            type: 'SUBMIT_WORD',
+            meta: {
+                event: events.words.validate,
+                eventParams: {
+                    word
+                }
+            }
+        };
+    },
+
+    setModalType (modalType) {
+        return {
+            type: 'SET_MODAL_TYPE',
+            modalType
+        };
+    },
+
+    resetActiveGrid () {
+        return {
+            type: 'RESET_ACTIVE_GRID'
+        };
+    }
+};
+
 // routes
 export function setRoute (route) {
     return {
@@ -77,9 +106,15 @@ export function clearWord () {
     };
 }
 
-export function submitWord () {
+export function submitWord (word) {
     return {
-        type: 'SUBMIT_WORD'
+        type: 'SUBMIT_WORD',
+        meta: {
+            event: events.words.validate,
+            eventParams: {
+                word
+            }
+        }
     };
 }
 

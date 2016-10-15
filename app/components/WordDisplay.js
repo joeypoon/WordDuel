@@ -31,14 +31,9 @@ class WordDisplay extends Component {
     handleSubmit() {
         this._swiper.scrollBy(1);
         if (this.props.timer > 0 && this.props.word.length > 0) {
-            this.props.submitWord();
+            this.props.submitWord(this.props.word);
             this.props.setModalType('submittingWord');
             this.props.setModalVisible(true);
-            if (this.props.players === 2) {
-                setTimeout(() => this.props.setModalType('roundOverDuel'), 1000);
-            } else {
-                setTimeout(() => this.props.setModalType('roundOverSolo'), 1000);
-            }
         }
     }
 

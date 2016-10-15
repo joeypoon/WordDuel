@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 import { AppEventsLogger } from 'react-native-fbsdk';
 
 import Button from '../Button';
-import { setModalVisible, setRoute } from '../../action_creators';
+import {
+    setModalVisible,
+    setRoute,
+    setOpponentName
+} from '../../action_creators';
 import { logEvent } from '../../utils/facebookUtils';
 import { mainColor, mainTextColor } from '../../constants';
 
@@ -13,6 +17,7 @@ class BattleMenu extends Component {
         logEvent('Quit battle');
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
+        this.props.setOpponentName(null);
     }
 
     render() {
@@ -27,7 +32,12 @@ class BattleMenu extends Component {
     }
 }
 
-export default connect(null, { setModalVisible, setRoute })(BattleMenu);
+const actions = {
+    setModalVisible,
+    setRoute,
+    setOpponentName
+}
+export default connect(null, actions)(BattleMenu);
 
 const styles = {
     container: {
