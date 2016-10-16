@@ -6,7 +6,7 @@ import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
 import BattleTopBar from './BattleTopBar'
 import PlayerDisplayContainer from './PlayerDisplayContainer';
-import { logEvent, findOpponent } from '../utils';
+import { logEvent } from '../utils';
 
 import {
     requestLetterGrid,
@@ -18,7 +18,8 @@ import {
     setModalVisible,
     setTimerPause,
     setRoute,
-    setOpponentName
+    setOpponentName,
+    searchOpponent
 } from '../action_creators';
 
 class Battle extends Component {
@@ -48,12 +49,11 @@ class Battle extends Component {
     startDuelRound() {
         logEvent('Enter Duel');
         this.prepareRound();
-        // when backend ready
-        // findOpponent(this.props.facebookId);
         this.props.setModalType('searching');
         this.props.setModalVisible(true);
-        this.props.setOpponentName("Joey");
-        setTimeout(() => this.props.setModalType('opponentFound'), 1000);
+        this.props.searchOpponent(this.props.facebookId);
+        // this.props.setOpponentName("Joey");
+        // setTimeout(() => this.props.setModalType('opponentFound'), 1000);
     }
 
     prepareRound() {
@@ -88,7 +88,8 @@ const actions = {
     setModalVisible,
     setTimerPause,
     setRoute,
-    setOpponentName
+    setOpponentName,
+    searchOpponent
 };
 
 function mapStateToProps (state) {

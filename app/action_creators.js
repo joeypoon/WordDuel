@@ -1,32 +1,5 @@
 import { events } from './constants';
 
-export const actionCreator = {
-    submitWord(word) {
-        return {
-            type: 'SUBMIT_WORD',
-            meta: {
-                event: events.words.validate,
-                eventParams: {
-                    word
-                }
-            }
-        };
-    },
-
-    setModalType(modalType) {
-        return {
-            type: 'SET_MODAL_TYPE',
-            modalType
-        };
-    },
-
-    resetActiveGrid() {
-        return {
-            type: 'RESET_ACTIVE_GRID'
-        };
-    }
-};
-
 // routes
 export function setRoute(route) {
     return {
@@ -64,6 +37,18 @@ export function setPlayerImage(image) {
     };
 }
 
+export function searchOpponent(facebookId) {
+    return {
+        type: 'SEARCH_OPPONENT',
+        meta: {
+            event: events.players.search,
+            eventParams: {
+                facebookId
+            }
+        }
+    }
+}
+
 export function setOpponentName(name) {
     return {
         type: 'SET_OPPONENT_NAME',
@@ -85,6 +70,8 @@ export function setOpponentImage(image) {
     };
 }
 
+
+// matches
 export function setMatchId(matchId) {
     return {
         type: 'SET_MATCH_ID',

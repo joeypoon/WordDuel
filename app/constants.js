@@ -20,7 +20,8 @@ export const events = {
     },
 
     players: {
-        login: 'playerLogin'
+        login: 'playerLogin',
+        search: 'playerSearch'
     },
 
     words: {

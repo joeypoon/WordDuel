@@ -3,36 +3,37 @@ import { playersUrl } from '../constants';
 import { store } from '../store';
 import { setModalType, setModalVisible } from '../action_creators';
 
-function get (url) {
+function get(url) {
     return fetch(url).catch(catchException);
 }
 
-function post (url, body) {
+function post(url, body) {
     return fetch(url, {
         method: 'POST',
         body: JSON.stringify(body)
     }).catch(catchException);
 }
 
-function put (url, body) {
+function put(url, body) {
     return fetch(url, {
         method: 'PUT',
         body: JSON.stringify(body)
     }).catch(catchException);
 }
 
-function catchException (err) {
+function catchException(err) {
     // error modal
     logEvent('error', null, err);
 }
 
-export function postPlayers (body) {
+export function postPlayers(body) {
     post(playersUrl, body);
 }
 
-export function findOpponent (facebookId) {
+export function findOpponent(facebookId) {
     store.dispatch(setModalType('searching'));
     store.dispatch(setModalVisible(true));
+
     const url = `${ playersUrl }/${ facebookId }`
     const body = { isSearching: true };
     put(url, body).then(res => {
