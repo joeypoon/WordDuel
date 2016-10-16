@@ -7,7 +7,8 @@ import {
     resetTimer,
     setModalVisible,
     setModalType,
-    clearWord
+    clearWord,
+    submitWord
 } from '../action_creators';
 import { mainTextColor } from '../constants';
 
@@ -22,7 +23,8 @@ class Timer extends Component {
     }
 
     timeOut() {
-        this.props.clearWord();
+        this.props.clearWord
+        this.props.submitWord('');
         if (this.props.players === 2) {
             this.props.setModalType('roundOverDuel');
         } else {
@@ -56,7 +58,8 @@ const actions = {
     resetTimer,
     setModalVisible,
     setModalType,
-    clearWord
+    clearWord,
+    submitWord
 }
 export default connect(mapStateToProps, actions)(Timer);
 
