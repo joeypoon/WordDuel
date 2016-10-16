@@ -18,7 +18,12 @@ export const events = {
     root: {
         connect: 'connect'
     },
+
+    players: {
+        login: 'playerLogin'
+    },
+
     words: {
-        validate: 'validateWord'
+        validate: 'wordValidation'
     }
 };

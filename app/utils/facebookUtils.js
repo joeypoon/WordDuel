@@ -5,7 +5,8 @@ import {
 } from 'react-native-fbsdk';
 
 import { store } from '../store';
-import { postPlayers } from './backendUtils';
+import { socket } from '../socket';
+import { events } from '../constants';
 
 const requestManager = new GraphRequestManager();
 
@@ -13,23 +14,22 @@ function responseInfoCallback (error: ?Object, result: ?Object) {
     if (error) {
         logEvent('error', null, { message: error.toString() });
     } else {
+        const facebookId = result.id;
+        const name = result.first_name;
+        const image = result.picture.data.url;
         store.dispatch({
             type: 'SET_FACEBOOK_ID',
-            id: result.id
+            id: facebookId
         });
         store.dispatch({
             type: 'SET_PLAYER_NAME',
-            name: result.first_name
+            name
         });
         store.dispatch({
             type: 'SET_PLAYER_IMAGE',
-            image: result.picture.data.url
+            image
         });
-        postPlayers({
-            facebookId: result.id,
-            name: result.first_name,
-            image: result.picture.data.url
-        });
+        socket.emit(events.players.login, { facebookId, name, image });
     }
 }
 
