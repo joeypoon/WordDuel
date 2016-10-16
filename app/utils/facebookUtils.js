@@ -1,7 +1,7 @@
 import {
-  GraphRequest,
-  GraphRequestManager,
-  AppEventsLogger
+    GraphRequest,
+    GraphRequestManager,
+    AppEventsLogger
 } from 'react-native-fbsdk';
 
 import { store } from '../store';
@@ -10,7 +10,7 @@ import { events } from '../constants';
 
 const requestManager = new GraphRequestManager();
 
-function responseInfoCallback (error: ?Object, result: ?Object) {
+function responseInfoCallback(error: ? Object, result : ? Object) {
     if (error) {
         logEvent('error', null, { message: error.toString() });
     } else {
@@ -33,12 +33,12 @@ function responseInfoCallback (error: ?Object, result: ?Object) {
     }
 }
 
-export function requestData () {
+export function requestData() {
     const url = '/me?fields=id,first_name,picture.type(large)';
     const infoRequest = new GraphRequest(url, null, responseInfoCallback);
     requestManager.addRequest(infoRequest).start();
 }
 
-export function logEvent (event) {
+export function logEvent(event) {
     AppEventsLogger.logEvent(event);
 }

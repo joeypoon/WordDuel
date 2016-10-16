@@ -9,7 +9,7 @@ import PlayerDisplayContainer from './PlayerDisplayContainer';
 import { logEvent, findOpponent } from '../utils';
 
 import {
-    loadLetterGrid,
+    requestLetterGrid,
     setPlayerScore,
     setOpponentScore,
     resetActiveGrid,
@@ -61,7 +61,7 @@ class Battle extends Component {
         this.props.setOpponentScore(0);
         this.props.resetActiveGrid();
         this.props.clearWord();
-        this.props.loadLetterGrid();
+        this.props.requestLetterGrid();
     }
 
     render() {
@@ -79,7 +79,7 @@ class Battle extends Component {
 }
 
 const actions = {
-    loadLetterGrid,
+    requestLetterGrid,
     setPlayerScore,
     setOpponentScore,
     resetActiveGrid,

@@ -25,5 +25,11 @@ export const events = {
 
     words: {
         validate: 'wordValidation'
+    },
+
+    matches: {
+        grid: {
+            new: 'newGrid'
+        }
     }
 };

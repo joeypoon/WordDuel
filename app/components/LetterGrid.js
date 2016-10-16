@@ -8,21 +8,17 @@ class LetterGrid extends Component {
     renderRows() {
         return this.props.grid.map((row, index) => {
             return <LetterRow key={ index }
-                row={ row }
-                activeGrid={ this.props.activeGrid } />
+            row={ row }
+            activeGrid={ this.props.activeGrid } />
         });
     }
 
     render() {
-        return (
-            <View>
-                { this.renderRows()  }
-            </View>
-        );
+        return <View>{ this.renderRows() }</View>;
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
         grid: state.letterGrid,
         activeGrid: state.activeGrid

@@ -1,7 +1,7 @@
 import { events } from './constants';
 
 export const actionCreator = {
-    submitWord (word) {
+    submitWord(word) {
         return {
             type: 'SUBMIT_WORD',
             meta: {
@@ -13,14 +13,14 @@ export const actionCreator = {
         };
     },
 
-    setModalType (modalType) {
+    setModalType(modalType) {
         return {
             type: 'SET_MODAL_TYPE',
             modalType
         };
     },
 
-    resetActiveGrid () {
+    resetActiveGrid() {
         return {
             type: 'RESET_ACTIVE_GRID'
         };
@@ -28,7 +28,7 @@ export const actionCreator = {
 };
 
 // routes
-export function setRoute (route) {
+export function setRoute(route) {
     return {
         type: 'SET_ROUTE',
         route
@@ -36,56 +36,56 @@ export function setRoute (route) {
 }
 
 // players
-export function setFacebookId (id) {
+export function setFacebookId(id) {
     return {
         type: 'SET_FACEBOOK_ID',
         id
     }
 }
 
-export function setPlayerName (name) {
+export function setPlayerName(name) {
     return {
         type: 'SET_PLAYER_NAME',
         name
     };
 }
 
-export function setPlayerLevel (level) {
+export function setPlayerLevel(level) {
     return {
         type: 'SET_PLAYER_LEVEL',
         level
     };
 }
 
-export function setPlayerImage (image) {
+export function setPlayerImage(image) {
     return {
         type: 'SET_PLAYER_IMAGE',
         image
     };
 }
 
-export function setOpponentName (name) {
+export function setOpponentName(name) {
     return {
         type: 'SET_OPPONENT_NAME',
         name
     };
 }
 
-export function setOpponentLevel (level) {
+export function setOpponentLevel(level) {
     return {
         type: 'SET_OPPONENT_LEVEL',
         level
     };
 }
 
-export function setOpponentImage (image) {
+export function setOpponentImage(image) {
     return {
         type: 'SET_OPPONENT_IMAGE',
         image
     };
 }
 
-export function setMatchId (matchId) {
+export function setMatchId(matchId) {
     return {
         type: 'SET_MATCH_ID',
         matchId
@@ -93,20 +93,20 @@ export function setMatchId (matchId) {
 }
 
 // word display
-export function addLetter (letter) {
+export function addLetter(letter) {
     return {
         type: 'ADD_LETTER',
         letter
     };
 }
 
-export function clearWord () {
+export function clearWord() {
     return {
         type: 'CLEAR_WORD'
     };
 }
 
-export function submitWord (word) {
+export function submitWord(word) {
     return {
         type: 'SUBMIT_WORD',
         meta: {
@@ -119,7 +119,7 @@ export function submitWord (word) {
 }
 
 // active grid
-export function updateActiveGrid (position, active) {
+export function updateActiveGrid(position, active) {
     return {
         type: 'UPDATE_ACTIVE_GRID',
         position,
@@ -127,7 +127,7 @@ export function updateActiveGrid (position, active) {
     };
 }
 
-export function resetActiveGrid () {
+export function resetActiveGrid() {
     return {
         type: 'RESET_ACTIVE_GRID'
     };
@@ -135,26 +135,37 @@ export function resetActiveGrid () {
 
 
 // letter grid
-export function loadLetterGrid () {
+export function requestLetterGrid() {
     return {
-        type: 'LOAD_LETTER_GRID'
+        type: 'REQUEST_LETTER_GRID',
+        meta: {
+            event: events.matches.grid.new
+        }
     };
 }
 
+export function loadLetterGrid(grid) {
+    return {
+        type: 'LOAD_LETTER_GRID',
+        grid
+    };
+}
+
+
 // timer
-export function decrementTimer () {
+export function decrementTimer() {
     return {
         type: 'DECREMENT_TIMER'
     };
 }
 
-export function resetTimer () {
+export function resetTimer() {
     return {
         type: 'RESET_TIMER'
     };
 }
 
-export function setTimerPause (isPaused) {
+export function setTimerPause(isPaused) {
     return {
         type: 'SET_TIMER_PAUSE',
         isPaused
@@ -162,14 +173,14 @@ export function setTimerPause (isPaused) {
 }
 
 // score
-export function setPlayerScore (score) {
+export function setPlayerScore(score) {
     return {
         type: 'SET_PLAYER_SCORE',
         score
     };
 }
 
-export function setOpponentScore (score) {
+export function setOpponentScore(score) {
     return {
         type: 'SET_OPPONENT_SCORE',
         score
@@ -177,14 +188,14 @@ export function setOpponentScore (score) {
 }
 
 // modal
-export function setModalVisible (isVisible) {
+export function setModalVisible(isVisible) {
     return {
         type: 'SET_MODAL_VISIBLE',
         isVisible
     };
 }
 
-export function setModalType (modalType) {
+export function setModalType(modalType) {
     return {
         type: 'SET_MODAL_TYPE',
         modalType

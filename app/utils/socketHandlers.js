@@ -1,21 +1,39 @@
 import { store } from '../store';
-import { actionCreator } from '../action_creators';
 import { modalTypes } from '../constants';
+import {
+    setModalType,
+    loadLetterGrid
+} from '../action_creators';
 
 function isSolo() {
     return !store.getState().players.get('opponentName');
 }
 
 export const socketHandlers = {
-    onValidateWord (data) {
+    onValidateWord(data) {
         if (data.isValid) {
             if (!isSolo()) {
-                store.dispatch(actionCreator.setModalType(modalTypes.roundOverDuel));
+                store.dispatch(setModalType(modalTypes.roundOverDuel));
             } else {
-                store.dispatch(actionCreator.setModalType(modalTypes.roundOverSolo));
+                store.dispatch(setModalType(modalTypes.roundOverSolo));
             }
         } else {
-            store.dispatch(actionCreator.setModalType(modalTypes.invalidWord));
+            store.dispatch(setModalType(modalTypes.invalidWord));
+        }
+    },
+
+    onNewGrid(data) {
+        if (data) {
+            const letters = data.map((letter, index) => {
+                return { value: letter, position: index }
+            });
+            const grid = [
+                letters.splice(0, 5),
+                letters.splice(0, 5),
+                letters.splice(0, 5),
+                letters.splice(0, 5)
+            ];
+            store.dispatch(loadLetterGrid(grid));
         }
     }
 }
