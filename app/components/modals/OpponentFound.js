@@ -12,12 +12,8 @@ import { mainColor, mainTextColor } from '../../constants';
 
 class OpponentFound extends Component {
     handleReady() {
-        this.props.setModalType('waiting');
-        // TODO move to http
-        setTimeout(() => {
-            this.props.setModalVisible(false);
-            this.props.setTimerPause(false);
-        }, 1000);
+        const { matchId } = this.props;
+        this.props.setModalType('waiting', { matchId });
     }
 
     render() {
@@ -39,7 +35,8 @@ class OpponentFound extends Component {
 function mapStateToProps (state) {
     return {
         opponentName: state.players.get('opponentName'),
-        opponentImage: state.players.get('opponentImage')
+        opponentImage: state.players.get('opponentImage'),
+        matchId: state.players.get('matchId')
     };
 }
 

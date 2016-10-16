@@ -13,3 +13,4 @@ socket.on(events.matches.grid.new, socketHandlers.onGridNew);
 
 // players
 socket.on(events.players.found, socketHandlers.onPlayerFound);
+socket.on(events.players.ready, socketHandlers.onPlayerReady);

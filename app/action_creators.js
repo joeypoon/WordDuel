@@ -182,9 +182,16 @@ export function setModalVisible(isVisible) {
     };
 }
 
-export function setModalType(modalType) {
-    return {
+export function setModalType(modalType, params) {
+    let action = {
         type: 'SET_MODAL_TYPE',
         modalType
-    };
+    }
+    if (modalType === 'waiting') {
+        action.meta = {
+            event: events.players.ready,
+            eventParams: params
+        };
+    }
+    return action;
 }

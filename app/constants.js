@@ -23,7 +23,8 @@ export const events = {
     players: {
         login: 'playerLogin',
         search: 'playerSearch',
-        found: 'playerFound'
+        found: 'playerFound',
+        ready: 'playerReady'
     },
 
     words: {

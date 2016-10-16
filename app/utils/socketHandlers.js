@@ -4,7 +4,10 @@ import {
     setModalType,
     loadLetterGrid,
     setOpponentName,
-    setOpponentImage
+    setOpponentImage,
+    setMatchId,
+    setModalVisible,
+    setTimerPause
 } from '../action_creators';
 
 function isSolo() {
@@ -12,6 +15,7 @@ function isSolo() {
 }
 
 export const socketHandlers = {
+    // words
     onWordValidate(data) {
         if (data.isValid) {
             if (!isSolo()) {
@@ -24,6 +28,7 @@ export const socketHandlers = {
         }
     },
 
+    // matches
     onGridNew(data) {
         if (data) {
             const letters = data.map((letter, index) => {
@@ -39,6 +44,7 @@ export const socketHandlers = {
         }
     },
 
+    // players
     onPlayerFound(data) {
         const opponent = data.players.find(p => {
             return p.facebookId !== store.getState().players.get('facebookId')
@@ -46,6 +52,12 @@ export const socketHandlers = {
         const { name, image } = opponent;
         store.dispatch(setOpponentName(name));
         store.dispatch(setOpponentImage(image));
+        store.dispatch(setMatchId(data.matchId));
         store.dispatch(setModalType(modalTypes.opponentFound));
+    },
+
+    onPlayerReady(data) {
+            store.dispatch(setModalVisible(false));
+            store.dispatch(setTimerPause(false));
     }
 }

@@ -43,6 +43,7 @@ class Battle extends Component {
     startSoloRound() {
         logEvent('Enter Solo');
         this.prepareRound();
+        this.props.requestLetterGrid();
         this.props.setTimerPause(false);
     }
 
@@ -52,8 +53,6 @@ class Battle extends Component {
         this.props.setModalType('searching');
         this.props.setModalVisible(true);
         this.props.searchOpponent(this.props.facebookId);
-        // this.props.setOpponentName("Joey");
-        // setTimeout(() => this.props.setModalType('opponentFound'), 1000);
     }
 
     prepareRound() {
@@ -61,7 +60,6 @@ class Battle extends Component {
         this.props.setOpponentScore(0);
         this.props.resetActiveGrid();
         this.props.clearWord();
-        this.props.requestLetterGrid();
     }
 
     render() {
