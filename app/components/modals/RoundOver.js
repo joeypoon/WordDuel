@@ -9,7 +9,8 @@ import {
     setPlayerScore,
     resetTimer,
     setTimerPause,
-    resetActiveGrid
+    resetActiveGrid,
+    requestLetterGrid
 } from '../../action_creators';
 import { mainColor, mainTextColor } from '../../constants';
 
@@ -22,6 +23,7 @@ class RoundOver extends Component {
         this.props.setPlayerScore(this.props.playerScore + this.props.playerWord.length);
         this.props.clearWord();
         this.props.resetActiveGrid();
+        this.props.requestLetterGrid();
         this.props.resetTimer();
         this.props.setModalVisible(false);
         this.props.setTimerPause(false);
@@ -66,7 +68,8 @@ const actions = {
     setPlayerScore,
     resetTimer,
     setTimerPause,
-    resetActiveGrid
+    resetActiveGrid,
+    requestLetterGrid
 }
 export default connect(mapStateToProps, actions)(RoundOver);
 
