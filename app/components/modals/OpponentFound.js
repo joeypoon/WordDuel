@@ -29,9 +29,6 @@ class OpponentFound extends Component {
             </Text>
             <Image source={ source }
                 style={ styles.image } />
-            <Text style={ styles.text }>
-                Level { this.props.opponentLevel }
-            </Text>
             <Button styles={ styles.buttonStyles }
                 action={ this.handleReady.bind(this) }
                 text={ 'Ready' } />
@@ -42,7 +39,6 @@ class OpponentFound extends Component {
 function mapStateToProps (state) {
     return {
         opponentName: state.players.get('opponentName'),
-        opponentLevel: state.players.get('opponentLevel'),
         opponentImage: state.players.get('opponentImage')
     };
 }

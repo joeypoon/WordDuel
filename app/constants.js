@@ -10,7 +10,8 @@ export const playersUrl = `${ rootUrl }/players`;
 export const modalTypes = {
     invalidWord: 'invalidWord',
     roundOverSolo: 'roundOverSolo',
-    roundOverDuel: 'roundOverDuel'
+    roundOverDuel: 'roundOverDuel',
+    opponentFound: 'opponentFound'
 };
 
 // Events
@@ -21,16 +22,17 @@ export const events = {
 
     players: {
         login: 'playerLogin',
-        search: 'playerSearch'
+        search: 'playerSearch',
+        found: 'playerFound'
     },
 
     words: {
-        validate: 'wordValidation'
+        validate: 'wordValidate'
     },
 
     matches: {
         grid: {
-            new: 'newGrid'
+            new: 'gridNew'
         }
     }
 };
