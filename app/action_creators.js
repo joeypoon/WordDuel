@@ -79,6 +79,13 @@ export function setMatchId(matchId) {
     };
 }
 
+export function setRound(round) {
+    return {
+        type: 'SET_ROUND',
+        round
+    };
+}
+
 // word display
 export function addLetter(letter) {
     return {

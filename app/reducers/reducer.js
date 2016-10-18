@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
 import activeGrid from './active_grid_reducer';
 import letterGrid from './letter_grid_reducer';
@@ -8,6 +8,7 @@ import timer from './timer_reducer';
 import score from './score_reducer';
 import modal from './modal_reducer';
 import players from './players_reducer';
+import round from './round_reducer';
 
 export default combineReducers({
     activeGrid,
@@ -17,5 +18,6 @@ export default combineReducers({
     timer,
     score,
     modal,
-    players
+    players,
+    round
 });
