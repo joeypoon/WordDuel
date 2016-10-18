@@ -1,9 +1,11 @@
-const INITIAL_STATE = 1;
+const INITIAL_STATE = 0;
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
-        case 'SET_ROUND':
-            return action.round;
+        case 'RESET_ROUND':
+            return 0;
+        case 'INCREMENT_ROUND':
+            return state + 1;
     }
     return state;
 }

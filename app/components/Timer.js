@@ -17,13 +17,13 @@ class Timer extends Component {
         this.props.resetTimer();
         this.interval = setInterval(() => {
             this.props.decrementTimer();
-            if (this.props.timer === 0)
+            if (this.props.timer === 0 && !this.props.isPaused)
                 this.timeOut();
         }, 1000);
     }
 
     timeOut() {
-        this.props.clearWord
+        this.props.clearWord();
         this.props.submitWord('');
         if (this.props.players === 2) {
             this.props.setModalType('roundOverDuel');

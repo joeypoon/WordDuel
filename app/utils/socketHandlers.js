@@ -7,7 +7,9 @@ import {
     setOpponentImage,
     setMatchId,
     setModalVisible,
-    setTimerPause
+    setTimerPause,
+    incrementRound,
+    resetRound
 } from '../action_creators';
 
 function isSolo() {
@@ -18,14 +20,17 @@ export const socketHandlers = {
     // words
     onWordValidate(data) {
         if (data.isValid) {
-            if (!isSolo()) {
-                store.dispatch(setModalType(modalTypes.roundOverDuel));
+            const currentRound = store.getState().round;
+            if (currentRound > 9) {
+                store.dispatch(resetRound());
             } else {
-                store.dispatch(setModalType(modalTypes.roundOverSolo));
+                store.dispatch(incrementRound());
             }
-        } else {
-            store.dispatch(setModalType(modalTypes.invalidWord));
+            if (!isSolo())
+                return store.dispatch(setModalType(modalTypes.roundOverDuel));
+            return store.dispatch(setModalType(modalTypes.roundOverSolo));
         }
+        return store.dispatch(setModalType(modalTypes.invalidWord));
     },
 
     // matches

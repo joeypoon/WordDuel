@@ -79,10 +79,15 @@ export function setMatchId(matchId) {
     };
 }
 
-export function setRound(round) {
+export function incrementRound() {
     return {
-        type: 'SET_ROUND',
-        round
+        type: 'INCREMENT_ROUND'
+    };
+}
+
+export function resetRound() {
+    return {
+        type: 'RESET_ROUND'
     };
 }
 
