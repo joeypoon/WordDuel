@@ -30,12 +30,9 @@ class RoundOver extends Component {
     }
 
     render() {
-        // TODO Dynamic round
-        // TODO player word
-        // TODO opponent word
         if (this.props.players === 2)
             return <View style={ styles.container }>
-                <Text style={ styles.text }>Round: 1</Text>
+                <Text style={ styles.text }>Round: { this.props.round }</Text>
                 <Text style={ styles.text }>{ this.props.playerWord }</Text>
                 <Text style={ styles.text }>VS</Text>
                 <Text style={ styles.text }>Opponent Word</Text>
