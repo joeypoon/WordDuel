@@ -10,16 +10,33 @@ import {
     resetTimer,
     setTimerPause,
     resetActiveGrid,
-    requestLetterGrid
+    requestLetterGrid,
+    setModalType,
+    resetRound
 } from '../../action_creators';
-import { mainColor, mainTextColor } from '../../constants';
+import {
+    mainColor,
+    mainTextColor,
+    maxRounds,
+    modalTypes
+} from '../../constants';
 
 class RoundOver extends Component {
     componentDidMount() {
         this.props.setTimerPause(true);
     }
 
-    handleDone() {
+    isLastRound() {
+        return this.props.round > maxRounds;
+    }
+
+    endMatch() {
+        const { matchId } = this.props;
+        const isDuel = this.props.players === 2 ? true : false;
+        this.props.setModalType(modalTypes.gameOver);
+    }
+
+    nextRound() {
         this.props.setPlayerScore(this.props.playerScore + this.props.playerWord.length);
         this.props.clearWord();
         this.props.resetActiveGrid();
@@ -27,6 +44,11 @@ class RoundOver extends Component {
         this.props.resetTimer();
         this.props.setModalVisible(false);
         this.props.setTimerPause(false);
+    }
+
+    handleDone() {
+        if (this.isLastRound()) return this.endMatch();
+        this.nextRound();
     }
 
     render() {
@@ -55,7 +77,8 @@ function mapStateToProps (state) {
         playerWord: state.wordDisplay,
         playerScore: state.score.get('player'),
         timer: state.timer.get('time'),
-        round: state.round
+        round: state.round,
+        matchId: state.players.get('matchId')
     };
 }
 
@@ -67,7 +90,9 @@ const actions = {
     resetTimer,
     setTimerPause,
     resetActiveGrid,
-    requestLetterGrid
+    requestLetterGrid,
+    setModalType,
+    resetRound
 }
 export default connect(mapStateToProps, actions)(RoundOver);
 

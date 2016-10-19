@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import {
     setModalVisible,
     setRoute,
-    setOpponentName
+    setOpponentName,
+    resetRound
 } from '../../action_creators';
 import Button from '../Button';
 import { requestAd } from '../../utils/adMobUtils';
@@ -13,14 +14,17 @@ import { mainColor } from '../../constants';
 
 export class GameOver extends Component {
     newMatch() {
-        // TODO
+        // clear everything
+        // start new search
+        this.props.resetRound();
+        this.props.setOpponentName(null);
     }
 
     handleQuit() {
         requestAd();
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
-        this.setOpponentName(null);
+        this.props.setOpponentName(null);
     }
 
     scoreDisplay() {
@@ -65,7 +69,8 @@ function mapStateToProps (state) {
 const actions = {
     setOpponentName,
     setModalVisible,
-    setRoute
+    setRoute,
+    resetRound
 }
 export default connect(mapStateToProps, actions)(GameOver);
 

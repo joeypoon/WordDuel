@@ -1,4 +1,4 @@
-import { events } from './constants';
+import { events, modalTypes } from './constants';
 
 // routes
 export function setRoute(route) {
@@ -111,7 +111,9 @@ export function submitWord(word) {
         meta: {
             event: events.words.validate,
             eventParams: {
-                word
+                word,
+                // matchId: '5802f85d6507003fcecc4047',
+                // facebookId: '10153797955836792'
             }
         }
     };
@@ -199,7 +201,7 @@ export function setModalType(modalType, params) {
         type: 'SET_MODAL_TYPE',
         modalType
     }
-    if (modalType === 'waiting') {
+    if (modalType === modalTypes.waiting) {
         action.meta = {
             event: events.players.ready,
             eventParams: params

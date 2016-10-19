@@ -1,5 +1,5 @@
 import { store } from '../store';
-import { modalTypes } from '../constants';
+import { modalTypes, maxRounds } from '../constants';
 import {
     incrementRound,
     resetRound,
@@ -10,14 +10,14 @@ function isSolo() {
     return !store.getState().players.get('opponentName');
 }
 
+function isLastRound() {
+    const currentRound = store.getState().round;
+    return currentRound >= maxRounds;
+}
+
 export function onWordValidate(data) {
     if (data.isValid) {
-        const currentRound = store.getState().round;
-        if (currentRound > 9) {
-            store.dispatch(resetRound());
-        } else {
-            store.dispatch(incrementRound());
-        }
+        store.dispatch(incrementRound());
         if (!isSolo())
             return store.dispatch(setModalType(modalTypes.roundOverDuel));
         return store.dispatch(setModalType(modalTypes.roundOverSolo));

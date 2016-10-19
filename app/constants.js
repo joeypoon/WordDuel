@@ -7,11 +7,15 @@ export const secondaryColor = '#e74c3c';
 export const rootUrl = 'http://localhost:3000';
 export const playersUrl = `${ rootUrl }/players`;
 
+export const maxRounds = 1;
+
 export const modalTypes = {
+    waiting: 'waiting',
     invalidWord: 'invalidWord',
     roundOverSolo: 'roundOverSolo',
     roundOverDuel: 'roundOverDuel',
-    opponentFound: 'opponentFound'
+    opponentFound: 'opponentFound',
+    gameOver: 'gameOver'
 };
 
 // Events
@@ -28,12 +32,14 @@ export const events = {
     },
 
     words: {
-        validate: 'wordValidate'
+        validate: 'wordValidate',
+        submit: 'wordSubmit'
     },
 
     matches: {
         grid: {
             new: 'gridNew'
-        }
+        },
+        end: 'matchEnd'
     }
 };
