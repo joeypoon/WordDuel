@@ -24,3 +24,8 @@ export function onWordValidate(data) {
     }
     return store.dispatch(setModalType(modalTypes.invalidWord));
 }
+
+export function onWordSubmit(data) {
+    const { word } = data;
+    if (word) store.dispatch(setOpponentWord(word));
+}

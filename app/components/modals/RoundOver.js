@@ -57,7 +57,7 @@ class RoundOver extends Component {
                 <Text style={ styles.text }>Round: { this.props.round }</Text>
                 <Text style={ styles.text }>{ this.props.playerWord }</Text>
                 <Text style={ styles.text }>VS</Text>
-                <Text style={ styles.text }>Opponent Word</Text>
+                <Text style={ styles.text }>{ this.props.opponentWord }</Text>
                 <Button styles={ styles.buttonStyles }
                     action={ this.handleDone.bind(this) }
                     text={ 'Done' } />
@@ -72,13 +72,14 @@ class RoundOver extends Component {
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
         playerWord: state.wordDisplay,
         playerScore: state.score.get('player'),
         timer: state.timer.get('time'),
         round: state.round,
-        matchId: state.players.get('matchId')
+        matchId: state.players.get('matchId'),
+        opponentWord: state.players.get('opponentWord')
     };
 }
 

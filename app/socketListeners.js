@@ -7,6 +7,7 @@ socket.on(events.root.connect, () => console.log('Socket connected'));
 
 // words
 socket.on(events.words.validate, socketHandlers.onWordValidate);
+socket.on(events.words.submit, socketHandlers.onWordSubmit);
 
 // matches
 socket.on(events.matches.grid.new, socketHandlers.onGridNew);
