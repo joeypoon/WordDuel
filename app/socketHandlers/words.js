@@ -3,7 +3,8 @@ import { modalTypes, maxRounds } from '../constants';
 import {
     incrementRound,
     resetRound,
-    setModalType
+    setModalType,
+    setOpponentWord
 } from '../action_creators';
 
 function isSolo() {

@@ -38,6 +38,7 @@ class RoundOver extends Component {
 
     nextRound() {
         this.props.setPlayerScore(this.props.playerScore + this.props.playerWord.length);
+        this.props.setOpponentWord('');
         this.props.clearWord();
         this.props.resetActiveGrid();
         this.props.requestLetterGrid();

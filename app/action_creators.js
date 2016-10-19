@@ -70,6 +70,12 @@ export function setOpponentImage(image) {
     };
 }
 
+export function setOpponentWord(word) {
+    return {
+        type: 'SET_OPPONENT_WORD',
+        word
+    };
+}
 
 // matches
 export function setMatchId(matchId) {
