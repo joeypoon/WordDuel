@@ -1,6 +1,6 @@
 import { socket } from './socket';
 import { events } from './constants';
-import { socketHandlers } from './utils/socketHandlers';
+import * as socketHandlers from './socketHandlers';
 
 // root
 socket.on(events.root.connect, () => console.log('Socket connected'));
