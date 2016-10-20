@@ -17,7 +17,8 @@ export const modalTypes = {
     roundOverSolo: 'roundOverSolo',
     roundOverDuel: 'roundOverDuel',
     opponentFound: 'opponentFound',
-    gameOver: 'gameOver'
+    gameOver: 'gameOver',
+    submittingWord: 'submittingWord'
 };
 
 // Events

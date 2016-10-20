@@ -3,7 +3,11 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 
-import { mainColor, secondaryColor } from '../constants';
+import {
+    mainColor,
+    secondaryColor,
+    modalTypes
+} from '../constants';
 
 import {
     clearWord,
@@ -32,7 +36,7 @@ class WordDisplay extends Component {
         this._swiper.scrollBy(1);
         if (this.props.timer > 0 && this.props.word.length > 0) {
             this.props.submitWord(this.props.word);
-            this.props.setModalType('submittingWord');
+            this.props.setModalType(modalTypes.submittingWord);
             this.props.setModalVisible(true);
         }
     }
