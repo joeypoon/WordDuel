@@ -24,7 +24,7 @@ export class GameOver extends Component {
         setTimeout(() => {
             if (this.props.matchId) return this.props.setRoute('Duel');
             this.props.setRoute('Solo');
-        }, 500);
+        }, 250);
     }
 
     handleQuit() {

@@ -18,6 +18,7 @@ class BattleMenu extends Component {
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
         this.props.setOpponentName(null);
+        // emit to server;
     }
 
     render() {
