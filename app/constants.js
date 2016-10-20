@@ -1,3 +1,5 @@
+import constants from 'WordDuelConstants';
+
 // Colors
 export const mainTextColor = '#2c3e50';
 export const mainColor = '#16a085';
@@ -19,27 +21,4 @@ export const modalTypes = {
 };
 
 // Events
-export const events = {
-    root: {
-        connect: 'connect'
-    },
-
-    players: {
-        login: 'playerLogin',
-        search: 'playerSearch',
-        found: 'playerFound',
-        ready: 'playerReady'
-    },
-
-    words: {
-        validate: 'wordValidate',
-        submit: 'wordSubmit'
-    },
-
-    matches: {
-        grid: {
-            new: 'gridNew'
-        },
-        end: 'matchEnd'
-    }
-};
+export const events = constants.events;
