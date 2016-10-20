@@ -194,6 +194,16 @@ export function setOpponentScore(score) {
     };
 }
 
+export function submitScore(score) {
+    return {
+        type: 'SUBMIT_SCORE',
+        meta: {
+            event: events.score.submit,
+            score
+        }
+    };
+}
+
 // modal
 export function setModalVisible(isVisible) {
     return {

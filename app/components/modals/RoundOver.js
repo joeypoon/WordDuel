@@ -27,13 +27,15 @@ class RoundOver extends Component {
         this.props.setTimerPause(true);
     }
 
+    isSolo() {
+        return this.props.players === 1
+    }
+
     isLastRound() {
         return this.props.round >= maxRounds;
     }
 
     endMatch() {
-        const { matchId } = this.props;
-        const isDuel = this.props.players === 2 ? true : false;
         this.props.setModalType(modalTypes.gameOver);
     }
 
@@ -49,22 +51,11 @@ class RoundOver extends Component {
 
     handleDone() {
         this.props.setPlayerScore(this.props.playerScore + this.props.playerWord.length);
-        // submit score to backend
         if (this.isLastRound()) return this.endMatch();
         this.nextRound();
     }
 
-    render() {
-        if (this.props.players === 2)
-            return <View style={ styles.container }>
-                <Text style={ styles.text }>Round: { this.props.round }</Text>
-                <Text style={ styles.text }>{ this.props.playerWord }</Text>
-                <Text style={ styles.text }>VS</Text>
-                <Text style={ styles.text }>{ this.props.opponentWord }</Text>
-                <Button styles={ styles.buttonStyles }
-                    action={ this.handleDone.bind(this) }
-                    text={ 'Done' } />
-            </View>;
+    renderSolo() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>Round: { this.props.round }</Text>
             <Text style={ styles.text }>{ this.props.playerWord }</Text>
@@ -72,6 +63,23 @@ class RoundOver extends Component {
                 action={ this.handleDone.bind(this) }
                 text={ 'Done' } />
         </View>;
+    }
+
+    renderDuel() {
+        return <View style={ styles.container }>
+            <Text style={ styles.text }>Round: { this.props.round }</Text>
+            <Text style={ styles.text }>{ this.props.playerWord }</Text>
+            <Text style={ styles.text }>VS</Text>
+            <Text style={ styles.text }>{ this.props.opponentWord }</Text>
+            <Button styles={ styles.buttonStyles }
+                action={ this.handleDone.bind(this) }
+                text={ 'Done' } />
+        </View>;
+    }
+
+    render() {
+        if (this.isSolo()) return this.renderSolo();
+        return this.renderDuel();
     }
 }
 
@@ -81,7 +89,6 @@ function mapStateToProps(state) {
         playerScore: state.score.get('player'),
         timer: state.timer.get('time'),
         round: state.round,
-        matchId: state.players.get('matchId'),
         opponentWord: state.players.get('opponentWord')
     };
 }
