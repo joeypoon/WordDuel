@@ -14,10 +14,12 @@ import { mainColor } from '../../constants';
 
 export class GameOver extends Component {
     newMatch() {
-        // clear everything
-        // start new search
-        this.props.resetRound();
-        this.props.setOpponentName(null);
+        this.props.setModalVisible(false);
+        this.props.setRoute('Menu');
+        setTimeout(() => {
+            if (this.props.matchId) return this.props.setRoute('Duel');
+            this.props.setRoute('Solo');
+        }, 500);
     }
 
     handleQuit() {
@@ -27,7 +29,11 @@ export class GameOver extends Component {
         this.props.setOpponentName(null);
     }
 
-    scoreDisplay() {
+    soloScoreDisplay() {
+        return this.props.playerScore;
+    }
+
+    duelScoreDisplay() {
         return `${this.props.playerScore} - ${this.props.opponentScore}`;
     }
 
@@ -41,13 +47,10 @@ export class GameOver extends Component {
         }
     }
 
-    render() {
+    renderSolo() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>
-                { this.winLoseText() }
-            </Text>
-            <Text style={ styles.text }>
-                { this.scoreDisplay() }
+                Score: { this.soloScoreDisplay() }
             </Text>
             <Button styles={ styles.buttonStyles }
                 action={ this.newMatch.bind(this) }
@@ -57,12 +60,35 @@ export class GameOver extends Component {
                 text={ 'Quit' } />
         </View>;
     }
+
+    renderDuel() {
+        return <View style={ styles.container }>
+            <Text style={ styles.text }>
+                { this.winLoseText() }
+            </Text>
+            <Text style={ styles.text }>
+                { this.duelScoreDisplay() }
+            </Text>
+            <Button styles={ styles.buttonStyles }
+                action={ this.newMatch.bind(this) }
+                text={ 'Play Again' } />
+            <Button styles={ styles.buttonStyles }
+                action={ this.handleQuit.bind(this) }
+                text={ 'Quit' } />
+        </View>;
+    }
+
+    render() {
+        if (this.props.matchId) return this.renderDuel();
+        return this.renderSolo();
+    }
 }
 
 function mapStateToProps (state) {
     return {
         playerScore: state.score.get('player'),
-        opponentScore: state.score.get('opponent')
+        opponentScore: state.score.get('opponent'),
+        matchId: state.players.get('matchId')
     };
 }
 

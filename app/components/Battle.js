@@ -19,7 +19,9 @@ import {
     setTimerPause,
     setRoute,
     setOpponentName,
-    searchOpponent
+    searchOpponent,
+    resetRound,
+    resetTimer
 } from '../action_creators';
 
 class Battle extends Component {
@@ -60,6 +62,9 @@ class Battle extends Component {
         this.props.setOpponentScore(0);
         this.props.resetActiveGrid();
         this.props.clearWord();
+        this.props.resetRound();
+        this.props.setOpponentName(null);
+        this.props.resetTimer();
     }
 
     render() {
@@ -87,7 +92,9 @@ const actions = {
     setTimerPause,
     setRoute,
     setOpponentName,
-    searchOpponent
+    searchOpponent,
+    resetRound,
+    resetTimer
 };
 
 function mapStateToProps (state) {

@@ -12,7 +12,8 @@ import {
     resetActiveGrid,
     requestLetterGrid,
     setModalType,
-    resetRound
+    resetRound,
+    setOpponentWord
 } from '../../action_creators';
 import {
     mainColor,
@@ -27,7 +28,7 @@ class RoundOver extends Component {
     }
 
     isLastRound() {
-        return this.props.round > maxRounds;
+        return this.props.round >= maxRounds;
     }
 
     endMatch() {
@@ -94,7 +95,8 @@ const actions = {
     resetActiveGrid,
     requestLetterGrid,
     setModalType,
-    resetRound
+    resetRound,
+    setOpponentWord
 }
 export default connect(mapStateToProps, actions)(RoundOver);
 
