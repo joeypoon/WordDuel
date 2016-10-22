@@ -10,6 +10,7 @@ export const rootUrl = 'http://10.0.1.6:9004';
 export const playersUrl = `${ rootUrl }/players`;
 
 export const maxRounds = 1;
+export const timeOut = 5000; // in milliseconds
 
 export const modalTypes = {
     waiting: 'waiting',

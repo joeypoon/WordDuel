@@ -47,7 +47,7 @@ class Menu extends Component {
     handleDuelRoute() {
         this.props.setModalType('searching');
         this.props.setModalVisible(true);
-        requestAd();
+        this.props.searchOpponent(this.props.facebookId);
     }
 
     renderPlayer() {

@@ -9,9 +9,17 @@ import {
     setTimerPause,
     setRoute
 } from '../../action_creators';
-import { mainColor, mainTextColor } from '../../constants';
+import { mainColor, mainTextColor, timeOut } from '../../constants';
 
 class OpponentFound extends Component {
+    componentDidMount() {
+        this.timeout = setTimeout(this.handleReady.bind(this), timeOut);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
+    }
+
     handleReady() {
         const { matchId } = this.props;
         this.props.setModalType('waiting', { matchId });

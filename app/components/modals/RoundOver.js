@@ -19,12 +19,18 @@ import {
     mainColor,
     mainTextColor,
     maxRounds,
-    modalTypes
+    modalTypes,
+    timeOut
 } from '../../constants';
 
 class RoundOver extends Component {
     componentDidMount() {
         this.props.setTimerPause(true);
+        this.timeout = setTimeout(this.handleDone.bind(this), timeOut);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
     }
 
     isSolo() {
