@@ -14,12 +14,9 @@ import {
     setOpponentScore,
     resetActiveGrid,
     clearWord,
-    setModalType,
-    setModalVisible,
     setTimerPause,
     setRoute,
     setOpponentName,
-    searchOpponent,
     resetRound,
     resetTimer
 } from '../action_creators';
@@ -43,9 +40,6 @@ class Battle extends Component {
     startDuelRound() {
         logEvent('Enter Duel');
         this.prepareRound();
-        this.props.setModalType('searching');
-        this.props.setModalVisible(true);
-        this.props.searchOpponent(this.props.facebookId);
     }
 
     prepareRound() {
@@ -78,12 +72,9 @@ const actions = {
     setOpponentScore,
     resetActiveGrid,
     clearWord,
-    setModalType,
-    setModalVisible,
     setTimerPause,
     setRoute,
     setOpponentName,
-    searchOpponent,
     resetRound,
     resetTimer
 };

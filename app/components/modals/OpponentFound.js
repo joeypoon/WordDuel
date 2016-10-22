@@ -6,7 +6,8 @@ import Button from '../Button';
 import {
     setModalVisible,
     setModalType,
-    setTimerPause
+    setTimerPause,
+    setRoute
 } from '../../action_creators';
 import { mainColor, mainTextColor } from '../../constants';
 
@@ -14,6 +15,7 @@ class OpponentFound extends Component {
     handleReady() {
         const { matchId } = this.props;
         this.props.setModalType('waiting', { matchId });
+        this.props.setRoute('Duel');
     }
 
     render() {
@@ -40,7 +42,7 @@ function mapStateToProps (state) {
     };
 }
 
-const actions = { setModalVisible, setModalType, setTimerPause };
+const actions = { setModalVisible, setModalType, setTimerPause, setRoute };
 export default connect(mapStateToProps, actions)(OpponentFound);
 
 const styles = {

@@ -8,7 +8,10 @@ import {
     setRoute,
     setFacebookId,
     setPlayerName,
-    setPlayerImage
+    setPlayerImage,
+    setModalVisible,
+    setModalType,
+    searchOpponent
 } from '../action_creators';
 import { requestData, logEvent } from '../utils/facebookUtils';
 import { mainColor, mainTextColor } from '../constants';
@@ -34,6 +37,12 @@ class Menu extends Component {
         }
     }
 
+    handleDuelRoute() {
+        this.props.setModalType('searching');
+        this.props.setModalVisible(true);
+        this.props.searchOpponent(this.props.facebookId);
+    }
+
     renderPlayer() {
         if (this.props.playerName && this.props.playerImage)
             return <View style={ styles.playerInfo }>
@@ -45,6 +54,12 @@ class Menu extends Component {
     renderButtons() {
         return menuItems.map((route, index) => {
             if (route === 'Duel' && !this.props.facebookId) return;
+            if (route === 'Duel')
+                return <Button
+                    text={ route }
+                    key={ index }
+                    action={ this.handleDuelRoute.bind(this) }
+                    styles={ styles.buttonStyles } />;
             return <Button
                 text={ route }
                 key={ index }
@@ -87,7 +102,10 @@ const actions = {
     setRoute,
     setFacebookId,
     setPlayerName,
-    setPlayerImage
+    setPlayerImage,
+    setModalVisible,
+    setModalType,
+    searchOpponent
 }
 export default connect(mapStateToProps, actions)(Menu);
 
