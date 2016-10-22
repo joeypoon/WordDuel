@@ -17,6 +17,7 @@ import {
     setMatchId,
     setOpponentName
 } from '../action_creators';
+import { modalTypes } from '../constants';
 
 class CustomModal extends Component {
     searchingAction() {
@@ -33,42 +34,53 @@ class CustomModal extends Component {
         this.props.setModalVisible(false);
     }
 
+    playerDisconnectAction() {
+        this.props.setModalType(modalTypes.gameOver);
+    }
+
     renderContent() {
         switch (this.props.modalType) {
-            case 'battleMenu':
+            case modalTypes.battleMenu:
                 return <BattleMenu />;
-            case 'gameOver':
+            case modalTypes.gameOver:
                 return <GameOver />;
-            case 'roundOverSolo':
+            case modalTypes.roundOverSolo:
                 return <RoundOver players={ 1 } />;
-            case 'roundOverDuel':
+            case modalTypes.roundOverDuel:
                 return <RoundOver players={ 2 } />;
-            case 'searching':
+            case modalTypes.searching:
                 return <BasicModal
                     text={ 'Searching for opponent' }
                     hasLoading={ true }
                     hasButton={ true }
                     buttonText={ 'Cancel' }
                     buttonAction={ this.searchingAction.bind(this) } />;
-            case 'opponentFound':
+            case modalTypes.opponentFound:
                 return <OpponentFound />;
-            case 'waiting':
+            case modalTypes.waiting:
                 return <BasicModal
                     text={ 'Waiting for opponent' }
                     hasButton={ false }
                     hasLoading={ true } />;
-            case 'submittingWord':
+            case modalTypes.submittingWord:
                 return <BasicModal
                     text={ 'Submitting word' }
                     hasButton={ false }
                     hasLoading={ true } />;
-            case 'invalidWord':
+            case modalTypes.invalidWord:
                 return <BasicModal
                     text={ 'Invalid word' }
                     hasButton={ true }
                     hasLoading={ false }
                     buttonText={ 'Okay' }
                     buttonAction={ this.invalidWordAction.bind(this) } />;
+            case modalTypes.playerDisconnect:
+                return <BasicModal
+                    text={ 'Opponent disconnected' }
+                    hasButton={ true }
+                    hasLoading={ false }
+                    buttonText={ 'Okay' }
+                    buttonAction={ this.playerDisconnectAction.bind(this) } />;
         }
         return <View />;
     }

@@ -27,7 +27,6 @@ export function onGridNew(data) {
 export function onMatchDisconnect() {
     store.dispatch(setMatchId(null));
     store.dispatch(setOpponentName(null));
-    // TODO create disconnect modal
-    setModalType(modalTypes.gameOver);
+    setModalType(modalTypes.playerDisconnect);
     setModalVisible(true);
 }

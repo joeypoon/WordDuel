@@ -18,7 +18,10 @@ export const modalTypes = {
     roundOverDuel: 'roundOverDuel',
     opponentFound: 'opponentFound',
     gameOver: 'gameOver',
-    submittingWord: 'submittingWord'
+    submittingWord: 'submittingWord',
+    playerDisconnect: 'playerDisconnect',
+    battleMenu: 'battleMenu',
+    searching: 'searching'
 };
 
 // Events
