@@ -1,7 +1,11 @@
 import { store } from '../store';
 import {
-    loadLetterGrid
+    loadLetterGrid,
+    setOpponentName,
+    setMatchId
 } from '../action_creators';
+import { socket } from '../socket';
+import { events } from '../constants';
 
 export function onGridNew(data) {
     if (data) {

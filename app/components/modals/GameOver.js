@@ -7,15 +7,21 @@ import {
     setRoute,
     setOpponentName,
     resetRound,
-    submitScore
+    submitScore,
+    setMatchId,
+    endMatch
 } from '../../action_creators';
 import Button from '../Button';
-import { requestAd } from '../../utils/adMobUtils';
 import { mainColor } from '../../constants';
+import { requestAd } from '../../utils/adMobUtils';
 
 export class GameOver extends Component {
     componentDidMount() {
-        if (this.props.matchId) this.props.submitScore(this.props.playerScore);
+        requestAd();
+        if (this.props.matchId) {
+            this.props.submitScore(this.props.playerScore);
+            this.props.endMatch(this.props.matchId);
+        }
     }
 
     newMatch() {
@@ -28,9 +34,9 @@ export class GameOver extends Component {
     }
 
     handleQuit() {
-        requestAd();
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
+        this.props.setMatchId(null);
         this.props.setOpponentName(null);
     }
 
@@ -102,7 +108,9 @@ const actions = {
     setModalVisible,
     setRoute,
     resetRound,
-    submitScore
+    submitScore,
+    setMatchId,
+    endMatch
 }
 export default connect(mapStateToProps, actions)(GameOver);
 

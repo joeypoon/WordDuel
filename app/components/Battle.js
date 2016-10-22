@@ -27,19 +27,10 @@ import {
 class Battle extends Component {
     componentDidMount() {
         if (this.props.players === 2) {
-            if (!this.props.facebookId) {
-                this.warnLogin();
-            } else {
-                this.startDuelRound();
-            }
+            this.startDuelRound();
         } else {
             this.startSoloRound();
         }
-    }
-
-    warnLogin() {
-        this.props.setModalType('warnLogin');
-        this.props.setModalVisible(true);
     }
 
     startSoloRound() {

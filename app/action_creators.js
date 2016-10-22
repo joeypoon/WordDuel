@@ -109,6 +109,18 @@ export function cancelSearch(facebookId) {
     };
 }
 
+export function endMatch(matchId) {
+    return {
+        type: 'END_MATCH',
+        meta: {
+            event: events.matches.end,
+            eventParams: {
+                matchId
+            }
+        }
+    };
+}
+
 // word display
 export function addLetter(letter) {
     return {
@@ -129,9 +141,7 @@ export function submitWord(word) {
         meta: {
             event: events.words.validate,
             eventParams: {
-                word,
-                // matchId: '5802f85d6507003fcecc4047',
-                // facebookId: '10153797955836792'
+                word
             }
         }
     };
