@@ -8,7 +8,8 @@ export default function (state = INITIAL_STATE, action) {
                 return nextState.set('time', nextState.get('time') - 1);
             return nextState;
         case 'RESET_TIMER':
-            return INITIAL_STATE;
+            nextState.set('time', INITIAL_STATE.get('time'));
+            return nextState;
         case 'SET_TIMER_PAUSE':
             return nextState.set('isPaused', action.isPaused)
     }

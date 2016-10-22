@@ -11,7 +11,8 @@ import {
     setPlayerImage,
     setModalVisible,
     setModalType,
-    searchOpponent
+    searchOpponent,
+    setTimerPause
 } from '../action_creators';
 import { requestData, logEvent } from '../utils/facebookUtils';
 import { mainColor, mainTextColor } from '../constants';
@@ -36,6 +37,11 @@ class Menu extends Component {
             this.props.setPlayerName(null);
             this.props.setPlayerImage(null);
         }
+    }
+
+    handleSoloRoute() {
+        this.props.setTimerPause(false);
+        this.props.setRoute('Solo');
     }
 
     handleDuelRoute() {
@@ -64,7 +70,7 @@ class Menu extends Component {
             return <Button
                 text={ route }
                 key={ index }
-                action={ this.props.setRoute.bind(null, route) }
+                action={ this.handleSoloRoute.bind(this) }
                 styles={ styles.buttonStyles } />;
         });
     }
@@ -106,7 +112,8 @@ const actions = {
     setPlayerImage,
     setModalVisible,
     setModalType,
-    searchOpponent
+    searchOpponent,
+    setTimerPause
 }
 export default connect(mapStateToProps, actions)(Menu);
 

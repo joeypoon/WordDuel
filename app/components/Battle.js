@@ -34,7 +34,6 @@ class Battle extends Component {
         logEvent('Enter Solo');
         this.prepareRound();
         this.props.requestLetterGrid();
-        this.props.setTimerPause(false);
     }
 
     startDuelRound() {

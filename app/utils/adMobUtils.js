@@ -1,15 +1,26 @@
 import { AdMobInterstitial } from 'react-native-admob'
 import { store } from '../store';
-import { setModalVisible, searchOpponent } from '../action_creators';
+import {
+    setModalVisible,
+    searchOpponent,
+    setTimerPause
+} from '../action_creators';
 import { logEvent } from './facebookUtils';
+
+function route() {
+    return store.getState().route;
+}
 
 function handleError(err) {
     logEvent('error', null, err)
 }
 
 function handleInterstitialLoad() {
-    store.dispatch(setModalVisible(false));
-    setTimeout(AdMobInterstitial.showAd.bind(this, handleError), 500);
+    store.dispatch(setTimerPause(true));
+    if (route() === 'Duel')
+        store.dispatch(setModalVisible(false));
+    setTimeout(AdMobInterstitial.showAd.bind(this, handleError), 400);
+
 }
 
 function handleInterstitialOpen() {
@@ -18,7 +29,8 @@ function handleInterstitialOpen() {
 }
 
 function handleInterstitialClose() {
-    store.dispatch(setModalVisible(true));
+    if (route() === 'Duel') store.dispatch(setModalVisible(true));
+    store.dispatch(setTimerPause(false));
 }
 
 export function adMobEventListeners() {
