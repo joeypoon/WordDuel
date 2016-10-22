@@ -13,11 +13,9 @@ import {
 } from '../../action_creators';
 import Button from '../Button';
 import { mainColor } from '../../constants';
-import { requestAd } from '../../utils/adMobUtils';
 
 export class GameOver extends Component {
     componentDidMount() {
-        requestAd();
         if (this.props.matchId) {
             this.props.submitScore(this.props.playerScore);
             this.props.endMatch(this.props.matchId);

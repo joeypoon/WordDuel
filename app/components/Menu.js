@@ -15,6 +15,7 @@ import {
 } from '../action_creators';
 import { requestData, logEvent } from '../utils/facebookUtils';
 import { mainColor, mainTextColor } from '../constants';
+import { requestAd } from '../utils/adMobUtils';
 
 const menuItems = ['Solo', 'Duel'];
 
@@ -40,7 +41,7 @@ class Menu extends Component {
     handleDuelRoute() {
         this.props.setModalType('searching');
         this.props.setModalVisible(true);
-        this.props.searchOpponent(this.props.facebookId);
+        requestAd();
     }
 
     renderPlayer() {
