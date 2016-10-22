@@ -1,11 +1,13 @@
 import { store } from '../store';
 import {
     loadLetterGrid,
+    setMatchId,
     setOpponentName,
-    setMatchId
+    setModalVisible,
+    setModalType
 } from '../action_creators';
 import { socket } from '../socket';
-import { events } from '../constants';
+import { events, modalTypes } from '../constants';
 
 export function onGridNew(data) {
     if (data) {
@@ -20,4 +22,12 @@ export function onGridNew(data) {
         ];
         store.dispatch(loadLetterGrid(grid));
     }
+}
+
+export function onMatchDisconnect() {
+    store.dispatch(setMatchId(null));
+    store.dispatch(setOpponentName(null));
+    // TODO create disconnect modal
+    setModalType(modalTypes.gameOver);
+    setModalVisible(true);
 }

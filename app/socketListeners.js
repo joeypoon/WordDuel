@@ -11,6 +11,7 @@ socket.on(events.words.submit, socketHandlers.onWordSubmit);
 
 // matches
 socket.on(events.matches.grid.new, socketHandlers.onGridNew);
+socket.on(events.matches.disconnect, socketHandlers.onMatchDisconnect);
 
 // players
 socket.on(events.players.found, socketHandlers.onPlayerFound);
