@@ -6,7 +6,7 @@ export const mainColor = '#16a085';
 export const secondaryColor = '#e74c3c';
 
 // Urls
-export const rootUrl = 'http://localhost:3000';
+export const rootUrl = 'http://10.0.1.6:9004';
 export const playersUrl = `${ rootUrl }/players`;
 
 export const maxRounds = 1;

@@ -16,16 +16,6 @@ import { mainColor, mainTextColor } from '../constants';
 const menuItems = ['Solo', 'Duel'];
 
 class Menu extends Component {
-    renderButtons() {
-        return menuItems.map((route, index) => {
-            return <Button
-                text={ route }
-                key={ index }
-                action={ this.props.setRoute.bind(null, route) }
-                styles={ styles.buttonStyles } />;
-        });
-    }
-
     handleLogin(error, result) {
         if (error) {
             logEvent('error', null, result.error)
@@ -50,6 +40,17 @@ class Menu extends Component {
                 <Image source={{ uri: this.props.playerImage }} style={ styles.image } />
                 <Text style={ styles.text }>Hey { this.props.playerName }</Text>
             </View>;
+    }
+
+    renderButtons() {
+        return menuItems.map((route, index) => {
+            if (route === 'Duel' && !this.props.facebookId) return;
+            return <Button
+                text={ route }
+                key={ index }
+                action={ this.props.setRoute.bind(null, route) }
+                styles={ styles.buttonStyles } />;
+        });
     }
 
     renderLoginButton() {
@@ -77,7 +78,8 @@ class Menu extends Component {
 function mapStateToProps (state) {
     return {
         playerName: state.players.get('playerName'),
-        playerImage: state.players.get('playerImage')
+        playerImage: state.players.get('playerImage'),
+        facebookId: state.players.get('facebookId')
     };
 }
 

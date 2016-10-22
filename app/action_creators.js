@@ -97,6 +97,18 @@ export function resetRound() {
     };
 }
 
+export function cancelSearch(facebookId) {
+    return {
+        type: 'CANCEL_SEARCH',
+        meta: {
+            event: events.search.cancel,
+            eventParams: {
+                facebookId
+            }
+        }
+    };
+}
+
 // word display
 export function addLetter(letter) {
     return {

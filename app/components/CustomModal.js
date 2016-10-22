@@ -12,12 +12,17 @@ import {
     resetActiveGrid,
     setRoute,
     setModalVisible,
-    clearWord
+    clearWord,
+    cancelSearch,
+    setMatchId,
+    setOpponentName
 } from '../action_creators';
 
 class CustomModal extends Component {
     searchingAction() {
-        // TODO cancel request
+        this.props.cancelSearch(this.props.facebookId);
+        this.props.setMatchId(null);
+        this.props.setOpponentName(null);
         this.props.setRoute('Menu');
         this.props.setModalVisible(false);
     }
@@ -25,11 +30,6 @@ class CustomModal extends Component {
     invalidWordAction() {
         this.props.resetActiveGrid();
         this.props.clearWord();
-        this.props.setModalVisible(false);
-    }
-
-    handleWarnLogin() {
-        this.props.setRoute('Menu');
         this.props.setModalVisible(false);
     }
 
@@ -69,13 +69,6 @@ class CustomModal extends Component {
                     hasLoading={ false }
                     buttonText={ 'Okay' }
                     buttonAction={ this.invalidWordAction.bind(this) } />;
-            case 'warnLogin':
-                return <BasicModal
-                    text={ 'Please login' }
-                    hasButton={ true }
-                    hasLoading={ false }
-                    buttonText={ 'Okay' }
-                    buttonAction={ this.handleWarnLogin.bind(this) } />;
         }
         return <View />;
     }
@@ -95,7 +88,9 @@ class CustomModal extends Component {
 function mapStateToProps (state) {
     return {
         visible: state.modal.get('isVisible'),
-        modalType: state.modal.get('modalType')
+        modalType: state.modal.get('modalType'),
+        matchId: state.players.get('matchId'),
+        facebookId: state.players.get('facebookId')
     };
 }
 
@@ -103,7 +98,10 @@ const actions = {
     resetActiveGrid,
     setModalVisible,
     setRoute,
-    clearWord
+    clearWord,
+    cancelSearch,
+    setMatchId,
+    setOpponentName
 };
 export default connect(mapStateToProps, actions)(CustomModal);
 
