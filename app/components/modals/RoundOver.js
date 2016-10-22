@@ -34,7 +34,7 @@ class RoundOver extends Component {
     }
 
     isSolo() {
-        return this.props.players === 1
+        return this.props.players === 1;
     }
 
     isLastRound() {
@@ -63,8 +63,8 @@ class RoundOver extends Component {
 
     renderSolo() {
         return <View style={ styles.container }>
-            <Text style={ styles.text }>Round: { this.props.round }</Text>
-            <Text style={ styles.text }>{ this.props.playerWord }</Text>
+            <Text style={ [ styles.text, styles.roundText ] }>Round: { this.props.round }</Text>
+            <Text style={ [ styles.text, styles.wordText ] }>{ this.props.playerWord }</Text>
             <Button styles={ styles.buttonStyles }
                 action={ this.handleDone.bind(this) }
                 text={ 'Done' } />
@@ -73,10 +73,10 @@ class RoundOver extends Component {
 
     renderDuel() {
         return <View style={ styles.container }>
-            <Text style={ styles.text }>Round: { this.props.round }</Text>
-            <Text style={ styles.text }>{ this.props.playerWord }</Text>
-            <Text style={ styles.text }>VS</Text>
-            <Text style={ styles.text }>{ this.props.opponentWord }</Text>
+            <Text style={ [ styles.text, styles.roundText ] }>Round: { this.props.round }</Text>
+            <Text style={ [styles.text, styles.wordText] }>{ this.props.playerWord }</Text>
+            <Text style={ [ styles.text, styles.vsText ] }>VS</Text>
+            <Text style={ [ styles.text, styles.wordText ] }>{ this.props.opponentWord }</Text>
             <Button styles={ styles.buttonStyles }
                 action={ this.handleDone.bind(this) }
                 text={ 'Done' } />
@@ -122,10 +122,20 @@ const styles = {
         padding: 25
     },
     text: {
-        fontSize: 25,
         margin: 5,
         fontFamily: 'roboto-light',
         color: mainTextColor
+    },
+    vsText: {
+        fontSize: 20,
+        fontWeight: '100',
+    },
+    wordText: {
+        fontSize: 25
+    },
+    roundText: {
+        fontSize: 25,
+        fontWeight: '500'
     },
     buttonStyles: {
         container: {

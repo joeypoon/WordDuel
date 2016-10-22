@@ -7,8 +7,8 @@ import {
     setOpponentWord
 } from '../action_creators';
 
-function isSolo() {
-    return !store.getState().players.get('opponentName');
+function isDuel() {
+    return !!store.getState().players.get('matchId');
 }
 
 function isLastRound() {
@@ -19,7 +19,7 @@ function isLastRound() {
 export function onWordValidate(data) {
     if (data.isValid) {
         store.dispatch(incrementRound());
-        if (!isSolo())
+        if (isDuel())
             return store.dispatch(setModalType(modalTypes.roundOverDuel));
         return store.dispatch(setModalType(modalTypes.roundOverSolo));
     }

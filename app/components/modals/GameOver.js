@@ -23,16 +23,6 @@ export class GameOver extends Component {
         }
     }
 
-    // newMatch() {
-    //     requestAd();
-    //     this.props.setModalVisible(false);
-    //     this.props.setRoute('Menu');
-    //     setTimeout(() => {
-    //         if (this.props.matchId) return this.props.setRoute('Duel');
-    //         this.props.setRoute('Solo');
-    //     }, 250);
-    // }
-
     handleQuit() {
         requestAd();
         this.props.setModalVisible(false);
@@ -62,6 +52,9 @@ export class GameOver extends Component {
     renderSolo() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>
+                Match Over
+            </Text>
+            <Text style={ styles.scoreText }>
                 Score: { this.soloScoreDisplay() }
             </Text>
             <Button styles={ styles.buttonStyles }
@@ -75,7 +68,7 @@ export class GameOver extends Component {
             <Text style={ styles.text }>
                 { this.winLoseText() }
             </Text>
-            <Text style={ styles.text }>
+            <Text style={ styles.scoreText }>
                 { this.duelScoreDisplay() }
             </Text>
             <Button styles={ styles.buttonStyles }
@@ -119,6 +112,10 @@ const styles = {
     text: {
         fontSize: 25,
         margin: 5
+    },
+    scoreText: {
+        fontSize: 20,
+        fontWeight: '300'
     },
     buttonStyles: {
         container: {
