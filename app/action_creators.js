@@ -77,6 +77,18 @@ export function setOpponentWord(word) {
     };
 }
 
+export function setReady(matchId) {
+    return {
+        type: 'SET_READY',
+        meta: {
+            event: events.players.ready,
+            eventParams: {
+                matchId
+            }
+        }
+    };
+}
+
 // matches
 export function setMatchId(matchId) {
     return {
@@ -249,16 +261,9 @@ export function setModalVisible(isVisible) {
     };
 }
 
-export function setModalType(modalType, params) {
-    let action = {
+export function setModalType(modalType) {
+    return {
         type: 'SET_MODAL_TYPE',
         modalType
     }
-    if (modalType === modalTypes.waiting) {
-        action.meta = {
-            event: events.players.ready,
-            eventParams: params
-        };
-    }
-    return action;
 }

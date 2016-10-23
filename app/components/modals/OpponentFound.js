@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 
 import Button from '../Button';
 import {
-    setModalVisible,
     setModalType,
-    setTimerPause,
-    setRoute
+    setRoute,
+    setReady
 } from '../../action_creators';
-import { mainColor, mainTextColor, timeOut } from '../../constants';
+import {
+    mainColor,
+    mainTextColor,
+    timeOut,
+    modalTypes
+} from '../../constants';
 
 class OpponentFound extends Component {
     componentDidMount() {
@@ -22,7 +26,8 @@ class OpponentFound extends Component {
 
     handleReady() {
         const { matchId } = this.props;
-        this.props.setModalType('waiting', { matchId });
+        this.props.setModalType(modalTypes.waiting);
+        this.props.setReady(matchId);
         this.props.setRoute('Duel');
     }
 
@@ -50,7 +55,7 @@ function mapStateToProps (state) {
     };
 }
 
-const actions = { setModalVisible, setModalType, setTimerPause, setRoute };
+const actions = { setModalType, setRoute, setReady };
 export default connect(mapStateToProps, actions)(OpponentFound);
 
 const styles = {
