@@ -99,6 +99,11 @@ class CustomModal extends Component {
                     hasLoading={ false }
                     buttonText={ 'Okay' }
                     buttonAction={ this.closeModal.bind(this) } />;
+            case modalTypes.loading:
+                return <BasicModal
+                    text={ 'Loading' }
+                    hasButton={ false }
+                    hasLoading={ true } />;
         }
         return <View />;
     }

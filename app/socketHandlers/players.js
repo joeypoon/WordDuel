@@ -22,5 +22,4 @@ export function onPlayerFound(data) {
 
 export function onPlayerReady(data) {
     store.dispatch(setModalVisible(false));
-    store.dispatch(setTimerPause(false));
 }

@@ -52,7 +52,6 @@ class RoundOver extends Component {
         this.props.requestLetterGrid();
         this.props.resetTimer();
         this.props.setModalVisible(false);
-        this.props.setTimerPause(false);
     }
 
     handleDone() {

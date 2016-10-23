@@ -24,7 +24,8 @@ export const modalTypes = {
     battleMenu: 'battleMenu',
     searching: 'searching',
     noConnection: 'noConnection',
-    pleaseLogin: 'pleaseLogin'
+    pleaseLogin: 'pleaseLogin',
+    loading: 'loading'
 };
 
 // Events

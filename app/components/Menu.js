@@ -13,7 +13,8 @@ import {
     setModalVisible,
     setModalType,
     searchOpponent,
-    setTimerPause
+    setTimerPause,
+    requestLetterGrid
 } from '../action_creators';
 import { requestData, logEvent } from '../utils/facebookUtils';
 import { mainColor, mainTextColor, modalTypes } from '../constants';
@@ -52,8 +53,7 @@ class Menu extends Component {
 
     handleSoloRoute() {
         if (!socket.connected) return this.noConnection();
-        this.props.setTimerPause(false);
-        this.props.setRoute('Solo');
+        this.props.requestLetterGrid();
     }
 
     handleDuelRoute() {
@@ -126,7 +126,8 @@ const actions = {
     setModalVisible,
     setModalType,
     searchOpponent,
-    setTimerPause
+    setTimerPause,
+    requestLetterGrid
 }
 export default connect(mapStateToProps, actions)(Menu);
 
