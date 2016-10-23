@@ -135,12 +135,26 @@ export function clearWord() {
     };
 }
 
-export function submitWord(word) {
+export function validateWord(word) {
     return {
         type: 'SUBMIT_WORD',
         meta: {
             event: events.words.validate,
             eventParams: {
+                word
+            }
+        }
+    };
+}
+
+export function submitWord(matchId, facebookId, word) {
+    return {
+        type: 'SUBMIT_WORD',
+        meta: {
+            event: events.words.validate,
+            eventParams: {
+                matchId,
+                facebookId,
                 word
             }
         }

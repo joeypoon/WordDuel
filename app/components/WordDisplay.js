@@ -11,7 +11,7 @@ import {
 
 import {
     clearWord,
-    submitWord,
+    validateWord,
     resetActiveGrid,
     setModalType,
     setModalVisible,
@@ -35,7 +35,7 @@ class WordDisplay extends Component {
     handleSubmit() {
         this._swiper.scrollBy(1);
         if (this.props.timer > 0 && this.props.word.length > 0) {
-            this.props.submitWord(this.props.word);
+            this.props.validateWord(this.props.word);
             this.props.setModalType(modalTypes.submittingWord);
             this.props.setModalVisible(true);
         }
@@ -73,13 +73,14 @@ class WordDisplay extends Component {
 function mapStateToProps (state) {
     return {
         word: state.wordDisplay,
-        timer: state.timer.get('time')
+        timer: state.timer.get('time'),
+        matchId: state.players.get('matchId')
     };
 }
 
 const actions = {
     clearWord,
-    submitWord,
+    validateWord,
     resetActiveGrid,
     setModalType,
     setModalVisible,
