@@ -132,13 +132,13 @@ function mapStateToProps (state) {
 
 const actions = {
     resetActiveGrid,
-    setModalVisible,
     setRoute,
+    setModalVisible,
+    setModalType,
     clearWord,
     cancelSearch,
     setMatchId,
-    setOpponentName,
-    setModalType
+    setOpponentName
 };
 export default connect(mapStateToProps, actions)(CustomModal);
 

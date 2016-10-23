@@ -4,7 +4,8 @@ import {
     incrementRound,
     resetRound,
     setModalType,
-    setOpponentWord
+    setOpponentWord,
+    submitWord
 } from '../action_creators';
 
 function isDuel() {
