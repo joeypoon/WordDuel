@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { LoginButton } from 'react-native-fbsdk';
+import { socket } from '../socket';
 
 import Button from './Button';
 import {
@@ -15,12 +16,22 @@ import {
     setTimerPause
 } from '../action_creators';
 import { requestData, logEvent } from '../utils/facebookUtils';
-import { mainColor, mainTextColor } from '../constants';
+import { mainColor, mainTextColor, modalTypes } from '../constants';
 import { requestAd } from '../utils/adMobUtils';
 
 const menuItems = ['Solo', 'Duel'];
 
 class Menu extends Component {
+    pleaseLogin() {
+        this.props.setModalType(modalTypes.pleaseLogin);
+        this.props.setModalVisible(true);
+    }
+
+    noConnection() {
+        this.props.setModalType(modalTypes.noConnection);
+        this.props.setModalVisible(true);
+    }
+
     handleLogin(error, result) {
         if (error) {
             logEvent('error', null, result.error)
@@ -45,7 +56,9 @@ class Menu extends Component {
     }
 
     handleDuelRoute() {
-        this.props.setModalType('searching');
+        if (!socket) return this.noConnection();
+        if (!this.props.facebookId) return this.pleaseLogin();
+        this.props.setModalType(modalTypes.searching);
         this.props.setModalVisible(true);
         this.props.searchOpponent(this.props.facebookId);
     }

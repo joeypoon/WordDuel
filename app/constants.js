@@ -6,7 +6,7 @@ export const mainColor = '#16a085';
 export const secondaryColor = '#e74c3c';
 
 // Urls
-export const rootUrl = 'http://10.0.1.6:9004';
+export const rootUrl = 'http://127.0.0.1:9004';
 export const playersUrl = `${ rootUrl }/players`;
 
 export const maxRounds = 1;
@@ -22,7 +22,9 @@ export const modalTypes = {
     submittingWord: 'submittingWord',
     playerDisconnect: 'playerDisconnect',
     battleMenu: 'battleMenu',
-    searching: 'searching'
+    searching: 'searching',
+    noConnection: 'noConnection',
+    pleaseLogin: 'pleaseLogin'
 };
 
 // Events

@@ -221,7 +221,9 @@ export function submitScore(score) {
         type: 'SUBMIT_SCORE',
         meta: {
             event: events.score.submit,
-            score
+            eventParams: {
+                score
+            }
         }
     };
 }

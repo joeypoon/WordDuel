@@ -38,6 +38,10 @@ class CustomModal extends Component {
         this.props.setModalType(modalTypes.gameOver);
     }
 
+    closeModal() {
+        this.props.setModalVisible(false);
+    }
+
     renderContent() {
         switch (this.props.modalType) {
             case modalTypes.battleMenu:
@@ -81,6 +85,20 @@ class CustomModal extends Component {
                     hasLoading={ false }
                     buttonText={ 'Okay' }
                     buttonAction={ this.playerDisconnectAction.bind(this) } />;
+            case modalTypes.noConnection:
+                return <BasicModal
+                    text={ 'No connection' }
+                    hasButton={ true }
+                    hasLoading={ false }
+                    buttonText={ 'Okay' }
+                    buttonAction={ this.closeModal.bind(this) } />;
+            case modalTypes.pleaseLogin:
+                return <BasicModal
+                    text={ 'Please login first' }
+                    hasButton={ true }
+                    hasLoading={ false }
+                    buttonText={ 'Okay' }
+                    buttonAction={ this.closeModal.bind(this) } />;
         }
         return <View />;
     }
