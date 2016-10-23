@@ -33,8 +33,8 @@ export function onGridNew(data) {
 }
 
 export function onMatchDisconnect() {
+    store.dispatch(setModalType(modalTypes.playerDisconnect));
+    store.dispatch(setModalVisible(true));
     store.dispatch(setMatchId(null));
     store.dispatch(setOpponentName(null));
-    setModalType(modalTypes.playerDisconnect);
-    setModalVisible(true);
 }
