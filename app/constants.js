@@ -8,7 +8,7 @@ export const secondaryColor = '#e74c3c';
 // Urls
 export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
-export const maxRounds = 1;
+export const maxRounds = 10;
 export const timeOut = 5000; // in milliseconds
 
 export const modalTypes = {
