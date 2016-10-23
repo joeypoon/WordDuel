@@ -6,8 +6,7 @@ export const mainColor = '#16a085';
 export const secondaryColor = '#e74c3c';
 
 // Urls
-export const rootUrl = 'http://127.0.0.1:9004';
-export const playersUrl = `${ rootUrl }/players`;
+export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
 export const maxRounds = 1;
 export const timeOut = 5000; // in milliseconds
