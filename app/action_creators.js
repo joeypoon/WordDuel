@@ -151,7 +151,7 @@ export function submitWord(matchId, facebookId, word) {
     return {
         type: 'SUBMIT_WORD',
         meta: {
-            event: events.words.validate,
+            event: events.words.submit,
             eventParams: {
                 matchId,
                 facebookId,
