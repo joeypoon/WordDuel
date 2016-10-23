@@ -1,8 +1,7 @@
 import { store } from '../store';
-import { modalTypes, maxRounds } from '../constants';
+import { modalTypes } from '../constants';
 import {
     incrementRound,
-    resetRound,
     setModalType,
     setOpponentWord,
     submitWord
@@ -12,31 +11,27 @@ function isDuel() {
     return !!store.getState().players.get('matchId');
 }
 
-function isLastRound() {
-    const currentRound = store.getState().round;
-    return currentRound >= maxRounds;
+function getOpponentWord(words) {
+    const playerWord = store.getState().wordDisplay;
+    return words[0] === playerWord ? words[1] : words[0];
 }
 
 export function onWordValidate(data) {
     const storePlayers = store.getState().players;
     const matchId = storePlayers.get('matchId');
-    const facebookId = storePlayers.get('facebookId');
     if (data.isValid) {
         store.dispatch(incrementRound());
         if (isDuel()) {
             store.dispatch(setModalType(modalTypes.waiting));
-            return store.dispatch(submitWord(matchId, facebookId, data.word));
+            return store.dispatch(submitWord(matchId, data.word));
         }
         return store.dispatch(setModalType(modalTypes.roundOverSolo));
     }
     return store.dispatch(setModalType(modalTypes.invalidWord));
 }
 
-export function onWordSubmit(data) {
-    const { word, facebookId } = data;
-    const playerFbId = store.getState().players.get('facebookId');
-    if (playerFbId !== facebookId) {
-        store.dispatch(setOpponentWord(word));
-        store.dispatch(setModalType(modalTypes.roundOverDuel));
-    }
+export function onWordSubmit(words) {
+    const opponentWord = getOpponentWord(words);
+    store.dispatch(setOpponentWord(opponentWord));
+    store.dispatch(setModalType(modalTypes.roundOverDuel));
 }

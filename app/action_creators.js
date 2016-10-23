@@ -147,14 +147,13 @@ export function validateWord(word) {
     };
 }
 
-export function submitWord(matchId, facebookId, word) {
+export function submitWord(matchId, word) {
     return {
         type: 'SUBMIT_WORD',
         meta: {
             event: events.words.submit,
             eventParams: {
                 matchId,
-                facebookId,
                 word
             }
         }

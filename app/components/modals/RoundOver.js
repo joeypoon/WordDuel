@@ -25,6 +25,7 @@ import {
 
 class RoundOver extends Component {
     componentDidMount() {
+        this.props.clearWord();
         this.props.setTimerPause(true);
         this.timeout = setTimeout(this.handleDone.bind(this), timeOut);
     }
@@ -47,7 +48,6 @@ class RoundOver extends Component {
 
     nextRound() {
         this.props.setOpponentWord('');
-        this.props.clearWord();
         this.props.resetActiveGrid();
         this.props.requestLetterGrid();
         this.props.resetTimer();
