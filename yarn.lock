@@ -3194,7 +3194,7 @@ react-native-admob@1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/react-native-admob/-/react-native-admob-1.1.5.tgz#8d697c7f56bf30ed11969fe5a04abf129694c7dd"
 
-react-native-fbsdk@^0.3.0:
+react-native-fbsdk@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-0.3.0.tgz#52dfa58f2c1796c9df871717fd98b169b7a88ad6"
 
@@ -3647,7 +3647,7 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
-socket.io-client@1.5.0:
+socket.io-client:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-1.5.0.tgz#08232d0adb5a665a7c24bd9796557a33f58f38ae"
   dependencies:
