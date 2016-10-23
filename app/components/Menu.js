@@ -51,12 +51,14 @@ class Menu extends Component {
     }
 
     handleSoloRoute() {
+        console.log(socket);
+        if (!socket.connected) return this.noConnection();
         this.props.setTimerPause(false);
         this.props.setRoute('Solo');
     }
 
     handleDuelRoute() {
-        if (!socket) return this.noConnection();
+        if (!socket.connected) return this.noConnection();
         if (!this.props.facebookId) return this.pleaseLogin();
         this.props.setModalType(modalTypes.searching);
         this.props.setModalVisible(true);
