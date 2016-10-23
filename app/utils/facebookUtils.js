@@ -8,9 +8,7 @@ import { store } from '../store';
 import { socket } from '../socket';
 import { events } from '../constants';
 
-const requestManager = new GraphRequestManager();
-
-function responseInfoCallback(error: ? Object, result : ? Object) {
+function responseInfoCallback(error, result) {
     if (error) {
         logEvent('error', null, { message: error.toString() });
     } else {
@@ -36,7 +34,7 @@ function responseInfoCallback(error: ? Object, result : ? Object) {
 export function requestData() {
     const url = '/me?fields=id,first_name,picture.type(large)';
     const infoRequest = new GraphRequest(url, null, responseInfoCallback);
-    requestManager.addRequest(infoRequest).start();
+    new GraphRequestManager().addRequest(infoRequest).start();
 }
 
 export function logEvent(event) {

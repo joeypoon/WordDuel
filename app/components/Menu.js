@@ -51,7 +51,6 @@ class Menu extends Component {
     }
 
     handleSoloRoute() {
-        console.log(socket);
         if (!socket.connected) return this.noConnection();
         this.props.setTimerPause(false);
         this.props.setRoute('Solo');
@@ -75,7 +74,6 @@ class Menu extends Component {
 
     renderButtons() {
         return menuItems.map((route, index) => {
-            if (route === 'Duel' && !this.props.facebookId) return;
             if (route === 'Duel')
                 return <Button
                     text={ route }
