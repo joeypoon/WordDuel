@@ -25,13 +25,13 @@ import {
 
 class RoundOver extends Component {
     componentDidMount() {
-        this.props.clearWord();
         this.props.setTimerPause(true);
         this.timeout = setTimeout(this.handleDone.bind(this), timeOut);
     }
 
     componentWillUnmount() {
         clearTimeout(this.timeout);
+        this.props.clearWord();
     }
 
     isSolo() {
