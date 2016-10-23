@@ -12,6 +12,7 @@ import {
     resetActiveGrid,
     setRoute,
     setModalVisible,
+    setModalType,
     clearWord,
     cancelSearch,
     setMatchId,
@@ -136,7 +137,8 @@ const actions = {
     clearWord,
     cancelSearch,
     setMatchId,
-    setOpponentName
+    setOpponentName,
+    setModalType
 };
 export default connect(mapStateToProps, actions)(CustomModal);
 
