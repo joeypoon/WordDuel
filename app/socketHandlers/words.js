@@ -32,7 +32,7 @@ export function onWordValidate(data) {
 
 export function onWordSubmit(words) {
     const opponentWord = getOpponentWord(words);
-    const opponentScore = store.getState().scores.get('opponent');
+    const opponentScore = store.getState().score.get('opponent');
     store.dispatch(setOpponentWord(opponentWord));
     store.dispatch(setOpponentScore(opponentScore + opponentWord.length));
     store.dispatch(setModalType(modalTypes.roundOverDuel));
