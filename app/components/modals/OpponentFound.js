@@ -49,8 +49,8 @@ class OpponentFound extends Component {
 
 function mapStateToProps (state) {
     return {
-        opponentName: state.players.get('opponentName'),
-        opponentImage: state.players.get('opponentImage'),
+        opponentName: state.opponent.get('name'),
+        opponentImage: state.opponent.get('image'),
         matchId: state.players.get('matchId')
     };
 }

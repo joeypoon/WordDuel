@@ -99,7 +99,7 @@ function mapStateToProps(state) {
         playerScore: state.score.get('player'),
         timer: state.timer.get('time'),
         round: state.round,
-        opponentWord: state.players.get('opponentWord'),
+        opponentWord: state.opponent.get('word'),
         matchId: state.players.get('matchId')
     };
 }

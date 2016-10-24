@@ -28,8 +28,8 @@ function mapStateToProps (state) {
     return {
         playerImage: state.players.get('playerImage'),
         playerScore: state.score.get('player'),
-        opponentImage: state.players.get('opponentImage'),
-        opponentScore: state.score.get('opponent')
+        opponentImage: state.opponent.get('image'),
+        opponentScore: state.opponent.get('score')
     };
 }
 
