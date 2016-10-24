@@ -13,7 +13,7 @@ import {
     requestLetterGrid,
     setModalType,
     resetRound,
-    setOpponentWord,
+    setOpponent,
     setReady
 } from '../../action_creators';
 import {
@@ -54,7 +54,7 @@ class RoundOver extends Component {
             this.props.requestLetterGrid();
         } else {
             this.props.setModalType(modalTypes.waiting);
-            this.props.setOpponentWord('');
+            this.props.setOpponent({ word: null });
             this.props.setReady(this.props.matchId);
         }
     }
@@ -115,7 +115,7 @@ const actions = {
     requestLetterGrid,
     setModalType,
     resetRound,
-    setOpponentWord,
+    setOpponent,
     setReady
 }
 export default connect(mapStateToProps, actions)(RoundOver);

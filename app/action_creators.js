@@ -1,4 +1,4 @@
-import { events, modalTypes } from './constants';
+import { events, modalTypes, actionTypes } from './constants';
 
 // routes
 export function setRoute(route) {
@@ -49,31 +49,16 @@ export function searchOpponent(facebookId) {
     }
 }
 
-export function setOpponentName(name) {
+export function setOpponent(params) {
     return {
-        type: 'SET_OPPONENT_NAME',
-        name
+        type: actionTypes.setOpponent,
+        params
     };
 }
 
-export function setOpponentLevel(level) {
+export function clearOpponent() {
     return {
-        type: 'SET_OPPONENT_LEVEL',
-        level
-    };
-}
-
-export function setOpponentImage(image) {
-    return {
-        type: 'SET_OPPONENT_IMAGE',
-        image
-    };
-}
-
-export function setOpponentWord(word) {
-    return {
-        type: 'SET_OPPONENT_WORD',
-        word
+        type: actionTypes.clearOpponent
     };
 }
 
@@ -230,13 +215,6 @@ export function setTimerPause(isPaused) {
 export function setPlayerScore(score) {
     return {
         type: 'SET_PLAYER_SCORE',
-        score
-    };
-}
-
-export function setOpponentScore(score) {
-    return {
-        type: 'SET_OPPONENT_SCORE',
         score
     };
 }

@@ -2,7 +2,7 @@ import { store } from '../store';
 import {
     loadLetterGrid,
     setMatchId,
-    setOpponentName,
+    clearOpponent,
     setModalVisible,
     setModalType,
     setTimerPause,
@@ -34,7 +34,7 @@ export function onGridNew(data) {
 
 export function onMatchDisconnect() {
     store.dispatch(setMatchId(null));
-    store.dispatch(setOpponentName(null));
+    store.dispatch(clearOpponent());
     store.dispatch(setModalType(modalTypes.playerDisconnect));
     store.dispatch(setModalVisible(true));
 }

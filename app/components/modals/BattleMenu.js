@@ -7,7 +7,7 @@ import Button from '../Button';
 import {
     setModalVisible,
     setRoute,
-    setOpponentName
+    clearOpponent
 } from '../../action_creators';
 import { logEvent } from '../../utils/facebookUtils';
 import { mainColor, mainTextColor } from '../../constants';
@@ -17,7 +17,7 @@ class BattleMenu extends Component {
         logEvent('Quit battle');
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
-        this.props.setOpponentName(null);
+        this.props.clearOpponent();
         // emit to server;
     }
 
@@ -36,7 +36,7 @@ class BattleMenu extends Component {
 const actions = {
     setModalVisible,
     setRoute,
-    setOpponentName
+    clearOpponent
 }
 export default connect(null, actions)(BattleMenu);
 

@@ -16,7 +16,7 @@ import {
     clearWord,
     cancelSearch,
     setMatchId,
-    setOpponentName
+    clearOpponent
 } from '../action_creators';
 import { modalTypes } from '../constants';
 
@@ -24,7 +24,7 @@ class CustomModal extends Component {
     searchingAction() {
         this.props.cancelSearch(this.props.facebookId);
         this.props.setMatchId(null);
-        this.props.setOpponentName(null);
+        this.props.clearOpponent();
         this.props.setRoute('Menu');
         this.props.setModalVisible(false);
     }
@@ -138,7 +138,7 @@ const actions = {
     clearWord,
     cancelSearch,
     setMatchId,
-    setOpponentName
+    clearOpponent
 };
 export default connect(mapStateToProps, actions)(CustomModal);
 

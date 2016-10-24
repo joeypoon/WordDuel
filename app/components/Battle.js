@@ -11,11 +11,10 @@ import { logEvent } from '../utils';
 import {
     requestLetterGrid,
     setPlayerScore,
-    setOpponentScore,
     resetActiveGrid,
     clearWord,
     setRoute,
-    setOpponentName,
+    clearOpponent,
     resetRound,
     resetTimer
 } from '../action_creators';
@@ -42,11 +41,10 @@ class Battle extends Component {
 
     prepareRound() {
         this.props.setPlayerScore(0);
-        this.props.setOpponentScore(0);
         this.props.resetActiveGrid();
         this.props.clearWord();
         this.props.resetRound();
-        this.props.setOpponentName(null);
+        this.props.clearOpponent();
         this.props.resetTimer();
     }
 
@@ -67,11 +65,10 @@ class Battle extends Component {
 const actions = {
     requestLetterGrid,
     setPlayerScore,
-    setOpponentScore,
     resetActiveGrid,
     clearWord,
     setRoute,
-    setOpponentName,
+    clearOpponent,
     resetRound,
     resetTimer
 };

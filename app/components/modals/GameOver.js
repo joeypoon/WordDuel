@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {
     setModalVisible,
     setRoute,
-    setOpponentName,
+    clearOpponent,
     resetRound,
     submitScore,
     setMatchId,
@@ -28,7 +28,7 @@ export class GameOver extends Component {
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
         this.props.setMatchId(null);
-        this.props.setOpponentName(null);
+        this.props.clearOpponent();
     }
 
     soloScoreDisplay() {
@@ -92,7 +92,7 @@ function mapStateToProps (state) {
 }
 
 const actions = {
-    setOpponentName,
+    clearOpponent,
     setModalVisible,
     setRoute,
     resetRound,

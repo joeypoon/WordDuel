@@ -3,9 +3,8 @@ import { modalTypes } from '../constants';
 import {
     incrementRound,
     setModalType,
-    setOpponentWord,
-    submitWord,
-    setOpponentScore
+    setOpponent,
+    submitWord
 } from '../action_creators';
 
 function isDuel() {
@@ -32,8 +31,7 @@ export function onWordValidate(data) {
 
 export function onWordSubmit(words) {
     const opponentWord = getOpponentWord(words);
-    const opponentScore = store.getState().score.get('opponent');
-    store.dispatch(setOpponentWord(opponentWord));
-    store.dispatch(setOpponentScore(opponentScore + opponentWord.length));
+    const opponentScore = store.getState().score.get('opponent') + opponentWord.length;
+    store.dispatch(setOpponent({ word: opponentWord, score: opponentScore }));
     store.dispatch(setModalType(modalTypes.roundOverDuel));
 }
