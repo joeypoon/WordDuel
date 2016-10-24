@@ -17,9 +17,8 @@ function getOpponentWord(words) {
 }
 
 export function onWordValidate(data) {
-    const storePlayers = store.getState().players;
-    const matchId = storePlayers.get('matchId');
     if (data.isValid) {
+        const matchId = store.getState().players.get('matchId');
         store.dispatch(incrementRound());
         if (isDuel()) {
             store.dispatch(setModalType(modalTypes.waiting));

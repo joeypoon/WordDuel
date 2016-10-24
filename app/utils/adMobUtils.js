@@ -12,7 +12,7 @@ function handleInterstitialLoad() {
 
 export function adMobEventListeners() {
     AdMobInterstitial.setAdUnitID('ca-app-pub-7555574328592077/8559000747');
-    // AdMobInterstitial.setTestDeviceID('EMULATOR');
+    AdMobInterstitial.setTestDeviceID('EMULATOR');
     AdMobInterstitial.addEventListener('interstitialDidLoad', handleInterstitialLoad);
 }
 

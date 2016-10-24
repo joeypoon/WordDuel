@@ -13,7 +13,6 @@ import {
     setModalVisible,
     setModalType,
     searchOpponent,
-    setTimerPause,
     requestLetterGrid
 } from '../action_creators';
 import { requestData, logEvent } from '../utils/facebookUtils';
@@ -126,7 +125,6 @@ const actions = {
     setModalVisible,
     setModalType,
     searchOpponent,
-    setTimerPause,
     requestLetterGrid
 }
 export default connect(mapStateToProps, actions)(Menu);

@@ -5,8 +5,7 @@ import {
     setOpponentName,
     setOpponentImage,
     setMatchId,
-    setModalVisible,
-    setTimerPause
+    setModalVisible
 } from '../action_creators';
 
 export function onPlayerFound(data) {
@@ -18,8 +17,4 @@ export function onPlayerFound(data) {
     store.dispatch(setOpponentImage(image));
     store.dispatch(setMatchId(data.matchId));
     store.dispatch(setModalType(modalTypes.opponentFound));
-}
-
-export function onPlayerReady(data) {
-    store.dispatch(setModalVisible(false));
 }

@@ -35,9 +35,9 @@ class WordDisplay extends Component {
     handleSubmit() {
         this._swiper.scrollBy(1);
         if (this.props.timer > 0 && this.props.word.length > 0) {
-            this.props.validateWord(this.props.word);
             this.props.setModalType(modalTypes.submittingWord);
             this.props.setModalVisible(true);
+            this.props.validateWord(this.props.word);
         }
     }
 

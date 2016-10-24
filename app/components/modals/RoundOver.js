@@ -13,7 +13,8 @@ import {
     requestLetterGrid,
     setModalType,
     resetRound,
-    setOpponentWord
+    setOpponentWord,
+    setReady
 } from '../../action_creators';
 import {
     mainColor,
@@ -47,11 +48,15 @@ class RoundOver extends Component {
     }
 
     nextRound() {
-        this.props.setOpponentWord('');
         this.props.resetActiveGrid();
-        this.props.requestLetterGrid();
         this.props.resetTimer();
-        this.props.setModalVisible(false);
+        if (this.isSolo()) {
+            this.props.requestLetterGrid();
+        } else {
+            this.props.setModalType(modalTypes.waiting);
+            this.props.setOpponentWord('');
+            this.props.setReady(this.props.matchId);
+        }
     }
 
     handleDone() {
@@ -94,7 +99,8 @@ function mapStateToProps(state) {
         playerScore: state.score.get('player'),
         timer: state.timer.get('time'),
         round: state.round,
-        opponentWord: state.players.get('opponentWord')
+        opponentWord: state.players.get('opponentWord'),
+        matchId: state.players.get('matchId')
     };
 }
 
@@ -109,7 +115,8 @@ const actions = {
     requestLetterGrid,
     setModalType,
     resetRound,
-    setOpponentWord
+    setOpponentWord,
+    setReady
 }
 export default connect(mapStateToProps, actions)(RoundOver);
 
