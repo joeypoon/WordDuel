@@ -106,19 +106,6 @@ export function endMatch(matchId) {
 }
 
 // word display
-export function addLetter(letter) {
-    return {
-        type: 'ADD_LETTER',
-        letter
-    };
-}
-
-export function clearWord() {
-    return {
-        type: 'CLEAR_WORD'
-    };
-}
-
 export function validateWord(word) {
     return {
         type: 'SUBMIT_WORD',

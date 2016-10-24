@@ -10,7 +10,6 @@ import {
 } from '../constants';
 
 import {
-    clearWord,
     validateWord,
     resetActiveGrid,
     setModalType,
@@ -28,7 +27,7 @@ class WordDisplay extends Component {
 
     handleClear() {
         this._swiper.scrollBy(-1);
-        this.props.clearWord();
+        this.props.setPlayer({ word: '' });
         this.props.resetActiveGrid();
     }
 
@@ -72,14 +71,13 @@ class WordDisplay extends Component {
 
 function mapStateToProps (state) {
     return {
-        word: state.wordDisplay,
+        word: state.player.get('word'),
         timer: state.timer.get('time'),
         matchId: state.players.get('matchId')
     };
 }
 
 const actions = {
-    clearWord,
     validateWord,
     resetActiveGrid,
     setModalType,

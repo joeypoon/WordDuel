@@ -12,9 +12,7 @@ import {
     requestLetterGrid,
     setPlayer,
     resetActiveGrid,
-    clearWord,
     setRoute,
-    clearOpponent,
     resetRound,
     resetTimer
 } from '../action_creators';
@@ -40,11 +38,9 @@ class Battle extends Component {
     }
 
     prepareRound() {
-        this.props.setPlayer({ score: 0 });
+        this.props.setPlayer({ score: 0, word: '' });
         this.props.resetActiveGrid();
-        this.props.clearWord();
         this.props.resetRound();
-        this.props.clearOpponent();
         this.props.resetTimer();
     }
 
@@ -66,9 +62,7 @@ const actions = {
     requestLetterGrid,
     setPlayer,
     resetActiveGrid,
-    clearWord,
     setRoute,
-    clearOpponent,
     resetRound,
     resetTimer
 };

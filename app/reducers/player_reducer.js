@@ -6,8 +6,8 @@ const initialState = new Map([
     ['image', null],
     ['level', null],
     ['socket', null],
-    ['word', null],
-    ['score', null]
+    ['word', ''],
+    ['score', 0]
 ]);
 
 export function player(state = initialState, action) {

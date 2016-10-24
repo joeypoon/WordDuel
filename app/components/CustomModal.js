@@ -13,7 +13,7 @@ import {
     setRoute,
     setModalVisible,
     setModalType,
-    clearWord,
+    setPlayer,
     cancelSearch,
     setMatchId,
     clearOpponent
@@ -31,7 +31,7 @@ class CustomModal extends Component {
 
     invalidWordAction() {
         this.props.resetActiveGrid();
-        this.props.clearWord();
+        this.props.setPlayer({ word: '' });
         this.props.setModalVisible(false);
     }
 
@@ -135,7 +135,7 @@ const actions = {
     setRoute,
     setModalVisible,
     setModalType,
-    clearWord,
+    setPlayer,
     cancelSearch,
     setMatchId,
     clearOpponent

@@ -9,7 +9,8 @@ import {
     resetRound,
     submitScore,
     setMatchId,
-    endMatch
+    endMatch,
+    setPlayer
 } from '../../action_creators';
 import Button from '../Button';
 import { mainColor } from '../../constants';
@@ -29,6 +30,7 @@ export class GameOver extends Component {
         this.props.setRoute('Menu');
         this.props.setMatchId(null);
         this.props.clearOpponent();
+        this.props.setPlayer({ score: 0, word: '' });
     }
 
     soloScoreDisplay() {
@@ -98,7 +100,8 @@ const actions = {
     resetRound,
     submitScore,
     setMatchId,
-    endMatch
+    endMatch,
+    setPlayer
 }
 export default connect(mapStateToProps, actions)(GameOver);
 

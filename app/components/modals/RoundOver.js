@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Button from '../Button';
 import {
     setModalVisible,
-    clearWord,
     setPlayer,
     resetTimer,
     setTimerPause,
@@ -32,7 +31,7 @@ class RoundOver extends Component {
 
     componentWillUnmount() {
         clearTimeout(this.timeout);
-        this.props.clearWord();
+        this.props.setPlayer({ word: '' });
     }
 
     isSolo() {
@@ -54,7 +53,7 @@ class RoundOver extends Component {
             this.props.requestLetterGrid();
         } else {
             this.props.setModalType(modalTypes.waiting);
-            this.props.setOpponent({ word: null });
+            this.props.setOpponent({ word: '' });
             this.props.setReady(this.props.matchId);
         }
     }
@@ -96,7 +95,7 @@ class RoundOver extends Component {
 
 function mapStateToProps(state) {
     return {
-        playerWord: state.wordDisplay,
+        playerWord: state.player.get('word'),
         playerScore: state.player.get('score'),
         timer: state.timer.get('time'),
         round: state.round,
@@ -108,7 +107,6 @@ function mapStateToProps(state) {
 
 const actions = {
     setModalVisible,
-    clearWord,
     setPlayer,
     resetTimer,
     setTimerPause,

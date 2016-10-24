@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import { addLetter, updateActiveGrid } from '../action_creators';
+import { setPlayer, updateActiveGrid } from '../action_creators';
 import { mainColor, secondaryColor } from '../constants';
 
 class Letter extends Component {
@@ -10,7 +10,8 @@ class Letter extends Component {
     handlePress() {
         if (!this.props.active) {
             this.props.updateActiveGrid(this.props.letter.position, true);
-            this.props.addLetter(this.props.letter.value);
+            const word = this.props.word + this.props.letter.value;
+            this.props.setPlayer({ word });
         }
     }
 
@@ -31,7 +32,13 @@ class Letter extends Component {
     }
 }
 
-export default connect(null, { addLetter, updateActiveGrid })(Letter);
+function mapStateToProps(state) {
+    return {
+        word: state.player.get('word')
+    };
+}
+
+export default connect(null, { setPlayer, updateActiveGrid })(Letter);
 
 const styles = {
     container: {
