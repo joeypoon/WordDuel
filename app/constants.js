@@ -27,5 +27,11 @@ export const modalTypes = {
     loading: 'loading'
 };
 
+// actions
+export const actionTypes = {
+    setOpponent: 1,
+    clearOpponent: 2
+};
+
 // Events
 export const events = constants.events;

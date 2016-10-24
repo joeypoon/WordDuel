@@ -10,7 +10,7 @@ const INITIAL_STATE = new Map([
     ['matchId', null]
 ]);
 
-export default function (state = INITIAL_STATE, action) {
+export default function(state = INITIAL_STATE, action) {
     let nextState = new Map(state);
     switch (action.type) {
         case 'SET_FACEBOOK_ID':
