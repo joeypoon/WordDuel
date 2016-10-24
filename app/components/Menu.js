@@ -7,9 +7,7 @@ import { socket } from '../socket';
 import Button from './Button';
 import {
     setRoute,
-    setFacebookId,
-    setPlayerName,
-    setPlayerImage,
+    clearPlayer,
     setModalVisible,
     setModalType,
     searchOpponent,
@@ -44,9 +42,7 @@ class Menu extends Component {
         if (error) {
             logEvent('error', null, result.error)
         } else {
-            this.props.setFacebookId(null);
-            this.props.setPlayerName(null);
-            this.props.setPlayerImage(null);
+            this.props.clearPlayer();
         }
     }
 
@@ -111,17 +107,15 @@ class Menu extends Component {
 
 function mapStateToProps (state) {
     return {
-        playerName: state.players.get('playerName'),
-        playerImage: state.players.get('playerImage'),
-        facebookId: state.players.get('facebookId')
+        playerName: state.player.get('name'),
+        playerImage: state.player.get('image'),
+        facebookId: state.player.get('facebookId')
     };
 }
 
 const actions = {
     setRoute,
-    setFacebookId,
-    setPlayerName,
-    setPlayerImage,
+    clearPlayer,
     setModalVisible,
     setModalType,
     searchOpponent,

@@ -9,7 +9,10 @@ import score from './score_reducer';
 import modal from './modal_reducer';
 import players from './players_reducer';
 import round from './round_reducer';
-import { opponent } from './opponent_reducer';
+import {
+    player,
+    opponent
+} from './index';
 
 export default combineReducers({
     activeGrid,
@@ -21,5 +24,6 @@ export default combineReducers({
     modal,
     players,
     round,
+    player,
     opponent
 });

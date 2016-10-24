@@ -10,7 +10,7 @@ import { logEvent } from '../utils';
 
 import {
     requestLetterGrid,
-    setPlayerScore,
+    setPlayer,
     resetActiveGrid,
     clearWord,
     setRoute,
@@ -40,7 +40,7 @@ class Battle extends Component {
     }
 
     prepareRound() {
-        this.props.setPlayerScore(0);
+        this.props.setPlayer({ score: 0 });
         this.props.resetActiveGrid();
         this.props.clearWord();
         this.props.resetRound();
@@ -64,7 +64,7 @@ class Battle extends Component {
 
 const actions = {
     requestLetterGrid,
-    setPlayerScore,
+    setPlayer,
     resetActiveGrid,
     clearWord,
     setRoute,
@@ -75,7 +75,7 @@ const actions = {
 
 function mapStateToProps (state) {
     return {
-        facebookId: state.players.get('facebookId')
+        facebookId: state.player.get('facebookId')
     };
 }
 

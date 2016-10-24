@@ -6,7 +6,7 @@ import Button from '../Button';
 import {
     setModalVisible,
     clearWord,
-    setPlayerScore,
+    setPlayer,
     resetTimer,
     setTimerPause,
     resetActiveGrid,
@@ -60,7 +60,8 @@ class RoundOver extends Component {
     }
 
     handleDone() {
-        this.props.setPlayerScore(this.props.playerScore + this.props.playerWord.length);
+        const score = this.props.playerScore + this.props.playerWord.length;
+        this.props.setPlayer({ score });
         if (this.isLastRound()) return this.endMatch();
         this.nextRound();
     }
@@ -96,7 +97,7 @@ class RoundOver extends Component {
 function mapStateToProps(state) {
     return {
         playerWord: state.wordDisplay,
-        playerScore: state.score.get('player'),
+        playerScore: state.player.get('score'),
         timer: state.timer.get('time'),
         round: state.round,
         opponentWord: state.opponent.get('word'),
@@ -108,7 +109,7 @@ function mapStateToProps(state) {
 const actions = {
     setModalVisible,
     clearWord,
-    setPlayerScore,
+    setPlayer,
     resetTimer,
     setTimerPause,
     resetActiveGrid,

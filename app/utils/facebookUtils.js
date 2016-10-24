@@ -6,28 +6,22 @@ import {
 
 import { store } from '../store';
 import { socket } from '../socket';
-import { events } from '../constants';
+import { events, actionTypes } from '../constants';
+import {
+    setPlayer
+} from '../action_creators';
 
 function responseInfoCallback(error, result) {
     if (error) {
         logEvent('error', null, { message: error.toString() });
     } else {
-        const facebookId = result.id;
-        const name = result.first_name;
-        const image = result.picture.data.url;
-        store.dispatch({
-            type: 'SET_FACEBOOK_ID',
-            id: facebookId
-        });
-        store.dispatch({
-            type: 'SET_PLAYER_NAME',
-            name
-        });
-        store.dispatch({
-            type: 'SET_PLAYER_IMAGE',
-            image
-        });
-        socket.emit(events.players.login, { facebookId, name, image });
+        const params = {
+            facebookId: result.id,
+            name: result.first_name,
+            image: result.picture.data.url
+        };
+        store.dispatch(setPlayer(params));
+        socket.emit(events.players.login, params);
     }
 }
 

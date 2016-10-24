@@ -9,34 +9,6 @@ export function setRoute(route) {
 }
 
 // players
-export function setFacebookId(id) {
-    return {
-        type: 'SET_FACEBOOK_ID',
-        id
-    }
-}
-
-export function setPlayerName(name) {
-    return {
-        type: 'SET_PLAYER_NAME',
-        name
-    };
-}
-
-export function setPlayerLevel(level) {
-    return {
-        type: 'SET_PLAYER_LEVEL',
-        level
-    };
-}
-
-export function setPlayerImage(image) {
-    return {
-        type: 'SET_PLAYER_IMAGE',
-        image
-    };
-}
-
 export function searchOpponent(facebookId) {
     return {
         type: 'SEARCH_OPPONENT',
@@ -49,6 +21,21 @@ export function searchOpponent(facebookId) {
     }
 }
 
+// player
+export function setPlayer(params) {
+    return {
+        type: actionTypes.setPlayer,
+        params
+    };
+}
+
+export function clearPlayer() {
+    return {
+        type: actionTypes.clearPlayer
+    };
+}
+
+// opponent
 export function setOpponent(params) {
     return {
         type: actionTypes.setOpponent,
@@ -208,14 +195,6 @@ export function setTimerPause(isPaused) {
     return {
         type: 'SET_TIMER_PAUSE',
         isPaused
-    };
-}
-
-// score
-export function setPlayerScore(score) {
-    return {
-        type: 'SET_PLAYER_SCORE',
-        score
     };
 }
 

@@ -85,7 +85,7 @@ export class GameOver extends Component {
 
 function mapStateToProps (state) {
     return {
-        playerScore: state.score.get('player'),
+        playerScore: state.player.get('score'),
         opponentScore: state.opponent.get('score'),
         matchId: state.players.get('matchId')
     };

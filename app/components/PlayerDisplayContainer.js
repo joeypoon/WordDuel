@@ -26,8 +26,8 @@ class PlayerDisplayContainer extends Component {
 
 function mapStateToProps (state) {
     return {
-        playerImage: state.players.get('playerImage'),
-        playerScore: state.score.get('player'),
+        playerImage: state.player.get('image'),
+        playerScore: state.player.get('score'),
         opponentImage: state.opponent.get('image'),
         opponentScore: state.opponent.get('score')
     };

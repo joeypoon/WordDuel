@@ -29,8 +29,10 @@ export const modalTypes = {
 
 // actions
 export const actionTypes = {
-    setOpponent: 1,
-    clearOpponent: 2
+    setPlayer: 1,
+    clearPlayer: 2,
+    setOpponent: 3,
+    clearOpponent: 4
 };
 
 // Events
