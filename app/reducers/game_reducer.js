@@ -8,11 +8,15 @@ const initialState = new Map([
 
 export function game(state = initialState, action) {
     let nextState = new Map(state);
+
     switch (action.type) {
+
         case actionTypes.setRoute:
             return nextState.set('route', action.route);
+
         case actionTypes.setModalVisible:
             return nextState.set('modalVisible', action.modalVisible);
+
         case actionTypes.setModalType:
             return nextState.set('modalType', action.modalType);
     }

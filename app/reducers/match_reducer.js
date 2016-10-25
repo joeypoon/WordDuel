@@ -24,6 +24,7 @@ export function match(state = initialState, action) {
     let nextState = deepClone(state);
 
     switch (action.type) {
+
         case actionTypes.setMatchId:
             return nextState.set('id', action.matchId);
 

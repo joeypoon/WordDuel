@@ -11,13 +11,16 @@ const initialState = new Map([
 
 export function opponent(state = initialState, action) {
     let nextState = new Map(state);
+
     switch (action.type) {
+
         case actionTypes.setOpponent:
             const keys = Object.keys(action.params);
             keys.forEach(key => {
                 nextState.set(key, action.params[key]);
             });
             return nextState;
+
         case actionTypes.clearOpponent:
             return initialState;
     }
