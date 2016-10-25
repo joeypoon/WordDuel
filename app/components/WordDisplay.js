@@ -72,7 +72,7 @@ class WordDisplay extends Component {
 function mapStateToProps (state) {
     return {
         word: state.player.get('word'),
-        timer: state.timer.get('time'),
+        timer: state.match.get('timer'),
         matchId: state.match.get('id')
     };
 }

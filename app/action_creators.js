@@ -61,7 +61,7 @@ export function setReady(matchId) {
     };
 }
 
-// matches
+// match
 export function setMatchId(matchId) {
     return {
         type: actionTypes.setMatchId,
@@ -108,6 +108,19 @@ export function endMatch(matchId) {
                 matchId
             }
         }
+    };
+}
+
+export function decrementTimer() {
+    return {
+        type: actionTypes.decrementTimer
+    };
+}
+
+export function setTimerPause(isPaused) {
+    return {
+        type: actionTypes.setTimerPause,
+        isPaused
     };
 }
 
@@ -172,22 +185,9 @@ export function loadLetterGrid(grid) {
 
 
 // timer
-export function decrementTimer() {
-    return {
-        type: 'DECREMENT_TIMER'
-    };
-}
-
 export function resetTimer() {
     return {
         type: 'RESET_TIMER'
-    };
-}
-
-export function setTimerPause(isPaused) {
-    return {
-        type: 'SET_TIMER_PAUSE',
-        isPaused
     };
 }
 

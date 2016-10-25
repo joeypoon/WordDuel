@@ -46,8 +46,8 @@ class Timer extends Component {
 
 function mapStateToProps (state) {
     return {
-        timer: state.timer.get('time'),
-        isPaused: state.timer.get('isPaused')
+        timer: state.match.get('timer'),
+        isPaused: state.match.get('isPaused')
     };
 }
 

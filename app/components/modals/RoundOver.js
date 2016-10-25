@@ -102,9 +102,9 @@ function mapStateToProps(state) {
     return {
         playerWord: state.player.get('word'),
         playerScore: state.player.get('score'),
-        timer: state.timer.get('time'),
-        round: state.round,
         opponentWord: state.opponent.get('word'),
+        timer: state.match.get('timer'),
+        round: state.match.get('round'),
         matchId: state.match.get('id')
     };
 }

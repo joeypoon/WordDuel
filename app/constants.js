@@ -10,7 +10,7 @@ export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
 export const maxRounds = 7;
 export const timeOut = 5000; // in milliseconds
-export const timer = 15;
+export const timerDefault = 15;
 
 export const modalTypes = {
     waiting: 'waiting',
@@ -37,7 +37,9 @@ export const actionTypes = {
     setMatchId: 5,
     incrementRound: 6,
     resetRound: 7,
-    clearMatch: 8
+    clearMatch: 8,
+    decrementTimer: 9,
+    setTimerPause: 10
 };
 
 // Events
