@@ -7,21 +7,15 @@ export function setMatchId(matchId) {
     };
 }
 
-export function incrementRound() {
-    return {
-        type: actionTypes.incrementRound
-    };
-}
-
 export function clearMatch() {
     return {
         type: actionTypes.clearMatch
     };
 }
 
-export function resetRound() {
+export function newRound() {
     return {
-        type: actionTypes.resetRound
+        type: actionTypes.newRound
     };
 }
 
@@ -49,47 +43,6 @@ export function updateActiveGrid(position, active) {
 export function resetActiveGrid() {
     return {
         type: actionTypes.resetActiveGrid
-    };
-}
-
-export function loadLetterGrid(grid) {
-    return {
-        type: actionTypes.loadLetterGrid,
-        grid
-    };
-}
-
-export function requestLetterGrid() {
-    return {
-        type: actionTypes.requestLetterGrid,
-        meta: {
-            event: events.matches.grid.new
-        }
-    };
-}
-
-export function validateWord(word) {
-    return {
-        type: actionTypes.validateWord,
-        meta: {
-            event: events.words.validate,
-            eventParams: {
-                word
-            }
-        }
-    };
-}
-
-export function submitWord(matchId, word) {
-    return {
-        type: actionTypes.submitWord,
-        meta: {
-            event: events.words.submit,
-            eventParams: {
-                matchId,
-                word
-            }
-        }
     };
 }
 

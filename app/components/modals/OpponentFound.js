@@ -25,7 +25,7 @@ class OpponentFound extends Component {
     }
 
     handleReady() {
-        this.props.setRoute('Duel');
+        this.props.setRoute('Battle');
 
         if (this.props.opponentReady) {
             this.props.sendReady(this.props.opponentSocket);

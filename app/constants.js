@@ -15,7 +15,7 @@ export const rootUrl = 'http://localhost:9004';
 // export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
 // defaults
-export const timerDefault = 15;
+export const timerDefault = 12;
 
 export function getActiveGridDefault() {
     let activeGrid = [];
@@ -27,18 +27,25 @@ export function getActiveGridDefault() {
     return activeGrid;
 }
 
-export function getLetterGridDefault() {
-    const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'];
-    const letters = alpha.map((letter, index) => {
-        return { value: letter, position: index }
-    });
+const alphabet = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g',
+    'h', 'i', 'j', 'k', 'l', 'm', 'n',
+    'o', 'p', 'q', 'r', 's', 't', 'u',
+    'v', 'w', 'x', 'y', 'z',
+];
 
-    return [
-        letters.splice(0, 5),
-        letters.splice(0, 5),
-        letters.splice(0, 5),
-        letters.splice(0, 5)
-    ];
+const gridSize = 20;
+
+function getRandomLetter() {
+    return alphabet[Math.floor(Math.random() * alphabet.length)];
+}
+
+export function getRandomLetterGrid() {
+    let grid = [];
+    while (grid.length < gridSize) {
+        grid.push(getRandomLetter());
+    }
+    return grid;
 }
 
 export const modalTypes = {
@@ -62,10 +69,10 @@ export const actionTypes = {
     // player
     setPlayer: 1,
     clearPlayer: 2,
-    searchOpponent: 21,
-    cancelSearch: 22,
-    sendReady: 23,
-    submitScore: 24,
+    searchOpponent: 15,
+    cancelSearch: 14,
+    sendReady: 13,
+    submitScore: 6,
 
     // opponent
     setOpponent: 3,
@@ -73,16 +80,12 @@ export const actionTypes = {
 
     // match
     setMatchId: 5,
-    incrementRound: 6,
-    resetRound: 7,
+    newRound: 7,
     clearMatch: 8,
     decrementTimer: 9,
     setTimerPause: 10,
     resetActiveGrid: 11,
     updateActiveGrid: 12,
-    loadLetterGrid: 13,
-    requestLetterGrid: 14,
-    validateWord: 15,
     submitWord: 16,
     endMatch: 17,
 

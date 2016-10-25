@@ -10,8 +10,7 @@ import {
     clearPlayer,
     setModalVisible,
     setModalType,
-    searchOpponent,
-    requestLetterGrid
+    searchOpponent
 } from '../actionCreators';
 import {
     requestData,
@@ -50,7 +49,7 @@ class Menu extends Component {
 
     handleSoloRoute() {
         if (!socket.connected) return this.noConnection();
-        this.props.requestLetterGrid();
+        this.props.setRoute('Battle');
     }
 
     handleDuelRoute() {
@@ -120,8 +119,7 @@ const actions = {
     clearPlayer,
     setModalVisible,
     setModalType,
-    searchOpponent,
-    requestLetterGrid
+    searchOpponent
 }
 export default connect(mapStateToProps, actions)(Menu);
 

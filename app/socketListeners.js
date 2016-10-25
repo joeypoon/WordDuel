@@ -10,9 +10,8 @@ socket.on(events.words.validate, socketHandlers.onWordValidate);
 socket.on(events.words.submit, socketHandlers.onWordSubmit);
 
 // matches
-socket.on(events.matches.grid.new, socketHandlers.onGridNew);
 socket.on(events.matches.disconnect, socketHandlers.onMatchDisconnect);
 
 // players
-socket.on(events.players.found, socketHandlers.onFound);
-socket.on(events.players.ready, socketHandlers.onReady)
+socket.on(events.players.found, socketHandlers.onPlayerFound);
+socket.on(events.players.ready, socketHandlers.onPlayerReady)

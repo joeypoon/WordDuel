@@ -10,7 +10,7 @@ import {
 } from '../constants';
 
 import {
-    validateWord,
+    submitWord,
     resetActiveGrid,
     setModalType,
     setModalVisible,
@@ -18,6 +18,10 @@ import {
 } from '../actionCreators';
 
 class WordDisplay extends Component {
+    isValidSubmit() {
+        return this.props.timer > 0 && this.props.word.length > 0
+    }
+
     handleMomentumScrollEnd(e, state, context) {
         if (state.index === 2) {
             this.handleClear();
@@ -34,10 +38,10 @@ class WordDisplay extends Component {
 
     handleSubmit() {
         this._swiper.scrollBy(1);
-        if (this.props.timer > 0 && this.props.word.length > 0) {
+        if (this.isValidSubmit()) {
             this.props.setModalType(modalTypes.submittingWord);
             this.props.setModalVisible(true);
-            this.props.validateWord(this.props.word);
+            this.props.submitWord(this.props.opponentSocket, this.props.word);
         }
     }
 
@@ -74,12 +78,12 @@ function mapStateToProps (state) {
     return {
         word: state.player.get('word'),
         timer: state.match.get('timer'),
-        matchId: state.match.get('id')
+        opponentSocket: state.opponent.get('socket')
     };
 }
 
 const actions = {
-    validateWord,
+    submitWord,
     resetActiveGrid,
     setModalType,
     setModalVisible,

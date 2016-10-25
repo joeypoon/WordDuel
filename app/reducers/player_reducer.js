@@ -8,7 +8,8 @@ const initialState = new Map([
     ['socket', null],
     ['word', ''],
     ['score', 0],
-    ['isReady', false]
+    ['isReady', false],
+    ['hasSubmitted', false]
 ]);
 
 export function player(state = initialState, action) {

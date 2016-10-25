@@ -9,9 +9,8 @@ import {
     setPlayer,
     setOpponent,
     setTimerPause,
-    requestLetterGrid,
     sendReady,
-    resetRound
+    newRound
 } from '../../actionCreators';
 import {
     mainColor,
@@ -29,15 +28,35 @@ class RoundOver extends Component {
 
     componentWillUnmount() {
         clearTimeout(this.timeout);
-        this.props.setPlayer({ word: '' });
+        this.props.setPlayer({ word: '', hasSubmitted: false });
+        const score = this.props.opponentScore + this.props.opponentWord.length;
+        this.props.setOpponent({ score });
     }
 
     isSolo() {
-        return this.props.players === 1;
+        return !this.props.opponentSocket;
     }
 
     isLastRound() {
         return this.props.round >= maxRounds;
+    }
+
+    startRound() {
+        this.props.newRound();
+        this.props.setModalVisible(false);
+        this.props.setTimerPause(false);
+    }
+
+    handleNextDuelRound() {
+        this.props.sendReady(this.props.opponentSocket);
+
+        if (this.props.opponentReady) {
+            this.props.setOpponent({ isReady: false });
+            this.startRound();
+            return;
+        }
+
+        this.props.setModalType(modalTypes.waiting);
     }
 
     endMatch() {
@@ -45,24 +64,13 @@ class RoundOver extends Component {
     }
 
     nextRound() {
-        if (this.isSolo())
-            return this.props.requestLetterGrid();
-
-        if (this.props.opponentReady) {
-            this.props.sendReady(this.props.opponentSocket);
-            this.props.setOpponent({ isReady: false });
-            this.props.setModalVisible(false);
-            this.props.setTimerPause(false);
-            return;
-        }
-
-        this.props.setModalType(modalTypes.waiting);
+        if (isSolo()) return this.startRound();
+        this.handleNextDuelRound();
     }
 
     handleDone() {
         const score = this.props.playerScore + this.props.playerWord.length;
         this.props.setPlayer({ score });
-        this.props.resetRound();
         this.props.setOpponent({ word: '' });
         if (this.isLastRound()) return this.endMatch();
         this.nextRound();
@@ -102,6 +110,7 @@ function mapStateToProps(state) {
         playerScore: state.player.get('score'),
         opponentWord: state.opponent.get('word'),
         opponentReady: state.opponent.get('isReady'),
+        opponentScore: state.opponent.get('score'),
         opponentSocket: state.opponent.get('socket'),
         timer: state.match.get('timer'),
         round: state.match.get('round')
@@ -113,11 +122,10 @@ const actions = {
     setModalVisible,
     setPlayer,
     setTimerPause,
-    requestLetterGrid,
     setModalType,
     setOpponent,
     sendReady,
-    resetRound
+    newRound
 }
 export default connect(mapStateToProps, actions)(RoundOver);
 

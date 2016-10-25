@@ -5,16 +5,13 @@ import { connect } from 'react-redux';
 import Battle from './Battle';
 import Menu from './Menu';
 import CustomModal from './CustomModal';
-import { setRoute } from '../actionCreators';
 import { mainTextColor } from '../constants';
 
 export class Main extends Component {
     renderContent() {
         switch (this.props.route) {
-            case 'Solo':
-                return <Battle players={ 1 } />;
-            case 'Duel':
-                return <Battle players={ 2 } />;
+            case 'Battle':
+                return <Battle />;
             default:
                 return <Menu />;
         }
@@ -48,7 +45,7 @@ function mapStateToProps (state) {
     };
 }
 
-export default connect(mapStateToProps, { setRoute })(Main);
+export default connect(mapStateToProps)(Main);
 
 const styles = {
     container: {

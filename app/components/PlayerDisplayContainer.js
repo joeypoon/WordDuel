@@ -6,11 +6,10 @@ import PlayerDisplay from './PlayerDisplay';
 
 class PlayerDisplayContainer extends Component {
     renderOpponent() {
-        if (this.props.players === 2) {
+        if (this.props.opponentImage)
             return <PlayerDisplay
                 image={ this.props.opponentImage }
                 score={ this.props.opponentScore } />;
-        }
         return <View />;
     }
 

@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 
 import {
     decrementTimer,
-    setModalVisible,
-    setModalType,
-    validateWord
+    submitWord
 } from '../actionCreators';
 import { mainTextColor } from '../constants';
 
@@ -20,13 +18,7 @@ class Timer extends Component {
     }
 
     timeOut() {
-        this.props.validateWord('');
-        if (this.props.players === 2) {
-            this.props.setModalType('roundOverDuel');
-        } else {
-            this.props.setModalType('roundOverSolo');
-        }
-        this.props.setModalVisible(true);
+        this.props.submitWord(this.props.opponentSocket, '');
     }
 
     componentWillUnmount() {
@@ -45,15 +37,14 @@ class Timer extends Component {
 function mapStateToProps (state) {
     return {
         timer: state.match.get('timer'),
-        isPaused: state.match.get('isPaused')
+        isPaused: state.match.get('isPaused'),
+        opponentSocket: state.opponent.get('socket')
     };
 }
 
 const actions = {
     decrementTimer,
-    setModalVisible,
-    setModalType,
-    validateWord
+    submitWord
 }
 export default connect(mapStateToProps, actions)(Timer);
 

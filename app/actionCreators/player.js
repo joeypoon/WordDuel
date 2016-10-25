@@ -50,6 +50,19 @@ export function sendReady(socket) {
     };
 }
 
+export function submitWord(socket, word) {
+    return {
+        type: actionTypes.submitWord,
+        meta: {
+            event: events.words.submit,
+            eventParams: {
+                socket,
+                word
+            }
+        }
+    };
+}
+
 export function submitScore(score) {
     return {
         type: actionTypes.submitScore,

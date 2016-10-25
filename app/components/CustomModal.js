@@ -50,9 +50,9 @@ class CustomModal extends Component {
             case modalTypes.gameOver:
                 return <GameOver />;
             case modalTypes.roundOverSolo:
-                return <RoundOver players={ 1 } />;
+                return <RoundOver />;
             case modalTypes.roundOverDuel:
-                return <RoundOver players={ 2 } />;
+                return <RoundOver />;
             case modalTypes.searching:
                 return <BasicModal
                     text={ 'Searching for opponent' }
@@ -125,7 +125,6 @@ function mapStateToProps (state) {
     return {
         visible: state.game.get('modalVisible'),
         modalType: state.game.get('modalType'),
-        matchId: state.match.get('id'),
         facebookId: state.player.get('facebookId')
     };
 }
