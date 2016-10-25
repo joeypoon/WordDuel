@@ -11,9 +11,9 @@ import {
     resetActiveGrid,
     requestLetterGrid,
     setModalType,
-    resetRound,
     setOpponent,
-    setReady
+    setReady,
+    resetRound
 } from '../../action_creators';
 import {
     mainColor,
@@ -47,8 +47,6 @@ class RoundOver extends Component {
     }
 
     nextRound() {
-        this.props.resetActiveGrid();
-        this.props.resetTimer();
         if (this.isSolo()) {
             this.props.requestLetterGrid();
         } else {
@@ -58,9 +56,16 @@ class RoundOver extends Component {
         }
     }
 
+    clearRound() {
+        this.props.resetActiveGrid();
+        this.props.resetTimer();
+    }
+
     handleDone() {
         const score = this.props.playerScore + this.props.playerWord.length;
         this.props.setPlayer({ score });
+        this.clearRound();
+        this.props.resetRound();
         if (this.isLastRound()) return this.endMatch();
         this.nextRound();
     }
@@ -100,7 +105,7 @@ function mapStateToProps(state) {
         timer: state.timer.get('time'),
         round: state.round,
         opponentWord: state.opponent.get('word'),
-        matchId: state.players.get('matchId')
+        matchId: state.match.get('id')
     };
 }
 
@@ -113,9 +118,9 @@ const actions = {
     resetActiveGrid,
     requestLetterGrid,
     setModalType,
-    resetRound,
     setOpponent,
-    setReady
+    setReady,
+    resetRound
 }
 export default connect(mapStateToProps, actions)(RoundOver);
 

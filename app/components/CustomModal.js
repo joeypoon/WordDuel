@@ -125,7 +125,7 @@ function mapStateToProps (state) {
     return {
         visible: state.modal.get('isVisible'),
         modalType: state.modal.get('modalType'),
-        matchId: state.players.get('matchId'),
+        matchId: state.match.get('id'),
         facebookId: state.player.get('facebookId')
     };
 }

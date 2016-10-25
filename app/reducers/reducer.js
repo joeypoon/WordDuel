@@ -10,7 +10,8 @@ import players from './players_reducer';
 import round from './round_reducer';
 import {
     player,
-    opponent
+    opponent,
+    match
 } from './index';
 
 export default combineReducers({
@@ -23,5 +24,6 @@ export default combineReducers({
     players,
     round,
     player,
-    opponent
+    opponent,
+    match
 });

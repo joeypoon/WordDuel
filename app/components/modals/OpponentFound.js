@@ -51,7 +51,7 @@ function mapStateToProps (state) {
     return {
         opponentName: state.opponent.get('name'),
         opponentImage: state.opponent.get('image'),
-        matchId: state.players.get('matchId')
+        matchId: state.match.get('id')
     };
 }
 

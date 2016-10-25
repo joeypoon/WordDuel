@@ -64,20 +64,26 @@ export function setReady(matchId) {
 // matches
 export function setMatchId(matchId) {
     return {
-        type: 'SET_MATCH_ID',
+        type: actionTypes.setMatchId,
         matchId
     };
 }
 
 export function incrementRound() {
     return {
-        type: 'INCREMENT_ROUND'
+        type: actionTypes.incrementRound
+    };
+}
+
+export function clearMatch() {
+    return {
+        type: actionTypes.clearMatch
     };
 }
 
 export function resetRound() {
     return {
-        type: 'RESET_ROUND'
+        type: actionTypes.resetRound
     };
 }
 

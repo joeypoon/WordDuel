@@ -10,11 +10,8 @@ import { logEvent } from '../utils';
 
 import {
     requestLetterGrid,
-    setPlayer,
     resetActiveGrid,
-    setRoute,
-    resetRound,
-    resetTimer
+    setRoute
 } from '../action_creators';
 
 class Battle extends Component {
@@ -38,10 +35,7 @@ class Battle extends Component {
     }
 
     prepareRound() {
-        this.props.setPlayer({ score: 0, word: '' });
         this.props.resetActiveGrid();
-        this.props.resetRound();
-        this.props.resetTimer();
     }
 
     render() {
@@ -60,11 +54,8 @@ class Battle extends Component {
 
 const actions = {
     requestLetterGrid,
-    setPlayer,
     resetActiveGrid,
-    setRoute,
-    resetRound,
-    resetTimer
+    setRoute
 };
 
 function mapStateToProps (state) {

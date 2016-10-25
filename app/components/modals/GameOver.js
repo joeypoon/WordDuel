@@ -6,11 +6,10 @@ import {
     setModalVisible,
     setRoute,
     clearOpponent,
-    resetRound,
     submitScore,
-    setMatchId,
     endMatch,
-    setPlayer
+    setPlayer,
+    clearMatch
 } from '../../action_creators';
 import Button from '../Button';
 import { mainColor } from '../../constants';
@@ -28,8 +27,8 @@ export class GameOver extends Component {
         requestAd();
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
-        this.props.setMatchId(null);
         this.props.clearOpponent();
+        this.props.clearMatch();
         this.props.setPlayer({ score: 0, word: '' });
     }
 
@@ -89,7 +88,7 @@ function mapStateToProps (state) {
     return {
         playerScore: state.player.get('score'),
         opponentScore: state.opponent.get('score'),
-        matchId: state.players.get('matchId')
+        matchId: state.match.get('id')
     };
 }
 
@@ -97,11 +96,12 @@ const actions = {
     clearOpponent,
     setModalVisible,
     setRoute,
-    resetRound,
     submitScore,
-    setMatchId,
     endMatch,
-    setPlayer
+    setPlayer,
+    clearMatch,
+    resetTimer,
+    resetActiveGrid
 }
 export default connect(mapStateToProps, actions)(GameOver);
 
