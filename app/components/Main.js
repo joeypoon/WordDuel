@@ -6,15 +6,9 @@ import Battle from './Battle';
 import Menu from './Menu';
 import CustomModal from './CustomModal';
 import { setRoute } from '../actionCreators';
-import { adMobEventListeners } from '../utils/adMobUtils';
 import { mainTextColor } from '../constants';
 
 export class Main extends Component {
-
-    componentDidMount() {
-        adMobEventListeners();
-    }
-
     renderContent() {
         switch (this.props.route) {
             case 'Solo':
@@ -50,7 +44,7 @@ export class Main extends Component {
 
 function mapStateToProps (state) {
     return {
-        route: state.route
+        route: state.game.get('route')
     };
 }
 

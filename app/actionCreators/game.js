@@ -7,10 +7,10 @@ export function setRoute(route) {
     };
 }
 
-export function setModalVisible(isVisible) {
+export function setModalVisible(modalVisible) {
     return {
         type: actionTypes.setModalVisible,
-        isVisible
+        modalVisible
     };
 }
 

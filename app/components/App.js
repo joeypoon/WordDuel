@@ -3,13 +3,17 @@ import { Provider } from 'react-redux';
 
 import Main from './Main';
 import { store } from '../store';
-import { requestData } from '../utils/facebookUtils';
+import {
+    requestData,
+    adMobEventListeners
+} from '../utils';
 
 import '../socketListeners';
 
 export default class App extends Component {
     componentDidMount() {
         requestData();
+        adMobEventListeners();
     }
 
     render() {

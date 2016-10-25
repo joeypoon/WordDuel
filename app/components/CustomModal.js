@@ -123,8 +123,8 @@ class CustomModal extends Component {
 
 function mapStateToProps (state) {
     return {
-        visible: state.modal.get('isVisible'),
-        modalType: state.modal.get('modalType'),
+        visible: state.game.get('modalVisible'),
+        modalType: state.game.get('modalType'),
         matchId: state.match.get('id'),
         facebookId: state.player.get('facebookId')
     };

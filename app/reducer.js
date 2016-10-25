@@ -1,17 +1,15 @@
 import { combineReducers } from 'redux';
 
-import route from './route_reducer';
-import modal from './modal_reducer';
 import {
     player,
     opponent,
-    match
-} from './index';
+    match,
+    game
+} from './reducers';
 
 export default combineReducers({
-    route,
-    modal,
     player,
     opponent,
-    match
+    match,
+    game
 });

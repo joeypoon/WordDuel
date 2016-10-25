@@ -1,6 +1,6 @@
 import remoteMiddleware from './remote_action_middleware';
 import { createStore, applyMiddleware } from 'redux';
-import reducer from './reducers/reducer';
+import reducer from './reducer';
 
 const createStoreWithMiddleware = applyMiddleware(
   remoteMiddleware
