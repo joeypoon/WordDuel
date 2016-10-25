@@ -7,7 +7,8 @@ const initialState = new Map([
     ['socket', null],
     ['word', null],
     ['score', 0],
-    ['socket', null]
+    ['socket', null],
+    ['isReady', false]
 ]);
 
 export function opponent(state = initialState, action) {

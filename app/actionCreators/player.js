@@ -38,26 +38,13 @@ export function cancelSearch(facebookId) {
     };
 }
 
-export function setReady(matchId) {
+export function sendReady(socket) {
     return {
-        type: actionTypes.setReady,
+        type: actionTypes.sendReady,
         meta: {
             event: events.players.ready,
             eventParams: {
-                matchId
-            }
-        }
-    };
-}
-
-export function transmit(socket, params) {
-    return {
-        type: actionTypes.transmit,
-        meta: {
-            event: events.players.transmit,
-            eventParams: {
-                socket,
-                params
+                socket
             }
         }
     };

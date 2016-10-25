@@ -4,10 +4,11 @@ import {
     setModalType,
     setOpponent,
     setMatchId,
-    setModalVisible
+    setModalVisible,
+    setTimerPause
 } from '../actionCreators';
 
-export function onPlayerFound(data) {
+export function onFound(data) {
     const opponent = data.players.find(p => {
         return p.facebookId !== store.getState().player.get('facebookId')
     });
@@ -16,6 +17,12 @@ export function onPlayerFound(data) {
     store.dispatch(setModalType(modalTypes.opponentFound));
 }
 
-export function onTransmit(params) {
-    store.dispatch(setOpponent(params));
+export function onReady() {
+    const playerReady = store.getState().player.get('isReady');
+    if (playerReady) {
+        store.dispatch(setModalVisible(false));
+        store.dispatch(setTimerPause(false));
+    } else {
+        store.dispatch(setOpponent({ isReady: true }));
+    }
 }

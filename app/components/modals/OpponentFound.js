@@ -6,7 +6,7 @@ import Button from '../Button';
 import {
     setModalType,
     setRoute,
-    setReady
+    sendReady
 } from '../../actionCreators';
 import {
     mainColor,
@@ -25,10 +25,17 @@ class OpponentFound extends Component {
     }
 
     handleReady() {
-        const { matchId } = this.props;
-        this.props.setModalType(modalTypes.waiting);
-        this.props.setReady(matchId);
         this.props.setRoute('Duel');
+
+        if (this.props.opponentReady) {
+            this.props.sendReady(this.props.opponentSocket);
+            this.props.setOpponent({ isReady: false });
+            this.props.setModalVisible(false);
+            this.props.setTimerPause(false);
+            return;
+        }
+
+        this.props.setModalType(modalTypes.waiting);
     }
 
     render() {
@@ -51,11 +58,12 @@ function mapStateToProps (state) {
     return {
         opponentName: state.opponent.get('name'),
         opponentImage: state.opponent.get('image'),
-        matchId: state.match.get('id')
+        opponentReady: state.opponent.get('isReady'),
+        opponentSocket: state.opponent.get('socket')
     };
 }
 
-const actions = { setModalType, setRoute, setReady };
+const actions = { setModalType, setRoute, sendReady };
 export default connect(mapStateToProps, actions)(OpponentFound);
 
 const styles = {

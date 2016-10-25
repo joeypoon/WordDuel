@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 
 import Button from '../Button';
 import {
+    setModalType,
     setModalVisible,
     setPlayer,
-    setTimerPause,
-    resetActiveGrid,
-    requestLetterGrid,
-    setModalType,
     setOpponent,
-    setReady,
+    setTimerPause,
+    requestLetterGrid,
+    sendReady,
     resetRound
 } from '../../actionCreators';
 import {
@@ -46,19 +45,25 @@ class RoundOver extends Component {
     }
 
     nextRound() {
-        if (this.isSolo()) {
-            this.props.requestLetterGrid();
-        } else {
-            this.props.setModalType(modalTypes.waiting);
-            this.props.setOpponent({ word: '' });
-            this.props.setReady(this.props.matchId);
+        if (this.isSolo())
+            return this.props.requestLetterGrid();
+
+        if (this.props.opponentReady) {
+            this.props.sendReady(this.props.opponentSocket);
+            this.props.setOpponent({ isReady: false });
+            this.props.setModalVisible(false);
+            this.props.setTimerPause(false);
+            return;
         }
+
+        this.props.setModalType(modalTypes.waiting);
     }
 
     handleDone() {
         const score = this.props.playerScore + this.props.playerWord.length;
         this.props.setPlayer({ score });
         this.props.resetRound();
+        this.props.setOpponent({ word: '' });
         if (this.isLastRound()) return this.endMatch();
         this.nextRound();
     }
@@ -96,9 +101,10 @@ function mapStateToProps(state) {
         playerWord: state.player.get('word'),
         playerScore: state.player.get('score'),
         opponentWord: state.opponent.get('word'),
+        opponentReady: state.opponent.get('isReady'),
+        opponentSocket: state.opponent.get('socket'),
         timer: state.match.get('timer'),
-        round: state.match.get('round'),
-        matchId: state.match.get('id')
+        round: state.match.get('round')
     };
 }
 
@@ -107,11 +113,10 @@ const actions = {
     setModalVisible,
     setPlayer,
     setTimerPause,
-    resetActiveGrid,
     requestLetterGrid,
     setModalType,
     setOpponent,
-    setReady,
+    sendReady,
     resetRound
 }
 export default connect(mapStateToProps, actions)(RoundOver);

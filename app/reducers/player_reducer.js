@@ -7,7 +7,8 @@ const initialState = new Map([
     ['level', null],
     ['socket', null],
     ['word', ''],
-    ['score', 0]
+    ['score', 0],
+    ['isReady', false]
 ]);
 
 export function player(state = initialState, action) {

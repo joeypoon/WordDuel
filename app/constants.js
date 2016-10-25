@@ -64,9 +64,8 @@ export const actionTypes = {
     clearPlayer: 2,
     searchOpponent: 21,
     cancelSearch: 22,
-    setReady: 23,
+    sendReady: 23,
     submitScore: 24,
-    transmit: 'transmit',
 
     // opponent
     setOpponent: 3,
