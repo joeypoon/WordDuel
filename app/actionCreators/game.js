@@ -1,4 +1,4 @@
-import { modalTypes, actionTypes } from './constants';
+import { modalTypes, actionTypes } from '../constants';
 
 export function setRoute(route) {
     return {
