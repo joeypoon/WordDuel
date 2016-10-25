@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Battle from './Battle';
 import Menu from './Menu';
 import CustomModal from './CustomModal';
-import { setRoute } from '../action_creators';
+import { setRoute } from '../actionCreators';
 import { adMobEventListeners } from '../utils/adMobUtils';
 import { mainTextColor } from '../constants';
 

@@ -23,9 +23,24 @@ function getActiveGridDefault() {
     return activeGrid;
 }
 
+function getLetterGridDefault() {
+    const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'];
+    const letters = alpha.map((letter, index) => {
+        return { value: letter, position: index }
+    });
+
+    return [
+        letters.splice(0, 5),
+        letters.splice(0, 5),
+        letters.splice(0, 5),
+        letters.splice(0, 5)
+    ];
+}
+
 // defaults
 export const timerDefault = 15;
 export const activeGridDefault = getActiveGridDefault();
+export const letterGridDefault = getLetterGridDefault();
 
 export const modalTypes = {
     waiting: 'waiting',
@@ -45,10 +60,19 @@ export const modalTypes = {
 
 // actions
 export const actionTypes = {
+    // player
     setPlayer: 1,
     clearPlayer: 2,
+    searchOpponent: 21,
+    cancelSearch: 22,
+    setReady: 23,
+    submitScore: 24,
+
+    // opponent
     setOpponent: 3,
     clearOpponent: 4,
+
+    // match
     setMatchId: 5,
     incrementRound: 6,
     resetRound: 7,
@@ -56,7 +80,17 @@ export const actionTypes = {
     decrementTimer: 9,
     setTimerPause: 10,
     resetActiveGrid: 11,
-    updateActiveGrid: 12
+    updateActiveGrid: 12,
+    loadLetterGrid: 13,
+    requestLetterGrid: 14,
+    validateWord: 15,
+    submitWord: 16,
+    endMatch: 17,
+
+    // game
+    setRoute: 18,
+    setModalVisible: 19,
+    setModalType: 20
 };
 
 // Events

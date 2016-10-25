@@ -5,7 +5,7 @@ import {
     setOpponent,
     setMatchId,
     setModalVisible
-} from '../action_creators';
+} from '../actionCreators';
 
 export function onPlayerFound(data) {
     const opponent = data.players.find(p => {

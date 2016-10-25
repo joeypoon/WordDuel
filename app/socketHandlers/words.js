@@ -5,7 +5,7 @@ import {
     setModalType,
     setOpponent,
     submitWord
-} from '../action_creators';
+} from '../actionCreators';
 
 function isDuel() {
     return !!store.getState().players.get('matchId');

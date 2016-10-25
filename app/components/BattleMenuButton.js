@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 
-import { setModalVisible, setModalType } from '../action_creators';
+import { setModalVisible, setModalType } from '../actionCreators';
 
 class BattleMenuButton extends Component {
     openMenu() {

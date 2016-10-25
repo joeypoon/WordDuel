@@ -17,7 +17,7 @@ import {
     cancelSearch,
     setMatchId,
     clearOpponent
-} from '../action_creators';
+} from '../actionCreators';
 import { modalTypes } from '../constants';
 
 class CustomModal extends Component {

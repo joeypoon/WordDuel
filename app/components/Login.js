@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { LoginButton } from 'react-native-fbsdk';
 
-import { setRoute } from '../action_creators';
+import { setRoute } from '../actionCreators';
 
 
 export default class Login extends Component {

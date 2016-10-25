@@ -7,7 +7,7 @@ import WordDisplay from './WordDisplay';
 import BattleTopBar from './BattleTopBar'
 import PlayerDisplayContainer from './PlayerDisplayContainer';
 
-import { requestLetterGrid } from '../action_creators';
+import { requestLetterGrid } from '../actionCreators';
 
 class Battle extends Component {
     componentDidMount() {

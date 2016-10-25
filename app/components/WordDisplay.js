@@ -14,7 +14,7 @@ import {
     resetActiveGrid,
     setModalType,
     setModalVisible,
-} from '../action_creators';
+} from '../actionCreators';
 
 class WordDisplay extends Component {
     handleMomentumScrollEnd(e, state, context) {

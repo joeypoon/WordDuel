@@ -7,7 +7,7 @@ import {
     setModalType,
     setRoute,
     setReady
-} from '../../action_creators';
+} from '../../actionCreators';
 import {
     mainColor,
     mainTextColor,

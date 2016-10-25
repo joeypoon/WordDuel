@@ -6,7 +6,6 @@ import Button from '../Button';
 import {
     setModalVisible,
     setPlayer,
-    resetTimer,
     setTimerPause,
     resetActiveGrid,
     requestLetterGrid,
@@ -14,7 +13,7 @@ import {
     setOpponent,
     setReady,
     resetRound
-} from '../../action_creators';
+} from '../../actionCreators';
 import {
     mainColor,
     mainTextColor,
@@ -107,7 +106,6 @@ function mapStateToProps(state) {
 const actions = {
     setModalVisible,
     setPlayer,
-    resetTimer,
     setTimerPause,
     resetActiveGrid,
     requestLetterGrid,

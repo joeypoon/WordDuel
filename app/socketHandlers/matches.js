@@ -1,13 +1,13 @@
 import { store } from '../store';
 import {
     loadLetterGrid,
-    setMatchId,
+    clearMatch,
     clearOpponent,
     setModalVisible,
     setModalType,
     setTimerPause,
     setRoute
-} from '../action_creators';
+} from '../actionCreators';
 import { socket } from '../socket';
 import { events, modalTypes } from '../constants';
 
@@ -33,7 +33,7 @@ export function onGridNew(data) {
 }
 
 export function onMatchDisconnect() {
-    store.dispatch(setMatchId(null));
+    store.dispatch(clearMatch());
     store.dispatch(clearOpponent());
     store.dispatch(setModalType(modalTypes.playerDisconnect));
     store.dispatch(setModalVisible(true));

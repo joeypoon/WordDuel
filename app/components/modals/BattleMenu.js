@@ -8,7 +8,7 @@ import {
     setModalVisible,
     setRoute,
     clearOpponent
-} from '../../action_creators';
+} from '../../actionCreators';
 import { logEvent } from '../../utils/facebookUtils';
 import { mainColor, mainTextColor } from '../../constants';
 

@@ -10,7 +10,7 @@ import {
     endMatch,
     setPlayer,
     clearMatch
-} from '../../action_creators';
+} from '../../actionCreators';
 import Button from '../Button';
 import { mainColor } from '../../constants';
 import { requestAd } from '../../utils/adMobUtils';

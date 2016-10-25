@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import { setPlayer, updateActiveGrid } from '../action_creators';
+import { setPlayer, updateActiveGrid } from '../actionCreators';
 import { mainColor, secondaryColor } from '../constants';
 
 class Letter extends Component {

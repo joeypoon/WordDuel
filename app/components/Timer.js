@@ -4,16 +4,14 @@ import { connect } from 'react-redux';
 
 import {
     decrementTimer,
-    resetTimer,
     setModalVisible,
     setModalType,
     validateWord
-} from '../action_creators';
+} from '../actionCreators';
 import { mainTextColor } from '../constants';
 
 class Timer extends Component {
     componentDidMount() {
-        this.props.resetTimer();
         this.interval = setInterval(() => {
             this.props.decrementTimer();
             if (this.props.timer === 0 && !this.props.isPaused)
@@ -53,7 +51,6 @@ function mapStateToProps (state) {
 
 const actions = {
     decrementTimer,
-    resetTimer,
     setModalVisible,
     setModalType,
     validateWord

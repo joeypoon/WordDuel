@@ -9,7 +9,7 @@ import { socket } from '../socket';
 import { events, actionTypes } from '../constants';
 import {
     setPlayer
-} from '../action_creators';
+} from '../actionCreators';
 
 function responseInfoCallback(error, result) {
     if (error) {

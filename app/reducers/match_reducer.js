@@ -47,6 +47,9 @@ export function match(state = initialState, action) {
                 .set('isPaused', true)
                 .set('activeGrid', activeGridDefault);
 
+        case actionTypes.loadLetterGrid:
+            return nextState.set('letterGrid', action.grid);
+
         case actionTypes.clearMatch:
             return initialState;
     }
