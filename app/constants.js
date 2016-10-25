@@ -1,5 +1,9 @@
 import constants from 'WordDuelConstants';
 
+// constants
+export const maxRounds = 7;
+export const timeOut = 5000; // in milliseconds
+
 // Colors
 export const mainTextColor = '#2c3e50';
 export const mainColor = '#16a085';
@@ -8,9 +12,20 @@ export const secondaryColor = '#e74c3c';
 // Urls
 export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
-export const maxRounds = 7;
-export const timeOut = 5000; // in milliseconds
+// helpers
+function getActiveGridDefault() {
+    let activeGrid = [];
+    let count = 20;
+    while (count > 0) {
+        activeGrid.push(false);
+        count--;
+    }
+    return activeGrid;
+}
+
+// defaults
 export const timerDefault = 15;
+export const activeGridDefault = getActiveGridDefault();
 
 export const modalTypes = {
     waiting: 'waiting',
@@ -39,7 +54,9 @@ export const actionTypes = {
     resetRound: 7,
     clearMatch: 8,
     decrementTimer: 9,
-    setTimerPause: 10
+    setTimerPause: 10,
+    resetActiveGrid: 11,
+    updateActiveGrid: 12
 };
 
 // Events

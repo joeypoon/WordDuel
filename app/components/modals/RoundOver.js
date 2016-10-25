@@ -56,15 +56,9 @@ class RoundOver extends Component {
         }
     }
 
-    clearRound() {
-        this.props.resetActiveGrid();
-        this.props.resetTimer();
-    }
-
     handleDone() {
         const score = this.props.playerScore + this.props.playerWord.length;
         this.props.setPlayer({ score });
-        this.clearRound();
         this.props.resetRound();
         if (this.isLastRound()) return this.endMatch();
         this.nextRound();

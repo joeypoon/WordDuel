@@ -99,9 +99,7 @@ const actions = {
     submitScore,
     endMatch,
     setPlayer,
-    clearMatch,
-    resetTimer,
-    resetActiveGrid
+    clearMatch
 }
 export default connect(mapStateToProps, actions)(GameOver);
 

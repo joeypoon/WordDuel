@@ -6,36 +6,12 @@ import LetterGrid from './LetterGrid';
 import WordDisplay from './WordDisplay';
 import BattleTopBar from './BattleTopBar'
 import PlayerDisplayContainer from './PlayerDisplayContainer';
-import { logEvent } from '../utils';
 
-import {
-    requestLetterGrid,
-    resetActiveGrid,
-    setRoute
-} from '../action_creators';
+import { requestLetterGrid } from '../action_creators';
 
 class Battle extends Component {
     componentDidMount() {
-        if (this.props.players === 2) {
-            this.startDuelRound();
-        } else {
-            this.startSoloRound();
-        }
-    }
-
-    startSoloRound() {
-        logEvent('Enter Solo');
-        this.prepareRound();
-        this.props.requestLetterGrid();
-    }
-
-    startDuelRound() {
-        logEvent('Enter Duel');
-        this.prepareRound();
-    }
-
-    prepareRound() {
-        this.props.resetActiveGrid();
+        if (this.props.players === 1) this.props.requestLetterGrid();
     }
 
     render() {
@@ -53,18 +29,10 @@ class Battle extends Component {
 }
 
 const actions = {
-    requestLetterGrid,
-    resetActiveGrid,
-    setRoute
+    requestLetterGrid
 };
 
-function mapStateToProps (state) {
-    return {
-        facebookId: state.player.get('facebookId')
-    };
-}
-
-export default connect(mapStateToProps, actions)(Battle);
+export default connect(null, actions)(Battle);
 
 const styles = {
     container: {

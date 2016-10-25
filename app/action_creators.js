@@ -124,6 +124,20 @@ export function setTimerPause(isPaused) {
     };
 }
 
+export function updateActiveGrid(position, active) {
+    return {
+        type: actionTypes.updateActiveGrid,
+        position,
+        active
+    };
+}
+
+export function resetActiveGrid() {
+    return {
+        type: actionTypes.resetActiveGrid
+    };
+}
+
 // word display
 export function validateWord(word) {
     return {
@@ -147,21 +161,6 @@ export function submitWord(matchId, word) {
                 word
             }
         }
-    };
-}
-
-// active grid
-export function updateActiveGrid(position, active) {
-    return {
-        type: 'UPDATE_ACTIVE_GRID',
-        position,
-        active
-    };
-}
-
-export function resetActiveGrid() {
-    return {
-        type: 'RESET_ACTIVE_GRID'
     };
 }
 
