@@ -14,6 +14,7 @@ import {
     resetActiveGrid,
     setModalType,
     setModalVisible,
+    setPlayer
 } from '../actionCreators';
 
 class WordDisplay extends Component {
@@ -82,6 +83,7 @@ const actions = {
     resetActiveGrid,
     setModalType,
     setModalVisible,
+    setPlayer
 };
 export default connect(mapStateToProps, actions)(WordDisplay);
 

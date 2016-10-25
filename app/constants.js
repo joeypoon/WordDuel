@@ -1,7 +1,7 @@
 import constants from 'WordDuelConstants';
 
 // constants
-export const maxRounds = 7;
+export const maxRounds = 1;
 export const timeOut = 5000; // in milliseconds
 
 // Colors
@@ -10,10 +10,14 @@ export const mainColor = '#16a085';
 export const secondaryColor = '#e74c3c';
 
 // Urls
-export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
+export const rootUrl = 'http://localhost:9004';
+// export const rootUrl = 'https://mighty-dawn-34412.herokuapp.com:80';
+// export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
-// helpers
-function getActiveGridDefault() {
+// defaults
+export const timerDefault = 15;
+
+export function getActiveGridDefault() {
     let activeGrid = [];
     let count = 20;
     while (count > 0) {
@@ -23,7 +27,7 @@ function getActiveGridDefault() {
     return activeGrid;
 }
 
-function getLetterGridDefault() {
+export function getLetterGridDefault() {
     const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'];
     const letters = alpha.map((letter, index) => {
         return { value: letter, position: index }
@@ -37,25 +41,20 @@ function getLetterGridDefault() {
     ];
 }
 
-// defaults
-export const timerDefault = 15;
-export const activeGridDefault = getActiveGridDefault();
-export const letterGridDefault = getLetterGridDefault();
-
 export const modalTypes = {
-    waiting: 'waiting',
-    invalidWord: 'invalidWord',
-    roundOverSolo: 'roundOverSolo',
-    roundOverDuel: 'roundOverDuel',
-    opponentFound: 'opponentFound',
-    gameOver: 'gameOver',
-    submittingWord: 'submittingWord',
-    playerDisconnect: 'playerDisconnect',
-    battleMenu: 'battleMenu',
-    searching: 'searching',
-    noConnection: 'noConnection',
-    pleaseLogin: 'pleaseLogin',
-    loading: 'loading'
+    waiting: 1,
+    invalidWord: 2,
+    roundOverSolo: 3,
+    roundOverDuel: 3,
+    opponentFound: 4,
+    gameOver: 5,
+    submittingWord: 6,
+    playerDisconnect: 7,
+    battleMenu: 8,
+    searching: 9,
+    noConnection: 10,
+    pleaseLogin: 11,
+    loading: 12
 };
 
 // actions

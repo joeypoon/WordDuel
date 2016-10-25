@@ -6,7 +6,6 @@ import { setPlayer, updateActiveGrid } from '../actionCreators';
 import { mainColor, secondaryColor } from '../constants';
 
 class Letter extends Component {
-
     handlePress() {
         if (!this.props.active) {
             this.props.updateActiveGrid(this.props.letter.position, true);
@@ -38,7 +37,7 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(null, { setPlayer, updateActiveGrid })(Letter);
+export default connect(mapStateToProps, { setPlayer, updateActiveGrid })(Letter);
 
 const styles = {
     container: {

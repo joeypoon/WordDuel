@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { AppEventsLogger } from 'react-native-fbsdk';
 
 import Button from '../Button';
 import {
     setModalVisible,
     setRoute,
-    clearOpponent
+    clearOpponent,
+    clearMatch,
+    setPlayer
 } from '../../actionCreators';
-import { logEvent } from '../../utils/facebookUtils';
+import { logEvent } from '../../utils';
 import { mainColor, mainTextColor } from '../../constants';
 
 class BattleMenu extends Component {
@@ -18,6 +19,8 @@ class BattleMenu extends Component {
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
         this.props.clearOpponent();
+        this.props.clearMatch();
+        this.props.setPlayer({ score: 0, word: '' });
         // emit to server;
     }
 
@@ -36,7 +39,9 @@ class BattleMenu extends Component {
 const actions = {
     setModalVisible,
     setRoute,
-    clearOpponent
+    clearOpponent,
+    clearMatch,
+    setPlayer
 }
 export default connect(null, actions)(BattleMenu);
 

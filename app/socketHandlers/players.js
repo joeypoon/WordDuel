@@ -9,7 +9,7 @@ import {
 
 export function onPlayerFound(data) {
     const opponent = data.players.find(p => {
-        return p.facebookId !== store.getState().players.get('facebookId')
+        return p.facebookId !== store.getState().player.get('facebookId')
     });
     store.dispatch(setOpponent(opponent));
     store.dispatch(setMatchId(data.matchId));

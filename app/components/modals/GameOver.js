@@ -13,7 +13,7 @@ import {
 } from '../../actionCreators';
 import Button from '../Button';
 import { mainColor } from '../../constants';
-import { requestAd } from '../../utils/adMobUtils';
+import { requestAd } from '../../utils';
 
 export class GameOver extends Component {
     componentDidMount() {

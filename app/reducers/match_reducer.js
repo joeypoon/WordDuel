@@ -1,20 +1,27 @@
 import {
     actionTypes,
     timerDefault,
-    activeGridDefault
+    getLetterGridDefault,
+    getActiveGridDefault
 } from '../constants';
 
 const initialState = new Map([
     ['id', null],
-    ['round', 1],
+    ['round', 0],
     ['timer', timerDefault],
     ['isPaused', true],
-    ['letterGrid', []],
-    ['activeGrid', []]
+    ['letterGrid', getLetterGridDefault()],
+    ['activeGrid', getActiveGridDefault()]
 ]);
 
-export function match(state = initialState, action) {
+function deepClone(state) {
     let nextState = new Map(state);
+    nextState.set('activeGrid', [...nextState.get('activeGrid')]);
+    return nextState;
+}
+
+export function match(state = initialState, action) {
+    let nextState = deepClone(state);
 
     switch (action.type) {
         case actionTypes.setMatchId:
@@ -33,25 +40,27 @@ export function match(state = initialState, action) {
             return nextState.set('isPaused', action.isPaused)
 
         case actionTypes.resetActiveGrid:
-            nextState.set('activeGrid', activeGridDefault);
+            nextState.set('activeGrid', getActiveGridDefault());
             return nextState;
 
         case actionTypes.updateActiveGrid:
             let grid = nextState.get('activeGrid');
             grid[action.position] = action.active;
-            return nextState.set('letterGrid', grid);
+            return nextState.set('activeGrid', grid);
 
         case actionTypes.resetRound:
             return nextState.set('round', 1)
                 .set('timer', timerDefault)
                 .set('isPaused', true)
-                .set('activeGrid', activeGridDefault);
+                .set('activeGrid', getActiveGridDefault());
 
         case actionTypes.loadLetterGrid:
             return nextState.set('letterGrid', action.grid);
 
         case actionTypes.clearMatch:
-            return initialState;
+            return initialState
+                .set('activeGrid', getActiveGridDefault())
+                .set('letterGrid', getLetterGridDefault());
     }
     return nextState;
 }

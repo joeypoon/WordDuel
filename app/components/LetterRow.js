@@ -16,7 +16,7 @@ export default class LetterRow extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                {this.renderRow()}
+                { this.renderRow() }
             </View>
         );
     }

@@ -2,7 +2,7 @@ import { modalTypes, actionTypes } from '../constants';
 
 export function setRoute(route) {
     return {
-        type: actionTypes.setRound,
+        type: actionTypes.setRoute,
         route
     };
 }

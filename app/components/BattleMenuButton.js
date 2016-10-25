@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 
+import { modalTypes } from '../constants'
 import { setModalVisible, setModalType } from '../actionCreators';
 
 class BattleMenuButton extends Component {
     openMenu() {
+        this.props.setModalType(modalTypes.battleMenu);
         this.props.setModalVisible(true);
-        this.props.setModalType('battleMenu');
     }
 
     render() {

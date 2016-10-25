@@ -8,17 +8,17 @@ import {
 } from '../actionCreators';
 
 function isDuel() {
-    return !!store.getState().players.get('matchId');
+    return !!store.getState().match.get('id');
 }
 
 function getOpponentWord(words) {
-    const playerWord = store.getState().wordDisplay;
+    const playerWord = store.getState().player.get('word');
     return words[0] === playerWord ? words[1] : words[0];
 }
 
 export function onWordValidate(data) {
     if (data.isValid) {
-        const matchId = store.getState().players.get('matchId');
+        const matchId = store.getState().match.get('id');
         store.dispatch(incrementRound());
         if (isDuel()) {
             store.dispatch(setModalType(modalTypes.waiting));
@@ -31,7 +31,7 @@ export function onWordValidate(data) {
 
 export function onWordSubmit(words) {
     const opponentWord = getOpponentWord(words);
-    const opponentScore = store.getState().score.get('opponent') + opponentWord.length;
+    const opponentScore = store.getState().opponent.get('score') + opponentWord.length;
     store.dispatch(setOpponent({ word: opponentWord, score: opponentScore }));
     store.dispatch(setModalType(modalTypes.roundOverDuel));
 }

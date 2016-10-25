@@ -13,9 +13,11 @@ import {
     searchOpponent,
     requestLetterGrid
 } from '../actionCreators';
-import { requestData, logEvent } from '../utils/facebookUtils';
+import {
+    requestData,
+    logEvent
+} from '../utils';
 import { mainColor, mainTextColor, modalTypes } from '../constants';
-import { requestAd } from '../utils/adMobUtils';
 
 const menuItems = ['Solo', 'Duel'];
 

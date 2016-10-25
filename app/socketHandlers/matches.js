@@ -12,7 +12,7 @@ import { socket } from '../socket';
 import { events, modalTypes } from '../constants';
 
 export function onGridNew(data) {
-    const matchId = store.getState().players.get('matchId');
+    const matchId = store.getState().match.get('id');
     store.dispatch(setModalType(modalTypes.loading));
     store.dispatch(setModalVisible(true));
     if (data) {
