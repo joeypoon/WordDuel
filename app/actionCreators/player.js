@@ -50,12 +50,15 @@ export function setReady(matchId) {
     };
 }
 
-export function transmit(data) {
+export function transmit(socket, params) {
     return {
         type: actionTypes.transmit,
         meta: {
             event: events.players.transmit,
-            eventParams: data
+            eventParams: {
+                socket,
+                params
+            }
         }
     };
 }

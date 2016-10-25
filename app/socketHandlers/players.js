@@ -15,3 +15,7 @@ export function onPlayerFound(data) {
     store.dispatch(setMatchId(data.matchId));
     store.dispatch(setModalType(modalTypes.opponentFound));
 }
+
+export function onTransmit(params) {
+    store.dispatch(setOpponent(params));
+}
