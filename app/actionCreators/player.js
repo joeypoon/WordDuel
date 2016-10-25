@@ -50,6 +50,16 @@ export function setReady(matchId) {
     };
 }
 
+export function transmit(data) {
+    return {
+        type: actionTypes.transmit,
+        meta: {
+            event: events.players.transmit,
+            eventParams: data
+        }
+    };
+}
+
 export function submitScore(score) {
     return {
         type: actionTypes.submitScore,
