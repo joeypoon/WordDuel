@@ -4,7 +4,8 @@ import {
     setModalType,
     setModalVisible,
     setOpponent,
-    setPlayer
+    setPlayer,
+    setTimerPause
 } from '../actionCreators';
 
 function isDuel() {
@@ -13,6 +14,7 @@ function isDuel() {
 
 export function onWordValidate(data) {
     const { isValid } = data;
+    const opponentWord = store.getState().opponent.get('word');
     if (!isValid) return store.dispatch(setModalType(modalTypes.invalidWord));
 
     if (!isDuel()) {
@@ -21,7 +23,13 @@ export function onWordValidate(data) {
         return;
     }
 
+    if (opponentWord) {
+        store.dispatch(setModalType(modalTypes.roundOver));
+        return;
+    }
+
     store.dispatch(setPlayer({ hasSubmitted: true }));
+    store.dispatch(setModalType(modalTypes.waiting));
 }
 
 // only on duel

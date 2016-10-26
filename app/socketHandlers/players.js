@@ -6,7 +6,8 @@ import {
     setMatchId,
     setModalVisible,
     setTimerPause,
-    setRound
+    newRound,
+    setPlayer
 } from '../actionCreators';
 
 export function onPlayerFound(data) {
@@ -24,6 +25,7 @@ export function onPlayerReady() {
         store.dispatch(newRound());
         store.dispatch(setModalVisible(false));
         store.dispatch(setTimerPause(false));
+        store.dispatch(setPlayer({ isReady: false }));
     } else {
         store.dispatch(setOpponent({ isReady: true }));
     }

@@ -25,6 +25,11 @@ export function searchOpponent(facebookId) {
     }
 }
 
+export function clearWord() {
+    return {
+        type: actionTypes.clearWord
+    };
+}
 
 export function cancelSearch(facebookId) {
     return {

@@ -1,7 +1,7 @@
 import constants from 'WordDuelConstants';
 
 // constants
-export const maxRounds = 3;
+export const maxRounds = 5;
 export const timeOut = 5000; // in milliseconds
 const gridSize = 20;
 
@@ -11,12 +11,11 @@ export const mainColor = '#16a085';
 export const secondaryColor = '#e74c3c';
 
 // Urls
-export const rootUrl = 'http://localhost:9004';
-// export const rootUrl = 'https://mighty-dawn-34412.herokuapp.com:80';
-// export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
+// export const rootUrl = 'http://localhost:9004';
+export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
 // defaults
-export const timerDefault = 12;
+export const timerDefault = 10;
 
 export function getActiveGridDefault() {
     let activeGrid = [];

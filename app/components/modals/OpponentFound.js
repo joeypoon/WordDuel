@@ -6,7 +6,11 @@ import Button from '../Button';
 import {
     setModalType,
     setRoute,
-    sendReady
+    sendReady,
+    setOpponent,
+    setModalVisible,
+    setTimerPause,
+    setPlayer
 } from '../../actionCreators';
 import {
     mainColor,
@@ -25,16 +29,17 @@ class OpponentFound extends Component {
     }
 
     handleReady() {
+        this.props.sendReady(this.props.opponentSocket);
         this.props.setRoute('Battle');
 
         if (this.props.opponentReady) {
-            this.props.sendReady(this.props.opponentSocket);
             this.props.setOpponent({ isReady: false });
             this.props.setModalVisible(false);
             this.props.setTimerPause(false);
             return;
         }
 
+        this.props.setPlayer({ isReady: true });
         this.props.setModalType(modalTypes.waiting);
     }
 
@@ -63,7 +68,15 @@ function mapStateToProps (state) {
     };
 }
 
-const actions = { setModalType, setRoute, sendReady };
+const actions = {
+    setModalType,
+    setRoute,
+    sendReady,
+    setOpponent,
+    setModalVisible,
+    setTimerPause,
+    setPlayer
+};
 export default connect(mapStateToProps, actions)(OpponentFound);
 
 const styles = {

@@ -51,8 +51,6 @@ class RoundOver extends Component {
     }
 
     handleNextDuelRound() {
-        this.props.sendReady(this.props.opponentSocket);
-
         if (this.props.opponentReady) {
             this.props.setOpponent({ isReady: false });
             this.startRound();
@@ -72,6 +70,7 @@ class RoundOver extends Component {
     }
 
     handleDone() {
+        this.props.sendReady(this.props.opponentSocket);
         const score = this.props.playerScore + this.props.playerWord.length;
         this.props.setPlayer({ score });
         this.props.setOpponent({ word: '' });

@@ -20,8 +20,8 @@ export default class App extends Component {
     }
 
     handleAppStateChange() {
-        if (AppState.currentState !== 'active')
-            disconnect();
+        // if (AppState.currentState === 'background')
+            // disconnect();
     }
 
     render() {
