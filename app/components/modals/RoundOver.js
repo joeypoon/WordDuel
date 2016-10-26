@@ -62,7 +62,7 @@ class RoundOver extends Component {
         this.props.setModalType(modalTypes.waiting);
     }
 
-    endMatch() {
+    matchEnd() {
         this.props.setModalType(modalTypes.gameOver);
     }
 
@@ -75,7 +75,7 @@ class RoundOver extends Component {
         const score = this.props.playerScore + this.props.playerWord.length;
         this.props.setPlayer({ score });
         this.props.setOpponent({ word: '' });
-        if (this.isLastRound()) return this.endMatch();
+        if (this.isLastRound()) return this.matchEnd();
         this.nextRound();
     }
 

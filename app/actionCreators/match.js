@@ -46,9 +46,22 @@ export function resetActiveGrid() {
     };
 }
 
-export function endMatch(matchId) {
+export function matchDisconnect(socket, matchId) {
     return {
-        type: actionTypes.endMatch,
+        type: actionTypes.matchDisconnect,
+        meta: {
+            event: events.matches.disconnect,
+            eventParams: {
+                socket,
+                matchId
+            }
+        }
+    };
+}
+
+export function matchEnd(matchId) {
+    return {
+        type: actionTypes.matchEnd,
         meta: {
             event: events.matches.end,
             eventParams: {

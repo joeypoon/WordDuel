@@ -83,6 +83,7 @@ export const actionTypes = {
     cancelSearch: 14,
     sendReady: 13,
     submitScore: 6,
+    clearWord: 'clearWord',
 
     // opponent
     setOpponent: 3,
@@ -97,7 +98,8 @@ export const actionTypes = {
     resetActiveGrid: 11,
     updateActiveGrid: 12,
     submitWord: 16,
-    endMatch: 17,
+    matchEnd: 17,
+    matchDisconnect: 'matchDisconnect',
 
     // game
     setRoute: 18,

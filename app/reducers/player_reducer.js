@@ -25,7 +25,13 @@ export function player(state = initialState, action) {
             return nextState;
 
         case actionTypes.clearPlayer:
-            return initialState;
+            return nextState.set('word', '')
+                .set('score', 0)
+                .set('isReady', false)
+                .set('hasSubmitted', false);
+
+        case actionTypes.clearWord:
+            return nextState.set('word', '');
     }
     return nextState;
 }

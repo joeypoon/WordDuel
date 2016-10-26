@@ -7,8 +7,8 @@ import {
     setRoute,
     clearOpponent,
     submitScore,
-    endMatch,
-    setPlayer,
+    matchEnd,
+    clearPlayer,
     clearMatch
 } from '../../actionCreators';
 import Button from '../Button';
@@ -19,7 +19,7 @@ export class GameOver extends Component {
     componentDidMount() {
         if (this.props.matchId) {
             this.props.submitScore(this.props.playerScore);
-            this.props.endMatch(this.props.matchId);
+            this.props.matchEnd(this.props.matchId);
         }
     }
 
@@ -29,7 +29,7 @@ export class GameOver extends Component {
         this.props.setRoute('Menu');
         this.props.clearOpponent();
         this.props.clearMatch();
-        this.props.setPlayer({ score: 0, word: '' });
+        this.props.clearPlayer();
     }
 
     soloScoreDisplay() {
@@ -97,8 +97,8 @@ const actions = {
     setModalVisible,
     setRoute,
     submitScore,
-    endMatch,
-    setPlayer,
+    matchEnd,
+    clearPlayer,
     clearMatch
 }
 export default connect(mapStateToProps, actions)(GameOver);

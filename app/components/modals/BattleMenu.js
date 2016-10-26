@@ -8,7 +8,8 @@ import {
     setRoute,
     clearOpponent,
     clearMatch,
-    setPlayer
+    clearPlayer,
+    matchDisconnect
 } from '../../actionCreators';
 import { logEvent } from '../../utils';
 import { mainColor, mainTextColor } from '../../constants';
@@ -20,8 +21,11 @@ class BattleMenu extends Component {
         this.props.setRoute('Menu');
         this.props.clearOpponent();
         this.props.clearMatch();
-        this.props.setPlayer({ score: 0, word: '' });
-        // emit to server;
+        this.props.clearPlayer();
+        this.props.matchDisconnect(
+            this.props.opponentSocket,
+            this.props.matchId
+        );
     }
 
     render() {
@@ -36,14 +40,22 @@ class BattleMenu extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        opponentSocket: state.opponent.get('socket'),
+        matchId: state.match.get('id')
+    };
+}
+
 const actions = {
     setModalVisible,
     setRoute,
     clearOpponent,
     clearMatch,
-    setPlayer
+    clearPlayer,
+    matchDisconnect
 }
-export default connect(null, actions)(BattleMenu);
+export default connect(mapStateToProps, actions)(BattleMenu);
 
 const styles = {
     container: {

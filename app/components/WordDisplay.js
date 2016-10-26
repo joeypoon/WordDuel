@@ -14,7 +14,7 @@ import {
     resetActiveGrid,
     setModalType,
     setModalVisible,
-    setPlayer
+    clearWord
 } from '../actionCreators';
 
 class WordDisplay extends Component {
@@ -32,7 +32,7 @@ class WordDisplay extends Component {
 
     handleClear() {
         this._swiper.scrollBy(-1);
-        this.props.setPlayer({ word: '' });
+        this.props.clearWord();
         this.props.resetActiveGrid();
     }
 
@@ -87,7 +87,7 @@ const actions = {
     resetActiveGrid,
     setModalType,
     setModalVisible,
-    setPlayer
+    clearWord
 };
 export default connect(mapStateToProps, actions)(WordDisplay);
 
