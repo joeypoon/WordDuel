@@ -3,6 +3,8 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import {
+    setModalType,
+    setModalVisible,
     decrementTimer,
     submitWord
 } from '../actionCreators';
@@ -18,6 +20,8 @@ class Timer extends Component {
     }
 
     timeOut() {
+        this.props.setModalType(modalTypes.submittingWord);
+        this.props.setModalVisible(true);
         this.props.submitWord(this.props.opponentSocket, '');
     }
 
@@ -43,6 +47,8 @@ function mapStateToProps (state) {
 }
 
 const actions = {
+    setModalType,
+    setModalVisible,
     decrementTimer,
     submitWord
 }
