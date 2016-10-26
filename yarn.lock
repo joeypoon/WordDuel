@@ -4203,9 +4203,9 @@ window-size@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
 
-WordDuelConstants@1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/WordDuelConstants/-/WordDuelConstants-1.0.8.tgz#3be45659db71a56190b6e37bc06ab3a8c017f523"
+WordDuelConstants@1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/WordDuelConstants/-/WordDuelConstants-1.0.9.tgz#be5f453ac6d7aee888c6ef65f71623c040409fb9"
 
 wordwrap@^1.0.0, wordwrap@~1.0.0:
   version "1.0.0"
