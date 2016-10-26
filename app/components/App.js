@@ -13,6 +13,11 @@ import {
 import '../socketListeners';
 
 export default class App extends Component {
+    constructor(props) {
+        super(props);
+        this.lastState = null;
+    }
+
     componentDidMount() {
         AppState.addEventListener('change', this.handleAppStateChange);
         requestData();
@@ -20,8 +25,9 @@ export default class App extends Component {
     }
 
     handleAppStateChange() {
-        // if (AppState.currentState === 'background')
-            // disconnect();
+        if (this.lastState === 'active' && AppState.currentState !== 'active')
+            disconnect();
+        this.lastState = AppState.currentState;
     }
 
     render() {

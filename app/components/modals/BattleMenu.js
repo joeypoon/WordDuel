@@ -19,13 +19,16 @@ class BattleMenu extends Component {
         logEvent('Quit battle');
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
-        this.props.clearOpponent();
         this.props.clearMatch();
         this.props.clearPlayer();
-        this.props.matchDisconnect(
-            this.props.opponentSocket,
-            this.props.matchId
-        );
+
+        if (this.props.opponentSocket) {
+            this.props.clearOpponent();
+            this.props.matchDisconnect(
+                this.props.opponentSocket,
+                this.props.matchId
+            );
+        }
     }
 
     render() {
