@@ -29,8 +29,11 @@ class RoundOver extends Component {
     componentWillUnmount() {
         clearTimeout(this.timeout);
         this.props.setPlayer({ word: '', hasSubmitted: false });
-        const score = this.props.opponentScore + this.props.opponentWord.length;
-        this.props.setOpponent({ score });
+
+        if (this.props.opponentSocket) {
+            const score = this.props.opponentScore + this.props.opponentWord.length;
+            this.props.setOpponent({ score });
+        }
     }
 
     isSolo() {
@@ -64,7 +67,7 @@ class RoundOver extends Component {
     }
 
     nextRound() {
-        if (isSolo()) return this.startRound();
+        if (this.isSolo()) return this.startRound();
         this.handleNextDuelRound();
     }
 

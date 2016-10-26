@@ -2,6 +2,7 @@ import { store } from '../store';
 import { modalTypes } from '../constants';
 import {
     setModalType,
+    setModalVisible,
     setOpponent,
     setPlayer
 } from '../actionCreators';
@@ -13,7 +14,13 @@ function isDuel() {
 export function onWordValidate(data) {
     const { isValid } = data;
     if (!isValid) return store.dispatch(setModalType(modalTypes.invalidWord));
-    if (!isDuel()) return store.dispatch(setModalType(modalTypes.roundOverSolo));
+
+    if (!isDuel()) {
+        store.dispatch(setModalType(modalTypes.roundOver));
+        store.dispatch(setModalVisible(true));
+        return;
+    }
+
     store.dispatch(setPlayer({ hasSubmitted: true }));
 }
 
@@ -22,5 +29,5 @@ export function onWordSubmit(data) {
     const hasSubmitted = store.getState().player.get('hasSubmitted');
     store.dispatch(setOpponent({ word: data.word }));
     if (hasSubmitted)
-        store.dispatch(setModalType(modalTypes.roundOverDuel));
+        store.dispatch(setModalType(modalTypes.roundOver));
 }

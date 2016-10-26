@@ -10,7 +10,9 @@ import {
     clearPlayer,
     setModalVisible,
     setModalType,
-    searchOpponent
+    searchOpponent,
+    newRound,
+    setTimerPause
 } from '../actionCreators';
 import {
     requestData,
@@ -50,6 +52,8 @@ class Menu extends Component {
     handleSoloRoute() {
         if (!socket.connected) return this.noConnection();
         this.props.setRoute('Battle');
+        this.props.newRound();
+        this.props.setTimerPause(false);
     }
 
     handleDuelRoute() {
@@ -119,7 +123,9 @@ const actions = {
     clearPlayer,
     setModalVisible,
     setModalType,
-    searchOpponent
+    searchOpponent,
+    newRound,
+    setTimerPause
 }
 export default connect(mapStateToProps, actions)(Menu);
 

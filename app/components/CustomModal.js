@@ -49,9 +49,7 @@ class CustomModal extends Component {
                 return <BattleMenu />;
             case modalTypes.gameOver:
                 return <GameOver />;
-            case modalTypes.roundOverSolo:
-                return <RoundOver />;
-            case modalTypes.roundOverDuel:
+            case modalTypes.roundOver:
                 return <RoundOver />;
             case modalTypes.searching:
                 return <BasicModal

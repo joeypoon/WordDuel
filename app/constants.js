@@ -1,8 +1,9 @@
 import constants from 'WordDuelConstants';
 
 // constants
-export const maxRounds = 1;
+export const maxRounds = 3;
 export const timeOut = 5000; // in milliseconds
+const gridSize = 20;
 
 // Colors
 export const mainTextColor = '#2c3e50';
@@ -34,25 +35,34 @@ const alphabet = [
     'v', 'w', 'x', 'y', 'z',
 ];
 
-const gridSize = 20;
-
 function getRandomLetter() {
     return alphabet[Math.floor(Math.random() * alphabet.length)];
 }
 
 export function getRandomLetterGrid() {
-    let grid = [];
-    while (grid.length < gridSize) {
-        grid.push(getRandomLetter());
+    let alpha = [];
+    while (alpha.length < gridSize) {
+        alpha.push(getRandomLetter());
     }
+
+    const letters = alpha.map((letter, index) => {
+        return { value: letter, position: index }
+    });
+
+    let grid = [
+        letters.splice(0, 5),
+        letters.splice(0, 5),
+        letters.splice(0, 5),
+        letters.splice(0, 5)
+    ]
+
     return grid;
 }
 
 export const modalTypes = {
     waiting: 1,
     invalidWord: 2,
-    roundOverSolo: 3,
-    roundOverDuel: 3,
+    roundOver: 3,
     opponentFound: 4,
     gameOver: 5,
     submittingWord: 6,
