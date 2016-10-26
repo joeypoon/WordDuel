@@ -30,7 +30,7 @@ export function cancelSearch(facebookId) {
     return {
         type: actionTypes.cancelSearch,
         meta: {
-            event: events.search.cancel,
+            event: events.players.cancel,
             eventParams: {
                 facebookId
             }
@@ -67,7 +67,7 @@ export function submitScore(score) {
     return {
         type: actionTypes.submitScore,
         meta: {
-            event: events.score.submit,
+            event: events.players.score,
             eventParams: {
                 score
             }
