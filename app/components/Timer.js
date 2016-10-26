@@ -8,7 +8,7 @@ import {
     decrementTimer,
     submitWord
 } from '../actionCreators';
-import { mainTextColor } from '../constants';
+import { mainTextColor, modalTypes } from '../constants';
 
 class Timer extends Component {
     componentDidMount() {
