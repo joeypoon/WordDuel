@@ -13,9 +13,11 @@ import {
 } from '../../actionCreators';
 import { logEvent } from '../../utils';
 import { mainColor, mainTextColor } from '../../constants';
+import { requestAd } from '../../utils';
 
 class BattleMenu extends Component {
     handleQuit() {
+        requestAd();
         logEvent('Quit battle');
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
