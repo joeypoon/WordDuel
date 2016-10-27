@@ -11,11 +11,10 @@ import { mainColor, modalTypes } from '../../constants';
 
 export class GameOver extends Component {
     componentDidMount() {
-        if (this.props.matchId) {
-            // TODO this is sent twice
+        this.props.submitScore(this.props.playerScore);
+        // TODO this is sent twice
+        if (this.props.matchId)
             this.props.matchEnd(this.props.matchId);
-            this.props.submitScore(this.props.playerScore);
-        }
     }
 
     soloScoreDisplay() {

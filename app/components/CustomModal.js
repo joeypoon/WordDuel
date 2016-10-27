@@ -8,7 +8,7 @@ import GameOver from './modals/GameOver';
 import RoundOver from './modals/RoundOver';
 import OpponentFound from './modals/OpponentFound';
 import BasicModal from './modals/BasicModal';
-import ExperienceModal from './modals/Experience';
+import { ExperienceModal } from './modals';
 import {
     resetActiveGrid,
     setRoute,

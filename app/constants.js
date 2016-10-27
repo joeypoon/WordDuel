@@ -11,8 +11,8 @@ export const mainColor = '#16a085';
 export const secondaryColor = '#e74c3c';
 
 // Urls
-// export const rootUrl = 'http://localhost:9004';
-export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
+export const rootUrl = 'http://localhost:9004';
+// export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
 // defaults
 export const timerDefault = 15;

@@ -14,11 +14,8 @@ import {
 } from '../../actionCreators';
 
 class ExperienceModalBase extends Component {
-    componentDidMount() {
-        requestAd();
-    }
-
     handleQuit() {
+        requestAd();
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
         this.props.clearOpponent();
