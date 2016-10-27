@@ -19,7 +19,7 @@ import {
 
 class WordDisplay extends Component {
     isValidSubmit() {
-        return this.props.timer > 0 && this.props.word.length > 0
+        return this.props.timer > 0 && this.props.word.length > 1
     }
 
     handleMomentumScrollEnd(e, state, context) {
