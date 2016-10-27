@@ -10,7 +10,8 @@ import {
     setOpponent,
     setModalVisible,
     setTimerPause,
-    setPlayer
+    setPlayer,
+    newRound
 } from '../../actionCreators';
 import {
     mainColor,
@@ -39,6 +40,7 @@ class OpponentFound extends Component {
             return;
         }
 
+        this.props.newRound();
         this.props.setPlayer({ isReady: true });
         this.props.setModalType(modalTypes.waiting);
     }
@@ -75,7 +77,8 @@ const actions = {
     setOpponent,
     setModalVisible,
     setTimerPause,
-    setPlayer
+    setPlayer,
+    newRound
 };
 export default connect(mapStateToProps, actions)(OpponentFound);
 

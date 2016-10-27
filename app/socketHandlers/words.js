@@ -29,6 +29,7 @@ export function onWordValidate(data) {
     }
 
     store.dispatch(setPlayer({ hasSubmitted: true }));
+    store.dispatch(setTimerPause(true));
     store.dispatch(setModalType(modalTypes.waiting));
 }
 

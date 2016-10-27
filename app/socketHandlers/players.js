@@ -22,10 +22,10 @@ export function onPlayerFound(data) {
 export function onPlayerReady() {
     const playerReady = store.getState().player.get('isReady');
     if (playerReady) {
-        store.dispatch(newRound());
         store.dispatch(setModalVisible(false));
         store.dispatch(setTimerPause(false));
         store.dispatch(setPlayer({ isReady: false }));
+        store.dispatch(setOpponent({ isReady: false }));
     } else {
         store.dispatch(setOpponent({ isReady: true }));
     }

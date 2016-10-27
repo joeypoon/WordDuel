@@ -83,6 +83,7 @@ export const actionTypes = {
     sendReady: 13,
     submitScore: 6,
     clearWord: 'clearWord',
+    timeout: 'timeout',
 
     // opponent
     setOpponent: 3,

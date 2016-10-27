@@ -32,6 +32,9 @@ export function player(state = initialState, action) {
 
         case actionTypes.clearWord:
             return nextState.set('word', '');
+
+        case actionTypes.timeout:
+            return nextState.set('hasSubmitted', true);
     }
     return nextState;
 }

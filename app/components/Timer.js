@@ -6,7 +6,8 @@ import {
     setModalType,
     setModalVisible,
     decrementTimer,
-    submitWord
+    timeout,
+    setPlayer
 } from '../actionCreators';
 import { mainTextColor, modalTypes } from '../constants';
 
@@ -20,9 +21,14 @@ class Timer extends Component {
     }
 
     timeOut() {
-        this.props.setModalType(modalTypes.submittingWord);
+        this.props.timeout(this.props.opponentSocket);
+        if (this.props.opponentWord) {
+            this.props.setModalType(modalTypes.roundOver);
+            this.props.setModalVisible(true);
+            return;
+        }
+        this.props.setModalType(modalTypes.waiting);
         this.props.setModalVisible(true);
-        this.props.submitWord(this.props.opponentSocket, '');
     }
 
     componentWillUnmount() {
@@ -42,6 +48,7 @@ function mapStateToProps (state) {
     return {
         timer: state.match.get('timer'),
         isPaused: state.match.get('isPaused'),
+        opponentWord: state.opponent.get('word'),
         opponentSocket: state.opponent.get('socket')
     };
 }

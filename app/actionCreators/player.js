@@ -79,3 +79,15 @@ export function submitScore(score) {
         }
     };
 }
+
+export function timeout(opponentSocket) {
+    return {
+        type: actionTypes.timeout,
+        meta: {
+            event: events.players.timeout,
+            eventParams: {
+                opponentSocket
+            }
+        }
+    };
+}
