@@ -19,15 +19,26 @@ class Timer extends Component {
         }, 1000);
     }
 
-    timeOut() {
+    isSolo() {
+        return !this.props.opponentSocket;
+    }
+
+    roundOver() {
+        this.props.setModalType(modalTypes.roundOver);
+        this.props.setModalVisible(true);
+    }
+
+    handleDuelTimeout() {
         this.props.timeout(this.props.opponentSocket);
-        if (this.props.opponentWord) {
-            this.props.setModalType(modalTypes.roundOver);
-            this.props.setModalVisible(true);
-            return;
-        }
+        if (this.props.opponentWord) return this.roundOver();
         this.props.setModalType(modalTypes.waiting);
         this.props.setModalVisible(true);
+    }
+
+    timeOut() {
+        if (this.isSolo())
+            return this.roundOver();
+        this.handleDuelTimeout();
     }
 
     componentWillUnmount() {
