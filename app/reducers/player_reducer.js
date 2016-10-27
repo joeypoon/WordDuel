@@ -5,6 +5,7 @@ const initialState = new Map([
     ['name', null],
     ['image', null],
     ['level', null],
+    ['expToLevel', null],
     ['socket', null],
     ['word', ''],
     ['score', 0],

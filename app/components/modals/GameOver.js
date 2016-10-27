@@ -3,33 +3,22 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import {
-    setModalVisible,
-    setRoute,
-    clearOpponent,
     submitScore,
-    matchEnd,
-    clearPlayer,
-    clearMatch
+    matchEnd
 } from '../../actionCreators';
 import Button from '../Button';
-import { mainColor } from '../../constants';
-import { requestAd } from '../../utils';
+import { mainColor, modalTypes, timeOut } from '../../constants';
 
 export class GameOver extends Component {
     componentDidMount() {
         if (this.props.matchId) {
-            this.props.submitScore(this.props.playerScore);
+            // TODO this is sent twice
             this.props.matchEnd(this.props.matchId);
+            setTimeout(
+                this.props.submitScore
+                    .bind(this, this.props.playerScore)
+                , timeOut);
         }
-    }
-
-    handleQuit() {
-        requestAd();
-        this.props.setModalVisible(false);
-        this.props.setRoute('Menu');
-        this.props.clearOpponent();
-        this.props.clearMatch();
-        this.props.clearPlayer();
     }
 
     soloScoreDisplay() {
@@ -58,9 +47,6 @@ export class GameOver extends Component {
             <Text style={ styles.scoreText }>
                 Score: { this.soloScoreDisplay() }
             </Text>
-            <Button styles={ styles.buttonStyles }
-                action={ this.handleQuit.bind(this) }
-                text={ 'Done' } />
         </View>;
     }
 
@@ -72,9 +58,6 @@ export class GameOver extends Component {
             <Text style={ styles.scoreText }>
                 { this.duelScoreDisplay() }
             </Text>
-            <Button styles={ styles.buttonStyles }
-                action={ this.handleQuit.bind(this) }
-                text={ 'Done' } />
         </View>;
     }
 
@@ -93,13 +76,8 @@ function mapStateToProps (state) {
 }
 
 const actions = {
-    clearOpponent,
-    setModalVisible,
-    setRoute,
     submitScore,
-    matchEnd,
-    clearPlayer,
-    clearMatch
+    matchEnd
 }
 export default connect(mapStateToProps, actions)(GameOver);
 

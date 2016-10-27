@@ -70,7 +70,8 @@ export const modalTypes = {
     searching: 9,
     noConnection: 10,
     pleaseLogin: 11,
-    loading: 12
+    loading: 12,
+    experience: 13
 };
 
 // actions

@@ -31,3 +31,10 @@ export function onPlayerReady() {
         store.dispatch(setOpponent({ isReady: true }));
     }
 }
+
+export function onPlayerExp(data) {
+    const { level, expToLevel } = data;
+    store.dispatch(setPlayer({ level, expToLevel }));
+    store.dispatch(setModalType(modalTypes.experience));
+    store.dispatch(setModalVisible(true));
+}

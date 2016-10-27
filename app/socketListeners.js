@@ -14,4 +14,5 @@ socket.on(events.matches.disconnect, socketHandlers.onMatchDisconnect);
 
 // players
 socket.on(events.players.found, socketHandlers.onPlayerFound);
-socket.on(events.players.ready, socketHandlers.onPlayerReady)
+socket.on(events.players.ready, socketHandlers.onPlayerReady);
+socket.on(events.players.experience, socketHandlers.onPlayerExp);
