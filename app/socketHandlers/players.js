@@ -35,6 +35,8 @@ export function onPlayerReady() {
 export function onPlayerExp(data) {
     const { level, expToLevel } = data;
     store.dispatch(setPlayer({ level, expToLevel }));
-    store.dispatch(setModalType(modalTypes.experience));
-    store.dispatch(setModalVisible(true));
+    setTimeout(() => {
+        store.dispatch(setModalType(modalTypes.experience));
+        store.dispatch(setModalVisible(true));
+    }, 3000);
 }

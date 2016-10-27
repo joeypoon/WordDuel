@@ -14,10 +14,7 @@ export class GameOver extends Component {
         if (this.props.matchId) {
             // TODO this is sent twice
             this.props.matchEnd(this.props.matchId);
-            setTimeout(
-                this.props.submitScore
-                    .bind(this, this.props.playerScore)
-                , 3000);
+            this.props.submitScore(this.props.playerScore);
         }
     }
 
