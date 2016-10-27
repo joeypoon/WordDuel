@@ -1,7 +1,7 @@
 import constants from 'WordDuelConstants';
 
 // constants
-export const maxRounds = 5;
+export const maxRounds = 1;
 export const timeOut = 5000; // in milliseconds
 const gridSize = 20;
 

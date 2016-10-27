@@ -29,10 +29,13 @@ class ExperienceModalBase extends Component {
     render() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>
+                Level { this.props.level }
+            </Text>
+            <Text style={ styles.text }>
                 + { this.props.score } Experience
             </Text>
             <Text style={ styles.text }>
-                { this.props.expToLevel } until Lvl { this.props.level + 1 }
+                { this.props.expToLevel } until next level.
             </Text>
             <Button styles={ styles.buttonStyles }
                 action={ this.handleQuit.bind(this) }
