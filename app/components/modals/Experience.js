@@ -11,7 +11,7 @@ import {
     clearOpponent,
     clearMatch,
     clearPlayer
-} from '../actionCreators';
+} from '../../actionCreators';
 
 class ExperienceModalBase extends Component {
     componentDidMount() {

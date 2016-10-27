@@ -7,7 +7,7 @@ import {
     matchEnd
 } from '../../actionCreators';
 import Button from '../Button';
-import { mainColor, modalTypes, timeOut } from '../../constants';
+import { mainColor, modalTypes } from '../../constants';
 
 export class GameOver extends Component {
     componentDidMount() {
@@ -17,7 +17,7 @@ export class GameOver extends Component {
             setTimeout(
                 this.props.submitScore
                     .bind(this, this.props.playerScore)
-                , timeOut);
+                , 3000);
         }
     }
 
