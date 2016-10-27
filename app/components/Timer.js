@@ -6,8 +6,7 @@ import {
     setModalType,
     setModalVisible,
     decrementTimer,
-    timeout,
-    setPlayer
+    timeout
 } from '../actionCreators';
 import { mainTextColor, modalTypes } from '../constants';
 
@@ -57,7 +56,7 @@ const actions = {
     setModalType,
     setModalVisible,
     decrementTimer,
-    submitWord
+    timeout
 }
 export default connect(mapStateToProps, actions)(Timer);
 

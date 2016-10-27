@@ -34,13 +34,13 @@ class OpponentFound extends Component {
         this.props.setRoute('Battle');
 
         if (this.props.opponentReady) {
+            this.props.newRound();
             this.props.setOpponent({ isReady: false });
             this.props.setModalVisible(false);
             this.props.setTimerPause(false);
             return;
         }
 
-        this.props.newRound();
         this.props.setPlayer({ isReady: true });
         this.props.setModalType(modalTypes.waiting);
     }

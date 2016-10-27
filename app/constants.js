@@ -15,7 +15,7 @@ export const secondaryColor = '#e74c3c';
 export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
 // defaults
-export const timerDefault = 10;
+export const timerDefault = 15;
 
 export function getActiveGridDefault() {
     let activeGrid = [];
