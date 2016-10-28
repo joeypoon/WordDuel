@@ -6,7 +6,8 @@ import {
     setModalType,
     setModalVisible,
     decrementTimer,
-    timeout
+    timeout,
+    setPlayer
 } from '../actionCreators';
 import { mainTextColor, modalTypes } from '../constants';
 
@@ -24,6 +25,7 @@ class Timer extends Component {
     }
 
     roundOver() {
+        this.props.setPlayer({ word: 'Timed out.' });
         this.props.setModalType(modalTypes.roundOver);
         this.props.setModalVisible(true);
     }
@@ -67,7 +69,8 @@ const actions = {
     setModalType,
     setModalVisible,
     decrementTimer,
-    timeout
+    timeout,
+    setPlayer
 }
 export default connect(mapStateToProps, actions)(Timer);
 

@@ -17,20 +17,21 @@ import { requestAd } from '../../utils';
 
 class BattleMenu extends Component {
     handleQuit() {
-        requestAd();
         logEvent('Quit battle');
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
-        this.props.clearMatch();
         this.props.clearPlayer();
 
         if (this.props.opponentSocket) {
-            this.props.clearOpponent();
             this.props.matchDisconnect(
                 this.props.opponentSocket,
                 this.props.matchId
             );
+            this.props.clearOpponent();
         }
+
+        this.props.clearMatch();
+        requestAd();
     }
 
     render() {
