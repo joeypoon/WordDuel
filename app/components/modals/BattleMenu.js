@@ -14,14 +14,10 @@ import {
 import { logEvent } from '../../utils';
 import { mainColor, mainTextColor } from '../../constants';
 import { requestAd } from '../../utils';
+import { reconnect } from '../../socket';
 
 class BattleMenu extends Component {
     handleQuit() {
-        logEvent('Quit battle');
-        this.props.setModalVisible(false);
-        this.props.setRoute('Menu');
-        this.props.clearPlayer();
-
         if (this.props.opponentSocket) {
             this.props.matchDisconnect(
                 this.props.opponentSocket,
@@ -29,6 +25,11 @@ class BattleMenu extends Component {
             );
             this.props.clearOpponent();
         }
+
+        logEvent('Quit battle');
+        this.props.setModalVisible(false);
+        this.props.setRoute('Menu');
+        this.props.clearPlayer();
 
         this.props.clearMatch();
         requestAd();
