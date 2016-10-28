@@ -50,7 +50,7 @@ class OpponentFound extends Component {
             { uri: this.props.opponentImage } : require('../puppy.png');
         return <View style={ styles.container }>
             <Text style={ styles.text }>
-                { this.props.opponentName }
+                { `${ this.props.opponentName } Lvl ${ this.props.opponentLevel }` }
             </Text>
             <Image source={ source }
                 style={ styles.image } />
@@ -66,7 +66,8 @@ function mapStateToProps (state) {
         opponentName: state.opponent.get('name'),
         opponentImage: state.opponent.get('image'),
         opponentReady: state.opponent.get('isReady'),
-        opponentSocket: state.opponent.get('socket')
+        opponentSocket: state.opponent.get('socket'),
+        opponentLevel: state.opponent.get('level')
     };
 }
 
