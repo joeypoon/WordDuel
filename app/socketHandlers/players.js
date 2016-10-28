@@ -37,6 +37,5 @@ export function onPlayerExp(data) {
     store.dispatch(setPlayer({ level, requiredExp, experience }));
     setTimeout(() => {
         store.dispatch(setModalType(modalTypes.experience));
-        store.dispatch(setModalVisible(true));
     }, 3000);
 }
