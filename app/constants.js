@@ -1,7 +1,7 @@
 import constants from 'WordDuelConstants';
 
 // constants
-export const maxRounds = 1;
+export const maxRounds = 5;
 export const timeOut = 5000; // in milliseconds
 const gridSize = 20;
 
@@ -11,8 +11,8 @@ export const mainColor = '#16a085';
 export const secondaryColor = '#e74c3c';
 
 // Urls
-export const rootUrl = 'http://localhost:9004';
-// export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
+// export const rootUrl = 'http://localhost:9004';
+export const rootUrl = 'ws://mighty-dawn-34412.herokuapp.com:80';
 
 // defaults
 export const timerDefault = 15;
@@ -34,17 +34,36 @@ const alphabet = [
     'v', 'w', 'x', 'y', 'z',
 ];
 
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+
 function getRandomLetter() {
     return alphabet[Math.floor(Math.random() * alphabet.length)];
 }
 
-export function getRandomLetterGrid() {
+function getRandomLetterArray() {
     let alpha = [];
     while (alpha.length < gridSize) {
         alpha.push(getRandomLetter());
     }
+    return alpha;
+}
 
-    const letters = alpha.map((letter, index) => {
+function containsVowel(letterArray) {
+    for (let vowel of vowels) {
+        if (letterArray.includes(vowel))
+            return true;
+    }
+    return false;
+}
+
+export function getRandomLetterGrid() {
+    let letterArray = getRandomLetterArray();
+
+    while (!containsVowel(letterArray)) {
+        letterArray = getRandomLetterArray();
+    }
+
+    const letters = letterArray.map((letter, index) => {
         return { value: letter, position: index }
     });
 
