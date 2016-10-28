@@ -25,7 +25,6 @@ class Timer extends Component {
     }
 
     roundOver() {
-        this.props.setPlayer({ word: 'Timed out.' });
         this.props.setModalType(modalTypes.roundOver);
         this.props.setModalVisible(true);
     }
@@ -38,6 +37,7 @@ class Timer extends Component {
     }
 
     timeOut() {
+        this.props.setPlayer({ word: 'Timed out.' });
         if (this.isSolo())
             return this.roundOver();
         this.handleDuelTimeout();
