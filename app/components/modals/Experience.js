@@ -15,24 +15,24 @@ import {
 
 class ExperienceModalBase extends Component {
     handleQuit() {
-        requestAd();
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
         this.props.clearOpponent();
         this.props.clearMatch();
         this.props.clearPlayer();
+        requestAd();
     }
 
     render() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>
-                Level { this.props.level }
+                Lvl { this.props.level }
             </Text>
             <Text style={ styles.text }>
                 + { this.props.score } Experience
             </Text>
             <Text style={ styles.text }>
-                { this.props.expToLevel } until next level.
+                Exp { `${ this.props.experience } / ${ this.props.requiredExp }` }
             </Text>
             <Button styles={ styles.buttonStyles }
                 action={ this.handleQuit.bind(this) }
@@ -45,7 +45,8 @@ function mapStateToProps(state) {
     return {
         score: state.player.get('score'),
         level: state.player.get('level'),
-        expToLevel: state.player.get('expToLevel')
+        requiredExp: state.player.get('requiredExp'),
+        experience: state.player.get('experience')
     };
 }
 
