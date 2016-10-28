@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
-import { connect } from 'react-redux';
 
 import Button from '../Button';
-import { setModalType } from '../../actionCreators';
-import { mainColor, mainTextColor, modalTypes } from '../../constants';
+import { mainColor, mainTextColor } from '../../constants';
 
-class BasicModal extends Component {
-    componentDidMount() {
-        if (!this.props.hasButton)
-            setTimeout(() => {
-                // create time out modal
-                this.props.setModalType(modalTypes.playerDisconnect);
-            }, 10000);
-    }
-
+export default class BasicModal extends Component {
     renderLoading() {
         if (this.props.hasLoading)
             return <ActivityIndicator
@@ -40,8 +30,6 @@ class BasicModal extends Component {
         </View>;
     }
 }
-
-export default connect(null, { setModalType })(BasicModal);
 
 const styles = {
     container: {

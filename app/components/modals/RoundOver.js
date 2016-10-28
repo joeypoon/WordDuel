@@ -31,6 +31,7 @@ class RoundOver extends Component {
         this.props.setPlayer({ word: '', hasSubmitted: false });
 
         if (this.props.opponentSocket) {
+            if (this.props.opponentWord === 'Timed out.') return;
             const score = this.props.opponentScore + this.props.opponentWord.length;
             this.props.setOpponent({ score });
         }
@@ -71,6 +72,7 @@ class RoundOver extends Component {
     }
 
     setScore() {
+        if (this.props.playerWord === 'Timed out.') return;
         const score = this.props.playerScore + this.props.playerWord.length;
         this.props.setPlayer({ score });
     }
