@@ -20,7 +20,7 @@ import {
 } from '../utils';
 import { mainColor, mainTextColor, modalTypes } from '../constants';
 
-const menuItems = ['Solo', 'Duel'];
+const menuItems = ['Solo', 'Dual'];
 
 class Menu extends Component {
     pleaseLogin() {
@@ -74,7 +74,7 @@ class Menu extends Component {
 
     renderButtons() {
         return menuItems.map((route, index) => {
-            if (route === 'Duel')
+            if (route === 'Dual')
                 return <Button
                     text={ route }
                     key={ index }

@@ -9,15 +9,17 @@ import {
 } from '../actionCreators';
 
 export function disconnect() {
+    store.dispatch(setRoute('Menu'));
     const storeState = store.getState();
     const opponentSocket = storeState.opponent.get('socket');
     const matchId = storeState.match.get('id');
+
     if (matchId && opponentSocket) {
         const params = { socket: opponentSocket, matchId }
         socket.emit(events.matches.disconnect, params);
-        store.dispatch(setRoute('Menu'));
-        store.dispatch(clearMatch());
-        store.dispatch(clearOpponent());
-        store.dispatch(clearPlayer());
     }
+
+    store.dispatch(clearMatch());
+    store.dispatch(clearOpponent());
+    store.dispatch(clearPlayer());
 }
