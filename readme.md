@@ -1,4 +1,4 @@
-### Word Duel
+### Word Dual
 
 #### Running local iOS simulator
 

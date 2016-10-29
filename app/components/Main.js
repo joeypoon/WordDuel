@@ -21,7 +21,7 @@ export class Main extends Component {
         if (this.props.route === 'Menu')
             return <View style={ styles.titleContainer }>
                 <Text style={ styles.title }>
-                    Word Duel
+                    Word Dual
                 </Text>
             </View>;
     }
