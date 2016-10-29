@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 import {
     submitScore,
     matchEnd,
-    setModalVisible
+    setModalVisible,
+    clearMatch,
+    clearPlayer,
+    setRoute
 } from '../../actionCreators';
 import Button from '../Button';
 import { mainColor, modalTypes } from '../../constants';
@@ -16,14 +19,19 @@ export class GameOver extends Component {
             this.props.submitScore(this.props.playerScore);
         } else {
             // only solo and not logged in
-            setTimeout(this.props.setModalVisible(false), 3000);
+            setTimeout(this.handleAnonSolo.bind(this), 3000);
         }
 
         // TODO this is sent twice
         if (this.props.matchId)
             this.props.matchEnd(this.props.matchId);
+    }
 
-
+    handleAnonSolo() {
+        this.props.setModalVisible(false);
+        this.props.clearMatch();
+        this.props.clearPlayer();
+        this.props.setRoute('Menu');
     }
 
     soloScoreDisplay() {
@@ -84,7 +92,10 @@ function mapStateToProps (state) {
 const actions = {
     submitScore,
     matchEnd,
-    setModalVisible
+    setModalVisible,
+    clearMatch,
+    clearPlayer,
+    setRoute
 }
 export default connect(mapStateToProps, actions)(GameOver);
 
