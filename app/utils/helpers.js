@@ -5,7 +5,8 @@ import {
     setRoute,
     clearMatch,
     clearOpponent,
-    clearPlayer
+    clearPlayer,
+    setModalVisible
 } from '../actionCreators';
 
 export function disconnect() {
@@ -22,4 +23,5 @@ export function disconnect() {
     store.dispatch(clearMatch());
     store.dispatch(clearOpponent());
     store.dispatch(clearPlayer());
+    store.dispatch(setModalVisible(false));
 }
