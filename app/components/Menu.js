@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { LoginButton } from 'react-native-fbsdk';
+import { LoginButton, ShareDialog } from 'react-native-fbsdk';
 import { socket } from '../socket';
 
 import Button from './Button';
@@ -21,6 +21,13 @@ import {
 import { mainColor, mainTextColor, modalTypes } from '../constants';
 
 const menuItems = ['Solo', 'Dual'];
+
+const shareLinkContent = {
+    contentType: 'link',
+    contentUrl: "http://kaijudev.com",
+    contentDescription: 'Check out this game!',
+};
+
 
 class Menu extends Component {
     pleaseLogin() {
@@ -64,6 +71,21 @@ class Menu extends Component {
         this.props.searchOpponent(this.props.facebookId);
     }
 
+    shareLinkWithShareDialog() {
+        ShareDialog.canShow(shareLinkContent)
+            .then((canShow) => {
+                if (canShow) return ShareDialog.show(shareLinkContent);
+            }).then((result) => {
+                if (result.isCancelled) {
+                    alert('Share operation was cancelled');
+                } else {
+                    alert('Share was successful with postId: ' + result.postId);
+                }
+            }, (error) => {
+                alert('Share failed with error: ' + error);
+            });
+    }
+
     renderPlayer() {
         if (this.props.playerName && this.props.playerImage)
             return <View style={ styles.playerInfo }>
@@ -97,12 +119,20 @@ class Menu extends Component {
         </View>;
     }
 
+    renderShareButton() {
+        if (this.props.facebookId)
+            return <Button text='Share'
+                action={ this.shareLinkWithShareDialog.bind(this) }
+                styles={ styles.shareButton } />;
+    }
+
     render() {
         return (
             <View style={ styles.container }>
                 { this.renderPlayer() }
                 <View style={ styles.buttonContainer }>
                     { this.renderButtons() }
+                    { this.renderShareButton() }
                     { this.renderLoginButton() }
                 </View>
             </View>
@@ -136,7 +166,7 @@ const styles = {
         alignItems: 'center'
     },
     fbLoginContainer: {
-        margin: 14,
+        margin: 10,
         transform: [{ scale: 1.2 }],
         alignItems: 'center',
         justifyContent: 'center'
@@ -165,6 +195,21 @@ const styles = {
     buttonStyles: {
         container: {
             backgroundColor: mainColor,
+            padding: 7,
+            margin: 10,
+            width: 215,
+            alignItems: 'center'
+        },
+        text: {
+            fontSize: 20,
+            color: 'white',
+            letterSpacing: 1,
+            fontFamily: 'roboto-light'
+        }
+    },
+    shareButton: {
+        container: {
+            backgroundColor: 'rgb(67, 95, 172)',
             padding: 7,
             margin: 10,
             width: 215,
