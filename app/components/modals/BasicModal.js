@@ -7,9 +7,8 @@ import { mainColor, mainTextColor } from '../../constants';
 import { setTimerPause } from '../../actionCreators';
 
 class BasicModal extends Component {
-    constructor(props) {
-        super(props);
-        props.setTimerPause(true);
+    componentDidMount() {
+        this.props.setTimerPause(true);
     }
 
     renderLoading() {
@@ -38,7 +37,7 @@ class BasicModal extends Component {
     }
 }
 
-const actions = [ setTimerPause ];
+const actions = { setTimerPause };
 export default connect(null, actions)(BasicModal);
 
 const styles = {
