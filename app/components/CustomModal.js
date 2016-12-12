@@ -17,8 +17,7 @@ import {
     clearWord,
     cancelSearch,
     setMatchId,
-    clearOpponent,
-    setTimerPause
+    clearOpponent
 } from '../actionCreators';
 import { modalTypes } from '../constants';
 
@@ -43,10 +42,6 @@ class CustomModal extends Component {
 
     closeModal() {
         this.props.setModalVisible(false);
-    }
-
-    pauseTimer() {
-        this.props.setTimerPause(true);
     }
 
     renderContent() {
@@ -89,7 +84,6 @@ class CustomModal extends Component {
                     hasButton={ true }
                     hasLoading={ false }
                     buttonText={ 'Okay' }
-                    actions={ [ this.pauseTimer.bind(this) ] }
                     buttonAction={ this.playerDisconnectAction.bind(this) } />;
             case modalTypes.noConnection:
                 return <BasicModal
@@ -144,8 +138,7 @@ const actions = {
     clearWord,
     cancelSearch,
     setMatchId,
-    clearOpponent,
-    setTimerPause
+    clearOpponent
 };
 export default connect(mapStateToProps, actions)(CustomModal);
 

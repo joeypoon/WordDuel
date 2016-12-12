@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
 
 import Button from '../Button';
 import { mainColor, mainTextColor } from '../../constants';
+import { setTimerPause } from '../../actionCreators';
 
-export default class BasicModal extends Component {
+class BasicModal extends Component {
     constructor(props) {
         super(props);
-        if (props && props.actions)
-            props.actions.forEach(action => action());
+        props.setTimerPause(true);
     }
 
     renderLoading() {
@@ -36,6 +37,9 @@ export default class BasicModal extends Component {
         </View>;
     }
 }
+
+const actions = [ setTimerPause ];
+export default connect(null, actions)(BasicModal);
 
 const styles = {
     container: {
