@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import Main from './Main';
 import { store } from '../store';
+import { reconnect } from '../socket';
 import {
     requestData,
     adMobEventListeners,
@@ -20,8 +21,8 @@ export default class App extends Component {
     }
 
     handleAppStateChange() {
-        if (AppState.currentState !== 'active')
-            disconnect();
+        if (AppState.currentState !== 'active') return disconnect();
+        if (AppState.currentState === 'active') return reconnect();
     }
 
     render() {
