@@ -22,6 +22,7 @@ import {
 
 class RoundOver extends Component {
     componentDidMount() {
+        this.setScore();
         this.props.setTimerPause(true);
         this.timeout = setTimeout(this.handleDone.bind(this), timeOut);
     }
@@ -29,12 +30,7 @@ class RoundOver extends Component {
     componentWillUnmount() {
         clearTimeout(this.timeout);
         this.props.setPlayer({ word: '', hasSubmitted: false });
-
-        if (this.props.opponentSocket) {
-            if (this.props.opponentWord === 'Timed out.') return;
-            const score = this.props.opponentScore + this.props.opponentWord.length;
-            this.props.setOpponent({ score });
-        }
+        this.props.setTimerPause(false);
     }
 
     isSolo() {
@@ -48,7 +44,6 @@ class RoundOver extends Component {
     startRound() {
         this.props.newRound();
         this.props.setModalVisible(false);
-        this.props.setTimerPause(false);
     }
 
     handleNextDuelRound() {
@@ -72,13 +67,25 @@ class RoundOver extends Component {
     }
 
     setScore() {
+        this.setPlayerScore();
+        this.setOpponentScore();
+    }
+
+    setPlayerScore() {
         if (this.props.playerWord === 'Timed out.') return;
         const score = this.props.playerScore + this.props.playerWord.length;
         this.props.setPlayer({ score });
     }
 
+    setOpponentScore() {
+        if (this.props.opponentSocket) {
+            if (this.props.opponentWord === 'Timed out.') return;
+            const score = this.props.opponentScore + this.props.opponentWord.length;
+            this.props.setOpponent({ score });
+        }
+    }
+
     handleDone() {
-        this.setScore();
         if (this.isLastRound()) return this.matchEnd();
         this.props.sendReady(this.props.opponentSocket);
         this.props.setPlayer({ isReady: true });
