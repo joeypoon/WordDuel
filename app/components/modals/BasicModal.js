@@ -11,6 +11,10 @@ class BasicModal extends Component {
         this.props.setTimerPause(true);
     }
 
+    componentWillUnmount() {
+        this.props.setTimerPause(false);
+    }
+
     renderLoading() {
         if (this.props.hasLoading)
             return <ActivityIndicator
