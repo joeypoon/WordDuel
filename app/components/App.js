@@ -22,7 +22,10 @@ export default class App extends Component {
 
     handleAppStateChange() {
         if (AppState.currentState !== 'active') return disconnect();
-        if (AppState.currentState === 'active') return reconnect();
+        if (AppState.currentState === 'active') {
+            reconnect();
+            requestData();
+        }
     }
 
     render() {
