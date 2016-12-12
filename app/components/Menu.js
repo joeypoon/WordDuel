@@ -72,18 +72,9 @@ class Menu extends Component {
     }
 
     shareLinkWithShareDialog() {
-        ShareDialog.canShow(shareLinkContent)
-            .then((canShow) => {
-                if (canShow) return ShareDialog.show(shareLinkContent);
-            }).then((result) => {
-                if (result.isCancelled) {
-                    alert('Share operation was cancelled');
-                } else {
-                    alert('Share was successful with postId: ' + result.postId);
-                }
-            }, (error) => {
-                alert('Share failed with error: ' + error);
-            });
+        ShareDialog.canShow(shareLinkContent).then(canShow => {
+            if (canShow) return ShareDialog.show(shareLinkContent);
+        });
     }
 
     renderPlayer() {
