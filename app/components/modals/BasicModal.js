@@ -5,6 +5,12 @@ import Button from '../Button';
 import { mainColor, mainTextColor } from '../../constants';
 
 export default class BasicModal extends Component {
+    constructor(props) {
+        super(props);
+        if (props && props.actions)
+            props.actions.forEach(action => action());
+    }
+
     renderLoading() {
         if (this.props.hasLoading)
             return <ActivityIndicator
