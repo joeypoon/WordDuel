@@ -24,8 +24,8 @@ const menuItems = ['Solo', 'Dual'];
 
 const shareLinkContent = {
     contentType: 'link',
-    contentUrl: "http://kaijudev.com",
-    contentDescription: 'Check out this game!',
+    contentUrl: "http://word-dual.kaijudev.com",
+    contentDescription: 'Play Word Dual with me!',
 };
 
 
