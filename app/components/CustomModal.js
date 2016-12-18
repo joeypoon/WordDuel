@@ -17,7 +17,8 @@ import {
     clearWord,
     cancelSearch,
     setMatchId,
-    clearOpponent
+    clearOpponent,
+    setTimerPause
 } from '../actionCreators';
 import { modalTypes } from '../constants';
 
@@ -44,6 +45,10 @@ class CustomModal extends Component {
         this.props.setModalVisible(false);
     }
 
+    pauseTimer() {
+        this.props.setTimerPause(true);
+    }
+
     renderContent() {
         switch (this.props.modalType) {
             case modalTypes.battleMenu:
@@ -65,6 +70,7 @@ class CustomModal extends Component {
                 return <BasicModal
                     text={ 'Waiting for opponent' }
                     hasButton={ false }
+                    actions={ [ this.pauseTimer.bind(this) ] }
                     hasLoading={ true } />;
             case modalTypes.submittingWord:
                 return <BasicModal
@@ -73,16 +79,17 @@ class CustomModal extends Component {
                     hasLoading={ true } />;
             case modalTypes.invalidWord:
                 return <BasicModal
-                    text={ 'Invalid word' }
+                    text='Invalid word'
                     hasButton={ true }
                     hasLoading={ false }
-                    buttonText={ 'Okay' }
+                    buttonText='Okay'
                     buttonAction={ this.invalidWordAction.bind(this) } />;
             case modalTypes.playerDisconnect:
                 return <BasicModal
                     text={ 'Opponent disconnected' }
                     hasButton={ true }
                     hasLoading={ false }
+                    actions={ [ this.pauseTimer.bind(this) ] }
                     buttonText={ 'Okay' }
                     buttonAction={ this.playerDisconnectAction.bind(this) } />;
             case modalTypes.noConnection:
@@ -138,7 +145,8 @@ const actions = {
     clearWord,
     cancelSearch,
     setMatchId,
-    clearOpponent
+    clearOpponent,
+    setTimerPause
 };
 export default connect(mapStateToProps, actions)(CustomModal);
 

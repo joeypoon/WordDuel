@@ -8,13 +8,15 @@ import {
     setModalVisible,
     clearMatch,
     clearPlayer,
-    setRoute
+    setRoute,
+    setTimerPause
 } from '../../actionCreators';
 import Button from '../Button';
 import { mainColor, modalTypes } from '../../constants';
 
 export class GameOver extends Component {
     componentDidMount() {
+        this.props.setTimerPause(true);
         if (this.props.facebookId) {
             this.props.submitScore(this.props.playerScore);
         } else {
@@ -95,7 +97,8 @@ const actions = {
     setModalVisible,
     clearMatch,
     clearPlayer,
-    setRoute
+    setRoute,
+    setTimerPause
 }
 export default connect(mapStateToProps, actions)(GameOver);
 

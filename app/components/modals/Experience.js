@@ -10,10 +10,15 @@ import {
     setRoute,
     clearOpponent,
     clearMatch,
-    clearPlayer
+    clearPlayer,
+    setTimerPause
 } from '../../actionCreators';
 
 class ExperienceModalBase extends Component {
+    componentDidMount() {
+        this.props.setTimerPause(true);
+    }
+
     handleQuit() {
         this.props.setModalVisible(false);
         this.props.setRoute('Menu');
@@ -55,7 +60,8 @@ const actions = {
     setRoute,
     clearOpponent,
     clearMatch,
-    clearPlayer
+    clearPlayer,
+    setTimerPause
 };
 export const ExperienceModal = connect(mapStateToProps, actions)(ExperienceModalBase);
 

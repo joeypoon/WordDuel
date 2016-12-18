@@ -4,15 +4,11 @@ import { connect } from 'react-redux';
 
 import Button from '../Button';
 import { mainColor, mainTextColor } from '../../constants';
-import { setTimerPause } from '../../actionCreators';
 
-class BasicModal extends Component {
+export default class BasicModal extends Component {
     componentDidMount() {
-        this.props.setTimerPause(true);
-    }
-
-    componentWillUnmount() {
-        this.props.setTimerPause(false);
+        if (this.props.actions)
+            this.props.actions.forEach(action => action());
     }
 
     renderLoading() {
@@ -40,9 +36,6 @@ class BasicModal extends Component {
         </View>;
     }
 }
-
-const actions = { setTimerPause };
-export default connect(null, actions)(BasicModal);
 
 const styles = {
     container: {
