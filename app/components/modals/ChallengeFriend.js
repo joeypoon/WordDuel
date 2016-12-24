@@ -65,8 +65,8 @@ class ChallengeFriendBase extends Component {
     renderNoFriends() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>
-                Looks like your friends are not playing Word Dual yet.
-                Would you like to invite them?
+                No friends are available for a challenge at this time.
+                Invite more friends to play?
             </Text>
             { this.renderInviteButton() }
             { this.renderCancelButton() }
@@ -80,7 +80,6 @@ class ChallengeFriendBase extends Component {
     }
 
     render() {
-        // if (true) return this.renderNoFriends();
         if (!this.props.friends.length) return this.renderNoFriends();
         return <View style={ styles.container }>
             <ListView
