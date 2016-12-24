@@ -11,7 +11,7 @@ import { ShareDialog } from 'react-native-fbsdk';
 import Button from '../Button';
 import { ChallengeFriendRow } from './index';
 
-import { setModalVisible } from '../../actionCreators';
+import { setModalVisible, challengeFriend } from '../../actionCreators';
 import { mainColor, mainTextColor } from '../../constants';
 import { logEvent } from '../../utils';
 
@@ -28,7 +28,7 @@ class ChallengeFriendBase extends Component {
     }
 
     handleChallenge(id) {
-        console.log(id);
+        this.props.challengeFriend(id);
     }
 
     shareLinkWithShareDialog() {
@@ -98,7 +98,7 @@ function mapStateToProps(state) {
     };
 }
 
-const actions = { setModalVisible };
+const actions = { setModalVisible, challengeFriend };
 export const ChallengeFriend = connect(mapStateToProps, actions)(ChallengeFriendBase);
 
 

@@ -107,6 +107,7 @@ export const actionTypes = {
     timeout: 'timeout',
     findActiveFriends: 'findActiveFriends',
     setFriends: 'setFriends',
+    challengeFriend: 'challengeFriend',
 
     // opponent
     setOpponent: 3,
