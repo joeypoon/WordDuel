@@ -25,9 +25,23 @@ function responseInfoCallback(error, result) {
     }
 }
 
+function handleFriendList(err, result) {
+    if (err) {
+        logEvent('error', null, { message: err.toString() });
+    } else {
+        console.log(result);
+    }
+}
+
 export function requestData() {
     const url = '/me?fields=id,first_name,picture.type(large)';
     const infoRequest = new GraphRequest(url, null, responseInfoCallback);
+    new GraphRequestManager().addRequest(infoRequest).start();
+}
+
+export function requestFriends() {
+    const url = '/me/friends';
+    const infoRequest = new GraphRequest(url, null, handleFriendList);
     new GraphRequestManager().addRequest(infoRequest).start();
 }
 

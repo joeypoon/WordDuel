@@ -113,7 +113,7 @@ class Menu extends Component {
     renderLoginButton() {
         return <View style={ styles.fbLoginContainer }>
             <LoginButton
-                publishPermissions={ ["publish_actions"] }
+                readPermissions={ [ "user_friends" ] }
                 onLoginFinished={ this.handleLogin.bind(this) }
                 onLogoutFinished={ this.handleLogout.bind(this) } />
         </View>;
