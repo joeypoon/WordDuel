@@ -36,7 +36,6 @@ function handleFriendList(err, result) {
     if (err) {
         logEvent('error', null, { message: err.toString() });
     } else {
-        console.log(result.data);
         store.dispatch(setFriends(result.data));
         store.dispatch(setModalType(modalTypes.challengeFriend));
         store.dispatch(setModalVisible(true));

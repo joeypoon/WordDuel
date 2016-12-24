@@ -23,13 +23,6 @@ import { mainColor, mainTextColor, modalTypes } from '../constants';
 
 const menuItems = ['Solo', 'Dual'];
 
-const shareLinkContent = {
-    contentType: 'link',
-    contentUrl: "http://word-dual.kaijudev.com",
-    contentDescription: 'Play Word Dual with me!',
-};
-
-
 class Menu extends Component {
     pleaseLogin() {
         this.props.setModalType(modalTypes.pleaseLogin);
@@ -72,21 +65,6 @@ class Menu extends Component {
         this.props.searchOpponent(this.props.facebookId);
     }
 
-    // shareLinkWithShareDialog() {
-    //     ShareDialog.canShow(shareLinkContent)
-    //         .then(canShow => {
-    //             if (canShow) return ShareDialog.show(shareLinkContent);
-    //         }).then(result => {
-    //             if (result.isCancelled) {
-    //                 logEvent('shareCancelled', null);
-    //             } else {
-    //                 logEvent('shareSuccess', null);
-    //             }
-    //         }, (error) => {
-    //             logEvent('shareError', null, error);
-    //         });
-    // }
-
     renderPlayer() {
         if (this.props.playerName && this.props.playerImage)
             return <View style={ styles.playerInfo }>
@@ -120,7 +98,6 @@ class Menu extends Component {
         </View>;
     }
 
-    // action={ this.shareLinkWithShareDialog.bind(this) }
     renderChallengeButton() {
         if (this.props.facebookId)
             return <Button text='Challenge'

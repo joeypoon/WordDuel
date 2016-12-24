@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
-import { View, Text, ListView } from 'react-native';
+import {
+    View,
+    Text,
+    ListView,
+    Image
+} from 'react-native';
 import { connect } from 'react-redux';
+import { ShareDialog } from 'react-native-fbsdk';
 
 import Button from '../Button';
 import { ChallengeFriendRow } from './index';
 
 import { setModalVisible } from '../../actionCreators';
 import { mainColor, mainTextColor } from '../../constants';
+import { logEvent } from '../../utils';
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-// const fakeFriends = [{ name: 'foo', id: 1 }, { name: 'bar', id: 2 }]
+const shareLinkContent = {
+    contentType: 'link',
+    contentUrl: "http://word-dual.kaijudev.com",
+    contentDescription: 'Play Word Dual with me!',
+};
 
 class ChallengeFriendBase extends Component {
     handleCancel() {
@@ -20,22 +31,64 @@ class ChallengeFriendBase extends Component {
         console.log(id);
     }
 
-    renderRow(row) {
-        return <Text
-            style={ [ styles.row, styles.text ] }
-            onPress={ this.handlePress.bind(this, row.id) }>
-            { row.first_name }
-        </Text>;
+    shareLinkWithShareDialog() {
+        this.props.setModalVisible(false);
+        ShareDialog.canShow(shareLinkContent)
+            .then(canShow => {
+                if (canShow) return ShareDialog.show(shareLinkContent);
+            }).then(result => {
+                if (result.isCancelled) {
+                    logEvent('shareCancelled', null);
+                } else {
+                    logEvent('shareSuccess', null);
+                }
+            }, (error) => {
+                logEvent('shareError', null, error);
+            });
+    }
+
+    renderInviteButton() {
+        return <Button text='Invite'
+            action={ this.shareLinkWithShareDialog.bind(this) }
+            styles={ styles.inviteButton } />;
+    }
+
+    renderRow(friend) {
+        return <View
+            style={ styles.row }
+            onPress={ this.handlePress.bind(this, friend.id) }>
+            <Image source={{ uri: friend.picture.data.url }} style={ styles.image } />
+            <Text style={ styles.text }>{ friend.first_name }</Text>
+        </View>;
+    }
+
+    renderNoFriends() {
+        return <View style={ styles.container }>
+            <Text style={ styles.text }>
+                Looks like your friends are not playing Word Dual yet.
+                Would you like to invite them?
+            </Text>
+            { this.renderInviteButton() }
+            { this.renderCancelButton() }
+        </View>
+    }
+
+    renderCancelButton() {
+        return <Button styles={ styles.buttonStyles }
+            action={ this.handleCancel.bind(this) }
+            text={ 'Cancel' } />
     }
 
     render() {
+        // if (true) return this.renderNoFriends();
+        if (!this.props.friends.length) return this.renderNoFriends();
         return <View style={ styles.container }>
             <ListView
+                style={ styles.list }
                 dataSource={ ds.cloneWithRows(this.props.friends) }
-                renderRow={ this.renderRow.bind(this) } />
-            <Button styles={ styles.buttonStyles }
-                action={ this.handleCancel.bind(this) }
-                text={ 'Cancel' } />
+                renderRow={ this.renderRow.bind(this) }
+                showsVerticalScrollIndicator={ false } />
+            { this.renderCancelButton() }
         </View>;
     }
 }
@@ -61,17 +114,24 @@ const styles = {
         fontFamily: 'roboto-light',
         fontSize: 25,
         margin: 5,
-        color: mainTextColor
+        color: mainTextColor,
+        textAlign: 'center'
+    },
+    list: {
+        maxHeight: 200,
+        width: 175
     },
     row: {
-        height: 40,
+        flex: 1,
+        height: 50,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'row'
     },
     buttonStyles: {
         container: {
             backgroundColor: mainColor,
-            padding: 10,
+            padding: 7,
             margin: 10,
             alignItems: 'center',
             width: 175
@@ -81,6 +141,27 @@ const styles = {
             fontSize: 20,
             color: 'white',
             letterSpacing: 2
+        }
+    },
+    image: {
+        height: 40,
+        width: 40,
+        borderRadius: 20,
+        marginRight: 5
+    },
+    inviteButton: {
+        container: {
+            backgroundColor: 'rgb(67, 95, 172)',
+            padding: 7,
+            margin: 10,
+            width: 175,
+            alignItems: 'center'
+        },
+        text: {
+            fontSize: 20,
+            color: 'white',
+            letterSpacing: 1,
+            fontFamily: 'roboto-light'
         }
     }
 }
