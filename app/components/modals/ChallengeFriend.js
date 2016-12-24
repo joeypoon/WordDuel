@@ -27,7 +27,7 @@ class ChallengeFriendBase extends Component {
         this.props.setModalVisible(false);
     }
 
-    handlePress(id) {
+    handleChallenge(id) {
         console.log(id);
     }
 
@@ -56,9 +56,9 @@ class ChallengeFriendBase extends Component {
     renderRow(friend) {
         return <View
             style={ styles.row }
-            onPress={ this.handlePress.bind(this, friend.id) }>
-            <Image source={{ uri: friend.picture.data.url }} style={ styles.image } />
-            <Text style={ styles.text }>{ friend.first_name }</Text>
+            onPress={ this.handleChallenge.bind(this, friend.facebookId) }>
+            <Image source={{ uri: friend.image }} style={ styles.image } />
+            <Text style={ styles.text }>{ friend.name }</Text>
         </View>;
     }
 

@@ -13,9 +13,7 @@ import {
 } from '../constants';
 import {
     setPlayer,
-    setModalVisible,
-    setModalType,
-    setFriends
+    findActiveFriends
 } from '../actionCreators';
 
 function responseInfoCallback(error, result) {
@@ -36,9 +34,8 @@ function handleFriendList(err, result) {
     if (err) {
         logEvent('error', null, { message: err.toString() });
     } else {
-        store.dispatch(setFriends(result.data));
-        store.dispatch(setModalType(modalTypes.challengeFriend));
-        store.dispatch(setModalVisible(true));
+        const facebookIds = result.data.map(f => f.id);
+        store.dispatch(findActiveFriends(facebookIds));
     }
 }
 

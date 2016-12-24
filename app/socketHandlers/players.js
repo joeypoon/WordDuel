@@ -2,12 +2,13 @@ import { store } from '../store';
 import { modalTypes } from '../constants';
 import {
     setModalType,
+    setModalVisible,
     setOpponent,
     setMatchId,
-    setModalVisible,
     setTimerPause,
     newRound,
-    setPlayer
+    setPlayer,
+    setFriends
 } from '../actionCreators';
 
 export function onPlayerLogin(data) {
@@ -42,4 +43,10 @@ export function onPlayerExp(data) {
     setTimeout(() => {
         store.dispatch(setModalType(modalTypes.experience));
     }, 3000);
+}
+
+export function onActiveFriendsFound(data) {
+    store.dispatch(setFriends(data.friends));
+    store.dispatch(setModalType(modalTypes.challengeFriend));
+    store.dispatch(setModalVisible(true));
 }

@@ -105,6 +105,7 @@ export const actionTypes = {
     submitScore: 6,
     clearWord: 'clearWord',
     timeout: 'timeout',
+    findActiveFriends: 'findActiveFriends',
     setFriends: 'setFriends',
 
     // opponent

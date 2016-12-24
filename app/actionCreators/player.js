@@ -92,6 +92,18 @@ export function timeout(opponentSocket) {
     };
 }
 
+export function findActiveFriends(facebookIds) {
+    return {
+        type: actionTypes.findActiveFriends,
+        meta: {
+            event: events.players.findActiveFriends,
+            eventParams: {
+                facebookIds
+            }
+        }
+    }
+}
+
 export function setFriends(friends) {
     return {
         type: actionTypes.setFriends,

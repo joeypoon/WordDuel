@@ -17,3 +17,4 @@ socket.on(events.players.login, socketHandlers.onPlayerLogin);
 socket.on(events.players.found, socketHandlers.onPlayerFound);
 socket.on(events.players.ready, socketHandlers.onPlayerReady);
 socket.on(events.players.experience, socketHandlers.onPlayerExp);
+socket.on(events.players.findActiveFriends, socketHandlers.onActiveFriendsFound);
