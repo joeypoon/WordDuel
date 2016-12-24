@@ -8,7 +8,6 @@ import { socket } from '../socket';
 import { events } from '../constants';
 import {
     requestData,
-    requestFriends,
     adMobEventListeners,
     disconnect
 } from '../utils';
@@ -24,7 +23,6 @@ export default class App extends Component {
     componentDidMount() {
         AppState.addEventListener('change', this.handleAppStateChange);
         requestData();
-        requestFriends();
         adMobEventListeners();
     }
 

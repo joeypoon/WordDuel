@@ -8,7 +8,10 @@ import GameOver from './modals/GameOver';
 import RoundOver from './modals/RoundOver';
 import OpponentFound from './modals/OpponentFound';
 import BasicModal from './modals/BasicModal';
-import { ExperienceModal } from './modals';
+import {
+    ExperienceModal,
+    ChallengeFriend
+} from './modals';
 import {
     resetActiveGrid,
     setRoute,
@@ -113,6 +116,8 @@ class CustomModal extends Component {
                     hasLoading={ true } />;
             case modalTypes.experience:
                 return <ExperienceModal />;
+            case modalTypes.challengeFriend:
+                return <ChallengeFriend />;
         }
         return <View />;
     }

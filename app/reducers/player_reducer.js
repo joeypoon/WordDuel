@@ -11,7 +11,8 @@ const initialState = new Map([
     ['word', ''],
     ['score', 0],
     ['isReady', false],
-    ['hasSubmitted', false]
+    ['hasSubmitted', false],
+    ['friends', []]
 ]);
 
 export function player(state = initialState, action) {
@@ -37,6 +38,9 @@ export function player(state = initialState, action) {
 
         case actionTypes.timeout:
             return nextState.set('hasSubmitted', true);
+
+        case actionTypes.setFriends:
+            return nextState.set('friends', action.friends);
     }
     return nextState;
 }

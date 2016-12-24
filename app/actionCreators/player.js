@@ -91,3 +91,10 @@ export function timeout(opponentSocket) {
         }
     };
 }
+
+export function setFriends(friends) {
+    return {
+        type: actionTypes.setFriends,
+        friends
+    };
+}

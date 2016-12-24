@@ -16,7 +16,8 @@ import {
 } from '../actionCreators';
 import {
     requestData,
-    logEvent
+    logEvent,
+    requestFriends
 } from '../utils';
 import { mainColor, mainTextColor, modalTypes } from '../constants';
 
@@ -71,20 +72,20 @@ class Menu extends Component {
         this.props.searchOpponent(this.props.facebookId);
     }
 
-    shareLinkWithShareDialog() {
-        ShareDialog.canShow(shareLinkContent)
-            .then(canShow => {
-                if (canShow) return ShareDialog.show(shareLinkContent);
-            }).then(result => {
-                if (result.isCancelled) {
-                    logEvent('shareCancelled', null);
-                } else {
-                    logEvent('shareSuccess', null);
-                }
-            }, (error) => {
-                logEvent('shareError', null, error);
-            });
-    }
+    // shareLinkWithShareDialog() {
+    //     ShareDialog.canShow(shareLinkContent)
+    //         .then(canShow => {
+    //             if (canShow) return ShareDialog.show(shareLinkContent);
+    //         }).then(result => {
+    //             if (result.isCancelled) {
+    //                 logEvent('shareCancelled', null);
+    //             } else {
+    //                 logEvent('shareSuccess', null);
+    //             }
+    //         }, (error) => {
+    //             logEvent('shareError', null, error);
+    //         });
+    // }
 
     renderPlayer() {
         if (this.props.playerName && this.props.playerImage)
@@ -119,10 +120,11 @@ class Menu extends Component {
         </View>;
     }
 
-    renderShareButton() {
+    // action={ this.shareLinkWithShareDialog.bind(this) }
+    renderChallengeButton() {
         if (this.props.facebookId)
-            return <Button text='Share'
-                action={ this.shareLinkWithShareDialog.bind(this) }
+            return <Button text='Challenge'
+                action={ requestFriends }
                 styles={ styles.shareButton } />;
     }
 
@@ -132,7 +134,7 @@ class Menu extends Component {
                 { this.renderPlayer() }
                 <View style={ styles.buttonContainer }>
                     { this.renderButtons() }
-                    { this.renderShareButton() }
+                    { this.renderChallengeButton() }
                     { this.renderLoginButton() }
                 </View>
             </View>

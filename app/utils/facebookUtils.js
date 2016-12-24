@@ -6,9 +6,16 @@ import {
 
 import { store } from '../store';
 import { socket } from '../socket';
-import { events, actionTypes } from '../constants';
 import {
-    setPlayer
+    events,
+    actionTypes,
+    modalTypes
+} from '../constants';
+import {
+    setPlayer,
+    setModalVisible,
+    setModalType,
+    setFriends
 } from '../actionCreators';
 
 function responseInfoCallback(error, result) {
@@ -29,7 +36,10 @@ function handleFriendList(err, result) {
     if (err) {
         logEvent('error', null, { message: err.toString() });
     } else {
-        console.log(result);
+        console.log(result.data);
+        store.dispatch(setFriends(result.data));
+        store.dispatch(setModalType(modalTypes.challengeFriend));
+        store.dispatch(setModalVisible(true));
     }
 }
 
@@ -40,7 +50,7 @@ export function requestData() {
 }
 
 export function requestFriends() {
-    const url = '/me/friends';
+    const url = '/me/friends?fields=id,first_name,picture.type(large)';
     const infoRequest = new GraphRequest(url, null, handleFriendList);
     new GraphRequestManager().addRequest(infoRequest).start();
 }

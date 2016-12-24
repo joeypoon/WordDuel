@@ -90,7 +90,8 @@ export const modalTypes = {
     noConnection: 10,
     pleaseLogin: 11,
     loading: 12,
-    experience: 13
+    experience: 13,
+    challengeFriend: 'challengeFriend'
 };
 
 // actions
@@ -104,6 +105,7 @@ export const actionTypes = {
     submitScore: 6,
     clearWord: 'clearWord',
     timeout: 'timeout',
+    setFriends: 'setFriends',
 
     // opponent
     setOpponent: 3,
