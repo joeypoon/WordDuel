@@ -8,6 +8,12 @@ import CustomModal from './CustomModal';
 import { mainTextColor } from '../constants';
 
 export class Main extends Component {
+    getContentStyle() {
+        if (this.props.facebookId)
+            return styles.content;
+        return styles.smallContent;
+    }
+
     renderContent() {
         switch (this.props.route) {
             case 'Battle':
@@ -30,7 +36,7 @@ export class Main extends Component {
         return (
             <View style={ styles.container }>
                 { this.renderTitle() }
-                <View style={ styles.content }>
+                <View style={ this.getContentStyle() }>
                     { this.renderContent() }
                 </View>
                 <CustomModal />
@@ -41,7 +47,8 @@ export class Main extends Component {
 
 function mapStateToProps (state) {
     return {
-        route: state.game.get('route')
+        route: state.game.get('route'),
+        facebookId: state.player.get('facebookId')
     };
 }
 
@@ -64,6 +71,9 @@ const styles = {
         letterSpacing: -3
     },
     content: {
-        flex: 2
+        flex: 3
+    },
+    smallContent: {
+        flex: 1
     }
 };

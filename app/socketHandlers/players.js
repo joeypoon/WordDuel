@@ -10,6 +10,10 @@ import {
     setPlayer
 } from '../actionCreators';
 
+export function onPlayerLogin(data) {
+    store.dispatch(setPlayer(data));
+}
+
 export function onPlayerFound(data) {
     const opponent = data.players.find(p => {
         return p.facebookId !== store.getState().player.get('facebookId')

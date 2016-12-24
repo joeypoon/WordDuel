@@ -70,6 +70,7 @@ class Menu extends Component {
             return <View style={ styles.playerInfo }>
                 <Image source={{ uri: this.props.playerImage }} style={ styles.image } />
                 <Text style={ styles.text }>Hey { this.props.playerName }</Text>
+                <Text style={ [ styles.text, styles.level] }>Lv.{ this.props.playerLevel }</Text>
             </View>;
     }
 
@@ -123,6 +124,7 @@ function mapStateToProps (state) {
     return {
         playerName: state.player.get('name'),
         playerImage: state.player.get('image'),
+        playerLevel: state.player.get('level'),
         facebookId: state.player.get('facebookId')
     };
 }
@@ -162,10 +164,13 @@ const styles = {
         textAlign: 'center',
         margin: 10,
         fontSize: 20,
-        letterSpacing: 1,
         fontFamily: 'roboto-light',
         letterSpacing: -1,
         color: mainTextColor
+    },
+    level: {
+        margin: 0,
+        padding: 0
     },
     buttonContainer: {
         flex: 1,
