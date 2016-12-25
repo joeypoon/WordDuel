@@ -10,7 +10,8 @@ import OpponentFound from './modals/OpponentFound';
 import BasicModal from './modals/BasicModal';
 import {
     ExperienceModal,
-    ChallengeFriend
+    ChallengeFriend,
+    ShowChallenger
 } from './modals';
 import {
     resetActiveGrid,
@@ -144,6 +145,8 @@ class CustomModal extends Component {
                     hasLoading={ false }
                     buttonText={ 'Okay' }
                     buttonAction={ this.challengeDeclined.bind(this) } />;
+            case modalTypes.showChallenger:
+                return <ShowChallenger />;
         }
         return <View />;
     }

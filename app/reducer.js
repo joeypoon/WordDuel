@@ -4,12 +4,14 @@ import {
     player,
     opponent,
     match,
-    game
+    game,
+    challenge
 } from './reducers';
 
 export default combineReducers({
     player,
     opponent,
     match,
-    game
+    game,
+    challenge
 });

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { LoginButton, ShareDialog } from 'react-native-fbsdk';
 import { socket } from '../socket';
@@ -65,11 +65,16 @@ class Menu extends Component {
         this.props.searchOpponent(this.props.facebookId);
     }
 
+    handleChallengerPress() {
+        this.props.setModalType(modalTypes.showChallenger);
+        this.props.setModalVisible(true);
+    }
+
     renderPlayer() {
         if (this.props.playerName && this.props.playerImage)
             return <View style={ styles.playerInfo }>
                 <Image source={{ uri: this.props.playerImage }} style={ styles.image } />
-                <Text style={ styles.text }>Hey { this.props.playerName }</Text>
+                <Text style={ [ styles.text, styles.playerName ] }>Hey { this.props.playerName }</Text>
                 <Text style={ [ styles.text, styles.level] }>Lv.{ this.props.playerLevel }</Text>
             </View>;
     }
@@ -106,6 +111,22 @@ class Menu extends Component {
                 styles={ styles.shareButton } />;
     }
 
+    renderChallenger() {
+        if (this.props.challengerName)
+            return <View style={ styles.challengeContainer }>
+                <TouchableOpacity style={ styles.challengeButtonContainer }
+                    onPress={ this.handleChallengerPress.bind(this) }>
+                    <Text style={ styles.text }>New Challenger</Text>
+                    <View style={ styles.challengerContainer }>
+                        <Image source={{ uri: this.props.challengerImage }} style={ styles.challengerImage } />
+                        <Text style={ styles.text }>
+                            { this.props.challengerName.substring(0, 10) }
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+            </View>;
+    }
+
     render() {
         return (
             <View style={ styles.container }>
@@ -114,6 +135,7 @@ class Menu extends Component {
                     { this.renderButtons() }
                     { this.renderChallengeButton() }
                     { this.renderLoginButton() }
+                    { this.renderChallenger() }
                 </View>
             </View>
         );
@@ -125,7 +147,9 @@ function mapStateToProps (state) {
         playerName: state.player.get('name'),
         playerImage: state.player.get('image'),
         playerLevel: state.player.get('level'),
-        facebookId: state.player.get('facebookId')
+        facebookId: state.player.get('facebookId'),
+        challengerName: state.challenge.get('name'),
+        challengerImage: state.challenge.get('image')
     };
 }
 
@@ -166,11 +190,13 @@ const styles = {
         fontSize: 20,
         fontFamily: 'roboto-light',
         letterSpacing: -1,
-        color: mainTextColor
+        color: mainTextColor,
+        backgroundColor: 'transparent'
     },
     level: {
         margin: 0,
-        padding: 0
+        padding: 0,
+        marginBottom: 10
     },
     buttonContainer: {
         flex: 1,
@@ -205,5 +231,28 @@ const styles = {
             letterSpacing: 1,
             fontFamily: 'roboto-light'
         }
+    },
+    playerName: {
+        marginBottom: 0
+    },
+    challengeContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    challengeButtonContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    challengerContainer: {
+        flexDirection: 'row',
+        marginTop: -7,
+        marginBottom: 10
+    },
+    challengerImage: {
+        height: 40,
+        width: 40,
+        borderRadius: 20
     }
 };

@@ -93,7 +93,8 @@ export const modalTypes = {
     experience: 13,
     challengeFriend: 'challengeFriend',
     waitingForChallenge: 'waitingForChallenge',
-    challengeDeclined: 'challengeDeclined'
+    challengeDeclined: 'challengeDeclined',
+    showChallenger: 'showChallenger'
 };
 
 // actions
