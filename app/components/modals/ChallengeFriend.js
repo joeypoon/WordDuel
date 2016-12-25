@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { ShareDialog } from 'react-native-fbsdk';
 
 import Button from '../Button';
-import { ChallengeFriendRow } from './index';
 
 import { setModalVisible, challengeFriend } from '../../actionCreators';
 import { mainColor, mainTextColor } from '../../constants';

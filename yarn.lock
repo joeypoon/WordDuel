@@ -9,9 +9,9 @@ JSONStream@^1.0.3:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
 
-WordDuelConstants@1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/WordDuelConstants/-/WordDuelConstants-1.0.13.tgz#13131c7e324daffda3a439c4ef411f9a0e2a2129"
+WordDuelConstants@1.0.14:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/WordDuelConstants/-/WordDuelConstants-1.0.14.tgz#3216ea883a3a0ed53ecd501f5df8eb8812b77a44"
 
 abbrev@1:
   version "1.0.9"
