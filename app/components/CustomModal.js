@@ -61,7 +61,7 @@ class CustomModal extends Component {
     }
 
     cancelChallengeRequest() {
-        this.props.challengeResponse(null, 0, this.props.playerSocket);
+        this.props.challengeResponse(null, 0, this.props.challengerSocket);
         this.challengeDeclined();
     }
 
@@ -168,7 +168,7 @@ function mapStateToProps (state) {
         visible: state.game.get('modalVisible'),
         modalType: state.game.get('modalType'),
         facebookId: state.player.get('facebookId'),
-        playerSocket: state.player.get('socket')
+        challengerSocket: state.challenge.get('socket')
     };
 }
 
@@ -182,7 +182,8 @@ const actions = {
     setMatchId,
     clearOpponent,
     setTimerPause,
-    clearChallenger
+    clearChallenger,
+    challengeResponse
 };
 export default connect(mapStateToProps, actions)(CustomModal);
 
