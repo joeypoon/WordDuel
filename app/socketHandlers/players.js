@@ -53,13 +53,14 @@ export function onActiveFriendsFound(data) {
 }
 
 export function onChallengeRequest(data) {
+    console.log(data);
     const { player } = data;
     store.dispatch(setChallenger(player));
 }
 
 export function onChallengeResponse(data) {
     const { response } = data;
-    const player = store.getState().player.get('facebookId');
+    const player = store.getState().player;
     const facebookId = player.get('facebookId');
     const socket = player.get('socket');
     if (response) {
