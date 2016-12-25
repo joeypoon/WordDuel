@@ -21,7 +21,9 @@ import {
     cancelSearch,
     setMatchId,
     clearOpponent,
-    setTimerPause
+    setTimerPause,
+    clearChallenger,
+    challengeResponse
 } from '../actionCreators';
 import { modalTypes } from '../constants';
 
@@ -50,6 +52,16 @@ class CustomModal extends Component {
 
     pauseTimer() {
         this.props.setTimerPause(true);
+    }
+
+    challengeDeclined() {
+        this.closeModal();
+        this.props.clearChallenger();
+    }
+
+    cancelChallengeRequest() {
+        this.props.challengeResponse(null, 0, this.props.playerSocket);
+        this.challengeDeclined();
     }
 
     renderContent() {
@@ -120,11 +132,18 @@ class CustomModal extends Component {
                 return <ChallengeFriend />;
             case modalTypes.waitingForChallenge:
                 return <BasicModal
-                    text={ 'Waiting for friend.' }
+                    text={ 'Waiting for opponent.' }
                     hasButton={ true }
                     hasLoading={ true }
                     buttonText={ 'Cancel' }
-                    buttonAction={ this.closeModal.bind(this) } />;
+                    buttonAction={ this.cancelChallengeRequest.bind(this) } />;
+            case modalTypes.challengeDeclined:
+                return <BasicModal
+                    text={ 'Challenge declined.' }
+                    hasButton={ true }
+                    hasLoading={ false }
+                    buttonText={ 'Okay' }
+                    buttonAction={ this.challengeDeclined.bind(this) } />;
         }
         return <View />;
     }
@@ -145,7 +164,8 @@ function mapStateToProps (state) {
     return {
         visible: state.game.get('modalVisible'),
         modalType: state.game.get('modalType'),
-        facebookId: state.player.get('facebookId')
+        facebookId: state.player.get('facebookId'),
+        playerSocket: state.player.get('socket')
     };
 }
 
@@ -158,7 +178,8 @@ const actions = {
     cancelSearch,
     setMatchId,
     clearOpponent,
-    setTimerPause
+    setTimerPause,
+    clearChallenger
 };
 export default connect(mapStateToProps, actions)(CustomModal);
 

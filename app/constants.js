@@ -92,7 +92,8 @@ export const modalTypes = {
     loading: 12,
     experience: 13,
     challengeFriend: 'challengeFriend',
-    waitingForChallenge: 'waitingForChallenge'
+    waitingForChallenge: 'waitingForChallenge',
+    challengeDeclined: 'challengeDeclined'
 };
 
 // actions
@@ -109,6 +110,7 @@ export const actionTypes = {
     findActiveFriends: 'findActiveFriends',
     setFriends: 'setFriends',
     challengeFriend: 'challengeFriend',
+    challengeResponse: 'challengeResponse',
 
     // opponent
     setOpponent: 3,
@@ -129,7 +131,11 @@ export const actionTypes = {
     // game
     setRoute: 18,
     setModalVisible: 19,
-    setModalType: 20
+    setModalType: 20,
+
+    // challenge
+    setChallenger: 'setChallenger',
+    clearChallenger: 'clearChallenger'
 };
 
 // Events

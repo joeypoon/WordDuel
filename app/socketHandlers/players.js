@@ -8,7 +8,8 @@ import {
     setTimerPause,
     newRound,
     setPlayer,
-    setFriends
+    setFriends,
+    setChallenger
 } from '../actionCreators';
 
 export function onPlayerLogin(data) {
@@ -49,4 +50,21 @@ export function onActiveFriendsFound(data) {
     store.dispatch(setFriends(data.friends));
     store.dispatch(setModalType(modalTypes.challengeFriend));
     store.dispatch(setModalVisible(true));
+}
+
+export function onChallengeRequest(data) {
+    const { player } = data;
+    store.dispatch(setChallenger(player));
+}
+
+export function onChallengeResponse(data) {
+    const { response } = data;
+    const player = store.getState().player.get('facebookId');
+    const facebookId = player.get('facebookId');
+    const socket = player.get('socket');
+    if (response) {
+        store.dispatch(challengeResponse(facebookId, 1, socket));
+        return;
+    }
+    store.dispatch(setModalType(modalTypes.challengeDeclined));
 }

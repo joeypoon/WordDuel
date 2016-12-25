@@ -38,7 +38,8 @@ class ChallengeFriendBase extends Component {
     handleChallenge(friend) {
         const player = {
             name: this.props.playerName,
-            image: this.props.playerImage
+            image: this.props.playerImage,
+            socket: this.props.playerSocket
         };
         this.props.challengeFriend(friend.id, player);
         this.props.setModalType(modalTypes.waitingForChallenge);
@@ -110,7 +111,8 @@ function mapStateToProps(state) {
     return {
         friends: state.player.get('friends'),
         playerName: state.player.get('name'),
-        playerImage: state.player.get('image')
+        playerImage: state.player.get('image'),
+        playerSocket: state.player.get('socket')
     };
 }
 

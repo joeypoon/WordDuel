@@ -123,3 +123,17 @@ export function challengeFriend(friendFacebookId, player) {
         }
     };
 }
+
+export function challengeResponse(facebookId, response, opponentSocket) {
+    return {
+        type: actionTypes.challengeResponse,
+        meta: {
+            event: events.players.challengeResponse,
+            eventParams: {
+                facebookId,
+                response,
+                opponentSocket
+            }
+        }
+    };
+}
