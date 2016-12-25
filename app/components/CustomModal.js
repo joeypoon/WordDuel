@@ -118,6 +118,13 @@ class CustomModal extends Component {
                 return <ExperienceModal />;
             case modalTypes.challengeFriend:
                 return <ChallengeFriend />;
+            case modalTypes.waitingForChallenge:
+                return <BasicModal
+                    text={ 'Waiting for friend.' }
+                    hasButton={ true }
+                    hasLoading={ true }
+                    buttonText={ 'Cancel' }
+                    buttonAction={ this.closeModal.bind(this) } />;
         }
         return <View />;
     }

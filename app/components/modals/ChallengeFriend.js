@@ -11,8 +11,16 @@ import { ShareDialog } from 'react-native-fbsdk';
 
 import Button from '../Button';
 
-import { setModalVisible, challengeFriend } from '../../actionCreators';
-import { mainColor, mainTextColor } from '../../constants';
+import {
+    setModalVisible,
+    challengeFriend,
+    setModalType
+} from '../../actionCreators';
+import {
+    mainColor,
+    mainTextColor,
+    modalTypes
+} from '../../constants';
 import { logEvent } from '../../utils';
 
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -27,12 +35,13 @@ class ChallengeFriendBase extends Component {
         this.props.setModalVisible(false);
     }
 
-    handleChallenge(id) {
+    handleChallenge(friend) {
         const player = {
             name: this.props.playerName,
             image: this.props.playerImage
         };
-        this.props.challengeFriend(id, player);
+        this.props.challengeFriend(friend.id, player);
+        this.props.setModalType(modalTypes.waitingForChallenge);
     }
 
     shareLinkWithShareDialog() {
@@ -58,7 +67,8 @@ class ChallengeFriendBase extends Component {
     }
 
     renderRow(friend) {
-        return <TouchableOpacity onPress={ this.handleChallenge.bind(this, friend.facebookId) }>
+        return <TouchableOpacity
+            onPress={ this.handleChallenge.bind(this, friend) }>
             <View style={ styles.row }>
                 <Image source={{ uri: friend.image }} style={ styles.image } />
                 <Text style={ styles.text }>{ friend.name }</Text>
@@ -104,7 +114,7 @@ function mapStateToProps(state) {
     };
 }
 
-const actions = { setModalVisible, challengeFriend };
+const actions = { setModalVisible, challengeFriend, setModalType };
 export const ChallengeFriend = connect(mapStateToProps, actions)(ChallengeFriendBase);
 
 

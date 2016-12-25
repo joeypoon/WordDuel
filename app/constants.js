@@ -91,7 +91,8 @@ export const modalTypes = {
     pleaseLogin: 11,
     loading: 12,
     experience: 13,
-    challengeFriend: 'challengeFriend'
+    challengeFriend: 'challengeFriend',
+    waitingForChallenge: 'waitingForChallenge'
 };
 
 // actions
