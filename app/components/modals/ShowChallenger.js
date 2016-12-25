@@ -16,10 +16,12 @@ import {
 class ShowChallengerBase extends Component {
     handleAccept() {
         this.props.setModalVisible(false);
+        this.props.challengeResponse(this.props.facebookId, 1, this.props.challengerSocket);
     }
 
     handleDecline() {
         this.props.setModalVisible(false);
+        this.props.challengeResponse(null, 0, this.props.challengerSocket);
     }
 
     render() {
@@ -44,7 +46,9 @@ class ShowChallengerBase extends Component {
 function mapStateToProps (state) {
     return {
         challengerName: state.challenge.get('name'),
-        challengerImage: state.challenge.get('image')
+        challengerImage: state.challenge.get('image'),
+        challengerSocket: state.challenge.get('socket'),
+        facebookId: state.player.get('facebookId')
     };
 }
 
