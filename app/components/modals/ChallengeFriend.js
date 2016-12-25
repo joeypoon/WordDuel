@@ -3,7 +3,8 @@ import {
     View,
     Text,
     ListView,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux';
 import { ShareDialog } from 'react-native-fbsdk';
@@ -28,7 +29,11 @@ class ChallengeFriendBase extends Component {
     }
 
     handleChallenge(id) {
-        this.props.challengeFriend(id);
+        const player = {
+            name: this.props.playerName,
+            image: this.props.playerImage
+        };
+        this.props.challengeFriend(id, player);
     }
 
     shareLinkWithShareDialog() {
@@ -54,12 +59,12 @@ class ChallengeFriendBase extends Component {
     }
 
     renderRow(friend) {
-        return <View
-            style={ styles.row }
-            onPress={ this.handleChallenge.bind(this, friend.facebookId) }>
-            <Image source={{ uri: friend.image }} style={ styles.image } />
-            <Text style={ styles.text }>{ friend.name }</Text>
-        </View>;
+        return <TouchableOpacity onPress={ this.handleChallenge.bind(this, friend.facebookId) }>
+            <View style={ styles.row }>
+                <Image source={{ uri: friend.image }} style={ styles.image } />
+                <Text style={ styles.text }>{ friend.name }</Text>
+            </View>
+        </TouchableOpacity>;
     }
 
     renderNoFriends() {
@@ -94,7 +99,9 @@ class ChallengeFriendBase extends Component {
 
 function mapStateToProps(state) {
     return {
-        friends: state.player.get('friends')
+        friends: state.player.get('friends'),
+        playerName: state.player.get('name'),
+        playerImage: state.player.get('image')
     };
 }
 

@@ -46,6 +46,7 @@ export function onPlayerExp(data) {
 }
 
 export function onActiveFriendsFound(data) {
+    console.log(data.friends);
     store.dispatch(setFriends(data.friends));
     store.dispatch(setModalType(modalTypes.challengeFriend));
     store.dispatch(setModalVisible(true));

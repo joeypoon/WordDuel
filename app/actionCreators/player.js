@@ -111,13 +111,14 @@ export function setFriends(friends) {
     };
 }
 
-export function challengeFriend(friendFacebookId) {
+export function challengeFriend(friendFacebookId, player) {
     return {
         type: actionTypes.challengeFriend,
         meta: {
             event: events.players.challengeFriend,
             eventParams: {
-                friendFacebookId
+                friendFacebookId,
+                player
             }
         }
     }
