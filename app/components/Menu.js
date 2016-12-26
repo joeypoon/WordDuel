@@ -12,7 +12,8 @@ import {
     setModalType,
     searchOpponent,
     newRound,
-    setTimerPause
+    setTimerPause,
+    clearChallenger
 } from '../actionCreators';
 import {
     requestData,
@@ -24,6 +25,10 @@ import { mainColor, mainTextColor, modalTypes } from '../constants';
 const menuItems = ['Solo', 'Dual'];
 
 class Menu extends Component {
+    componentWillUnmount() {
+        this.props.clearChallenger();
+    }
+
     pleaseLogin() {
         this.props.setModalType(modalTypes.pleaseLogin);
         this.props.setModalVisible(true);
@@ -161,7 +166,8 @@ const actions = {
     setModalType,
     searchOpponent,
     newRound,
-    setTimerPause
+    setTimerPause,
+    clearChallenger
 }
 export default connect(mapStateToProps, actions)(Menu);
 
