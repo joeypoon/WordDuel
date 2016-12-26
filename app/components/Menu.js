@@ -7,7 +7,7 @@ import { socket } from '../socket';
 import Button from './Button';
 import {
     setRoute,
-    clearPlayer,
+    logout,
     setModalVisible,
     setModalType,
     searchOpponent,
@@ -51,7 +51,8 @@ class Menu extends Component {
         if (error) {
             logEvent('error', null, result.error)
         } else {
-            this.props.clearPlayer();
+            this.props.logout();
+            this.props.clearChallenger();
         }
     }
 
@@ -161,7 +162,7 @@ function mapStateToProps (state) {
 
 const actions = {
     setRoute,
-    clearPlayer,
+    logout,
     setModalVisible,
     setModalType,
     searchOpponent,

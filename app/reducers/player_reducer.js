@@ -41,6 +41,9 @@ export function player(state = initialState, action) {
 
         case actionTypes.setFriends:
             return nextState.set('friends', action.friends);
+
+        case actionTypes.logout:
+            return initialState;
     }
     return nextState;
 }

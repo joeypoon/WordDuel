@@ -110,3 +110,9 @@ export function setFriends(friends) {
         friends
     };
 }
+
+export function logout() {
+    return {
+        type: actionTypes.logout
+    };
+}

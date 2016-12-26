@@ -112,6 +112,7 @@ export const actionTypes = {
     setFriends: 'setFriends',
     challengeFriend: 'challengeFriend',
     challengeResponse: 'challengeResponse',
+    logout: 'logout',
 
     // opponent
     setOpponent: 3,
