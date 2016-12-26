@@ -6,7 +6,8 @@ import {
     clearMatch,
     clearOpponent,
     clearPlayer,
-    setModalVisible
+    setModalVisible,
+    clearChallenger
 } from '../actionCreators';
 
 export function disconnect() {
@@ -23,5 +24,6 @@ export function disconnect() {
     store.dispatch(clearMatch());
     store.dispatch(clearOpponent());
     store.dispatch(clearPlayer());
+    store.dispatch(clearChallenger());
     store.dispatch(setModalVisible(false));
 }

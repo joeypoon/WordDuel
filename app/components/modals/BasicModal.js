@@ -48,7 +48,8 @@ const styles = {
         fontFamily: 'roboto-light',
         fontSize: 25,
         margin: 5,
-        color: mainTextColor
+        color: mainTextColor,
+        textAlign: 'center'
     },
     buttonStyles: {
         container: {

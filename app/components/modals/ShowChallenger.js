@@ -6,7 +6,8 @@ import Button from '../Button';
 import {
     setModalVisible,
     setModalType,
-    challengeResponse
+    challengeResponse,
+    clearChallenger
 } from '../../actionCreators';
 import {
     mainColor,
@@ -23,6 +24,7 @@ class ShowChallengerBase extends Component {
 
     handleDecline() {
         this.props.challengeResponse(null, 0, this.props.challengerSocket);
+        this.props.clearChallenger();
         this.props.setModalVisible(false);
     }
 
@@ -57,7 +59,8 @@ function mapStateToProps (state) {
 const actions = {
     setModalVisible,
     setModalType,
-    challengeResponse
+    challengeResponse,
+    clearChallenger
 };
 export const ShowChallenger = connect(mapStateToProps, actions)(ShowChallengerBase);
 
