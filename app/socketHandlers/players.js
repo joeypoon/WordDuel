@@ -10,7 +10,8 @@ import {
     setPlayer,
     setFriends,
     setChallenger,
-    challengeResponse
+    challengeResponse,
+    clearChallenger
 } from '../actionCreators';
 
 export function onPlayerLogin(data) {
@@ -72,9 +73,15 @@ export function onChallengeResponse(data) {
     const storeState = store.getState();
     const facebookId = storeState.player.get('facebookId');
     const opponentSocket = storeState.challenge.get('socket');
+
     if (response) {
         store.dispatch(challengeResponse(facebookId, 1, opponentSocket, matchId));
         return;
     }
-    store.dispatch(setModalType(modalTypes.challengeDeclined));
+
+    if (storeState.game.get('modalVisible')) {
+        store.dispatch(setModalType(modalTypes.challengeDeclined));
+    } else {
+        store.dispatch(clearChallenger());
+    }
 }

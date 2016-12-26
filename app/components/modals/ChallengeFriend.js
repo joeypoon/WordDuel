@@ -116,7 +116,12 @@ function mapStateToProps(state) {
     };
 }
 
-const actions = { setModalVisible, challengeFriend, setModalType, setChallenger };
+const actions = {
+    setModalVisible,
+    challengeFriend,
+    setModalType,
+    setChallenger
+};
 export const ChallengeFriend = connect(mapStateToProps, actions)(ChallengeFriendBase);
 
 

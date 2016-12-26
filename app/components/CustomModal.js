@@ -56,8 +56,8 @@ class CustomModal extends Component {
     }
 
     challengeDeclined() {
-        this.closeModal();
         this.props.clearChallenger();
+        this.closeModal();
     }
 
     cancelChallengeRequest() {
