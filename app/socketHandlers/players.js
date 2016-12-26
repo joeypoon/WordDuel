@@ -64,7 +64,7 @@ export function onChallengeRequest(data) {
         socket: player.socket,
         shouldShow: true
     };
-    store.dispatch(setChallenger(player));
+    store.dispatch(setChallenger(params));
 }
 
 export function onChallengeResponse(data) {
