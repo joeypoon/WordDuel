@@ -55,6 +55,8 @@ export function onActiveFriendsFound(data) {
 
 export function onChallengeRequest(data) {
     const { player } = data;
+    const hasChallenger = store.getState().challenge.get('name');
+    if (hasChallenger) return store.dispatch(challengeResponse(null, 0, player.socket));
     const params = {
         name: player.name,
         image: player.image,
