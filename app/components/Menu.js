@@ -112,7 +112,7 @@ class Menu extends Component {
     }
 
     renderChallenger() {
-        if (this.props.challengerName)
+        if (this.props.showChallenger)
             return <View style={ styles.challengeContainer }>
                 <TouchableOpacity style={ styles.challengeButtonContainer }
                     onPress={ this.handleChallengerPress.bind(this) }>
@@ -148,6 +148,7 @@ function mapStateToProps (state) {
         playerImage: state.player.get('image'),
         playerLevel: state.player.get('level'),
         facebookId: state.player.get('facebookId'),
+        showChallenger: state.challenge.get('shouldShow'),
         challengerName: state.challenge.get('name'),
         challengerImage: state.challenge.get('image')
     };

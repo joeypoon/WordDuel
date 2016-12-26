@@ -4,7 +4,8 @@ const initialState = new Map([
     ['name', null],
     ['image', null],
     ['level', null],
-    ['socket', null]
+    ['socket', null],
+    ['shouldShow', false]
 ]);
 
 export function challenge(state = initialState, action) {

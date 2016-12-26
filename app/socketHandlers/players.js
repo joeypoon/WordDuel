@@ -55,6 +55,13 @@ export function onActiveFriendsFound(data) {
 
 export function onChallengeRequest(data) {
     const { player } = data;
+    const params = {
+        name: player.name,
+        image: player.image,
+        level: player.level,
+        socket: player.socket,
+        shouldShow: true
+    };
     store.dispatch(setChallenger(player));
 }
 

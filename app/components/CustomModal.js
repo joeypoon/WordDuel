@@ -110,7 +110,7 @@ class CustomModal extends Component {
                     buttonAction={ this.playerDisconnectAction.bind(this) } />;
             case modalTypes.noConnection:
                 return <BasicModal
-                    text={ 'No connection' }
+                    text={ 'No connection. Please try again in a bit.' }
                     hasButton={ true }
                     hasLoading={ false }
                     buttonText={ 'Okay' }
