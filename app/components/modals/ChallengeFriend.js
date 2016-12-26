@@ -14,7 +14,8 @@ import Button from '../Button';
 import {
     setModalVisible,
     challengeFriend,
-    setModalType
+    setModalType,
+    setChallenger
 } from '../../actionCreators';
 import {
     mainColor,
@@ -41,6 +42,7 @@ class ChallengeFriendBase extends Component {
             image: this.props.playerImage
         };
         this.props.challengeFriend(friend.facebookId, player);
+        this.props.setChallenger(friend);
         this.props.setModalType(modalTypes.waitingForChallenge);
     }
 
@@ -114,7 +116,7 @@ function mapStateToProps(state) {
     };
 }
 
-const actions = { setModalVisible, challengeFriend, setModalType };
+const actions = { setModalVisible, challengeFriend, setModalType, setChallenger };
 export const ChallengeFriend = connect(mapStateToProps, actions)(ChallengeFriendBase);
 
 

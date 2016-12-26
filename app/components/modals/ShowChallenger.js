@@ -5,23 +5,25 @@ import { connect } from 'react-redux';
 import Button from '../Button';
 import {
     setModalVisible,
+    setModalType,
     challengeResponse
 } from '../../actionCreators';
 import {
     mainColor,
     mainTextColor,
-    secondaryColor
+    secondaryColor,
+    modalTypes
 } from '../../constants';
 
 class ShowChallengerBase extends Component {
     handleAccept() {
-        this.props.setModalVisible(false);
         this.props.challengeResponse(this.props.facebookId, 1, this.props.challengerSocket);
+        this.props.setModalType(modalTypes.waiting);
     }
 
     handleDecline() {
-        this.props.setModalVisible(false);
         this.props.challengeResponse(null, 0, this.props.challengerSocket);
+        this.props.setModalVisible(false);
     }
 
     render() {
@@ -54,6 +56,7 @@ function mapStateToProps (state) {
 
 const actions = {
     setModalVisible,
+    setModalType,
     challengeResponse
 };
 export const ShowChallenger = connect(mapStateToProps, actions)(ShowChallengerBase);

@@ -14,7 +14,7 @@ export function challengeFriend(friendFacebookId, player) {
     };
 }
 
-export function challengeResponse(facebookId, response, opponentSocket) {
+export function challengeResponse(facebookId, response, opponentSocket, matchId = null) {
     return {
         type: actionTypes.challengeResponse,
         meta: {
@@ -22,7 +22,8 @@ export function challengeResponse(facebookId, response, opponentSocket) {
             eventParams: {
                 facebookId,
                 response,
-                opponentSocket
+                opponentSocket,
+                matchId
             }
         }
     };

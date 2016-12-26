@@ -9,7 +9,8 @@ import {
     newRound,
     setPlayer,
     setFriends,
-    setChallenger
+    setChallenger,
+    challengeResponse
 } from '../actionCreators';
 
 export function onPlayerLogin(data) {
@@ -53,18 +54,17 @@ export function onActiveFriendsFound(data) {
 }
 
 export function onChallengeRequest(data) {
-    console.log(data);
     const { player } = data;
     store.dispatch(setChallenger(player));
 }
 
 export function onChallengeResponse(data) {
-    const { response } = data;
-    const player = store.getState().player;
-    const facebookId = player.get('facebookId');
-    const socket = player.get('socket');
+    const { response, matchId } = data;
+    const storeState = store.getState();
+    const facebookId = storeState.player.get('facebookId');
+    const opponentSocket = storeState.challenge.get('socket');
     if (response) {
-        store.dispatch(challengeResponse(facebookId, 1, socket));
+        store.dispatch(challengeResponse(facebookId, 1, opponentSocket, matchId));
         return;
     }
     store.dispatch(setModalType(modalTypes.challengeDeclined));
