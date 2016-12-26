@@ -81,7 +81,7 @@ class ChallengeFriendBase extends Component {
     renderNoFriends() {
         return <View style={ styles.container }>
             <Text style={ styles.text }>
-                No friends are available for a challenge at this time.
+                No friends are available to challenge at this time.
                 Invite more friends to play?
             </Text>
             { this.renderInviteButton() }
