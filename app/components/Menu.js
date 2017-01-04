@@ -174,7 +174,6 @@ export default connect(mapStateToProps, actions)(Menu);
 
 const styles = {
     container: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -207,7 +206,6 @@ const styles = {
         marginBottom: 10
     },
     buttonContainer: {
-        flex: 1,
         justifyContent: 'flex-start'
     },
     buttonStyles: {
@@ -244,12 +242,10 @@ const styles = {
         marginBottom: 0
     },
     challengeContainer: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'center'
     },
     challengeButtonContainer: {
-        flex: 1,
         flexDirection: 'column',
         alignItems: 'center'
     },
