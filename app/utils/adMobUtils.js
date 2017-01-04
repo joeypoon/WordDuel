@@ -3,7 +3,7 @@ import { store } from '../store';
 import { logEvent } from './facebookUtils';
 
 function handleError(err) {
-    logEvent('error', null, err)
+    logEvent('Error', err);
 }
 
 function handleInterstitialLoad() {

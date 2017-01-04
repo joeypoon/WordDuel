@@ -53,12 +53,12 @@ class ChallengeFriendBase extends Component {
                 if (canShow) return ShareDialog.show(shareLinkContent);
             }).then(result => {
                 if (result.isCancelled) {
-                    logEvent('shareCancelled', null);
+                    logEvent('Share Cancelled');
                 } else {
-                    logEvent('shareSuccess', null);
+                    logEvent('Share Success');
                 }
             }, (error) => {
-                logEvent('shareError', null, error);
+                logEvent('Error', error);
             });
     }
 

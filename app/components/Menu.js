@@ -41,7 +41,7 @@ class Menu extends Component {
 
     handleLogin(error, result) {
         if (error) {
-            logEvent('error', null, result.error)
+            logEvent('Error', error);
         } else {
             requestData();
         }
@@ -49,7 +49,7 @@ class Menu extends Component {
 
     handleLogout(error, result) {
         if (error) {
-            logEvent('error', null, result.error)
+            logEvent('Error', error);
         } else {
             this.props.logout();
             this.props.clearChallenger();

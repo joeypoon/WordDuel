@@ -18,7 +18,7 @@ import {
 
 function responseInfoCallback(error, result) {
     if (error) {
-        logEvent('error', null, { message: error.toString() });
+        logEvent('Error', { message: error.toString() });
     } else {
         const params = {
             facebookId: result.id,
@@ -32,7 +32,7 @@ function responseInfoCallback(error, result) {
 
 function handleFriendList(err, result) {
     if (err) {
-        logEvent('error', null, { message: err.toString() });
+        logEvent('Error', { message: err.toString() });
     } else {
         const facebookIds = result.data.map(f => f.id);
         store.dispatch(findActiveFriends(facebookIds));
@@ -51,6 +51,6 @@ export function requestFriends() {
     new GraphRequestManager().addRequest(infoRequest).start();
 }
 
-export function logEvent(event) {
-    AppEventsLogger.logEvent(event);
+export function logEvent(event, params = {}) {
+    AppEventsLogger.logEvent(event, null, params);
 }
