@@ -19,8 +19,8 @@ function clearData() {
     store.dispatch(setModalVisible(false));
 }
 
-function emitDisconnect(socket, matchId) {
-    const params = { socket, matchId };
+function emitDisconnect(opponentSocket, matchId) {
+    const params = { socket: opponentSocket, matchId };
     socket.emit(events.matches.disconnect, params);
 }
 
