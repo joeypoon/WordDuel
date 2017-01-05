@@ -7,23 +7,29 @@ import {
     clearOpponent,
     clearPlayer,
     setModalVisible,
-    clearChallenger
+    clearChallenger,
+    cancelSearch
 } from '../actionCreators';
+
+function clearData() {
+    store.dispatch(clearMatch());
+    store.dispatch(clearOpponent());
+    store.dispatch(clearPlayer());
+    store.dispatch(clearChallenger());
+    store.dispatch(setModalVisible(false));
+}
+
+function emitDisconnect(socket, matchId) {
+    const params = { socket, matchId };
+    socket.emit(events.matches.disconnect, params);
+}
 
 export function disconnect() {
     store.dispatch(setRoute('Menu'));
     const storeState = store.getState();
     const opponentSocket = storeState.opponent.get('socket');
     const matchId = storeState.match.get('id');
-
-    if (matchId && opponentSocket) {
-        const params = { socket: opponentSocket, matchId }
-        socket.emit(events.matches.disconnect, params);
-    }
-
-    store.dispatch(clearMatch());
-    store.dispatch(clearOpponent());
-    store.dispatch(clearPlayer());
-    store.dispatch(clearChallenger());
-    store.dispatch(setModalVisible(false));
+    emitDisconnect(opponentSocket, matchId);
+    store.dispatch(cancelSearch());
+    clearData();
 }
