@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 
 import Battle from './Battle';
@@ -20,6 +20,7 @@ export class Main extends Component {
     render() {
         return (
             <View style={ styles.container }>
+                <StatusBar hidden={ true } />
                 { this.renderContent() }
                 <CustomModal />
             </View>

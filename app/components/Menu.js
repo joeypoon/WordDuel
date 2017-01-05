@@ -39,6 +39,12 @@ class Menu extends Component {
         this.props.setModalVisible(true);
     }
 
+    getTitleStyle() {
+        const { titleContainer, titlePadding } = styles;
+        if (this.props.facebookId) return titleContainer;
+        return [ titleContainer, titlePadding ];
+    }
+
     handleLogin(error, result) {
         if (error) {
             logEvent('Error', error);
@@ -134,7 +140,7 @@ class Menu extends Component {
     }
 
     renderTitle() {
-        return <View style={ styles.titleContainer }>
+        return <View style={ this.getTitleStyle() }>
             <Text style={ styles.title }>
                 Word Dual
             </Text>
@@ -196,6 +202,9 @@ const styles = {
         fontSize: 48,
         color: mainTextColor,
         letterSpacing: -3
+    },
+    titlePadding: {
+        padding: 40
     },
     fbLoginContainer: {
         margin: 10,
@@ -267,8 +276,8 @@ const styles = {
         justifyContent: 'center'
     },
     challengeButtonContainer: {
-        flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 10
     },
     challengerContainer: {
         flexDirection: 'row',
