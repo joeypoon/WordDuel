@@ -129,7 +129,8 @@ const styles = {
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 25
+        padding: 25,
+        backgroundColor: 'white'
     },
     text: {
         fontFamily: 'roboto-light',
