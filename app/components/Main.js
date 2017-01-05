@@ -8,12 +8,6 @@ import CustomModal from './CustomModal';
 import { mainTextColor } from '../constants';
 
 export class Main extends Component {
-    getContentStyle() {
-        if (this.props.facebookId)
-            return styles.content;
-        return styles.smallContent;
-    }
-
     renderContent() {
         switch (this.props.route) {
             case 'Battle':
@@ -23,22 +17,10 @@ export class Main extends Component {
         }
     }
 
-    renderTitle() {
-        if (this.props.route === 'Menu')
-            return <View style={ styles.titleContainer }>
-                <Text style={ styles.title }>
-                    Word Dual
-                </Text>
-            </View>;
-    }
-
     render() {
         return (
             <View style={ styles.container }>
-                { this.renderTitle() }
-                <View style={ this.getContentStyle() }>
-                    { this.renderContent() }
-                </View>
+                { this.renderContent() }
                 <CustomModal />
             </View>
         );
@@ -56,23 +38,6 @@ export default connect(mapStateToProps)(Main);
 
 const styles = {
     container: {
-        flex: 1
-    },
-    titleContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    title: {
-        fontFamily: 'roboto',
-        fontSize: 48,
-        color: mainTextColor,
-        letterSpacing: -3
-    },
-    content: {
-        flex: 3
-    },
-    smallContent: {
         flex: 1
     }
 };

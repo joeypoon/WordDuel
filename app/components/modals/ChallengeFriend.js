@@ -129,7 +129,6 @@ const styles = {
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
         padding: 25
     },
     text: {

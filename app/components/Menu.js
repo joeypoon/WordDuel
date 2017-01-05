@@ -133,9 +133,18 @@ class Menu extends Component {
             </View>;
     }
 
+    renderTitle() {
+        return <View style={ styles.titleContainer }>
+            <Text style={ styles.title }>
+                Word Dual
+            </Text>
+        </View>;
+    }
+
     render() {
         return (
             <View style={ styles.container }>
+                { this.renderTitle() }
                 { this.renderPlayer() }
                 <View style={ styles.buttonContainer }>
                     { this.renderButtons() }
@@ -174,8 +183,19 @@ export default connect(mapStateToProps, actions)(Menu);
 
 const styles = {
     container: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    titleContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    title: {
+        fontFamily: 'roboto',
+        fontSize: 48,
+        color: mainTextColor,
+        letterSpacing: -3
     },
     fbLoginContainer: {
         margin: 10,
@@ -243,7 +263,8 @@ const styles = {
     },
     challengeContainer: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     challengeButtonContainer: {
         flexDirection: 'column',
