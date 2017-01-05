@@ -19,12 +19,13 @@ export function player(state = initialState, action) {
     let nextState = new Map(state);
 
     switch (action.type) {
-
         case actionTypes.setPlayer:
-            const keys = Object.keys(action.params);
-            keys.forEach(key => {
-                nextState.set(key, action.params[key]);
-            });
+            if (action.params) {
+                const keys = Object.keys(action.params);
+                keys.forEach(key => {
+                    nextState.set(key, action.params[key]);
+                });
+            }
             return nextState;
 
         case actionTypes.clearPlayer:

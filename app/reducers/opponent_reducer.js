@@ -17,10 +17,12 @@ export function opponent(state = initialState, action) {
     switch (action.type) {
 
         case actionTypes.setOpponent:
-            const keys = Object.keys(action.params);
-            keys.forEach(key => {
-                nextState.set(key, action.params[key]);
-            });
+            if (action.params) {
+                const keys = Object.keys(action.params);
+                keys.forEach(key => {
+                    nextState.set(key, action.params[key]);
+                });
+            }
             return nextState;
 
         case actionTypes.clearOpponent:

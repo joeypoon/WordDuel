@@ -14,10 +14,12 @@ export function challenge(state = initialState, action) {
     switch (action.type) {
 
         case actionTypes.setChallenger:
-            const keys = Object.keys(action.params);
-            keys.forEach(key => {
-                nextState.set(key, action.params[key]);
-            });
+            if (action.params) {
+                const keys = Object.keys(action.params);
+                keys.forEach(key => {
+                    nextState.set(key, action.params[key]);
+                });
+            }
             return nextState;
 
         case actionTypes.clearChallenger:

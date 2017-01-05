@@ -29,7 +29,8 @@ export function disconnect() {
     const storeState = store.getState();
     const opponentSocket = storeState.opponent.get('socket');
     const matchId = storeState.match.get('id');
+    const facebookId = storeState.player.get('facebookId');
     emitDisconnect(opponentSocket, matchId);
-    store.dispatch(cancelSearch());
+    store.dispatch(cancelSearch(facebookId));
     clearData();
 }
