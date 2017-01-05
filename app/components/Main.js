@@ -56,7 +56,6 @@ export default connect(mapStateToProps)(Main);
 
 const styles = {
     container: {
-        paddingTop: 25,
         flex: 1
     },
     titleContainer: {

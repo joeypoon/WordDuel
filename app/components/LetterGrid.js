@@ -14,7 +14,7 @@ class LetterGrid extends Component {
     }
 
     render() {
-        return <View>{ this.renderRows() }</View>;
+        return <View style={ styles.container }>{ this.renderRows() }</View>;
     }
 }
 
@@ -26,3 +26,9 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(LetterGrid);
+
+const styles = {
+    container: {
+        flex: 1
+    }
+};

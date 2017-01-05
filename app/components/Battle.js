@@ -12,8 +12,10 @@ export default function Battle(props) {
                 <WordDisplay />
                 <BattleTopBar />
             </View>
-            <PlayerDisplayContainer />
-            <LetterGrid />
+            <View style={ styles.bottomContainer }>
+                <PlayerDisplayContainer />
+                <LetterGrid />
+            </View>
         </View>;
 }
 
@@ -24,5 +26,8 @@ const styles = {
     topContainer: {
         flex: 1,
         flexDirection: 'column-reverse'
+    },
+    bottomContainer: {
+        flex: 1
     }
 };
