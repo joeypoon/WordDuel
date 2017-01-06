@@ -14,14 +14,14 @@ class Letter extends Component {
         }
     }
 
-    getContainerStyle() {
-        return this.props.active ? styles.activeContainer : styles.container;
+    getContainerColor() {
+        return this.props.active ? styles.active : styles.inactive;
     }
 
     render() {
         return (
             <TouchableOpacity
-                style={ this.getContainerStyle() }
+                style={ [ styles.container, this.getContainerColor() ] }
                 onPress={ this.handlePress.bind(this) }>
                 <Text style={ styles.text }>
                     { this.props.letter.value }
@@ -41,18 +41,16 @@ export default connect(mapStateToProps, { setPlayer, updateActiveGrid })(Letter)
 
 const styles = {
     container: {
-        backgroundColor: mainColor,
         flex: 1,
         height: 75,
         justifyContent: 'center',
         alignItems: 'center'
     },
-    activeContainer: {
-        backgroundColor: secondaryColor,
-        flex: 1,
-        height: 75,
-        justifyContent: 'center',
-        alignItems: 'center'
+    active: {
+        backgroundColor: secondaryColor
+    },
+    inactive: {
+        backgroundColor: mainColor
     },
     text: {
         fontSize: 30,

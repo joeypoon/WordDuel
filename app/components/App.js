@@ -14,6 +14,8 @@ import {
 
 import '../socketListeners';
 
+adMobEventListeners();
+
 function connect() {
     const facebookId = store.getState().player.get('facebookId');
     socket.emit(events.players.login, { facebookId });
@@ -23,7 +25,6 @@ export default class App extends Component {
     componentDidMount() {
         AppState.addEventListener('change', this.handleAppStateChange);
         requestData();
-        adMobEventListeners();
     }
 
     handleAppStateChange() {

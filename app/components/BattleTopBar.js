@@ -14,8 +14,9 @@ export default function(props) {
 
 const styles = {
     container: {
-        height: 30,
-        flexDirection: 'row'
+        height: 40,
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     flexOne: {
         flex: 1
