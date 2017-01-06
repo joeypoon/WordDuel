@@ -20,7 +20,6 @@ export class Main extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                <StatusBar hidden={ true } />
                 { this.renderContent() }
                 <CustomModal />
             </View>

@@ -194,6 +194,7 @@ const styles = {
         alignItems: 'center'
     },
     titleContainer: {
+        padding: 7,
         justifyContent: 'center',
         alignItems: 'center'
     },
