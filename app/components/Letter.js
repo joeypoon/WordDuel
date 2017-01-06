@@ -42,7 +42,6 @@ export default connect(mapStateToProps, { setPlayer, updateActiveGrid })(Letter)
 const styles = {
     container: {
         flex: 1,
-        height: 75,
         justifyContent: 'center',
         alignItems: 'center'
     },
